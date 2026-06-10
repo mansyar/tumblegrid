@@ -1,7 +1,7 @@
 <protect>
 # TRACK-002: Core 3D Scene & Grid System — Implementation Plan
 
-## Phase 1: Canvas & Lighting
+## Phase 1: Canvas & Lighting [COMPLETE]
 
 - [x] Task: Write Failing Tests for GameCanvas Component
     - [ ] Create test file `tests/components/scene/GameCanvas.test.tsx`
@@ -36,15 +36,15 @@
     - [ ] Attach git note with task summary
     - [ ] Update plan.md with commit SHA
 
-- [~] Task: Conductor - User Manual Verification 'Phase 1: Canvas & Lighting' (Protocol in workflow.md)
-    - [ ] Run `pnpm run dev` and open browser
-    - [ ] Verify: 3D canvas fills viewport with dark background
-    - [ ] Verify: Lighting creates depth (visible key, fill, back lights)
-    - [ ] Verify: No console errors or Three.js warnings
-    - [ ] Confirm with user: "Does this meet your expectations?"
-    - [ ] Create checkpoint commit
-    - [ ] Attach verification report as git note
-    - [ ] Update plan.md with checkpoint SHA
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Canvas & Lighting' [8c9c074]
+    - [x] Run `pnpm run dev` and open browser
+    - [x] Verify: 3D canvas fills viewport with dark background
+    - [x] Verify: Lighting creates depth (visible key, fill, back lights)
+    - [x] Verify: No console errors or Three.js warnings
+    - [x] Confirm with user: "Does this meet your expectations?"
+    - [x] Create checkpoint commit
+    - [x] Attach verification report as git note
+    - [x] Update plan.md with checkpoint SHA
 
 ---
 
