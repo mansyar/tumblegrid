@@ -10,7 +10,7 @@
     - [ ] Ensure piece occupies 1 grid cell (2×2×2 world units)
     - [ ] Write unit test for StraightRamp rendering
 
-- [ ] **Task: Create BumperPad mesh component**
+- [x] **Task: Create BumperPad mesh component** `[b5d0657]`
     - [ ] Create `src/components/pieces/BumperPad.tsx`
     - [ ] Implement vertical wall geometry using BoxGeometry
     - [ ] Apply pastel orange material
