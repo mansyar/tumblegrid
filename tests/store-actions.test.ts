@@ -35,16 +35,16 @@ const createTestState = (overrides?: Partial<GameState>): GameState => ({
 
 const testLevel: LevelDefinition = {
   id: 'test-level',
-  name: 'Test Level',
-  grid: [10, 10, 5],
-  launchpad: {
-    position: [0, 1, 0],
-    direction: [1, 0, 0],
-  },
-  goal: {
-    position: [9, 1, 5],
-    radius: 1,
-  },
+  title: 'Test Level',
+  description: 'A test level',
+  gridBounds: { width: 10, depth: 10, height: 5 },
+  staticTerrain: [
+    {
+      type: 'straight_ramp',
+      position: [2, 0, 2],
+      rotationIndex: 0,
+    },
+  ],
   inventory: {
     straight_ramp: 5,
     speed_booster: 2,
@@ -52,13 +52,8 @@ const testLevel: LevelDefinition = {
     half_pipe: 1,
     goal_bucket: 1,
   },
-  placedPieces: [
-    {
-      pieceType: 'straight_ramp',
-      position: [2, 0, 2],
-      rotationIndex: 0,
-    },
-  ],
+  launchpadPosition: [0, 1, 0],
+  goalPosition: [9, 1, 5],
 };
 
 describe('Store Actions', () => {
@@ -68,7 +63,7 @@ describe('Store Actions', () => {
       const result = createPlacePiece('straight_ramp', [2, 0, 2], 0)(state);
 
       expect(result.placedPieces).toHaveLength(1);
-      expect(result.placedPieces[0].pieceType).toBe('straight_ramp');
+      expect(result.placedPieces[0].type).toBe('straight_ramp');
       expect(result.placedPieces[0].position).toEqual([2, 0, 2]);
       expect(result.placedPieces[0].rotationIndex).toBe(0);
       expect(result.inventory.straight_ramp).toBe(2);
@@ -95,7 +90,7 @@ describe('Store Actions', () => {
         placedPieces: [
           {
             id: 'existing',
-            pieceType: 'bumper_pad',
+            type: 'bumper_pad',
             position: [2, 0, 2],
             rotationIndex: 0,
           },
@@ -114,7 +109,7 @@ describe('Store Actions', () => {
         placedPieces: [
           {
             id: 'test-id',
-            pieceType: 'straight_ramp',
+            type: 'straight_ramp',
             position: [2, 0, 2],
             rotationIndex: 0,
           },
@@ -145,7 +140,7 @@ describe('Store Actions', () => {
         placedPieces: [
           {
             id: 'test-id',
-            pieceType: 'straight_ramp',
+            type: 'straight_ramp',
             position: [2, 0, 2],
             rotationIndex: 0,
           },
@@ -164,7 +159,7 @@ describe('Store Actions', () => {
         placedPieces: [
           {
             id: 'test-id',
-            pieceType: 'straight_ramp',
+            type: 'straight_ramp',
             position: [2, 0, 2],
             rotationIndex: 0,
           },
@@ -180,7 +175,7 @@ describe('Store Actions', () => {
         placedPieces: [
           {
             id: 'test-id',
-            pieceType: 'straight_ramp',
+            type: 'straight_ramp',
             position: [2, 0, 2],
             rotationIndex: 3,
           },
@@ -281,7 +276,7 @@ describe('Store Actions', () => {
       expect(result.machineState).toBe('BUILDING');
       expect(result.inventory).toEqual(testLevel.inventory);
       expect(result.placedPieces).toHaveLength(1);
-      expect(result.placedPieces[0].pieceType).toBe('straight_ramp');
+      expect(result.placedPieces[0].type).toBe('straight_ramp');
       expect(result.placedPieces[0].id).toBeDefined();
       expect(result.selectedPieceId).toBeUndefined();
       expect(result.activeBlueprintNode).toBeUndefined();

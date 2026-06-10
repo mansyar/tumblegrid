@@ -5,16 +5,16 @@ import type { LevelDefinition } from '@/store/types';
 
 const testLevel: LevelDefinition = {
   id: 'test-level',
-  name: 'Test Level',
-  grid: [10, 10, 5],
-  launchpad: {
-    position: [0, 1, 0],
-    direction: [1, 0, 0],
-  },
-  goal: {
-    position: [9, 1, 5],
-    radius: 1,
-  },
+  title: 'Test Level',
+  description: 'A test level',
+  gridBounds: { width: 10, depth: 10, height: 5 },
+  staticTerrain: [
+    {
+      type: 'straight_ramp',
+      position: [2, 0, 2],
+      rotationIndex: 0,
+    },
+  ],
   inventory: {
     straight_ramp: 5,
     speed_booster: 2,
@@ -22,13 +22,8 @@ const testLevel: LevelDefinition = {
     half_pipe: 1,
     goal_bucket: 1,
   },
-  placedPieces: [
-    {
-      pieceType: 'straight_ramp',
-      position: [2, 0, 2],
-      rotationIndex: 0,
-    },
-  ],
+  launchpadPosition: [0, 1, 0],
+  goalPosition: [9, 1, 5],
 };
 
 describe('Zustand Store Integration', () => {

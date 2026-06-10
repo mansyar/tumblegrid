@@ -13,7 +13,7 @@ import {
   createUpdateActiveBlueprint,
   createUpdateTrajectoryCache,
 } from './actions';
-import type { GameStore, GameState, PieceType } from './types';
+import type { GameState, GameStore, PieceType } from './types';
 
 const initialState: GameState = {
   machineState: 'BUILDING',
@@ -41,7 +41,7 @@ export const useGameStore = create<GameStore>()(
       placePiece: (
         pieceType: PieceType,
         position: [number, number, number],
-        rotationIndex: 0 | 1 | 2 | 3
+        rotationIndex: 0 | 1 | 2 | 3,
       ) => set(createPlacePiece(pieceType, position, rotationIndex)),
 
       removePiece: (id: string) => set(createRemovePiece(id)),
@@ -51,14 +51,19 @@ export const useGameStore = create<GameStore>()(
       setMode: (mode: 'CAMPAIGN' | 'SANDBOX') => set(createSetMode(mode)),
 
       transitionState: (
-        newState: 'BUILDING' | 'PLAYING' | 'LEVEL_CLEARED' | 'SANDBOX_BUILDING' | 'SANDBOX_PLAYING'
+        newState:
+          | 'BUILDING'
+          | 'PLAYING'
+          | 'LEVEL_CLEARED'
+          | 'SANDBOX_BUILDING'
+          | 'SANDBOX_PLAYING',
       ) => set(createTransitionState(newState)),
 
       loadLevel: (level: import('./types').LevelDefinition) =>
         set(createLoadLevel(level)),
 
       updateActiveBlueprint: (
-        node: import('./types').ActiveBlueprintNode | undefined
+        node: import('./types').ActiveBlueprintNode | undefined,
       ) => set(createUpdateActiveBlueprint(node)),
 
       selectPiece: (id: string) => set(createSelectPiece(id)),
@@ -67,9 +72,9 @@ export const useGameStore = create<GameStore>()(
 
       updateTrajectoryCache: (
         key: string,
-        points: [number, number, number][]
+        points: [number, number, number][],
       ) => set(createUpdateTrajectoryCache(key, points)),
     }),
-    { name: 'TumbleGridStore' }
-  )
+    { name: 'TumbleGridStore' },
+  ),
 );

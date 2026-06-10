@@ -9,7 +9,11 @@ import type {
 } from './types';
 
 export const createPlacePiece =
-  (pieceType: PieceType, position: [number, number, number], rotationIndex: 0 | 1 | 2 | 3) =>
+  (
+    pieceType: PieceType,
+    position: [number, number, number],
+    rotationIndex: 0 | 1 | 2 | 3,
+  ) =>
   (state: GameState): GameState => {
     // Check inventory
     if (state.inventory[pieceType] <= 0) {
@@ -33,7 +37,7 @@ export const createPlacePiece =
       (p) =>
         p.position[0] === position[0] &&
         p.position[1] === position[1] &&
-        p.position[2] === position[2]
+        p.position[2] === position[2],
     );
     if (isOccupied) {
       return state;
@@ -41,7 +45,7 @@ export const createPlacePiece =
 
     const newPiece: PlacedPiece = {
       id: crypto.randomUUID(),
-      pieceType,
+      type: pieceType,
       position,
       rotationIndex,
     };
@@ -69,9 +73,10 @@ export const createRemovePiece =
       placedPieces: state.placedPieces.filter((p) => p.id !== id),
       inventory: {
         ...state.inventory,
-        [piece.pieceType]: state.inventory[piece.pieceType] + 1,
+        [piece.type]: state.inventory[piece.type] + 1,
       },
-      selectedPieceId: state.selectedPieceId === id ? undefined : state.selectedPieceId,
+      selectedPieceId:
+        state.selectedPieceId === id ? undefined : state.selectedPieceId,
     };
   };
 
@@ -88,7 +93,7 @@ export const createRotatePiece =
     return {
       ...state,
       placedPieces: state.placedPieces.map((p) =>
-        p.id === id ? { ...p, rotationIndex: newRotation } : p
+        p.id === id ? { ...p, rotationIndex: newRotation } : p,
       ),
     };
   };
@@ -126,11 +131,25 @@ export const createTransitionState =
 export const createLoadLevel =
   (level: LevelDefinition) =>
   (state: GameState): GameState => {
+    const fullInventory: Record<PieceType, number> = {
+      straight_ramp: level.inventory.straight_ramp ?? 0,
+      speed_booster: level.inventory.speed_booster ?? 0,
+      bumper_pad: level.inventory.bumper_pad ?? 0,
+      half_pipe: level.inventory.half_pipe ?? 0,
+      goal_bucket: level.inventory.goal_bucket ?? 0,
+    };
+
     return {
       ...state,
-      machineState: state.activeMode === 'SANDBOX' ? 'SANDBOX_BUILDING' : 'BUILDING',
-      inventory: { ...level.inventory },
-      placedPieces: level.placedPieces.map((p) => ({
+      machineState:
+        state.activeMode === 'SANDBOX' ? 'SANDBOX_BUILDING' : 'BUILDING',
+      grid: [
+        level.gridBounds.width,
+        level.gridBounds.depth,
+        level.gridBounds.height,
+      ],
+      inventory: fullInventory,
+      placedPieces: level.staticTerrain.map((p) => ({
         ...p,
         id: crypto.randomUUID(),
       })),

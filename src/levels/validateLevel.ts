@@ -17,10 +17,7 @@ export function validateLevel(level: LevelDefinition): ValidationResult {
   const errors: string[] = [];
 
   // Rule 2: Bounds compliance
-  const checkBounds = (
-    position: [number, number, number],
-    label: string
-  ) => {
+  const checkBounds = (position: [number, number, number], label: string) => {
     const { width, depth, height } = level.gridBounds;
     if (
       position[0] < 0 ||
@@ -31,21 +28,18 @@ export function validateLevel(level: LevelDefinition): ValidationResult {
       position[2] >= depth
     ) {
       errors.push(
-        `${label} position [${position}] is out of bounds (grid: ${width}x${depth}x${height})`
+        `${label} position [${position}] is out of bounds (grid: ${width}x${depth}x${height})`,
       );
     }
   };
 
   // Rule 3: No overlap check
   const positions = new Map<string, string>();
-  const checkOverlap = (
-    position: [number, number, number],
-    label: string
-  ) => {
+  const checkOverlap = (position: [number, number, number], label: string) => {
     const key = `${position[0]},${position[1]},${position[2]}`;
     if (positions.has(key)) {
       errors.push(
-        `Overlap detected at [${position}] between ${positions.get(key)} and ${label}`
+        `Overlap detected at [${position}] between ${positions.get(key)} and ${label}`,
       );
     }
     positions.set(key, label);
@@ -94,9 +88,7 @@ export function validateLevel(level: LevelDefinition): ValidationResult {
 
     // Rule 8: Rotation index range check
     if (piece.rotationIndex < 0 || piece.rotationIndex > 3) {
-      errors.push(
-        `${label} has invalid rotationIndex: ${piece.rotationIndex}`
-      );
+      errors.push(`${label} has invalid rotationIndex: ${piece.rotationIndex}`);
     }
 
     // Rule 2: Bounds compliance
@@ -117,9 +109,7 @@ export function validateLevel(level: LevelDefinition): ValidationResult {
   };
 }
 
-export function validateLevelSet(
-  levels: LevelDefinition[]
-): ValidationResult {
+export function validateLevelSet(levels: LevelDefinition[]): ValidationResult {
   const errors: string[] = [];
 
   // Rule 1: ID uniqueness check

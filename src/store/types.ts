@@ -15,7 +15,7 @@ export type MachineState =
 export type ActiveMode = 'CAMPAIGN' | 'SANDBOX';
 
 export interface PiecePlacement {
-  pieceType: PieceType;
+  type: PieceType;
   position: [number, number, number];
   rotationIndex: 0 | 1 | 2 | 3;
 }
@@ -31,22 +31,21 @@ export interface ActiveBlueprintNode {
   valid: boolean;
 }
 
+export interface GridBounds {
+  width: number;
+  depth: number;
+  height: number;
+}
+
 export interface LevelDefinition {
   id: string;
-  name: string;
-  grid: [number, number, number];
-  launchpad: {
-    position: [number, number, number];
-    direction: [number, number, number];
-  };
-  goal:
-    | {
-        position: [number, number, number];
-        radius: number;
-      }
-    | undefined;
-  inventory: Record<PieceType, number>;
-  placedPieces: PiecePlacement[];
+  title: string;
+  description: string;
+  gridBounds: GridBounds;
+  staticTerrain: PiecePlacement[];
+  inventory: Partial<Record<PieceType, number>>;
+  launchpadPosition: [number, number, number];
+  goalPosition?: [number, number, number];
 }
 
 export interface GameState {
@@ -65,7 +64,7 @@ export interface StoreActions {
   placePiece: (
     pieceType: PieceType,
     position: [number, number, number],
-    rotationIndex: 0 | 1 | 2 | 3
+    rotationIndex: 0 | 1 | 2 | 3,
   ) => void;
   removePiece: (id: string) => void;
   rotatePiece: (id: string) => void;
@@ -77,7 +76,7 @@ export interface StoreActions {
   clearSelection: () => void;
   updateTrajectoryCache: (
     key: string,
-    points: [number, number, number][]
+    points: [number, number, number][],
   ) => void;
 }
 

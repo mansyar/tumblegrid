@@ -41,11 +41,11 @@ describe('Store Type Exports', () => {
 
   it('should export PiecePlacement interface', () => {
     const placement: PiecePlacement = {
-      pieceType: 'straight_ramp',
+      type: 'straight_ramp',
       position: [0, 0, 0],
       rotationIndex: 0,
     };
-    expect(placement.pieceType).toBe('straight_ramp');
+    expect(placement.type).toBe('straight_ramp');
     expect(placement.position).toEqual([0, 0, 0]);
     expect(placement.rotationIndex).toBe(0);
   });
@@ -53,12 +53,12 @@ describe('Store Type Exports', () => {
   it('should export PlacedPiece interface extending PiecePlacement', () => {
     const piece: PlacedPiece = {
       id: 'test-id',
-      pieceType: 'bumper_pad',
+      type: 'bumper_pad',
       position: [2, 0, 4],
       rotationIndex: 2,
     };
     expect(piece.id).toBe('test-id');
-    expect(piece.pieceType).toBe('bumper_pad');
+    expect(piece.type).toBe('bumper_pad');
     expect(piece.position).toEqual([2, 0, 4]);
     expect(piece.rotationIndex).toBe(2);
   });
@@ -77,16 +77,10 @@ describe('Store Type Exports', () => {
   it('should export LevelDefinition interface', () => {
     const level: LevelDefinition = {
       id: 'test-level',
-      name: 'Test Level',
-      grid: [6, 4, 3],
-      launchpad: {
-        position: [0, 1, 0],
-        direction: [1, 0, 0],
-      },
-      goal: {
-        position: [10, 1, 4],
-        radius: 1,
-      },
+      title: 'Test Level',
+      description: 'A test level',
+      gridBounds: { width: 6, depth: 4, height: 3 },
+      staticTerrain: [],
       inventory: {
         straight_ramp: 3,
         speed_booster: 1,
@@ -94,23 +88,21 @@ describe('Store Type Exports', () => {
         half_pipe: 0,
         goal_bucket: 1,
       },
-      placedPieces: [],
+      launchpadPosition: [0, 1, 0],
+      goalPosition: [10, 1, 4],
     };
     expect(level.id).toBe('test-level');
-    expect(level.grid).toEqual([6, 4, 3]);
-    expect(level.goal).toBeDefined();
+    expect(level.gridBounds).toEqual({ width: 6, depth: 4, height: 3 });
+    expect(level.goalPosition).toBeDefined();
   });
 
-  it('should export LevelDefinition with undefined goal for sandbox', () => {
+  it('should export LevelDefinition without goalPosition for sandbox', () => {
     const sandboxLevel: LevelDefinition = {
       id: 'sandbox',
-      name: 'Sandbox',
-      grid: [10, 10, 5],
-      launchpad: {
-        position: [0, 1, 0],
-        direction: [1, 0, 0],
-      },
-      goal: undefined,
+      title: 'Sandbox',
+      description: 'Free-play mode',
+      gridBounds: { width: 10, depth: 10, height: 5 },
+      staticTerrain: [],
       inventory: {
         straight_ramp: 99,
         speed_booster: 99,
@@ -118,9 +110,9 @@ describe('Store Type Exports', () => {
         half_pipe: 99,
         goal_bucket: 0,
       },
-      placedPieces: [],
+      launchpadPosition: [5, 4, 5],
     };
-    expect(sandboxLevel.goal).toBeUndefined();
+    expect(sandboxLevel.goalPosition).toBeUndefined();
   });
 
   it('should export GameState interface', () => {

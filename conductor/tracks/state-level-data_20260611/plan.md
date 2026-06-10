@@ -57,36 +57,36 @@
 
 ## Phase 3: Level Data & Validation
 
-- [ ] Task: Create level JSON files in `src/levels/campaign/`
-    - [ ] Create `01-the-descent.json` (from level-data-schema.md §4)
-    - [ ] Create `02-the-bank-shot.json`
-    - [ ] Create `03-velocity-check.json`
-    - [ ] Create `04-the-switchback.json`
-    - [ ] Create `05-efficiency-crisis.json`
-- [ ] Task: Create `src/levels/sandbox.json`
-- [ ] Task: Implement runtime validator in `src/levels/validateLevel.ts`
-    - [ ] Implement rule 1: ID uniqueness check (campaign set)
-    - [ ] Implement rule 2: Bounds compliance check
-    - [ ] Implement rule 3: No overlap check
-    - [ ] Implement rule 4: Inventory validity check
-    - [ ] Implement rule 5: Launchpad bounds check
-    - [ ] Implement rule 6: Goal presence/absence check
-    - [ ] Implement rule 7: Inventory non-negative check
-    - [ ] Implement rule 8: Rotation index range check
-    - [ ] Implement rule 9: Launchpad uniqueness check
-    - [ ] Return `{ valid: boolean, errors: string[] }`
-- [ ] Task: Create level index in `src/levels/index.ts`
-    - [ ] Import all campaign levels
-    - [ ] Import sandbox level
-    - [ ] Export `campaignLevels` array
-    - [ ] Export `sandboxLevel`
-    - [ ] Export `getLevelById(id)` function
-    - [ ] Export `getLevelByIndex(index)` function
-- [ ] Task: Write Vitest tests in `tests/level-schema.test.ts`
-    - [ ] Test all 6 level files pass validation
-    - [ ] Test each validation rule individually with invalid data
-    - [ ] Test ID uniqueness across campaign set
-    - [ ] Test getLevelById and getLevelByIndex
-- [ ] Task: Run all tests and verify they pass
+- [x] Task: Create level JSON files in `src/levels/campaign/`
+    - [x] Create `01-the-descent.json` (from level-data-schema.md §4)
+    - [x] Create `02-the-bank-shot.json`
+    - [x] Create `03-velocity-check.json`
+    - [x] Create `04-the-switchback.json`
+    - [x] Create `05-efficiency-crisis.json`
+- [x] Task: Create `src/levels/sandbox.json`
+- [x] Task: Implement runtime validator in `src/levels/validateLevel.ts`
+    - [x] Implement rule 1: ID uniqueness check (campaign set)
+    - [x] Implement rule 2: Bounds compliance check
+    - [x] Implement rule 3: No overlap check
+    - [x] Implement rule 4: Inventory validity check
+    - [x] Implement rule 5: Launchpad bounds check
+    - [x] Implement rule 6: Goal presence/absence check
+    - [x] Implement rule 7: Inventory non-negative check
+    - [x] Implement rule 8: Rotation index range check
+    - [x] Implement rule 9: Launchpad uniqueness check
+    - [x] Return `{ valid: boolean, errors: string[] }`
+- [x] Task: Create level index in `src/levels/index.ts`
+    - [x] Import all campaign levels
+    - [x] Import sandbox level
+    - [x] Export `campaignLevels` array
+    - [x] Export `sandboxLevel`
+    - [x] Export `getLevelById(id)` function
+    - [x] Export `getLevelByIndex(index)` function
+- [x] Task: Write Vitest tests in `tests/level-schema.test.ts`
+    - [x] Test all 6 level files pass validation
+    - [x] Test each validation rule individually with invalid data
+    - [x] Test ID uniqueness across campaign set
+    - [x] Test getLevelById and getLevelByIndex
+- [x] Task: Run all tests and verify they pass
 - [ ] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)
 </protect>
