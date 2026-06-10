@@ -1,3 +1,4 @@
+<protect>
 # Specification: TRACK-001 — Project Scaffolding
 
 ## Objective
@@ -73,3 +74,4 @@ src/
 - `pnpm run typecheck` passes with zero errors
 - `pnpm run test` runs and passes a placeholder test
 - Browser shows blank white page with "TumbleGrid" title in the tab
+</protect>

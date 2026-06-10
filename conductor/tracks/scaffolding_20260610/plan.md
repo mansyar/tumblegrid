@@ -1,3 +1,4 @@
+<protect>
 # Implementation Plan: TRACK-001 — Project Scaffolding
 
 ## Phase 1: Init & Install
@@ -81,3 +82,4 @@
     - [ ] Run `pnpm run typecheck` — confirm zero errors
     - [ ] Run `pnpm run test` — confirm placeholder test passes
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Project Skeleton' (Protocol in workflow.md)
+</protect>
