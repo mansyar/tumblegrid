@@ -75,15 +75,15 @@
     - [x] Attach git note with task summary
     - [x] Update plan.md with commit SHA
 
-- [ ] Task: Integrate GridFloor into GameCanvas
-    - [ ] Import and mount GridFloor in GameCanvas component
-    - [ ] Position GridFloor at world origin (0, 0, 0)
-    - [ ] Verify grid renders correctly in browser
-    - [ ] Commit changes with message: `feat(scene): Mount GridFloor in GameCanvas`
-    - [ ] Attach git note with task summary
-    - [ ] Update plan.md with commit SHA
+- [x] Task: Integrate GridFloor into GameCanvas [ec9aaee]
+    - [x] Import and mount GridFloor in GameCanvas component
+    - [x] Position GridFloor at world origin (0, 0, 0)
+    - [x] Verify grid renders correctly in browser
+    - [x] Commit changes with message: `feat(scene): Mount GridFloor in GameCanvas`
+    - [x] Attach git note with task summary
+    - [x] Update plan.md with commit SHA
 
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Grid Floor' (Protocol in workflow.md)
+- [~] Task: Conductor - User Manual Verification 'Phase 2: Grid Floor' (Protocol in workflow.md)
     - [ ] Run `pnpm run dev` and open browser
     - [ ] Verify: Grid floor visible with 2-unit cell size
     - [ ] Verify: Infinite fade effect at edges creates depth
