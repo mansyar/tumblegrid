@@ -1,4 +1,5 @@
 import { Canvas } from '@react-three/fiber';
+import { GridFloor } from '@/components/scene/GridFloor';
 
 export function GameCanvas() {
   return (
@@ -23,6 +24,9 @@ export function GameCanvas() {
 
         {/* Back Light - Rim/edge light for depth separation */}
         <pointLight position={[0, 10, -10]} intensity={0.8} color="#ffffff" />
+
+        {/* Grid Floor */}
+        <GridFloor />
       </Canvas>
     </div>
   );

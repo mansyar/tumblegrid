@@ -50,30 +50,30 @@
 
 ## Phase 2: Grid Floor
 
-- [ ] Task: Write Failing Tests for GridFloor Component
-    - [ ] Create test file `tests/components/scene/GridFloor.test.tsx`
-    - [ ] Write test: GridFloor renders without errors
-    - [ ] Write test: Grid uses 2×2 world unit cell size
-    - [ ] Write test: Grid has infinite fade effect at edges
-    - [ ] Run tests and confirm they fail (Red Phase)
+- [x] Task: Write Failing Tests for GridFloor Component [a4f7e59]
+    - [x] Create test file `tests/components/scene/GridFloor.test.tsx`
+    - [x] Write test: GridFloor renders without errors
+    - [x] Write test: Grid uses 2×2 world unit cell size
+    - [x] Write test: Grid has infinite fade effect at edges
+    - [x] Run tests and confirm they fail (Red Phase)
 
-- [ ] Task: Implement GridFloor Component
-    - [ ] Create `src/components/scene/GridFloor.tsx`
-    - [ ] Import Grid from @react-three/drei
-    - [ ] Configure Grid with cellSize={2} for 2×2 world units
-    - [ ] Configure infinite grid with fade distance
-    - [ ] Apply soft pastel color palette for grid lines
-    - [ ] Set dark background color (matching product aesthetic)
-    - [ ] Export GridFloor component
-    - [ ] Run tests and confirm they pass (Green Phase)
+- [x] Task: Implement GridFloor Component [a4f7e59]
+    - [x] Create `src/components/scene/GridFloor.tsx`
+    - [x] Import Grid from @react-three/drei
+    - [x] Configure Grid with cellSize={2} for 2×2 world units
+    - [x] Configure infinite grid with fade distance
+    - [x] Apply soft pastel color palette for grid lines
+    - [x] Set dark background color (matching product aesthetic)
+    - [x] Export GridFloor component
+    - [x] Run tests and confirm they pass (Green Phase)
 
-- [ ] Task: Refactor and Verify Coverage
-    - [ ] Review GridFloor implementation for visual quality
-    - [ ] Verify test coverage meets >80% requirement
-    - [ ] Run `pnpm run lint` to ensure code passes Biome checks
-    - [ ] Commit changes with message: `feat(scene): Implement GridFloor with infinite fade grid`
-    - [ ] Attach git note with task summary
-    - [ ] Update plan.md with commit SHA
+- [x] Task: Refactor and Verify Coverage [a4f7e59]
+    - [x] Review GridFloor implementation for visual quality
+    - [x] Verify test coverage meets >80% requirement
+    - [x] Run `pnpm run lint` to ensure code passes Biome checks
+    - [x] Commit changes with message: `feat(scene): Implement GridFloor with custom grid helper`
+    - [x] Attach git note with task summary
+    - [x] Update plan.md with commit SHA
 
 - [ ] Task: Integrate GridFloor into GameCanvas
     - [ ] Import and mount GridFloor in GameCanvas component

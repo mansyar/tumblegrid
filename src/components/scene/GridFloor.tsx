@@ -1,4 +1,4 @@
-import { useRef, useMemo } from 'react';
+import { useMemo, useRef } from 'react';
 import * as THREE from 'three';
 
 export function GridFloor() {
@@ -13,11 +13,5 @@ export function GridFloor() {
     return grid;
   }, []);
 
-  return (
-    <primitive
-      ref={gridRef}
-      object={gridGeometry}
-      position={[0, 0, 0]}
-    />
-  );
+  return <primitive ref={gridRef} object={gridGeometry} position={[0, 0, 0]} />;
 }
