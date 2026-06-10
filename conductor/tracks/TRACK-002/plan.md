@@ -136,7 +136,7 @@
     - [ ] Attach git note with task summary
     - [ ] Update plan.md with commit SHA
 
-- [ ] Task: Implement Auto-Framing Integration
+- [x] Task: Implement Auto-Framing Integration [8850903]
     - [ ] Create example usage of autoFrame with test bounds
     - [ ] Verify camera smoothly animates to frame specified volume
     - [ ] Test with different grid sizes (6×4×3, 10×10×5)
