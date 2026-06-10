@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { GameCanvas } from '../../../src/components/scene/GameCanvas';
+import { GameCanvas } from '@/components/scene/GameCanvas';
 
 describe('GameCanvas', () => {
   it('should render without errors', () => {

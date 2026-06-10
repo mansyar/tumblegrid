@@ -1,6 +1,7 @@
 import { useFrame, useThree } from '@react-three/fiber';
 import { useCallback, useRef } from 'react';
 import * as THREE from 'three';
+import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib';
 
 export interface Bounds {
   x: number;
@@ -13,8 +14,7 @@ export interface Bounds {
 
 export function useCamera() {
   const { camera } = useThree();
-  // biome-ignore lint/suspicious/noExplicitAny: OrbitControls ref type from drei is complex
-  const controlsRef = useRef<any>(null);
+  const controlsRef = useRef<OrbitControlsImpl>(null);
   const animationRef = useRef<{
     targetPosition: THREE.Vector3;
     targetLookAt: THREE.Vector3;
