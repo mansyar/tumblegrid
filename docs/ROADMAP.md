@@ -98,7 +98,7 @@ flowchart TD
 | Field | Value |
 |---|---|
 | **Track ID** | `TRACK-002` |
-| **Status** | Pending |
+| **Status** | ✅ Complete |
 | **Core Dependency** | `TRACK-001` |
 
 ### Context & Objectives
@@ -129,11 +129,11 @@ flowchart TD
 
 ### Definition of Done
 
-- [ ] Grid floor renders at correct world scale (2-unit cells).
-- [ ] OrbitControls orbit, zoom, and pitch clamp all work.
-- [ ] `autoFrame(bounds)` correctly positions camera for any volume.
-- [ ] No console errors or Three.js warnings.
-- [ ] Code passes static analysis review.
+- [x] Grid floor renders at correct world scale (2-unit cells).
+- [x] OrbitControls orbit, zoom, and pitch clamp all work.
+- [x] `autoFrame(bounds)` correctly positions camera for any volume.
+- [x] No console errors or Three.js warnings.
+- [x] Code passes static analysis review.
 
 ---
 
