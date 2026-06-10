@@ -20,8 +20,8 @@
     - [ ] Export GameCanvas component
     - [ ] Run tests and confirm they pass (Green Phase)
 
-- [ ] Task: Refactor and Verify Coverage
-    - [ ] Review GameCanvas implementation for clarity and simplicity
+- [x] Task: Refactor and Verify Coverage [f982acf]
+    - [x] Review GameCanvas implementation for clarity and simplicity
     - [ ] Verify test coverage meets >80% requirement
     - [ ] Run `pnpm run lint` to ensure code passes Biome checks
     - [ ] Commit changes with message: `feat(scene): Implement GameCanvas with three-point lighting`
