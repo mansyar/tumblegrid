@@ -128,6 +128,7 @@ describe('Store Type Exports', () => {
       machineState: 'BUILDING',
       activeMode: 'CAMPAIGN',
       activeLevelIndex: 0,
+      grid: [10, 10, 5],
       inventory: {
         straight_ramp: 3,
         speed_booster: 1,
@@ -142,6 +143,7 @@ describe('Store Type Exports', () => {
     };
     expect(state.machineState).toBe('BUILDING');
     expect(state.activeMode).toBe('CAMPAIGN');
+    expect(state.grid).toEqual([10, 10, 5]);
     expect(state.trajectoryPreviewCache).toBeInstanceOf(Map);
   });
 });
