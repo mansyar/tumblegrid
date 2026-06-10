@@ -144,7 +144,7 @@
     - [ ] Attach git note with task summary
     - [ ] Update plan.md with commit SHA
 
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: Camera System' (Protocol in workflow.md)
+- [~] Task: Conductor - User Manual Verification 'Phase 3: Camera System' (Protocol in workflow.md)
     - [ ] Run `pnpm run dev` and open browser
     - [ ] Verify: Initial view is 45° pitch / 45° yaw isometric angle
     - [ ] Verify: Mouse drag orbits camera (right button)

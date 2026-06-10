@@ -1,5 +1,5 @@
 import { GridFloor } from '@/components/scene/GridFloor';
-import { useCamera, type Bounds } from '@/hooks/useCamera';
+import { type Bounds, useCamera } from '@/hooks/useCamera';
 import { OrbitControls } from '@react-three/drei';
 import { useEffect } from 'react';
 
