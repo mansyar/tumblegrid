@@ -4,5 +4,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [ ] **Track: Core 3D Scene & Grid System**
+- [~] **Track: Core 3D Scene & Grid System**
 *Link: [./tracks/TRACK-002/](./tracks/TRACK-002/)*

@@ -36,7 +36,7 @@
     - [ ] Attach git note with task summary
     - [ ] Update plan.md with commit SHA
 
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Canvas & Lighting' (Protocol in workflow.md)
+- [~] Task: Conductor - User Manual Verification 'Phase 1: Canvas & Lighting' (Protocol in workflow.md)
     - [ ] Run `pnpm run dev` and open browser
     - [ ] Verify: 3D canvas fills viewport with dark background
     - [ ] Verify: Lighting creates depth (visible key, fill, back lights)
