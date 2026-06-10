@@ -26,6 +26,9 @@ export default defineConfig({
         'src/**/constants.ts',
         'src/styles/**',
         'src/**/.gitkeep',
+        'src/main.tsx', // Entry point, not testable in jsdom
+        'src/components/scene/Scene.tsx', // R3F component requiring WebGL context
+        'src/components/scene/GridFloor.tsx', // R3F component requiring WebGL context
       ],
       thresholds: {
         branches: 80,
