@@ -3,27 +3,27 @@
 
 ## Phase 1: Init & Install
 
-- [ ] Task: Initialize pnpm project and create package.json
-    - [ ] Run `pnpm init` to create base `package.json`
-    - [ ] Add project metadata (name, version, description, type: "module")
-    - [ ] Define all scripts: dev, build, lint, typecheck, test
-- [ ] Task: Install core runtime dependencies
-    - [ ] Install `react` and `react-dom` (^19.0.0)
-    - [ ] Install `three` (^0.170.0)
-    - [ ] Install `@react-three/fiber` (^8.0.0)
-    - [ ] Install `@react-three/drei` (^9.0.0)
-    - [ ] Install `@react-three/rapier` (^1.5.0)
-    - [ ] Install `zustand` (^5.0.0)
-- [ ] Task: Install development dependencies
-    - [ ] Install `typescript` (^5.6.0)
-    - [ ] Install `vite` (^8.0.0) and `@vitejs/plugin-react` (^4.0.0)
-    - [ ] Install `vitest` (^4.0.0)
-    - [ ] Install `biome` (^1.9.0)
-    - [ ] Install `@playwright/test` (^1.48.0)
-- [ ] Task: Verify lockfile integrity
-    - [ ] Run `pnpm install --frozen-lockfile` to verify lockfile
-    - [ ] Confirm `pnpm-lock.yaml` exists and is consistent
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Init & Install' (Protocol in workflow.md)
+- [x] Task: Initialize pnpm project and create package.json
+    - [x] Run `pnpm init` to create base `package.json`
+    - [x] Add project metadata (name, version, description, type: "module")
+    - [x] Define all scripts: dev, build, lint, typecheck, test
+- [x] Task: Install core runtime dependencies
+    - [x] Install `react` and `react-dom` (^19.0.0)
+    - [x] Install `three` (^0.170.0)
+    - [x] Install `@react-three/fiber` (^8.0.0)
+    - [x] Install `@react-three/drei` (^9.0.0)
+    - [x] Install `@react-three/rapier` (^1.5.0)
+    - [x] Install `zustand` (^5.0.0)
+- [x] Task: Install development dependencies
+    - [x] Install `typescript` (^5.6.0)
+    - [x] Install `vite` (^8.0.0) and `@vitejs/plugin-react` (^4.0.0)
+    - [x] Install `vitest` (^4.0.0)
+    - [x] Install `biome` (^1.9.0)
+    - [x] Install `@playwright/test` (^1.48.0)
+- [x] Task: Verify lockfile integrity
+    - [x] Run `pnpm install --frozen-lockfile` to verify lockfile
+    - [x] Confirm `pnpm-lock.yaml` exists and is consistent
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Init & Install' (Protocol in workflow.md) [checkpoint: ]
 
 ## Phase 2: Tooling Configuration
 
