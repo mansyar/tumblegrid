@@ -27,10 +27,10 @@
 
 ## Phase 2: Tooling Configuration
 
-- [ ] Task: Configure TypeScript
-    - [ ] Create `tsconfig.json` with strict mode, ESNext target, JSX react-jsx
-    - [ ] Configure path aliases (`@/` → `src/`)
-    - [ ] Add `vitest/globals` types for test files
+- [x] Task: Configure TypeScript
+    - [x] Create `tsconfig.json` with strict mode, ESNext target, JSX react-jsx
+    - [x] Configure path aliases (`@/` → `src/`)
+    - [x] Add `vitest/globals` types for test files
 - [ ] Task: Configure Vite
     - [ ] Create `vite.config.ts` with React plugin
     - [ ] Add path alias resolution matching tsconfig
