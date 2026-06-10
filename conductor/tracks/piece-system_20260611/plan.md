@@ -3,7 +3,7 @@
 
 ## Phase 1: Piece Mesh Components
 
-- [ ] **Task: Create StraightRamp mesh component**
+- [x] **Task: Create StraightRamp mesh component** `[8c48d7d]`
     - [ ] Create `src/components/pieces/StraightRamp.tsx`
     - [ ] Implement diagonal slope geometry using BoxGeometry
     - [ ] Apply pastel blue material
