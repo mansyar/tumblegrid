@@ -161,12 +161,12 @@
 
 ## Definition of Done
 
-- [ ] Grid floor renders at correct world scale (2-unit cells)
-- [ ] OrbitControls orbit, zoom, and pitch clamp all work
-- [ ] `autoFrame(bounds)` correctly positions camera for any volume
-- [ ] No console errors or Three.js warnings
-- [ ] Code passes static analysis review
-- [ ] All tests pass with >80% coverage
-- [ ] All commits have attached git notes
-- [ ] All phases have checkpoint commits with verification reports
+- [x] Grid floor renders at correct world scale (2-unit cells)
+- [x] OrbitControls orbit, zoom, and pitch clamp all work
+- [x] `autoFrame(bounds)` correctly positions camera for any volume
+- [x] No console errors or Three.js warnings
+- [x] Code passes static analysis review
+- [x] All tests pass with >80% coverage
+- [x] All commits have attached git notes
+- [x] All phases have checkpoint commits with verification reports
 </protect>
