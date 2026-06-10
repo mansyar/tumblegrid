@@ -1,7 +1,9 @@
+import { GameCanvas } from '@/components/scene/GameCanvas';
+
 export function App() {
   return (
-    <div>
-      <h1>TumbleGrid</h1>
+    <div style={{ width: '100vw', height: '100vh' }}>
+      <GameCanvas />
     </div>
   );
 }
