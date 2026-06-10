@@ -51,35 +51,35 @@
 
 ## Phase 3: Project Skeleton
 
-- [ ] Task: Create `index.html` entry point
-    - [ ] Create `index.html` with root div and script reference
-    - [ ] Set document title to "TumbleGrid"
-    - [ ] Add viewport meta tag for mobile
-- [ ] Task: Create directory structure
-    - [ ] Create `src/components/scene/`
-    - [ ] Create `src/components/pieces/`
-    - [ ] Create `src/components/physics/`
-    - [ ] Create `src/components/ui/`
-    - [ ] Create `src/store/`
-    - [ ] Create `src/levels/campaign/`
-    - [ ] Create `src/audio/`
-    - [ ] Create `src/hooks/`
-    - [ ] Create `src/utils/`
-    - [ ] Create `src/constants/`
-    - [ ] Create `src/styles/`
-    - [ ] Create `tests/`
-    - [ ] Create `public/`
-- [ ] Task: Create stub entry files
-    - [ ] Create `src/main.tsx` with ReactDOM.createRoot render
-    - [ ] Create `src/App.tsx` with minimal blank component
-    - [ ] Create `src/styles/main.css` with basic reset
-- [ ] Task: Create placeholder test
-    - [ ] Create `tests/placeholder.test.ts` with a trivial passing test
-- [ ] Task: Verify all dev commands
-    - [ ] Run `pnpm run dev` — confirm HMR starts without errors
-    - [ ] Run `pnpm run build` — confirm production build succeeds
-    - [ ] Run `pnpm run lint` — confirm zero warnings
-    - [ ] Run `pnpm run typecheck` — confirm zero errors
-    - [ ] Run `pnpm run test` — confirm placeholder test passes
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: Project Skeleton' (Protocol in workflow.md)
+- [x] Task: Create `index.html` entry point [a3ff2f2]
+    - [x] Create `index.html` with root div and script reference
+    - [x] Set document title to "TumbleGrid"
+    - [x] Add viewport meta tag for mobile
+- [x] Task: Create directory structure [a3ff2f2]
+    - [x] Create `src/components/scene/`
+    - [x] Create `src/components/pieces/`
+    - [x] Create `src/components/physics/`
+    - [x] Create `src/components/ui/`
+    - [x] Create `src/store/`
+    - [x] Create `src/levels/campaign/`
+    - [x] Create `src/audio/`
+    - [x] Create `src/hooks/`
+    - [x] Create `src/utils/`
+    - [x] Create `src/constants/`
+    - [x] Create `src/styles/`
+    - [x] Create `tests/`
+    - [x] Create `public/`
+- [x] Task: Create stub entry files [a3ff2f2]
+    - [x] Create `src/main.tsx` with ReactDOM.createRoot render
+    - [x] Create `src/App.tsx` with minimal blank component
+    - [x] Create `src/styles/main.css` with basic reset
+- [x] Task: Create placeholder test [a3ff2f2]
+    - [x] Create `tests/placeholder.test.ts` with a trivial passing test
+- [x] Task: Verify all dev commands [a3ff2f2]
+    - [x] Run `pnpm run dev` — confirm HMR starts without errors
+    - [x] Run `pnpm run build` — confirm production build succeeds
+    - [x] Run `pnpm run lint` — confirm zero warnings
+    - [x] Run `pnpm run typecheck` — confirm zero errors
+    - [x] Run `pnpm run test` — confirm placeholder test passes
+- [x] Task: Conductor - User Manual Verification 'Phase 3: Project Skeleton' (Protocol in workflow.md) [checkpoint: a3ff2f2]
 </protect>
