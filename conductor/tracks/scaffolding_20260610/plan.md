@@ -35,11 +35,11 @@
     - [x] Create `vite.config.ts` with React plugin
     - [x] Add path alias resolution matching tsconfig
     - [x] Set dev server port to 5173
-- [ ] Task: Configure Biome
-    - [ ] Create `biome.json` with TypeScript + React settings
-    - [ ] Configure formatter (indent style: space, indent width: 2)
-    - [ ] Configure linter with recommended rules
-    - [ ] Configure file includes/excludes
+- [x] Task: Configure Biome [e332b3b]
+    - [x] Create `biome.json` with TypeScript + React settings
+    - [x] Configure formatter (indent style: space, indent width: 2)
+    - [x] Configure linter with recommended rules
+    - [x] Configure file includes/excludes
 - [ ] Task: Configure Vitest
     - [ ] Create `vitest.config.ts` extending Vite config
     - [ ] Set up Browser Mode with Playwright provider
