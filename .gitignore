@@ -12,6 +12,9 @@ dist/
 # Test coverage
 coverage/
 
+# TypeScript incremental build cache
+*.tsbuildinfo
+
 # IDE
 .vscode/
 .idea/
