@@ -47,7 +47,7 @@
 - [x] Task: Create environment and git configuration [116dd0d]
     - [x] Create `.env.example` with placeholder vars
     - [x] Create/update `.gitignore` (node_modules, dist, .env, coverage)
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Tooling Configuration' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Tooling Configuration' (Protocol in workflow.md) [checkpoint: f25123e]
 
 ## Phase 3: Project Skeleton
 
