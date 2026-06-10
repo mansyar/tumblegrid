@@ -1,3 +1,4 @@
+<protect>
 # TRACK-004: Piece System & Interaction — Implementation Plan
 
 ## Phase 1: Piece Mesh Components
@@ -154,3 +155,4 @@
     - [ ] Update documentation if needed
 
 - [ ] **Task: Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)**
+</protect>

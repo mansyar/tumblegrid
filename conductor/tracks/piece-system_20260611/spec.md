@@ -1,3 +1,4 @@
+<protect>
 # TRACK-004: Piece System & Interaction (3D Components) — Specification
 
 ## 1. Overview
@@ -137,3 +138,4 @@
 - Audio feedback (deferred to TRACK-008)
 - Mobile touch gestures (deferred to TRACK-010)
 - Win/lose conditions (deferred to TRACK-007)
+</protect>
