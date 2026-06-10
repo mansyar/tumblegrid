@@ -40,7 +40,7 @@ flowchart TD
 | Field | Value |
 |---|---|
 | **Track ID** | `TRACK-001` |
-| **Status** | Pending |
+| **Status** | ✅ Complete |
 | **Core Dependency** | None (project seed) |
 
 ### Context & Objectives
@@ -82,14 +82,14 @@ flowchart TD
 
 ### Definition of Done
 
-- [ ] `pnpm install --frozen-lockfile` passes.
-- [ ] `pnpm run dev` starts without warnings.
-- [ ] `pnpm run build` outputs to `dist/` without errors.
-- [ ] `pnpm run lint` exits clean.
-- [ ] `pnpm run test` runs and passes a trivial test.
-- [ ] All config files are committed to Git.
-- [ ] No placeholder text or hardcoded dummy data left in source.
-- [ ] Code passes static analysis review.
+- [x] `pnpm install --frozen-lockfile` passes.
+- [x] `pnpm run dev` starts without warnings.
+- [x] `pnpm run build` outputs to `dist/` without errors.
+- [x] `pnpm run lint` exits clean.
+- [x] `pnpm run test` runs and passes a trivial test.
+- [x] All config files are committed to Git.
+- [x] No placeholder text or hardcoded dummy data left in source.
+- [x] Code passes static analysis review.
 
 ---
 
