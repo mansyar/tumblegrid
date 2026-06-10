@@ -1,0 +1,8 @@
+{
+  "track_id": "scaffolding_20260610",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-06-10T19:17:00Z",
+  "updated_at": "2026-06-10T19:17:00Z",
+  "description": "TRACK-001: Project Scaffolding — Initialize Vite 8 + React + TypeScript workspace with pnpm, install all core dependencies (R3F, Rapier, Zustand), configure Biome, Vitest, tsconfig, and create the project directory skeleton with zero game logic."
+}
