@@ -11,7 +11,6 @@ export function GameCanvas() {
       >
         {/* Key Light - Primary directional light for main illumination and shadows */}
         <directionalLight
-          data-testid="key-light"
           position={[5, 10, 5]}
           intensity={1.5}
           castShadow
@@ -20,19 +19,10 @@ export function GameCanvas() {
         />
 
         {/* Fill Light - Softer light to reduce harsh shadows */}
-        <ambientLight
-          data-testid="fill-light"
-          intensity={0.4}
-          position={[-5, 5, -5]}
-        />
+        <ambientLight intensity={0.4} position={[-5, 5, -5]} />
 
         {/* Back Light - Rim/edge light for depth separation */}
-        <pointLight
-          data-testid="back-light"
-          position={[0, 10, -10]}
-          intensity={0.8}
-          color="#ffffff"
-        />
+        <pointLight position={[0, 10, -10]} intensity={0.8} color="#ffffff" />
       </Canvas>
     </div>
   );
