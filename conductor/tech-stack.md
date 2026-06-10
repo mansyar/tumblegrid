@@ -66,10 +66,10 @@ tumblegrid/
   "dependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "three": "^0.170.0",
-    "@react-three/fiber": "^8.0.0",
-    "@react-three/drei": "^9.0.0",
-    "@react-three/rapier": "^1.5.0",
+    "three": "^0.184.0",
+    "@react-three/fiber": "^9.6.1",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/rapier": "^2.2.0",
     "zustand": "^5.0.0"
   },
   "devDependencies": {
