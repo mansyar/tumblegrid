@@ -20,14 +20,15 @@ export const createPlacePiece =
       return state;
     }
 
-    // Check bounds
+    // Check bounds: grid = [width, depth, height], position = [x, y, z]
+    // x → width (grid[0]), y → height (grid[2]), z → depth (grid[1])
     if (
       position[0] < 0 ||
       position[0] >= state.grid[0] ||
       position[1] < 0 ||
-      position[1] >= state.grid[1] ||
+      position[1] >= state.grid[2] ||
       position[2] < 0 ||
-      position[2] >= state.grid[2]
+      position[2] >= state.grid[1]
     ) {
       return state;
     }

@@ -13,7 +13,13 @@ import {
   createUpdateActiveBlueprint,
   createUpdateTrajectoryCache,
 } from './actions';
-import type { GameState, GameStore, PieceType } from './types';
+import type {
+  ActiveBlueprintNode,
+  GameState,
+  GameStore,
+  LevelDefinition,
+  PieceType,
+} from './types';
 
 const initialState: GameState = {
   machineState: 'BUILDING',
@@ -59,12 +65,10 @@ export const useGameStore = create<GameStore>()(
           | 'SANDBOX_PLAYING',
       ) => set(createTransitionState(newState)),
 
-      loadLevel: (level: import('./types').LevelDefinition) =>
-        set(createLoadLevel(level)),
+      loadLevel: (level: LevelDefinition) => set(createLoadLevel(level)),
 
-      updateActiveBlueprint: (
-        node: import('./types').ActiveBlueprintNode | undefined,
-      ) => set(createUpdateActiveBlueprint(node)),
+      updateActiveBlueprint: (node: ActiveBlueprintNode | undefined) =>
+        set(createUpdateActiveBlueprint(node)),
 
       selectPiece: (id: string) => set(createSelectPiece(id)),
 
