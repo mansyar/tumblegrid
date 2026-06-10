@@ -124,7 +124,7 @@
     - [ ] Attach git note with task summary
     - [ ] Update plan.md with commit SHA
 
-- [ ] Task: Configure OrbitControls in GameCanvas
+- [x] Task: Configure OrbitControls in GameCanvas [b0a0dd4]
     - [ ] Import OrbitControls in GameCanvas component
     - [ ] Configure initial position: 45° pitch, 45° yaw
     - [ ] Set pitch clamp: minPolarAngle={10°}, maxPolarAngle={80°}
