@@ -2,8 +2,6 @@
 
 **Isometric 3D marble physics puzzle game.** Web-based (desktop + mobile browser).
 
-**Current state:** Pre-scaffolding. No source code exists. All planning lives in `docs/`.
-
 ---
 
 ## Where to find things
@@ -14,6 +12,7 @@
 | Technical design | `docs/TDD.md` |
 | Level data schema + campaign JSON templates | `docs/level-data-schema.md` |
 | Development track plan | `docs/ROADMAP.md` |
+| Conductor tracks & plans | `conductor/tracks/` |
 
 ---
 
@@ -37,7 +36,57 @@ This project is indexed with **SocratiCode** (semantic + keyword hybrid search).
 - **State:** Zustand (single centralized store — see TDD §3)
 - **Quality:** Biome (lint + format), Vitest 4 with Browser Mode (Playwright)
 
-No `.ts`/`.tsx` files exist yet. TRACK-001 (Scaffolding) must complete first.
+---
+
+## Dev commands
+
+```bash
+pnpm install --frozen-lockfile  # strict install
+pnpm run dev                     # Vite dev server (localhost:5173)
+pnpm run build                   # tsc --noEmit && vite build → dist/
+pnpm run lint                    # Biome lint only (./src)
+pnpm run format                  # Biome format only (./src)
+pnpm run typecheck               # tsc --noEmit
+pnpm run test                    # Vitest (unit + schema validation)
+pnpm run test:browser            # Vitest Browser Mode via Playwright (physics integration)
+```
+
+**`pnpm run build` includes typecheck** — it runs `tsc --noEmit` before `vite build`.
+
+---
+
+## Git hooks (Husky)
+
+- **pre-commit:** `biome check --fix ./src` then `tsc --noEmit` — Biome auto-fixes on commit; type errors block commit.
+- **pre-push:** `pnpm vitest run --coverage` — tests with 80% coverage threshold block push.
+
+---
+
+## Biome strictness (will fail CI/hooks)
+
+These rules are `error` level and will block commits:
+- `noExplicitAny` — no `any` types
+- `noNonNullAssertion` — no `!` postfix assertions
+- `useImportType` — must use `import type` for type-only imports
+- `noUnusedImports`, `noUnusedVariables` — dead code is an error
+
+**Style:** single quotes, semicolons always, 2-space indent, 80-char line width.
+
+---
+
+## Path aliases
+
+`@/*` → `src/*` (configured in both `tsconfig.json` and `vite.config.ts`). Use `@/` imports, not relative `../` paths.
+
+---
+
+## Testing
+
+- Tests live in `tests/` (not `src/`). Test files: `tests/**/*.test.ts`
+- Vitest globals enabled (`describe`, `it`, `expect` available without import, but explicit imports also work)
+- Coverage thresholds: 80% branches, functions, lines, statements
+- Level data validation rules in `docs/level-data-schema.md` §2 — enforce these in schema tests
+- No snapshot or visual regression tests planned for MVP
 
 ---
 
@@ -64,25 +113,3 @@ Development follows the Conductor lifecycle: **Context → Spec & Plan → Imple
 - **Bumper Pad** doubles as wall/pillar when `restitution=0` (static terrain).
 - **State machine:** `BUILDING ↔ PLAYING → LEVEL_CLEARED`. Sandbox variants: `SANDBOX_BUILDING`, `SANDBOX_PLAYING`.
 - **Levels:** JSON files in `src/levels/campaign/` + `src/levels/sandbox.json`. Schema validated at build time and runtime.
-
----
-
-## Testing
-
-- `pnpm run test` — unit + schema validation tests
-- `pnpm run test:browser` — Vitest Browser Mode via Playwright (physics integration tests)
-- Level data validation rules in `docs/level-data-schema.md` §2 — enforce these in schema tests
-- No snapshot or visual regression tests planned for MVP
-
----
-
-## Dev commands (populated by TRACK-001)
-
-```bash
-pnpm install --frozen-lockfile  # strict install
-pnpm run dev                     # Vite dev server (localhost:5173)
-pnpm run build                   # production build → dist/
-pnpm run lint                    # Biome lint + format check
-pnpm run typecheck               # tsc --noEmit
-pnpm run test                    # Vitest
-```
