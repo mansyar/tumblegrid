@@ -98,14 +98,14 @@
 
 ## Phase 3: Camera System
 
-- [ ] Task: Write Failing Tests for useCamera Hook
+- [x] Task: Write Failing Tests for useCamera Hook
     - [ ] Create test file `tests/hooks/useCamera.test.ts`
     - [ ] Write test: useCamera hook returns autoFrame function
     - [ ] Write test: autoFrame accepts bounds object with x, y, z, width, height, depth
     - [ ] Write test: autoFrame animates camera position over ~0.5s
     - [ ] Run tests and confirm they fail (Red Phase)
 
-- [ ] Task: Implement useCamera Hook
+- [x] Task: Implement useCamera Hook [d63b442]
     - [ ] Create `src/hooks/useCamera.ts`
     - [ ] Import useThree, useFrame from @react-three/fiber
     - [ ] Import OrbitControls from @react-three/drei
