@@ -40,10 +40,10 @@
     - [x] Configure formatter (indent style: space, indent width: 2)
     - [x] Configure linter with recommended rules
     - [x] Configure file includes/excludes
-- [ ] Task: Configure Vitest
-    - [ ] Create `vitest.config.ts` extending Vite config
-    - [ ] Set up Browser Mode with Playwright provider
-    - [ ] Configure globals: true
+- [x] Task: Configure Vitest [4175b3c]
+    - [x] Create `vitest.config.ts` extending Vite config
+    - [x] Set up Browser Mode with Playwright provider
+    - [x] Configure globals: true
 - [ ] Task: Create environment and git configuration
     - [ ] Create `.env.example` with placeholder vars
     - [ ] Create/update `.gitignore` (node_modules, dist, .env, coverage)
