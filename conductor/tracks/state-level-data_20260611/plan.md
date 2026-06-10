@@ -1,23 +1,23 @@
 <protect>
 # Implementation Plan: TRACK-003 — State Management & Level Data
 
-## Phase 1: Types & Constants
+## Phase 1: Types & Constants [checkpoint: 09136e1]
 
-- [ ] Task: Define TypeScript types and enums in `src/store/types.ts`
-    - [ ] Create `PieceType` union type
-    - [ ] Create `MachineState` union type
-    - [ ] Create `ActiveMode` union type
-    - [ ] Create `PiecePlacement` interface
-    - [ ] Create `PlacedPiece` interface (extends PiecePlacement with `id: string`)
-    - [ ] Create `ActiveBlueprintNode` interface
-    - [ ] Create `LevelDefinition` interface (matching level-data-schema.md)
-    - [ ] Create `GameState` interface (all store state properties)
-    - [ ] Export all types
-- [ ] Task: Write Vitest tests for type exports
-    - [ ] Verify all types are exported correctly
-    - [ ] Verify type compatibility with level JSON schema
-- [ ] Task: Run tests and verify they pass
-- [ ] Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)
+- [x] Task: Define TypeScript types and enums in `src/store/types.ts`
+    - [x] Create `PieceType` union type
+    - [x] Create `MachineState` union type
+    - [x] Create `ActiveMode` union type
+    - [x] Create `PiecePlacement` interface
+    - [x] Create `PlacedPiece` interface (extends PiecePlacement with `id: string`)
+    - [x] Create `ActiveBlueprintNode` interface
+    - [x] Create `LevelDefinition` interface (matching level-data-schema.md)
+    - [x] Create `GameState` interface (all store state properties)
+    - [x] Export all types
+- [x] Task: Write Vitest tests for type exports
+    - [x] Verify all types are exported correctly
+    - [x] Verify type compatibility with level JSON schema
+- [x] Task: Run tests and verify they pass
+- [x] Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)
 
 ## Phase 2: Zustand Store & Actions
 
