@@ -1,3 +1,4 @@
+<protect>
 # Specification: TRACK-003 — State Management & Level Data
 
 ## Overview
@@ -120,3 +121,4 @@ Enforces all 9 rules from level-data-schema.md §2:
 
 - **Core Dependency**: TRACK-001 (Project Scaffolding) — must be 100% complete
 - **Can parallel with**: TRACK-002 (Core 3D & Grid)
+</protect>

@@ -1,3 +1,4 @@
+<protect>
 # Implementation Plan: TRACK-003 — State Management & Level Data
 
 ## Phase 1: Types & Constants
@@ -88,3 +89,4 @@
     - [ ] Test getLevelById and getLevelByIndex
 - [ ] Task: Run all tests and verify they pass
 - [ ] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)
+</protect>
