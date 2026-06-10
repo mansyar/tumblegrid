@@ -1,5 +1,5 @@
-import { Canvas } from '@react-three/fiber';
 import { GridFloor } from '@/components/scene/GridFloor';
+import { Canvas } from '@react-three/fiber';
 
 export function GameCanvas() {
   return (
