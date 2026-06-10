@@ -44,9 +44,9 @@
     - [x] Create `vitest.config.ts` extending Vite config
     - [x] Set up Browser Mode with Playwright provider
     - [x] Configure globals: true
-- [ ] Task: Create environment and git configuration
-    - [ ] Create `.env.example` with placeholder vars
-    - [ ] Create/update `.gitignore` (node_modules, dist, .env, coverage)
+- [x] Task: Create environment and git configuration [116dd0d]
+    - [x] Create `.env.example` with placeholder vars
+    - [x] Create/update `.gitignore` (node_modules, dist, .env, coverage)
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Tooling Configuration' (Protocol in workflow.md)
 
 ## Phase 3: Project Skeleton
