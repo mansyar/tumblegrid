@@ -142,7 +142,7 @@ flowchart TD
 | Field | Value |
 |---|---|
 | **Track ID** | `TRACK-003` |
-| **Status** | Pending |
+| **Status** | ✅ Complete |
 | **Core Dependency** | `TRACK-001` |
 
 > Can run in parallel with TRACK-002.
@@ -186,12 +186,12 @@ flowchart TD
 
 ### Definition of Done
 
-- [ ] All Zustand actions implemented and unit-tested.
-- [ ] State machine transitions correct (BUILDING ↔ PLAYING → LEVEL_CLEARED, SANDBOX variants).
-- [ ] All 5 campaign JSON files + sandbox JSON pass schema validation.
-- [ ] Validation rules from §2 of level-data-schema.md enforced in tests.
-- [ ] No placeholder text or hardcoded dummy data left in source.
-- [ ] Code passes static analysis review.
+- [x] All Zustand actions implemented and unit-tested.
+- [x] State machine transitions correct (BUILDING ↔ PLAYING → LEVEL_CLEARED, SANDBOX variants).
+- [x] All 5 campaign JSON files + sandbox JSON pass schema validation.
+- [x] Validation rules from §2 of level-data-schema.md enforced in tests.
+- [x] No placeholder text or hardcoded dummy data left in source.
+- [x] Code passes static analysis review.
 
 ---
 
