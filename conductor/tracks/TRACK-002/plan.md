@@ -159,6 +159,19 @@
 
 ---
 
+## Phase: Review Fixes
+
+- [x] Task: Apply review suggestions [623e0ae]
+    - [x] GridFloor: Replace THREE.GridHelper with drei Grid component (spec compliance)
+    - [x] GridFloor: Use product guideline colors (#C0B8B0, #E8E0D8)
+    - [x] GameCanvas: Remove window.testAutoFrame global (no test code in production)
+    - [x] Scene: Remove unused onAutoFrame prop and dead ambientLight position
+    - [x] useCamera: Replace useRef<any> with proper OrbitControlsImpl type
+    - [x] GameCanvas.test: Fix import path to use @/ alias
+    - [x] Add three-stdlib as dev dependency for OrbitControls type
+
+---
+
 ## Definition of Done
 
 - [x] Grid floor renders at correct world scale (2-unit cells)
