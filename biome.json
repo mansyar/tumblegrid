@@ -20,14 +20,32 @@
     "rules": {
       "recommended": true,
       "correctness": {
-        "noUnusedImports": "warn",
-        "noUnusedVariables": "warn"
+        "noUnusedImports": "error",
+        "noUnusedVariables": "error",
+        "noConstAssign": "error",
+        "noPrecisionLoss": "error",
+        "noUndeclaredVariables": "error",
+        "noUnusedPrivateClassMembers": "error"
       },
       "style": {
-        "noNonNullAssertion": "warn"
+        "noNonNullAssertion": "error",
+        "useConst": "error",
+        "useImportType": "error",
+        "noUselessElse": "error",
+        "noVar": "error"
       },
       "suspicious": {
-        "noExplicitAny": "warn"
+        "noExplicitAny": "error",
+        "noRedeclare": "error",
+        "noShadowRestrictedNames": "error",
+        "noDoubleEquals": "error",
+        "noEmptyInterface": "error",
+        "noThenProperty": "error"
+      },
+      "a11y": {
+        "useAltText": "error",
+        "useButtonType": "error",
+        "noBlankTarget": "error"
       }
     }
   },
