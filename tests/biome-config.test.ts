@@ -17,11 +17,13 @@ describe('Biome Configuration', () => {
     expect(() => JSON.parse(content)).not.toThrow();
   });
 
-  it('should configure TypeScript and React settings', () => {
+  it('should configure JavaScript formatter settings', () => {
     const configPath = resolve(projectRoot, 'biome.json');
     const content = JSON.parse(readFileSync(configPath, 'utf-8'));
     expect(content.javascript).toBeDefined();
-    expect(content.javascript.parserUnsafeParameterDecoratorsEnabled).toBeDefined();
+    expect(content.javascript.formatter).toBeDefined();
+    expect(content.javascript.formatter.quoteStyle).toBe('single');
+    expect(content.javascript.formatter.semicolons).toBe('always');
   });
 
   it('should configure formatter with space indent style and width 2', () => {
@@ -50,11 +52,11 @@ describe('Biome Configuration', () => {
     expect(content.files.include).toContain('tests/**');
   });
 
-  it('should exclude node_modules and dist directories', () => {
+  it('should ignore node_modules and dist directories', () => {
     const configPath = resolve(projectRoot, 'biome.json');
     const content = JSON.parse(readFileSync(configPath, 'utf-8'));
-    expect(content.files.exclude).toBeDefined();
-    expect(content.files.exclude).toContain('node_modules');
-    expect(content.files.exclude).toContain('dist');
+    expect(content.files.ignore).toBeDefined();
+    expect(content.files.ignore).toContain('node_modules');
+    expect(content.files.ignore).toContain('dist');
   });
 });
