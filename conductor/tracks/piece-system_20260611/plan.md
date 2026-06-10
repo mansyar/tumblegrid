@@ -24,7 +24,7 @@
     - [ ] Ensure piece occupies 1 grid cell
     - [ ] Write unit test for SpeedBooster rendering
 
-- [ ] **Task: Create HalfPipe mesh component**
+- [x] **Task: Create HalfPipe mesh component** `[5f6c82d]`
     - [ ] Create `src/components/pieces/HalfPipe.tsx`
     - [ ] Implement flat track with side rails geometry
     - [ ] Apply pastel purple material
