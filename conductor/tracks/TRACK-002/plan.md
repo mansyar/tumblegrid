@@ -116,7 +116,7 @@
     - [ ] Export useCamera hook
     - [ ] Run tests and confirm they pass (Green Phase)
 
-- [ ] Task: Refactor and Verify Coverage
+- [x] Task: Refactor and Verify Coverage
     - [ ] Review useCamera implementation for smooth animation
     - [ ] Verify test coverage meets >80% requirement
     - [ ] Run `pnpm run lint` to ensure code passes Biome checks
