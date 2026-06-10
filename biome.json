@@ -7,7 +7,7 @@
   },
   "files": {
     "include": ["src/**", "tests/**"],
-    "exclude": ["node_modules", "dist", "coverage", "*.d.ts"]
+    "ignore": ["node_modules", "dist", "coverage", "*.d.ts"]
   },
   "formatter": {
     "enabled": true,
@@ -35,8 +35,7 @@
     "formatter": {
       "quoteStyle": "single",
       "semicolons": "always"
-    },
-    "parserUnsafeParameterDecoratorsEnabled": true
+    }
   },
   "json": {
     "formatter": {
