@@ -1,0 +1,2 @@
+# Normalise all text files to LF — no CRLF conversion
+* text=auto eol=lf
