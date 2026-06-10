@@ -55,7 +55,7 @@
 - [x] Task: Run all tests and verify they pass
 - [x] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)
 
-## Phase 3: Level Data & Validation
+## Phase 3: Level Data & Validation [checkpoint: a56890a]
 
 - [x] Task: Create level JSON files in `src/levels/campaign/`
     - [x] Create `01-the-descent.json` (from level-data-schema.md §4)
@@ -88,5 +88,5 @@
     - [x] Test ID uniqueness across campaign set
     - [x] Test getLevelById and getLevelByIndex
 - [x] Task: Run all tests and verify they pass
-- [ ] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)
 </protect>
