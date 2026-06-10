@@ -28,7 +28,7 @@
     - [ ] Attach git note with task summary
     - [ ] Update plan.md with commit SHA
 
-- [ ] Task: Integrate GameCanvas into App
+- [x] Task: Integrate GameCanvas into App [ab44d9f]
     - [ ] Modify `src/App.tsx` to import and mount GameCanvas
     - [ ] Remove any placeholder content from App.tsx
     - [ ] Verify scene renders in browser at `http://localhost:5173`
