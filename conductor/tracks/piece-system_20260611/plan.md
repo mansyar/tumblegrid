@@ -17,7 +17,7 @@
     - [ ] Ensure piece occupies 1 grid cell
     - [ ] Write unit test for BumperPad rendering
 
-- [ ] **Task: Create SpeedBooster mesh component**
+- [x] **Task: Create SpeedBooster mesh component** `[adf3061]`
     - [ ] Create `src/components/pieces/SpeedBooster.tsx`
     - [ ] Implement flat track geometry with directional arrows
     - [ ] Apply pastel green material
