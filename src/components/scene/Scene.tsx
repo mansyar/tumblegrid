@@ -1,9 +1,21 @@
 import { GridFloor } from '@/components/scene/GridFloor';
-import { useCamera } from '@/hooks/useCamera';
+import { useCamera, type Bounds } from '@/hooks/useCamera';
 import { OrbitControls } from '@react-three/drei';
+import { useEffect } from 'react';
 
-export function Scene() {
-  const { controlsRef } = useCamera();
+interface SceneProps {
+  onAutoFrame?: (autoFrame: (bounds: Bounds) => void) => void;
+}
+
+export function Scene({ onAutoFrame }: SceneProps) {
+  const { controlsRef, autoFrame } = useCamera();
+
+  // Expose autoFrame to parent
+  useEffect(() => {
+    if (onAutoFrame) {
+      onAutoFrame(autoFrame);
+    }
+  }, [onAutoFrame, autoFrame]);
 
   return (
     <>

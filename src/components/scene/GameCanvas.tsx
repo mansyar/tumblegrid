@@ -1,7 +1,12 @@
 import { Scene } from '@/components/scene/Scene';
 import { Canvas } from '@react-three/fiber';
+import type { Bounds } from '@/hooks/useCamera';
 
-export function GameCanvas() {
+interface GameCanvasProps {
+  onAutoFrame?: (autoFrame: (bounds: Bounds) => void) => void;
+}
+
+export function GameCanvas({ onAutoFrame }: GameCanvasProps) {
   return (
     <div data-testid="game-canvas" style={{ width: '100%', height: '100%' }}>
       <Canvas
@@ -10,7 +15,7 @@ export function GameCanvas() {
         dpr={[1, 2]}
         gl={{ antialias: true }}
       >
-        <Scene />
+        <Scene onAutoFrame={onAutoFrame} />
       </Canvas>
     </div>
   );
