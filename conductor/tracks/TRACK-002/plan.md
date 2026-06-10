@@ -3,14 +3,14 @@
 
 ## Phase 1: Canvas & Lighting
 
-- [ ] Task: Write Failing Tests for GameCanvas Component
+- [x] Task: Write Failing Tests for GameCanvas Component
     - [ ] Create test file `tests/components/scene/GameCanvas.test.tsx`
     - [ ] Write test: GameCanvas renders without errors
     - [ ] Write test: Canvas fills viewport (width=100%, height=100%)
     - [ ] Write test: Three-point lighting setup is present (key, fill, back lights)
     - [ ] Run tests and confirm they fail (Red Phase)
 
-- [ ] Task: Implement GameCanvas Component
+- [x] Task: Implement GameCanvas Component [641baa8]
     - [ ] Create `src/components/scene/GameCanvas.tsx`
     - [ ] Import Canvas from @react-three/fiber
     - [ ] Configure Canvas with appropriate pixel ratio and performance settings
