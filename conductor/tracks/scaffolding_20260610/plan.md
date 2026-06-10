@@ -23,7 +23,7 @@
 - [x] Task: Verify lockfile integrity
     - [x] Run `pnpm install --frozen-lockfile` to verify lockfile
     - [x] Confirm `pnpm-lock.yaml` exists and is consistent
-- [x] Task: Conductor - User Manual Verification 'Phase 1: Init & Install' (Protocol in workflow.md) [checkpoint: ]
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Init & Install' (Protocol in workflow.md) [checkpoint: 1258235]
 
 ## Phase 2: Tooling Configuration
 
