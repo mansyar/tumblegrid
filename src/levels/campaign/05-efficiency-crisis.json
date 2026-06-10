@@ -1,0 +1,19 @@
+{
+  "id": "campaign_05",
+  "title": "Efficiency Crisis",
+  "description": "4 gaps but only 2 ramps. Use momentum and the Speed Booster to stretch your resources.",
+  "gridBounds": { "width": 10, "depth": 6, "height": 4 },
+  "staticTerrain": [
+    { "type": "half_pipe", "position": [3, 0, 2], "rotationIndex": 0 },
+    { "type": "half_pipe", "position": [6, 0, 2], "rotationIndex": 0 },
+    { "type": "goal_bucket", "position": [9, 0, 2], "rotationIndex": 0 }
+  ],
+  "inventory": {
+    "straight_ramp": 2,
+    "speed_booster": 1,
+    "bumper_pad": 1,
+    "half_pipe": 0
+  },
+  "launchpadPosition": [1, 3, 2],
+  "goalPosition": [9, 0, 2]
+}

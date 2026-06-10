@@ -1,0 +1,15 @@
+{
+  "id": "sandbox",
+  "title": "Sandbox",
+  "description": "Free-play mode. Build whatever you like — there's no goal to reach.",
+  "gridBounds": { "width": 10, "depth": 10, "height": 5 },
+  "staticTerrain": [],
+  "inventory": {
+    "straight_ramp": 5,
+    "speed_booster": 3,
+    "bumper_pad": 4,
+    "half_pipe": 4,
+    "goal_bucket": 0
+  },
+  "launchpadPosition": [5, 4, 5]
+}

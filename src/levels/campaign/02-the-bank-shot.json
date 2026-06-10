@@ -1,0 +1,19 @@
+{
+  "id": "campaign_02",
+  "title": "The Bank Shot",
+  "description": "The goal is around the corner. Use a bumper pad to redirect the marble past the pillar.",
+  "gridBounds": { "width": 6, "depth": 6, "height": 3 },
+  "staticTerrain": [
+    { "type": "straight_ramp", "position": [1, 1, 2], "rotationIndex": 0 },
+    { "type": "bumper_pad", "position": [3, 0, 2], "rotationIndex": 0 },
+    { "type": "goal_bucket", "position": [4, 0, 3], "rotationIndex": 0 }
+  ],
+  "inventory": {
+    "straight_ramp": 0,
+    "speed_booster": 0,
+    "bumper_pad": 1,
+    "half_pipe": 0
+  },
+  "launchpadPosition": [1, 2, 2],
+  "goalPosition": [4, 0, 3]
+}

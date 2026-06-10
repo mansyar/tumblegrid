@@ -1,0 +1,17 @@
+{
+  "id": "campaign_04",
+  "title": "The Switchback",
+  "description": "Navigate the cliff face by creating a zigzag path. Alternate ascending and descending ramps.",
+  "gridBounds": { "width": 6, "depth": 5, "height": 5 },
+  "staticTerrain": [
+    { "type": "goal_bucket", "position": [4, 0, 3], "rotationIndex": 0 }
+  ],
+  "inventory": {
+    "straight_ramp": 3,
+    "speed_booster": 0,
+    "bumper_pad": 0,
+    "half_pipe": 2
+  },
+  "launchpadPosition": [1, 4, 1],
+  "goalPosition": [4, 0, 3]
+}
