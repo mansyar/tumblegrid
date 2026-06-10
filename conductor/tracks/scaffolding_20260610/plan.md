@@ -31,10 +31,10 @@
     - [x] Create `tsconfig.json` with strict mode, ESNext target, JSX react-jsx
     - [x] Configure path aliases (`@/` → `src/`)
     - [x] Add `vitest/globals` types for test files
-- [ ] Task: Configure Vite
-    - [ ] Create `vite.config.ts` with React plugin
-    - [ ] Add path alias resolution matching tsconfig
-    - [ ] Set dev server port to 5173
+- [x] Task: Configure Vite [7b625e8]
+    - [x] Create `vite.config.ts` with React plugin
+    - [x] Add path alias resolution matching tsconfig
+    - [x] Set dev server port to 5173
 - [ ] Task: Configure Biome
     - [ ] Create `biome.json` with TypeScript + React settings
     - [ ] Configure formatter (indent style: space, indent width: 2)
