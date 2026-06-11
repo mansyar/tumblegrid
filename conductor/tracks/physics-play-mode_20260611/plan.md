@@ -3,11 +3,11 @@
 
 ## Phase 1: Physics World & Marble
 
-- [ ] Task: Physics World setup
-    - [ ] Create `src/components/physics/PhysicsWorld.tsx` — Rapier `<Physics>` wrapper with gravity `[0, -9.81, 0]` and fixed timestep (1/60s)
-    - [ ] Write test: verify physics world instantiates without errors
-    - [ ] Write test: verify gravity vector is correctly applied
-    - [ ] Wire `PhysicsWorld` into `GameCanvas.tsx` — only active during `PLAYING` / `SANDBOX_PLAYING` states
+- [x] Task: Physics World setup [df64f7d]
+    - [x] Create `src/components/physics/PhysicsWorld.tsx` — Rapier `<Physics>` wrapper with gravity `[0, -9.81, 0]` and fixed timestep (1/60s)
+    - [x] Write test: verify physics world instantiates without errors
+    - [x] Write test: verify gravity vector is correctly applied
+    - [x] Wire `PhysicsWorld` into `GameCanvas.tsx` — only active during `PLAYING` / `SANDBOX_PLAYING` states
 - [ ] Task: Marble dynamic rigid body
     - [ ] Create `src/components/physics/Marble.tsx` — dynamic sphere rigid body (radius ~0.5)
     - [ ] Set physics properties: mass=1, restitution~0.3, friction~0.5, linearDamping~0.1
