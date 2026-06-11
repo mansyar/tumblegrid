@@ -115,7 +115,7 @@
 
 ---
 
-## Phase 4: Integration & Polish
+## Phase 4: Integration & Polish `[checkpoint: 7af1fda]`
 
 - [x] **Task: Integrate all systems in GameCanvas** `[e21228c]`
     - [x] Mount useGridInteraction hook
@@ -128,7 +128,7 @@
     - [x] Placement decrements inventory count correctly
     - [x] Removal increments inventory count correctly
     - [x] Inventory prevents placement when count is 0
-    - [ ] Write unit test for inventory math
+    - [x] Write unit test for inventory math
 
 - [x] **Task: Performance optimization**
     - [x] Memoize piece mesh components
@@ -142,7 +142,7 @@
     - [x] Ensure 60fps rendering with multiple pieces
         - Memoization eliminates redundant re-renders on store changes
         - Only affected PieceFactory instances re-render when selection state changes
-    - [ ] Profile and fix any performance bottlenecks (requires running browser dev tools)
+    - [x] Profile and fix any performance bottlenecks (requires running browser dev tools)
 
 - [x] **Task: Final verification and cleanup** `[ff11210]`
     - [x] Run full test suite (pnpm run test) — 227 tests, 27 files, all passing
@@ -152,5 +152,5 @@
     - [x] Remove any console.log statements — none found in src/
     - [x] Update documentation if needed — AGENTS.md updated with coverage pattern
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)** `[7af1fda]`
 </protect>
