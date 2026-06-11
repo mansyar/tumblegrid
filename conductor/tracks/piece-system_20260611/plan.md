@@ -38,12 +38,7 @@
     - [ ] Ensure piece occupies 1 grid cell
     - [ ] Write unit test for GoalBucket rendering
 
-- [ ] **Task: Create Launchpad mesh component**
-    - [ ] Create `src/components/pieces/Launchpad.tsx`
-    - [ ] Implement fixed platform with raised center
-    - [ ] Apply dark gray base with neon accent
-    - [ ] Ensure piece occupies 1 grid cell
-    - [ ] Write unit test for Launchpad rendering
+- [x] **Task: Create Launchpad mesh component** `[1197da6]`
 
 - [ ] **Task: Create PieceFactory component**
     - [ ] Create `src/components/pieces/PieceFactory.tsx`
