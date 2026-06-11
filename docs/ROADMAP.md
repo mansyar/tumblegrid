@@ -307,57 +307,64 @@ flowchart TD
 | Field | Value |
 |---|---|
 | **Track ID** | `TRACK-006` |
-| **Status** | Pending |
+| **Status** | ✅ Complete |
 | **Core Dependency** | `TRACK-004`, `TRACK-005` |
+| **Completion SHA** | `a24f849` |
 
 ### Context & Objectives
 
 **User Story:** As a player, I want to press "Play" and watch the marble drop from the launchpad, roll along placed pieces under gravity, bounce off bumper pads, get launched by speed boosters, and fall into the void if my path is incomplete. I want to press "Stop" to return to Build Mode with all pieces preserved.
 
 **Scope Boundary:**
-- Will: Implement Rapier physics world (fixed timestep), marble as dynamic rigid body, piece colliders (static kinematic), sensor-based speed booster impulse, bumper bounce (restitution=1.0), goal bucket trigger volume, Play → Build state transition (marble destroy, colliders revert), fail detection (Y < -5), marble roll trail.
-- Will NOT: Implement win celebration UI (deferred to TRACK-007), audio (deferred to TRACK-008), or level transitions.
+- Will: Implement Rapier physics world (fixed timestep), marble as dynamic rigid body, piece colliders (static during Play), sensor-based speed booster impulse, bumper bounce (restitution=1.0), goal bucket trigger volume, Play → Build state transition (marble destroy, colliders unmount), fail detection (Y < -5 → 0.5s delay → auto-stop), marble roll trail, debug wireframe toggle (D key).
+- Will NOT: Implement win celebration UI (deferred to TRACK-007), audio (deferred to TRACK-008), level transitions, or kinematic collider switching (deferred to post-MVP).
 
 ### Architecture & Tech Stack Checklist
 
 - **Libraries:** `@react-three/rapier`, `three` (trail rendering)
 - **New files:**
-  - `src/components/physics/PhysicsWorld.tsx` — Rapier `<Physics>` wrapper with fixed timestep
-  - `src/components/physics/Marble.tsx` — Dynamic sphere rigid body + visual + trail
+  - `src/components/physics/PhysicsWorld.tsx` — Rapier `<Physics>` wrapper with fixed timestep (1/60s)
+  - `src/components/physics/Marble.tsx` — Dynamic sphere rigid body + neon emissive visual + fading ribbon trail
   - `src/components/physics/PieceCollider.tsx` — Per-piece collider factory (cuboid, sensor, compound)
-  - `src/hooks/usePlayLoop.ts` — Play Mode lifecycle (spawn, simulation, stop/reset)
-  - `src/hooks/useFailDetector.ts` — Y < -5 detection
-- **Modified files:** `src/components/scene/GameCanvas.tsx` (swap collider mode on Play), `src/store/useGameStore.ts` (wire Play/Stop actions)
+  - `src/components/physics/FailDetector.tsx` — Monitors marble Y position each physics tick, triggers auto-stop at Y < -5 with 0.5s delay
+  - `src/hooks/usePlayLoop.ts` — Play Mode lifecycle (spawn, simulation, stop/reset, clears bucket tracking)
+  - `src/hooks/useDebugToggle.ts` — D key listener for debug collider wireframes (disabled in production)
+  - `src/utils/physics.ts` — Physics constants (gravity, timestep, marble config), spawn position, boost impulse
+  - `src/utils/marbleTrail.ts` — `recordTrailPoint()` and `computeTrailOpacity()` pure functions
+  - `src/utils/pieceColliders.ts` — `ColliderDescriptor` type + generator functions for all 6 piece types
+- **Modified files:** `src/components/scene/GameCanvas.tsx` (wrap Scene in PhysicsWorld, mount usePlayLoop + useDebugToggle), `src/components/scene/Scene.tsx` (add Marble + PieceCollider), `src/store/types.ts` (add launchpadPosition, marbleInBucketIds, debugPhysics), `src/store/actions.ts` (add toggleDebugPhysics, setMarbleInBucket), `src/store/useGameStore.ts` (wire new state + actions), `vitest.config.ts` (exclude physics dir from coverage)
 
 ### Implementation Phase Vectors
 
-- **Phase 1: Physics World & Marble** — Rapier `<Physics>` with fixed timestep and gravity. `<Marble>` as dynamic sphere (radius tuned, restitution ~0.3, friction tuned). Spawns at `launchpadPosition` on Play.
-- **Phase 2: Piece Colliders** — Each piece type gets a matching collider:
-  - Straight Ramp: tilted cuboid (pitch axis)
-  - Bumper Pad: vertical cuboid with restitution=1.0
-  - Speed Booster: sensor cuboid that applies impulse on overlap
-  - Half-Pipe: compound collider (base plane + two vertical rails)
-  - Goal Bucket: sensor trigger volume (invisible interior)
-  - Static terrain walls: bumper_pad with restitution=0
-- **Phase 3: Play Loop Lifecycle** — `usePlayLoop` manages: on Play → build kinematic colliders from placed pieces, spawn marble, run simulation. On Stop → destroy marble, revert pieces to static, return to Build Mode. On fail (Y < -5) → auto-stop.
+- **Phase 1: Physics World & Marble** — Rapier `<Physics>` with fixed timestep and gravity `[0, -9.81, 0]`. `<Marble>` as dynamic sphere (radius 0.5, mass 1, restitution 0.3, friction 0.5). Spawns above `launchpadPosition` on Play. Fading cyan ribbon trail follows marble path. Initial gentle impulse `[2, 0, 0]` so marble rolls off launchpad. Physics is paused during BUILD/BUILDING states via `getPhysicsPaused()`.
+- **Phase 2: Piece Colliders** — All colliders via pure `get*Colliders()` functions returning `ColliderDescriptor[]`:
+  - Straight Ramp: tilted cuboid (pitch `-π/4` around Z, Y-rotation handled by parent group)
+  - Bumper Pad: vertical cuboid with restitution=1.0 (elastic) or 0 (staticTerrain)
+  - Speed Booster: sensor cuboid, applies directional impulse `BOOST_FORCE=8` on `onIntersectionEnter`
+  - Half-Pipe: compound collider (flat base + two thin vertical rails at Z=±1)
+  - Goal Bucket: sensor trigger volume (interior cavity), tracks `marbleInBucketIds` in store
+  - Launchpad: static flat cuboid (always present, read from store's `launchpadPosition`)
+- **Phase 3: Play Loop Lifecycle** — `usePlayLoop` clears stale bucket tracking on Play entry. Conditional rendering (`isPlaying`) controls Marble/PieceCollider mount/unmount. `FailDetector` uses `useBeforePhysicsStep` to check Y < -5 each tick → 0.5s timer → auto-transition to BUILDING. Debug toggle (D key) sets `debugPhysics` → `<Physics debug={...}>` shows Rapier wireframes. `SANDBOX_PLAYING`/`SANDBOX_BUILDING` follow same logic.
 
 ### Verification Protocols
 
 - **Commands to run:** `pnpm run dev`
-- **Expected UI/UX outcome:** Place pieces, press Play. Marble drops from launchpad, rolls along pieces. Speed booster launches it forward. Bumper pad deflects it. Half-pipe guides it. Marble falls off edge → auto-returns to Build Mode after ~1s. Stop button immediately returns to Build Mode with all pieces preserved. No physics glitches (tunneling, jitter).
+- **Expected UI/UX outcome:** Place pieces, press Play. Marble drops from launchpad, rolls along pieces. Speed booster launches it forward. Bumper pad deflects it. Half-pipe guides it. Marble falls off edge → auto-returns to Build Mode after ~0.5s. Stop button immediately returns to Build Mode with all pieces preserved. D key toggles debug wireframes. No physics glitches (tunneling, jitter).
 
 ### Definition of Done
 
-- [ ] Marble spawns at correct position on Play.
-- [ ] Marble rolls along placed pieces under gravity.
-- [ ] Speed booster applies impulse on overlap.
-- [ ] Bumper pad reflects marble (restitution=1.0).
-- [ ] Half-pipe side rails prevent lateral fall-off.
-- [ ] Fail detection (Y < -5) triggers auto-stop.
-- [ ] Stop button works immediately.
-- [ ] All placed pieces preserved on return to Build Mode.
-- [ ] No physics warnings or errors in console.
-- [ ] Code passes static analysis review.
+- [x] Marble spawns at correct position on Play.
+- [x] Marble rolls along placed pieces under gravity.
+- [x] Speed booster applies impulse on overlap.
+- [x] Bumper pad reflects marble (restitution=1.0).
+- [x] Half-pipe side rails prevent lateral fall-off.
+- [x] Fail detection (Y < -5) triggers auto-stop after 0.5s delay.
+- [x] Stop button works immediately.
+- [x] Debug toggle (D key) shows/hides collider wireframes.
+- [x] All placed pieces preserved on return to Build Mode.
+- [x] No physics warnings or errors in console.
+- [x] Code passes static analysis review (Biome lint + TypeScript type check).
+- [x] 372 passing tests across 43 test files.
 
 ---
 
