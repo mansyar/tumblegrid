@@ -92,7 +92,7 @@
     - [x] Hide trajectory during Play Mode
 - [x] Task: Conductor - User Manual Verification 'Phase 3: Trajectory Preview' (Protocol in workflow.md)
 
-## Phase 4: HUD Container & Integration
+## Phase 4: HUD Container & Integration [checkpoint: 884abb0]
 
 - [x] Task: Write tests for HUD component [bfbd8ae]
     - [x] Test: renders InventoryPanel, ModeToggle, and ModeIndicator
