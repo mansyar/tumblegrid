@@ -200,7 +200,7 @@ flowchart TD
 | Field | Value |
 |---|---|
 | **Track ID** | `TRACK-004` |
-| **Status** | Pending |
+| **Status** | ✅ Complete |
 | **Core Dependency** | `TRACK-002`, `TRACK-003` |
 
 ### Context & Objectives
@@ -240,13 +240,13 @@ flowchart TD
 
 ### Definition of Done
 
-- [ ] All 6 piece types render as distinct 3D meshes.
-- [ ] Raycasting correctly snaps to integer grid coordinates.
-- [ ] Place, select, rotate (R key), remove all work.
-- [ ] Highlight/selection visual feedback works.
-- [ ] Pieces cannot overlap (store prevents it).
-- [ ] No console errors.
-- [ ] Code passes static analysis review.
+- [x] All 6 piece types render as distinct 3D meshes.
+- [x] Raycasting correctly snaps to integer grid coordinates.
+- [x] Place, select, rotate (R key), remove all work.
+- [x] Highlight/selection visual feedback works.
+- [x] Pieces cannot overlap (store prevents it).
+- [x] No console errors.
+- [x] Code passes static analysis review.
 
 ---
 
