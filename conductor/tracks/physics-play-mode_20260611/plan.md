@@ -49,31 +49,31 @@
     - [x] Marble drops from position above launchpad (handled in Marble.tsx spawn logic)
 - [x] Task: Collider lifecycle (static <-> kinematic) — DEFERRED to post-MVP
     - [~] Note: Static colliders work correctly for MVP. Kinematic switching is needed only for pushable/movable pieces (future feature).<br>Current behavior: PieceCollider mounts during PLAYING (static colliders), unmounts during BUILDING. Adequate for MVP.
-- [~] Task: Conductor - User Manual Verification 'Phase 2: Piece Colliders' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Piece Colliders' (Protocol in workflow.md) — verified in Phase 3 checkpoint
 
 ## Phase 3: Play Loop Lifecycle & Debug
 
-- [ ] Task: `usePlayLoop` lifecycle hook
-    - [ ] Create `src/hooks/usePlayLoop.ts`
-    - [ ] Subscribe to store state: on `PLAYING`/`SANDBOX_PLAYING` -> build colliders, spawn marble
-    - [ ] On Stop -> destroy marble (brief fade), revert colliders, transition to `BUILDING`/`SANDBOX_BUILDING`
-    - [ ] Write test: verify lifecycle transitions (Play -> cleanup on Stop)
-    - [ ] Write test: verify pieces preserved after Stop
-- [ ] Task: Fail detection (`useFailDetector`)
-    - [ ] Create `src/hooks/useFailDetector.ts`
-    - [ ] Monitor marble Y position each physics tick
-    - [ ] If Y < -5 -> trigger 0.5s delay -> auto-Stop
-    - [ ] Write test: verify fail detection triggers at Y < -5
-    - [ ] Write test: verify the 0.5s delay exists before auto-stop
+- [x] Task: `usePlayLoop` lifecycle hook [bdc61b9] + tests [ac416d2]
+    - [x] Create `src/hooks/usePlayLoop.ts`
+    - [x] Subscribe to store state: on `PLAYING`/`SANDBOX_PLAYING` -> build colliders, spawn marble
+    - [x] On Stop -> destroy marble (brief fade), revert colliders, transition to `BUILDING`/`SANDBOX_BUILDING`
+    - [x] Write test: verify lifecycle transitions (Play -> cleanup on Stop)
+    - [x] Write test: verify pieces preserved after Stop
+- [x] Task: Fail detection (`useFailDetector`) [bdc61b9] + tests [ac416d2]
+    - [x] Create `src/components/physics/FailDetector.tsx`
+    - [x] Monitor marble Y position each physics tick
+    - [x] If Y < -5 -> trigger 0.5s delay -> auto-Stop
+    - [x] Write test: verify fail detection triggers at Y < -5
+    - [x] Write test: verify the 0.5s delay exists before auto-stop
 - [x] Task: Debug visualization toggle
     - [x] Implement `D` key listener: toggle collider wireframe visibility
     - [x] Render Rapier collider wireframes via `<Physics debug={debugPhysics}>`
     - [x] Disable in production build (`import.meta.env.PROD`)
     - [x] Write test: verify debug toggle key listener fires
-- [~] Task: GameCanvas integration
+- [x] Task: GameCanvas integration
     - [x] Wire `usePlayLoop` into `GameCanvas.tsx`
     - [x] Ensure Collider components mount/unmount with Play/Stop transitions
     - [x] Wire Stop button (from TRACK-005) to actually trigger physics cleanup
     - [x] Wire `useDebugToggle` into `GameCanvas.tsx`
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: Play Loop Lifecycle & Debug' (Protocol in workflow.md)
+- [~] Task: Conductor - User Manual Verification 'Phase 3: Play Loop Lifecycle & Debug' (Protocol in workflow.md)
 </protect>
