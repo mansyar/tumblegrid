@@ -96,7 +96,7 @@ export function PieceCollider() {
 
   if (!isPlaying) return null;
 
-  const launchpadDesc = getLaunchpadColliders()[0];
+  const launchpadColliders = getLaunchpadColliders();
 
   return (
     <group>
@@ -105,14 +105,23 @@ export function PieceCollider() {
         <PieceColliderInner key={piece.id} piece={piece} />
       ))}
 
-      {/* Launchpad collider — always present at launchpad position */}
+      {/* Launchpad colliders — all tiers rendered at launchpad position */}
       <group position={launchpadPosition}>
         <CuboidCollider
-          args={launchpadDesc.halfExtents}
-          position={launchpadDesc.position}
-          rotation={launchpadDesc.rotation}
-          sensor={launchpadDesc.sensor}
-          restitution={launchpadDesc.restitution}
+          key="launchpad-base"
+          args={launchpadColliders[0].halfExtents}
+          position={launchpadColliders[0].position}
+          rotation={launchpadColliders[0].rotation}
+          sensor={launchpadColliders[0].sensor}
+          restitution={launchpadColliders[0].restitution}
+        />
+        <CuboidCollider
+          key="launchpad-center"
+          args={launchpadColliders[1].halfExtents}
+          position={launchpadColliders[1].position}
+          rotation={launchpadColliders[1].rotation}
+          sensor={launchpadColliders[1].sensor}
+          restitution={launchpadColliders[1].restitution}
         />
       </group>
     </group>
