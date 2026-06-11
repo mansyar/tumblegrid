@@ -1,7 +1,7 @@
 <protect>
 # Implementation Plan: Build Mode UI (Inventory & Controls)
 
-## Phase 1: Inventory Panel
+## Phase 1: Inventory Panel [checkpoint: 73a1d33]
 
 - [x] Task: Write tests for InventoryPanel component [905b010]
     - [x] Test: renders all piece types from store inventory
