@@ -64,12 +64,12 @@
     - [x] Hide when outside grid bounds or over occupied cell
     - [x] Write unit test for GridGhost visibility logic
 
-- [ ] **Task: Integrate raycasting with store actions**
-    - [ ] Connect useGridInteraction to Zustand store
-    - [ ] Call store.updateActiveBlueprint() on hover
-    - [ ] Call store.placePiece() on click (if valid placement)
-    - [ ] Handle overlap detection (prevent placement on occupied cell)
-    - [ ] Write unit test for placement integration
+- [x] **Task: Integrate raycasting with store actions** `[ef1c43d]`
+    - [x] Connect useGridInteraction to Zustand store
+    - [x] Call store.updateActiveBlueprint() on hover
+    - [x] Call store.placePiece() on click (if valid placement)
+    - [x] Handle overlap detection (prevent placement on occupied cell)
+    - [x] Write unit test for placement integration
 
 - [ ] **Task: Mount pieces from store in GameCanvas**
     - [ ] Modify `src/components/scene/GameCanvas.tsx`
