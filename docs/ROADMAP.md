@@ -255,8 +255,9 @@ flowchart TD
 | Field | Value |
 |---|---|
 | **Track ID** | `TRACK-005` |
-| **Status** | Pending |
+| **Status** | ✅ Complete |
 | **Core Dependency** | `TRACK-003`, `TRACK-004` |
+| **Completion SHA** | `f1f21bf` (review fixes applied) |
 
 ### Context & Objectives
 
@@ -291,13 +292,13 @@ flowchart TD
 
 ### Definition of Done
 
-- [ ] Inventory panel renders with all piece types and counts.
-- [ ] Piece type selection works (store `activeBlueprintNode` updated).
-- [ ] Play button appears and dispatches the state transition.
-- [ ] Stop button visible but inert (wired to store action).
-- [ ] Trajectory preview computes and renders dotted line on hover.
-- [ ] UI is responsive — scales with viewport.
-- [ ] Code passes static analysis review.
+- [x] Inventory panel renders with all piece types and counts.
+- [x] Piece type selection works (store `activeBlueprintNode` updated).
+- [x] Play button appears and dispatches the state transition.
+- [x] Stop button visible but inert (wired to store action).
+- [x] Trajectory preview computes and renders dotted line on hover.
+- [x] UI is responsive — scales with viewport.
+- [x] Code passes static analysis review.
 
 ---
 

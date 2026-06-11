@@ -35,7 +35,7 @@
 }
 
 .inventory-item[data-active="true"] {
-  border-color: #00D4FF;
+  border-color: #00d4ff;
   background: rgba(0, 212, 255, 0.12);
 }
 

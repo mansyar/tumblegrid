@@ -51,6 +51,17 @@ The application lifecycle relies entirely on a centralized Zustand store. This a
 ### 4. Scene Hierarchy & Component Structure
 The R3F Canvas component maps a clean, distinct layout separating global lighting environments, physical sandboxes, and pure 2D HTML interaction layers.
 
+#### 4.1 HUD & 2D UI Overlay
+Build Mode UI components (inventory panel, mode toggle, mode indicator) are rendered as a 2D HTML overlay positioned outside the R3F `<Canvas>` via a `<HUD>` container in `App.tsx`. This avoids mixing HTML layout with the 3D render loop. Each UI component reads directly from the Zustand store (`useGameStore`) for reactive state updates:
+- **InventoryPanel**: Displays piece types with remaining counts. Clicking a type sets `activeBlueprintNode.type` via `store.setActiveBlueprintNode()`.
+- **ModeToggle**: Renders Play/Stop buttons that dispatch `setMode('playing')` / `setMode('building')`.
+- **ModeIndicator**: Shows current `machineState` as a status badge.
+
+#### 4.2 Trajectory Preview
+The trajectory preview system spans two layers:
+1. **useTrajectoryPreview hook** (2D logic): On hover, scans the Placed Components Array for the nearest structure to the hovered cell, computes estimated 3D waypoints via `computeTrajectoryWaypoints()`, and stores them in `store.updateTrajectoryCache()`.
+2. **TrajectoryLine component** (R3F): Renders a dotted `<Line>` (from @react-three/drei) inside the Canvas using the cached waypoint array. It is hidden during Play Mode.
+
 ### 5. High-Level Technical Mechanics
 **Grid Math, Raycasting & Stacking**
 To calculate piece positioning without clunky slider menus, the application casts an invisible ray from the camera lens through the pointer position down into the 3D scene. The same raycasting system works for both mouse and touch input — the cross-platform input handler normalizes the pointer coordinates to a standard `{ x, y }` range before passing them to the R3F raycaster.

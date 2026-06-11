@@ -1,6 +1,6 @@
 import { useGameStore } from '@/store/useGameStore';
-import { computeTrajectoryWaypoints } from '@/utils/trajectory';
 import { getFirstAvailablePieceType } from '@/utils/inventory';
+import { computeTrajectoryWaypoints } from '@/utils/trajectory';
 import { useEffect } from 'react';
 
 /**
@@ -29,7 +29,8 @@ export function useTrajectoryPreview() {
     }
 
     const pieceType =
-      selectedBlueprintType ?? getFirstAvailablePieceType(inventory, machineState);
+      selectedBlueprintType ??
+      getFirstAvailablePieceType(inventory, machineState);
 
     if (!pieceType) {
       updateTrajectoryCache('preview', []);
