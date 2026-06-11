@@ -1,5 +1,5 @@
-import { useGameStore } from '@/store/useGameStore';
 import type { PieceType, PlacedPiece } from '@/store/types';
+import { useGameStore } from '@/store/useGameStore';
 import { useThree } from '@react-three/fiber';
 import { useCallback, useEffect, useRef } from 'react';
 import * as THREE from 'three';
@@ -165,14 +165,17 @@ export function useGridInteraction(
           }
         : undefined,
     );
-  }, [selectedPieceType, camera, pointer, grid, placedPieces, updateActiveBlueprint]);
+  }, [
+    selectedPieceType,
+    camera,
+    pointer,
+    grid,
+    placedPieces,
+    updateActiveBlueprint,
+  ]);
 
   const handleClick = useCallback(() => {
-    if (
-      !selectedPieceType ||
-      !hoveredCellRef.current ||
-      !isValidRef.current
-    ) {
+    if (!selectedPieceType || !hoveredCellRef.current || !isValidRef.current) {
       return;
     }
 

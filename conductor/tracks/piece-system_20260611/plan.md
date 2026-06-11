@@ -78,7 +78,7 @@
     - [x] Apply correct position and rotation from store
     - [x] Write unit test for piece rendering from store
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)**
+- [~] **Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)**
 
 ---
 

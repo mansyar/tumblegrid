@@ -1,10 +1,10 @@
-import { GridGhost } from '@/components/scene/GridGhost';
-import { GridFloor } from '@/components/scene/GridFloor';
 import { PieceFactory } from '@/components/pieces/PieceFactory';
+import { GridFloor } from '@/components/scene/GridFloor';
+import { GridGhost } from '@/components/scene/GridGhost';
 import { useCamera } from '@/hooks/useCamera';
 import { useGridInteraction } from '@/hooks/useGridInteraction';
-import { useGameStore } from '@/store/useGameStore';
 import type { PieceType } from '@/store/types';
+import { useGameStore } from '@/store/useGameStore';
 import { OrbitControls } from '@react-three/drei';
 
 /**
