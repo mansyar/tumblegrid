@@ -67,6 +67,8 @@ export interface GameState {
   marbleInBucketIds: Set<string>;
   /** Toggle for Rapier debug wireframe visualization (D key). */
   debugPhysics: boolean;
+  /** The level definition last loaded via loadLevel, used for resetLevel. */
+  stashedLevelDefinition: LevelDefinition | undefined;
 }
 
 export interface StoreActions {
@@ -92,6 +94,8 @@ export interface StoreActions {
   ) => void;
   setMarbleInBucket: (bucketId: string, inside: boolean) => void;
   toggleDebugPhysics: () => void;
+  setLevelCleared: () => void;
+  resetLevel: () => void;
 }
 
 export type GameStore = GameState & StoreActions;

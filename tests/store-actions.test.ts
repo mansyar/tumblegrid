@@ -5,10 +5,12 @@ import {
   createLoadLevel,
   createPlacePiece,
   createRemovePiece,
+  createResetLevel,
   createRotatePiece,
   createSelectPiece,
   createSetActiveLevelIndex,
   createSetCurrentScreen,
+  createSetLevelCleared,
   createSetMode,
   createTransitionState,
   createUpdateActiveBlueprint,
@@ -37,6 +39,7 @@ const createTestState = (overrides?: Partial<GameState>): GameState => ({
   marbleInBucketIds: new Set(),
   debugPhysics: false,
   currentScreen: 'menu',
+  stashedLevelDefinition: undefined,
   ...overrides,
 });
 
@@ -295,6 +298,120 @@ describe('Store Actions', () => {
       const result = createLoadLevel(testLevel)(state);
 
       expect(result.machineState).toBe('SANDBOX_BUILDING');
+    });
+  });
+
+  describe('createLoadLevel (stashedLevelDefinition)', () => {
+    it('should stash the level definition for later reset', () => {
+      const state = createTestState();
+      const result = createLoadLevel(testLevel)(state);
+
+      expect(result.stashedLevelDefinition).toBeDefined();
+      expect(result.stashedLevelDefinition?.id).toBe('test-level');
+    });
+
+    it('should overwrite previous stashed level definition', () => {
+      const otherLevel: LevelDefinition = {
+        ...testLevel,
+        id: 'other-level',
+        title: 'Other Level',
+      };
+      const state = createTestState({
+        stashedLevelDefinition: otherLevel,
+      });
+      const result = createLoadLevel(testLevel)(state);
+
+      expect(result.stashedLevelDefinition?.id).toBe('test-level');
+    });
+  });
+
+  describe('createSetLevelCleared', () => {
+    it('should transition from PLAYING to LEVEL_CLEARED in campaign mode', () => {
+      const state = createTestState({
+        machineState: 'PLAYING',
+        activeMode: 'CAMPAIGN',
+      });
+      const result = createSetLevelCleared()(state);
+
+      expect(result.machineState).toBe('LEVEL_CLEARED');
+    });
+
+    it('should do nothing in SANDBOX mode', () => {
+      const state = createTestState({
+        machineState: 'SANDBOX_PLAYING',
+        activeMode: 'SANDBOX',
+      });
+      const result = createSetLevelCleared()(state);
+
+      expect(result.machineState).toBe('SANDBOX_PLAYING');
+    });
+
+    it('should do nothing when current state does not allow LEVEL_CLEARED transition', () => {
+      const state = createTestState({
+        machineState: 'BUILDING',
+        activeMode: 'CAMPAIGN',
+      });
+      const result = createSetLevelCleared()(state);
+
+      expect(result.machineState).toBe('BUILDING');
+    });
+  });
+
+  describe('createResetLevel', () => {
+    it('should reset player-placed pieces while keeping static terrain', () => {
+      const state = createTestState({
+        placedPieces: [
+          { id: 'static-1', type: 'straight_ramp', position: [2, 0, 2], rotationIndex: 0 },
+          { id: 'player-1', type: 'speed_booster', position: [4, 0, 4], rotationIndex: 0 },
+          { id: 'player-2', type: 'bumper_pad', position: [6, 0, 6], rotationIndex: 1 },
+        ],
+        stashedLevelDefinition: testLevel,
+      });
+      const result = createResetLevel()(state);
+
+      // Should only have the static terrain pieces from testLevel (1 piece)
+      expect(result.placedPieces).toHaveLength(1);
+      expect(result.placedPieces[0].type).toBe('straight_ramp');
+    });
+
+    it('should clear marbleInBucketIds', () => {
+      const state = createTestState({
+        marbleInBucketIds: new Set(['bucket-1', 'bucket-2']),
+        stashedLevelDefinition: testLevel,
+      });
+      const result = createResetLevel()(state);
+
+      expect(result.marbleInBucketIds.size).toBe(0);
+    });
+
+    it('should restore inventory to initial level values', () => {
+      const state = createTestState({
+        inventory: {
+          straight_ramp: 1,
+          speed_booster: 0,
+          bumper_pad: 0,
+          half_pipe: 0,
+          goal_bucket: 0,
+        },
+        stashedLevelDefinition: testLevel,
+      });
+      const result = createResetLevel()(state);
+
+      expect(result.inventory.straight_ramp).toBe(5);
+      expect(result.inventory.speed_booster).toBe(2);
+      expect(result.inventory.bumper_pad).toBe(3);
+    });
+
+    it('should be a no-op when no stashed level definition exists', () => {
+      const state = createTestState({
+        stashedLevelDefinition: undefined,
+        placedPieces: [
+          { id: 'player-1', type: 'speed_booster', position: [4, 0, 4], rotationIndex: 0 },
+        ],
+      });
+      const result = createResetLevel()(state);
+
+      expect(result).toEqual(state);
     });
   });
 

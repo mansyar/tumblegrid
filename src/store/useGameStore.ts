@@ -6,10 +6,12 @@ import {
   createLoadLevel,
   createPlacePiece,
   createRemovePiece,
+  createResetLevel,
   createRotatePiece,
   createSelectPiece,
   createSetActiveLevelIndex,
   createSetCurrentScreen,
+  createSetLevelCleared,
   createSetMarbleInBucket,
   createSetMode,
   createSetSelectedBlueprintType,
@@ -48,6 +50,7 @@ const initialState: GameState = {
   launchpadPosition: [0, 1, 0],
   marbleInBucketIds: new Set(),
   debugPhysics: false,
+  stashedLevelDefinition: undefined,
 };
 
 export const useGameStore = create<GameStore>()(
@@ -102,6 +105,10 @@ export const useGameStore = create<GameStore>()(
         set(createSetMarbleInBucket(bucketId, inside)),
 
       toggleDebugPhysics: () => set(createToggleDebugPhysics()),
+
+      setLevelCleared: () => set(createSetLevelCleared()),
+
+      resetLevel: () => set(createResetLevel()),
     }),
     { name: 'TumbleGridStore' },
   ),

@@ -183,6 +183,7 @@ export const createLoadLevel =
       selectedBlueprintType: null,
       trajectoryPreviewCache: new Map(),
       launchpadPosition: level.launchpadPosition,
+      stashedLevelDefinition: level,
     };
   };
 
@@ -243,5 +244,27 @@ export const createSetMarbleInBucket =
     return {
       ...state,
       marbleInBucketIds: next,
+    };
+  };
+
+export const createSetLevelCleared =
+  () =>
+  (state: GameState): GameState => {
+    if (state.activeMode !== 'CAMPAIGN') {
+      return state;
+    }
+    return createTransitionState('LEVEL_CLEARED')(state);
+  };
+
+export const createResetLevel =
+  () =>
+  (state: GameState): GameState => {
+    if (!state.stashedLevelDefinition) {
+      return state;
+    }
+    const loaded = createLoadLevel(state.stashedLevelDefinition)(state);
+    return {
+      ...loaded,
+      marbleInBucketIds: new Set(),
     };
   };
