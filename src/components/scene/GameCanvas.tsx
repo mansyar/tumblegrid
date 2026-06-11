@@ -1,8 +1,11 @@
 import { PhysicsWorld } from '@/components/physics/PhysicsWorld';
 import { Scene } from '@/components/scene/Scene';
+import { usePlayLoop } from '@/hooks/usePlayLoop';
 import { Canvas } from '@react-three/fiber';
 
 export function GameCanvas() {
+  usePlayLoop();
+
   return (
     <div data-testid="game-canvas" style={{ width: '100%', height: '100%' }}>
       <Canvas
