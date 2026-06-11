@@ -8,6 +8,7 @@ import {
   createRemovePiece,
   createRotatePiece,
   createSelectPiece,
+  createSetCurrentScreen,
   createSetMarbleInBucket,
   createSetMode,
   createSetSelectedBlueprintType,
@@ -22,11 +23,13 @@ import type {
   GameStore,
   LevelDefinition,
   PieceType,
+  Screen,
 } from './types';
 
 const initialState: GameState = {
   machineState: 'BUILDING',
   activeMode: 'CAMPAIGN',
+  currentScreen: 'menu',
   activeLevelIndex: undefined,
   grid: [10, 10, 5],
   inventory: {
@@ -50,6 +53,9 @@ export const useGameStore = create<GameStore>()(
   devtools(
     (set) => ({
       ...initialState,
+
+      setCurrentScreen: (screen: Screen) =>
+        set(createSetCurrentScreen(screen)),
 
       placePiece: (
         pieceType: PieceType,

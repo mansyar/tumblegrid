@@ -46,6 +46,7 @@ describe('Zustand Store Integration', () => {
       selectedBlueprintType: null,
       trajectoryPreviewCache: new Map(),
       launchpadPosition: [0, 1, 0],
+      currentScreen: 'menu',
     });
   });
 

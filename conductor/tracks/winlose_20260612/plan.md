@@ -5,7 +5,7 @@
 
 **Objective:** Build the main menu, level-select screen, campaign progression persistence, and wire the screen navigation in App.tsx.
 
-- [ ] **Task 1.1: Implement screen navigation state in App.tsx**
+- [~] **Task 1.1: Implement screen navigation state in App.tsx**
     - [ ] Write tests for screen state transitions (menu → levelSelect, levelSelect → game, etc.)
     - [ ] Add `currentScreen` state to App.tsx with conditional rendering of MainMenu, LevelSelect, and Game
     - [ ] Pass navigation callbacks (`onNavigate`) to child components

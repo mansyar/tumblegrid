@@ -7,6 +7,7 @@ import {
   createRemovePiece,
   createRotatePiece,
   createSelectPiece,
+  createSetCurrentScreen,
   createSetMode,
   createTransitionState,
   createUpdateActiveBlueprint,
@@ -34,6 +35,7 @@ const createTestState = (overrides?: Partial<GameState>): GameState => ({
   launchpadPosition: [0, 1, 0],
   marbleInBucketIds: new Set(),
   debugPhysics: false,
+  currentScreen: 'menu',
   ...overrides,
 });
 
@@ -339,6 +341,29 @@ describe('Store Actions', () => {
       const result = createClearSelection()(state);
 
       expect(result.selectedPieceId).toBeUndefined();
+    });
+  });
+
+  describe('createSetCurrentScreen', () => {
+    it('should set screen to levelSelect', () => {
+      const state = createTestState();
+      const result = createSetCurrentScreen('levelSelect')(state);
+
+      expect(result.currentScreen).toBe('levelSelect');
+    });
+
+    it('should set screen to game', () => {
+      const state = createTestState({ currentScreen: 'levelSelect' });
+      const result = createSetCurrentScreen('game')(state);
+
+      expect(result.currentScreen).toBe('game');
+    });
+
+    it('should set screen back to menu', () => {
+      const state = createTestState({ currentScreen: 'levelSelect' });
+      const result = createSetCurrentScreen('menu')(state);
+
+      expect(result.currentScreen).toBe('menu');
     });
   });
 

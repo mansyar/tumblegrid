@@ -6,6 +6,7 @@ import type {
   MachineState,
   PieceType,
   PlacedPiece,
+  Screen,
 } from './types';
 
 export const createSetSelectedBlueprintType =
@@ -107,6 +108,13 @@ export const createRotatePiece =
       ),
     };
   };
+
+export const createSetCurrentScreen =
+  (screen: Screen) =>
+  (state: GameState): GameState => ({
+    ...state,
+    currentScreen: screen,
+  });
 
 export const createSetMode =
   (mode: ActiveMode) =>

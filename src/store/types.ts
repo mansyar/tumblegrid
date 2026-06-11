@@ -14,6 +14,8 @@ export type MachineState =
 
 export type ActiveMode = 'CAMPAIGN' | 'SANDBOX';
 
+export type Screen = 'menu' | 'levelSelect' | 'game';
+
 export interface PiecePlacement {
   type: PieceType;
   position: [number, number, number];
@@ -51,6 +53,7 @@ export interface LevelDefinition {
 export interface GameState {
   machineState: MachineState;
   activeMode: ActiveMode;
+  currentScreen: Screen;
   activeLevelIndex: number | undefined;
   grid: [number, number, number];
   inventory: Record<PieceType, number>;
@@ -67,6 +70,7 @@ export interface GameState {
 }
 
 export interface StoreActions {
+  setCurrentScreen: (screen: Screen) => void;
   placePiece: (
     pieceType: PieceType,
     position: [number, number, number],
