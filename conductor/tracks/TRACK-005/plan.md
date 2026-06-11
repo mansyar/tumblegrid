@@ -63,7 +63,7 @@
     - [x] Dispatch Stop action when Escape pressed in Play Mode
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Mode Controls & Indicator' (Protocol in workflow.md)
 
-## Phase 3: Trajectory Preview
+## Phase 3: Trajectory Preview [checkpoint: 33a83b9]
 
 - [x] Task: Write tests for trajectory waypoint computation
     - [x] Test: finds nearest placed piece to hovered cell
