@@ -1,7 +1,7 @@
 <protect>
 # TRACK-004: Piece System & Interaction — Implementation Plan
 
-## Phase 1: Piece Mesh Components
+## Phase 1: Piece Mesh Components `[checkpoint: 0b27377]`
 
 - [x] **Task: Create StraightRamp mesh component** `[8c48d7d]`
     - [ ] Create `src/components/pieces/StraightRamp.tsx`
@@ -42,7 +42,7 @@
 
 - [x] **Task: Create PieceFactory component** `[17eb9e8]`
 
-- [~] **Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)**
 
 ---
 
