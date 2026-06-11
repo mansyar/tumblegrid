@@ -1,0 +1,94 @@
+.victory-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  user-select: none;
+  animation: victory-fade-in 0.4s ease-out;
+}
+
+@keyframes victory-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.victory-overlay__title {
+  font-size: 56px;
+  font-weight: 800;
+  color: #f1c40f;
+  text-shadow: 0 2px 16px rgba(241, 196, 15, 0.4);
+  letter-spacing: 2px;
+}
+
+.victory-overlay__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 220px;
+}
+
+.victory-overlay__button {
+  min-height: 48px;
+  padding: 12px 28px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+
+.victory-overlay__button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.03);
+}
+
+.victory-overlay__button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.victory-overlay__button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.victory-overlay__button--next {
+  border-color: rgba(241, 196, 15, 0.5);
+}
+
+.victory-overlay__button--next:hover:not(:disabled) {
+  border-color: rgba(241, 196, 15, 1);
+}
+
+.victory-overlay__button--retry {
+  border-color: rgba(100, 200, 255, 0.5);
+}
+
+.victory-overlay__button--retry:hover:not(:disabled) {
+  border-color: rgba(100, 200, 255, 1);
+}
+
+.victory-overlay__button--menu {
+  border-color: rgba(255, 100, 100, 0.5);
+}
+
+.victory-overlay__button--menu:hover:not(:disabled) {
+  border-color: rgba(255, 100, 100, 1);
+}

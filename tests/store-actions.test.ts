@@ -40,6 +40,7 @@ const createTestState = (overrides?: Partial<GameState>): GameState => ({
   debugPhysics: false,
   currentScreen: 'menu',
   stashedLevelDefinition: undefined,
+  showLevelIntro: false,
   ...overrides,
 });
 

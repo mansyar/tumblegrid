@@ -184,6 +184,7 @@ export const createLoadLevel =
       trajectoryPreviewCache: new Map(),
       launchpadPosition: level.launchpadPosition,
       stashedLevelDefinition: level,
+      showLevelIntro: state.activeMode === 'CAMPAIGN',
     };
   };
 
@@ -266,5 +267,13 @@ export const createResetLevel =
     return {
       ...loaded,
       marbleInBucketIds: new Set(),
+      showLevelIntro: false,
     };
   };
+
+export const createSetShowLevelIntro =
+  (show: boolean) =>
+  (state: GameState): GameState => ({
+    ...state,
+    showLevelIntro: show,
+  });

@@ -69,6 +69,8 @@ export interface GameState {
   debugPhysics: boolean;
   /** The level definition last loaded via loadLevel, used for resetLevel. */
   stashedLevelDefinition: LevelDefinition | undefined;
+  /** Whether to show the level intro overlay on the current screen. */
+  showLevelIntro: boolean;
 }
 
 export interface StoreActions {
@@ -96,6 +98,7 @@ export interface StoreActions {
   toggleDebugPhysics: () => void;
   setLevelCleared: () => void;
   resetLevel: () => void;
+  setShowLevelIntro: (show: boolean) => void;
 }
 
 export type GameStore = GameState & StoreActions;

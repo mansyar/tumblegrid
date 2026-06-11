@@ -32,40 +32,40 @@
 
 **Objective:** Implement goal bucket dwell detection, LEVEL_CLEARED state machine transition, and campaign progression persistence on victory.
 
-- [ ] **Task 2.1: Update Zustand store for victory state**
+- [x] **Task 2.1: Update Zustand store for victory state** `f62047a`
     - [ ] Write tests for new state machine transitions: PLAYING → LEVEL_CLEARED, LEVEL_CLEARED → BUILDING/back
     - [ ] Add `setLevelCleared()` action to store
     - [ ] Add `resetLevel()` action that clears player-placed pieces and resets to initial level state
     - [ ] Ensure sandbox states (`SANDBOX_*`) bypass LEVEL_CLEARED transitions
-- [ ] **Task 2.2: Create `useGoalDetector` hook**
-    - [ ] Write tests for 1.5s dwell timer logic, bucket exit resets timer, sandbox bypass
-    - [ ] Implement hook that monitors `marbleInBucketIds` from store
-    - [ ] Use physics tick delta (not wall clock) for frame-accurate dwell measurement
-    - [ ] On 1.5s sustained containment: call `setLevelCleared()` and `completeLevel()` on campaign progress
-- [ ] **Task 2.3: Wire goal detector into Scene/GameCanvas**
-    - [ ] Mount useGoalDetector in the scene, connected to goal bucket sensor trigger
-    - [ ] Verify sandbox mode bypasses detector entirely
+- [x] **Task 2.2: Create `useGoalDetector` hook** `2126629`
+    - [x] Write tests for 1.5s dwell timer logic, bucket exit resets timer, sandbox bypass
+    - [x] Implement hook that monitors `marbleInBucketIds` from store
+    - [x] Use physics tick delta (not wall clock) for frame-accurate dwell measurement
+    - [x] On 1.5s sustained containment: call `setLevelCleared()` and `completeLevel()` on campaign progress
+- [x] **Task 2.3: Wire goal detector into Scene/GameCanvas** `2126629`
+    - [x] Mount useGoalDetector in the scene, connected to goal bucket sensor trigger
+    - [x] Verify sandbox mode bypasses detector entirely
 - [ ] **Task: Conductor - User Manual Verification 'Victory Detection' (Protocol in workflow.md)**
 
 ## Phase 3: Victory Overlay & Level Intro
 
 **Objective:** Build the "Level Complete!" celebration overlay and the level intro overlay, integrating them into the game flow.
 
-- [ ] **Task 3.1: Create `VictoryOverlay` component**
-    - [ ] Write tests for overlay rendering when LEVEL_CLEARED, button visibility (Next Level enabled/disabled on last level)
-    - [ ] Implement "Level Complete!" overlay with celebration styling
-    - [ ] Three buttons: **Next Level** (loads next campaign level), **Retry** (resets level to initial state), **Back to Menu**
-    - [ ] Next Level button disabled on level 5 (last campaign level)
-    - [ ] Semi-transparent overlay allowing 3D scene to show through
-- [ ] **Task 3.2: Create `LevelIntro` component**
-    - [ ] Write tests for auto-dismiss timer (3s), click/tap to dismiss immediately
-    - [ ] Implement overlay showing level title + description text
-    - [ ] Timer auto-dismisses after 3 seconds; clicking/tapping also dismisses
-    - [ ] Only shown on first level load per navigation (not on retry)
-- [ ] **Task 3.3: Integrate overlays into game flow**
-    - [ ] Wire VictoryOverlay to appear on LEVEL_CLEARED state
-    - [ ] Wire LevelIntro to appear on level load (campaign only)
-    - [ ] Connect overlay buttons: Next Level → load level+1, Retry → resetLevel() + reload, Back to Menu → navigate home
-    - [ ] Verify retry resets all placed pieces to initial state
+- [x] **Task 3.1: Create `VictoryOverlay` component**
+    - [x] Write tests for overlay rendering when LEVEL_CLEARED, button visibility (Next Level enabled/disabled on last level)
+    - [x] Implement "Level Complete!" overlay with celebration styling
+    - [x] Three buttons: **Next Level** (loads next campaign level), **Retry** (resets level to initial state), **Back to Menu**
+    - [x] Next Level button disabled on level 5 (last campaign level)
+    - [x] Semi-transparent overlay allowing 3D scene to show through
+- [x] **Task 3.2: Create `LevelIntro` component**
+    - [x] Write tests for auto-dismiss timer (3s), click/tap to dismiss immediately
+    - [x] Implement overlay showing level title + description text
+    - [x] Timer auto-dismisses after 3 seconds; clicking/tapping also dismisses
+    - [x] Only shown on first level load per navigation (not on retry)
+- [x] **Task 3.3: Integrate overlays into game flow**
+    - [x] Wire VictoryOverlay to appear on LEVEL_CLEARED state
+    - [x] Wire LevelIntro to appear on level load (campaign only)
+    - [x] Connect overlay buttons: Next Level → load level+1, Retry → resetLevel() + reload, Back to Menu → navigate home
+    - [x] Verify retry resets all placed pieces to initial state
 - [ ] **Task: Conductor - User Manual Verification 'Victory Overlay & Level Intro' (Protocol in workflow.md)**
 </protect>

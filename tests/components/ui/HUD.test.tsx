@@ -15,6 +15,14 @@ vi.mock('@/components/ui/ModeIndicator', () => ({
   ModeIndicator: () => <div data-testid="mode-indicator">ModeIndicator</div>,
 }));
 
+vi.mock('@/components/ui/LevelIntro', () => ({
+  LevelIntro: () => <div data-testid="level-intro">LevelIntro</div>,
+}));
+
+vi.mock('@/components/ui/VictoryOverlay', () => ({
+  VictoryOverlay: () => <div data-testid="victory-overlay">VictoryOverlay</div>,
+}));
+
 // ─── Tests ────────────────────────────────────────────────────────────
 
 describe('HUD', () => {
@@ -41,5 +49,17 @@ describe('HUD', () => {
     const { container } = render(<HUD />);
     const hudElement = container.firstChild as HTMLElement;
     expect(hudElement.className).toContain('hud-container');
+  });
+
+  it('renders LevelIntro', async () => {
+    const { HUD } = await import('@/components/ui/HUD');
+    render(<HUD />);
+    expect(screen.getByTestId('level-intro')).toBeDefined();
+  });
+
+  it('renders VictoryOverlay', async () => {
+    const { HUD } = await import('@/components/ui/HUD');
+    render(<HUD />);
+    expect(screen.getByTestId('victory-overlay')).toBeDefined();
   });
 });
