@@ -43,13 +43,15 @@
     - [x] Render Stop button (visible in PLAYING/SANDBOX_PLAYING states)
     - [x] Wire Play button to store transition action
     - [x] Wire Stop button to store transition action
-- [ ] Task: Write tests for ModeIndicator component
-    - [ ] Test: displays "Build Mode" during BUILDING/SANDBOX_BUILDING states
-    - [ ] Test: displays "Play Mode" during PLAYING/SANDBOX_PLAYING states
-- [ ] Task: Implement ModeIndicator component
-    - [ ] Create src/components/ui/ModeIndicator.tsx
-    - [ ] Read machineState from store
-    - [ ] Render mode text based on current state
+- [x] Task: Write tests for ModeIndicator component [cd0c850]
+    - [x] Test: displays Build Mode during BUILDING state
+    - [x] Test: displays Build Mode during SANDBOX_BUILDING state
+    - [x] Test: displays Play Mode during PLAYING state
+    - [x] Test: displays Play Mode during SANDBOX_PLAYING state
+- [x] Task: Implement ModeIndicator component [cd0c850]
+    - [x] Create src/components/ui/ModeIndicator.tsx
+    - [x] Read machineState from store
+    - [x] Render mode text based on current state
 - [ ] Task: Write tests for Escape key handler
     - [ ] Test: Escape key triggers Stop during PLAYING state
     - [ ] Test: Escape key does nothing during BUILDING state
