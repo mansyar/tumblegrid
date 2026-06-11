@@ -1,0 +1,69 @@
+.main-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  user-select: none;
+}
+
+.main-menu__title {
+  font-size: 64px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  letter-spacing: 2px;
+}
+
+.main-menu__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 240px;
+}
+
+.main-menu__button {
+  min-height: 52px;
+  padding: 12px 32px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+
+.main-menu__button:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.03);
+}
+
+.main-menu__button:active {
+  transform: scale(0.98);
+}
+
+.main-menu__button--campaign {
+  border-color: rgba(76, 175, 80, 0.6);
+}
+
+.main-menu__button--campaign:hover {
+  border-color: rgba(76, 175, 80, 1);
+}
+
+.main-menu__button--sandbox {
+  border-color: rgba(0, 212, 255, 0.6);
+}
+
+.main-menu__button--sandbox:hover {
+  border-color: rgba(0, 212, 255, 1);
+}
