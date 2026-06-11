@@ -92,11 +92,11 @@
     - [x] Call store.removePiece() when selected piece clicked again
     - [x] Write unit test for selection logic
 
-- [ ] **Task: Implement selection highlight effect**
-    - [ ] Add outline glow effect to selected piece
-    - [ ] Use post-processing or custom shader for glow
-    - [ ] Ensure highlight is clearly visible but not distracting
-    - [ ] Write unit test for highlight rendering
+- [x] **Task: Implement selection highlight effect** `[06aef45]`
+    - [x] Add outline glow effect to selected piece
+    - [x] Use post-processing or custom shader for glow
+    - [x] Ensure highlight is clearly visible but not distracting
+    - [x] Write unit test for highlight rendering
 
 - [ ] **Task: Implement rotation via R key**
     - [ ] Add keyboard event listener for R key
