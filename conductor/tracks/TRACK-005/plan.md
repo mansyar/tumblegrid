@@ -65,28 +65,28 @@
 
 ## Phase 3: Trajectory Preview
 
-- [ ] Task: Write tests for trajectory waypoint computation
-    - [ ] Test: finds nearest placed piece to hovered cell
-    - [ ] Test: computes waypoints from nearest piece exit face to hovered cell entry face
-    - [ ] Test: returns empty array when no placed pieces exist
-    - [ ] Test: returns empty array when hovered cell is null
-    - [ ] Test: handles selected piece as source instead of nearest piece
-- [ ] Task: Implement trajectory waypoint computation
-    - [ ] Create src/hooks/useTrajectoryPreview.ts
-    - [ ] Scan placedComponents for nearest piece to hovered cell
-    - [ ] Compute waypoints based on piece exit face direction
-    - [ ] Handle edge cases (no pieces, null hover, selected piece)
-    - [ ] Write waypoints to store trajectoryPreviewCache
-- [ ] Task: Write tests for TrajectoryLine component
-    - [ ] Test: renders dotted polyline from waypoints array
-    - [ ] Test: renders nothing when waypoints array is empty
-    - [ ] Test: line has low-opacity pastel color
-- [ ] Task: Implement TrajectoryLine component
-    - [ ] Create src/components/scene/TrajectoryLine.tsx
-    - [ ] Read trajectoryPreviewCache from store
-    - [ ] Render Line component from @react-three/drei
-    - [ ] Apply dotted material with low opacity
-- [ ] Task: Integrate trajectory preview with hover system
+- [x] Task: Write tests for trajectory waypoint computation
+    - [x] Test: finds nearest placed piece to hovered cell
+    - [x] Test: computes waypoints from nearest piece exit face to hovered cell entry face
+    - [x] Test: returns empty array when no placed pieces exist
+    - [x] Test: returns empty array when hovered cell is null
+    - [x] Test: handles selected piece as source instead of nearest piece
+- [x] Task: Implement trajectory waypoint computation
+    - [x] Create src/hooks/useTrajectoryPreview.ts
+    - [x] Scan placedComponents for nearest piece to hovered cell
+    - [x] Compute waypoints based on piece exit face direction
+    - [x] Handle edge cases (no pieces, null hover, selected piece)
+    - [x] Write waypoints to store trajectoryPreviewCache
+- [x] Task: Write tests for TrajectoryLine component [c6fabc1]
+    - [x] Test: renders dotted polyline from waypoints array
+    - [x] Test: renders nothing when waypoints array is empty
+    - [x] Test: line has low-opacity pastel color
+- [x] Task: Implement TrajectoryLine component [c6fabc1]
+    - [x] Create src/components/scene/TrajectoryLine.tsx
+    - [x] Read trajectoryPreviewCache from store
+    - [x] Render Line component from @react-three/drei
+    - [x] Apply dotted material with low opacity
+- [~] Task: Integrate trajectory preview with hover system
     - [ ] Connect useTrajectoryPreview to useGridInteraction hover state
     - [ ] Clear trajectoryPreviewCache on mouse leave
     - [ ] Hide trajectory during Play Mode
