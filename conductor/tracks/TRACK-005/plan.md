@@ -90,7 +90,7 @@
     - [x] Connect useTrajectoryPreview to useGridInteraction hover state
     - [x] Clear trajectoryPreviewCache on mouse leave
     - [x] Hide trajectory during Play Mode
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: Trajectory Preview' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 3: Trajectory Preview' (Protocol in workflow.md)
 
 ## Phase 4: HUD Container & Integration
 
