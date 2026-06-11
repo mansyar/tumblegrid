@@ -61,7 +61,7 @@
     - [x] Create useEscapeKey hook (src/hooks/useEscapeKey.ts)
     - [x] Listen for keydown events
     - [x] Dispatch Stop action when Escape pressed in Play Mode
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Mode Controls & Indicator' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Mode Controls & Indicator' (Protocol in workflow.md)
 
 ## Phase 3: Trajectory Preview
 
