@@ -1,4 +1,5 @@
 import { useGameStore } from '@/store/useGameStore';
+import './ModeIndicator.css';
 
 export function ModeIndicator() {
   const machineState = useGameStore((s) => s.machineState);

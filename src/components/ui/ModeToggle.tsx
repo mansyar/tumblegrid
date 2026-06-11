@@ -1,4 +1,5 @@
 import { useGameStore } from '@/store/useGameStore';
+import './ModeToggle.css';
 
 export function ModeToggle() {
   const machineState = useGameStore((s) => s.machineState);

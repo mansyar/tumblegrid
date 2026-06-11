@@ -1,0 +1,45 @@
+.mode-toggle {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.mode-toggle-play,
+.mode-toggle-stop {
+  min-width: 120px;
+  min-height: 44px;
+  padding: 8px 24px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.mode-toggle-play:hover,
+.mode-toggle-stop:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.mode-toggle-play {
+  border-color: rgba(76, 175, 80, 0.6);
+}
+
+.mode-toggle-play:hover {
+  border-color: rgba(76, 175, 80, 1);
+}
+
+.mode-toggle-stop {
+  border-color: rgba(244, 67, 54, 0.6);
+}
+
+.mode-toggle-stop:hover {
+  border-color: rgba(244, 67, 54, 1);
+}
