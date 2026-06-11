@@ -144,13 +144,13 @@
         - Only affected PieceFactory instances re-render when selection state changes
     - [ ] Profile and fix any performance bottlenecks (requires running browser dev tools)
 
-- [ ] **Task: Final verification and cleanup**
-    - [ ] Run full test suite (pnpm run test)
-    - [ ] Run linting (pnpm run lint)
-    - [ ] Run type checking (pnpm run typecheck)
-    - [ ] Verify all acceptance criteria met
-    - [ ] Remove any console.log statements
-    - [ ] Update documentation if needed
+- [x] **Task: Final verification and cleanup** `[ff11210]`
+    - [x] Run full test suite (pnpm run test) — 227 tests, 27 files, all passing
+    - [x] Run linting (pnpm run lint) — clean
+    - [x] Run type checking (pnpm run typecheck) — clean
+    - [x] Verify all acceptance criteria met — all 16 criteria satisfied
+    - [x] Remove any console.log statements — none found in src/
+    - [x] Update documentation if needed — AGENTS.md updated with coverage pattern
 
 - [ ] **Task: Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)**
 </protect>

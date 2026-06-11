@@ -39,6 +39,10 @@ vi.mock('@/hooks/useGridInteraction', () => ({
   })),
 }));
 
+vi.mock('@/levels', () => ({
+  getLevelByIndex: vi.fn(() => undefined),
+}));
+
 const mockStore = vi.fn();
 
 vi.mock('@/store/useGameStore', () => ({
@@ -64,6 +68,8 @@ describe('Scene', () => {
           },
           activeBlueprintNode: undefined,
           machineState: 'BUILDING',
+          selectedPieceId: undefined,
+          loadLevel: vi.fn(),
         };
         return selector(state);
       },
@@ -100,6 +106,8 @@ describe('Scene', () => {
           inventory: { straight_ramp: 3, speed_booster: 2, bumper_pad: 1, half_pipe: 0, goal_bucket: 0 },
           activeBlueprintNode: undefined,
           machineState: 'BUILDING',
+          selectedPieceId: undefined,
+          loadLevel: vi.fn(),
         };
         return selector(state);
       },
@@ -122,6 +130,8 @@ describe('Scene', () => {
           inventory: { straight_ramp: 3, speed_booster: 2, bumper_pad: 1, half_pipe: 0, goal_bucket: 0 },
           activeBlueprintNode: undefined,
           machineState: 'BUILDING',
+          selectedPieceId: undefined,
+          loadLevel: vi.fn(),
         };
         return selector(state);
       },
@@ -153,6 +163,8 @@ describe('Scene', () => {
           inventory: { straight_ramp: 3, speed_booster: 2, bumper_pad: 0, half_pipe: 0, goal_bucket: 0 },
           activeBlueprintNode: undefined,
           machineState: 'BUILDING',
+          selectedPieceId: undefined,
+          loadLevel: vi.fn(),
         };
         return selector(state);
       },
@@ -188,6 +200,7 @@ describe('Scene', () => {
           activeBlueprintNode: undefined,
           machineState: 'BUILDING',
           selectedPieceId: 'selected-piece',
+          loadLevel: vi.fn(),
         };
         return selector(state);
       },
@@ -225,6 +238,7 @@ describe('Scene', () => {
           activeBlueprintNode: undefined,
           machineState: 'BUILDING',
           selectedPieceId: undefined,
+          loadLevel: vi.fn(),
         };
         return selector(state);
       },
@@ -249,6 +263,7 @@ describe('Scene', () => {
           activeBlueprintNode: undefined,
           machineState: 'BUILDING',
           selectedPieceId: 'piece-a',
+          loadLevel: vi.fn(),
         };
         return selector(state);
       },

@@ -5,9 +5,11 @@ import { useCamera } from '@/hooks/useCamera';
 import { useGridInteraction } from '@/hooks/useGridInteraction';
 import { usePieceRotation } from '@/hooks/usePieceRotation';
 import { usePieceSelection } from '@/hooks/usePieceSelection';
+import { getLevelByIndex } from '@/levels';
 import type { PieceType } from '@/store/types';
 import { useGameStore } from '@/store/useGameStore';
 import { OrbitControls } from '@react-three/drei';
+import { useEffect, useRef } from 'react';
 
 /**
  * Determines the first piece type with available inventory.
@@ -35,6 +37,18 @@ export function Scene() {
   const inventory = useGameStore((s) => s.inventory);
   const machineState = useGameStore((s) => s.machineState);
   const selectedPieceId = useGameStore((s) => s.selectedPieceId);
+  const loadLevel = useGameStore((s) => s.loadLevel);
+
+  // Auto-load first campaign level on initial mount
+  const loadedRef = useRef(false);
+  useEffect(() => {
+    if (loadedRef.current) return;
+    loadedRef.current = true;
+    const level = getLevelByIndex(0);
+    if (level) {
+      loadLevel(level);
+    }
+  }, [loadLevel]);
 
   // When a piece is selected, hide the ghost preview (selection mode)
   // Otherwise, use the first available inventory type for placement mode
