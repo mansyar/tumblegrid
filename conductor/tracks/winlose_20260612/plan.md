@@ -1,7 +1,7 @@
 <protect>
 # Implementation Plan: Win/Lose Flow, Victory UI & Menus
 
-## Phase 1: Menu Navigation [checkpoint: PLACEHOLDER]
+## Phase 1: Menu Navigation [checkpoint: 37c9647]
 
 **Objective:** Build the main menu, level-select screen, campaign progression persistence, and wire the screen navigation in App.tsx.
 
@@ -26,7 +26,7 @@
     - [x] Connect MainMenu → LevelSelect (Campaign) and MainMenu → Game/Sandbox
     - [x] Connect LevelSelect → Game (campaign with selected level data)
     - [x] Verify sandbox mode navigation loads sandbox level directly
-- [ ] **Task: Conductor - User Manual Verification 'Menu Navigation' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Menu Navigation' (Protocol in workflow.md)** `37c9647`
 
 ## Phase 2: Victory Detection
 
