@@ -56,13 +56,13 @@
     - [x] Support normalized pointer events (mouse + touch)
     - [x] Write unit test for grid snapping logic
 
-- [ ] **Task: Implement GridGhost preview component**
-    - [ ] Create `src/components/scene/GridGhost.tsx`
-    - [ ] Render semi-transparent piece at hovered cell
-    - [ ] Update position in real-time as mouse moves
-    - [ ] Reflect current rotationIndex from Active Blueprint Node
-    - [ ] Hide when outside grid bounds or over occupied cell
-    - [ ] Write unit test for GridGhost visibility logic
+- [x] **Task: Implement GridGhost preview component** `[8c791da]`
+    - [x] Create `src/components/scene/GridGhost.tsx`
+    - [x] Render semi-transparent piece at hovered cell
+    - [x] Update position in real-time as mouse moves
+    - [x] Reflect current rotationIndex from Active Blueprint Node
+    - [x] Hide when outside grid bounds or over occupied cell
+    - [x] Write unit test for GridGhost visibility logic
 
 - [ ] **Task: Integrate raycasting with store actions**
     - [ ] Connect useGridInteraction to Zustand store
