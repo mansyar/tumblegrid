@@ -46,6 +46,13 @@ function PieceFactoryInner({
   const PieceComponent = PIECE_MAP[pieceType];
   const rotationY = (Math.PI / 2) * rotationIndex;
 
+  // Piece geometries are 2×2×2 centered at origin. Grid positions are integer
+  // coordinates where Y=0 is the floor. Shift Y by +1 so the bottom of the
+  // piece sits on the floor rather than being centered at the floor plane.
+  const adjustedPosition: [number, number, number] | undefined = position
+    ? [position[0], position[1] + 1, position[2]]
+    : undefined;
+
   useLayoutEffect(() => {
     const group = groupRef.current;
     if (!group) return;
@@ -53,7 +60,7 @@ function PieceFactoryInner({
   }, [ghost, selected]);
 
   return (
-    <group ref={groupRef} position={position} rotation={[0, rotationY, 0]}>
+    <group ref={groupRef} position={adjustedPosition} rotation={[0, rotationY, 0]}>
       <PieceComponent />
     </group>
   );
