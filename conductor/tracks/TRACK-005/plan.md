@@ -94,14 +94,14 @@
 
 ## Phase 4: HUD Container & Integration
 
-- [ ] Task: Write tests for HUD component
-    - [ ] Test: renders InventoryPanel, ModeToggle, and ModeIndicator
-    - [ ] Test: positions children correctly relative to viewport
-- [ ] Task: Implement HUD component
-    - [ ] Create src/components/ui/HUD.tsx
-    - [ ] Import and render InventoryPanel, ModeToggle, ModeIndicator
-    - [ ] Apply CSS positioning for viewport overlay
-    - [ ] Ensure responsive scaling
+- [x] Task: Write tests for HUD component [bfbd8ae]
+    - [x] Test: renders InventoryPanel, ModeToggle, and ModeIndicator
+    - [x] Test: positions children correctly relative to viewport
+- [x] Task: Implement HUD component [bfbd8ae]
+    - [x] Create src/components/ui/HUD.tsx
+    - [x] Import and render InventoryPanel, ModeToggle, ModeIndicator
+    - [x] Apply CSS positioning for viewport overlay
+    - [x] Ensure responsive scaling
 - [ ] Task: Integrate HUD into App
     - [ ] Mount HUD in src/App.tsx alongside GameCanvas
     - [ ] Verify HUD renders above R3F Canvas
