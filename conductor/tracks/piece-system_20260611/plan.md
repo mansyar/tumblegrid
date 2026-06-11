@@ -98,18 +98,18 @@
     - [x] Ensure highlight is clearly visible but not distracting
     - [x] Write unit test for highlight rendering
 
-- [~] **Task: Implement rotation via R key**
-    - [ ] Add keyboard event listener for R key
-    - [ ] Call store.rotatePiece() when R pressed and piece selected
-    - [ ] Implement rotation cycling (0→1→2→3→0)
-    - [ ] Update mesh rotation immediately
-    - [ ] Write unit test for rotation logic
+- [x] **Task: Implement rotation via R key** `[57eee05]`
+    - [x] Add keyboard event listener for R key
+    - [x] Call store.rotatePiece() when R pressed and piece selected
+    - [x] Implement rotation cycling (0→1→2→3→0)
+    - [x] Update mesh rotation immediately
+    - [x] Write unit test for rotation logic
 
-- [ ] **Task: Implement pre-placement rotation**
-    - [ ] Allow R key to rotate ghost preview (Active Blueprint Node)
-    - [ ] Update rotationIndex in store.updateActiveBlueprint()
-    - [ ] Ghost preview reflects new rotation in real-time
-    - [ ] Write unit test for pre-placement rotation
+- [x] **Task: Implement pre-placement rotation** `[57eee05]`
+    - [x] Allow R key to rotate ghost preview (Active Blueprint Node)
+    - [x] Update rotationIndex in store.updateActiveBlueprint()
+    - [x] Ghost preview reflects new rotation in real-time
+    - [x] Write unit test for pre-placement rotation
 
 - [ ] **Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)**
 
