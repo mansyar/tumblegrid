@@ -82,7 +82,7 @@
 
 ---
 
-## Phase 3: Selection & Rotation
+## Phase 3: Selection & Rotation `[checkpoint: e21228c]`
 
 - [x] **Task: Implement usePieceSelection hook** `[048b429]`
     - [x] Create `src/hooks/usePieceSelection.ts`
@@ -111,7 +111,7 @@
     - [x] Ghost preview reflects new rotation in real-time
     - [x] Write unit test for pre-placement rotation
 
-- [~] **Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)**
 
 ---
 
