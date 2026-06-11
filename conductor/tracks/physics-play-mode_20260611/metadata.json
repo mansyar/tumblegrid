@@ -1,0 +1,8 @@
+{
+  "track_id": "physics-play-mode_20260611",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-06-11T21:04:00Z",
+  "updated_at": "2026-06-11T21:04:00Z",
+  "description": "Physics Engine & Play Mode — Implement Rapier physics simulation, marble dynamics, piece colliders, Play/Stop lifecycle, fail detection, and debug visualization."
+}
