@@ -4,5 +4,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [~] **Track: Build Mode UI (Inventory & Controls)**
+- [x] **Track: Build Mode UI (Inventory & Controls)**
 *Link: [./tracks/TRACK-005/](./tracks/TRACK-005/)*
