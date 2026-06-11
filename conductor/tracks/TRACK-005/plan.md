@@ -106,10 +106,10 @@
     - [x] Mount HUD in src/App.tsx alongside GameCanvas
     - [x] Verify HUD renders above R3F Canvas
     - [x] Verify no z-index conflicts
-- [ ] Task: Integration testing
-    - [ ] Test: inventory selection affects ghost preview in 3D scene
-    - [ ] Test: mode transitions update UI elements correctly
-    - [ ] Test: trajectory preview appears on hover in Build Mode
+- [x] Task: Integration testing [6d05a69]
+    - [x] Test: inventory selection affects ghost preview in 3D scene
+    - [x] Test: mode transitions update UI elements correctly
+    - [x] Test: trajectory preview appears on hover in Build Mode
 - [ ] Task: Conductor - User Manual Verification 'Phase 4: HUD Container & Integration' (Protocol in workflow.md)
 
 ## Phase 5: Final Verification
