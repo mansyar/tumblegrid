@@ -46,7 +46,7 @@
 
 ---
 
-## Phase 2: Grid Interaction (Raycasting)
+## Phase 2: Grid Interaction (Raycasting) `[checkpoint: 4e1a857]`
 
 - [x] **Task: Implement useGridInteraction hook** `[45e4c8f]`
     - [x] Create `src/hooks/useGridInteraction.ts`
@@ -78,7 +78,7 @@
     - [x] Apply correct position and rotation from store
     - [x] Write unit test for piece rendering from store
 
-- [~] **Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)** `[4e1a857]`
 
 ---
 
