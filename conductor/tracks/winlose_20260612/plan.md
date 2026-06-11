@@ -13,10 +13,10 @@
     - [x] Write tests for localStorage read/write, unlock logic, try/catch error handling
     - [x] Implement `useCampaignProgress` as a hook with `getUnlockedLevels()`, `completeLevel(id)`, `isLevelUnlocked(id)` functions
     - [x] Wrap localStorage access in try/catch for private browsing fallback
-- [ ] **Task 1.3: Create `MainMenu` component**
-    - [ ] Write tests for rendering title, Campaign/Sandbox buttons, and click handlers
-    - [ ] Implement MainMenu with "TumbleGrid" title and two primary buttons
-    - [ ] Style with CSS overlay (centered layout, semi-transparent background over R3F canvas)
+- [x] **Task 1.3: Create `MainMenu` component** `f76ad4f`
+    - [x] Write tests for rendering title, Campaign/Sandbox buttons, and click handlers
+    - [x] Implement MainMenu with "TumbleGrid" title and two primary buttons
+    - [x] Style with CSS overlay (centered layout, semi-transparent background over R3F canvas)
 - [ ] **Task 1.4: Create `LevelSelect` component**
     - [ ] Write tests for 5 level cards display, locked/unlocked states, click handling
     - [ ] Implement LevelSelect with grid of level cards showing number, title, lock state
