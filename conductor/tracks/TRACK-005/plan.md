@@ -112,7 +112,7 @@
     - [x] Test: trajectory preview appears on hover in Build Mode
 - [x] Task: Conductor - User Manual Verification 'Phase 4: HUD Container & Integration' (Protocol in workflow.md)
 
-## Phase 5: Final Verification [checkpoint: final]
+## Phase 5: Final Verification [checkpoint: dcd35f7]
 
 - [x] Task: Run full test suite
     - [x] Execute pnpm run test
