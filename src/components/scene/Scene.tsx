@@ -3,6 +3,7 @@ import { GridFloor } from '@/components/scene/GridFloor';
 import { GridGhost } from '@/components/scene/GridGhost';
 import { useCamera } from '@/hooks/useCamera';
 import { useGridInteraction } from '@/hooks/useGridInteraction';
+import { usePieceSelection } from '@/hooks/usePieceSelection';
 import type { PieceType } from '@/store/types';
 import { useGameStore } from '@/store/useGameStore';
 import { OrbitControls } from '@react-three/drei';
@@ -32,10 +33,17 @@ export function Scene() {
   const placedPieces = useGameStore((s) => s.placedPieces);
   const inventory = useGameStore((s) => s.inventory);
   const machineState = useGameStore((s) => s.machineState);
+  const selectedPieceId = useGameStore((s) => s.selectedPieceId);
 
-  const selectedPieceType = getSelectedPieceType(inventory, machineState);
+  // When a piece is selected, hide the ghost preview (selection mode)
+  // Otherwise, use the first available inventory type for placement mode
+  const selectedPieceType =
+    selectedPieceId !== undefined
+      ? null
+      : getSelectedPieceType(inventory, machineState);
 
   useGridInteraction(selectedPieceType);
+  usePieceSelection();
 
   return (
     <>
