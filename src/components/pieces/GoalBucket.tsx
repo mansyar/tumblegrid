@@ -17,7 +17,6 @@ export function createGoalBucketWallGeometry(): THREE.BufferGeometry {
 
 const PASTEL_YELLOW = '#E9C46A';
 const WALL_OFFSET = 0.95;
-const WALL_HEIGHT = 0.35;
 
 function GoalBucketInner() {
   const baseGeometry = useMemo(() => createGoalBucketBaseGeometry(), []);
@@ -25,33 +24,33 @@ function GoalBucketInner() {
 
   return (
     <group>
-      {/* Base */}
-      <mesh geometry={baseGeometry} position={[0, 0, 0]}>
+      {/* Base (bottom at Y=0) */}
+      <mesh geometry={baseGeometry} position={[0, 0.1, 0]}>
         <meshStandardMaterial
           color={PASTEL_YELLOW}
           emissive={PASTEL_YELLOW}
           emissiveIntensity={0.2}
         />
       </mesh>
-      {/* Walls along Z (front/back) */}
-      <mesh geometry={wallGeometry} position={[0, WALL_HEIGHT, -WALL_OFFSET]}>
+      {/* Walls along Z (front/back) — sit on top of base */}
+      <mesh geometry={wallGeometry} position={[0, 0.45, -WALL_OFFSET]}>
         <meshStandardMaterial
           color={PASTEL_YELLOW}
           emissive={PASTEL_YELLOW}
           emissiveIntensity={0.15}
         />
       </mesh>
-      <mesh geometry={wallGeometry} position={[0, WALL_HEIGHT, WALL_OFFSET]}>
+      <mesh geometry={wallGeometry} position={[0, 0.45, WALL_OFFSET]}>
         <meshStandardMaterial
           color={PASTEL_YELLOW}
           emissive={PASTEL_YELLOW}
           emissiveIntensity={0.15}
         />
       </mesh>
-      {/* Walls along X (left/right) */}
+      {/* Walls along X (left/right) — sit on top of base */}
       <mesh
         geometry={new THREE.BoxGeometry(0.1, 0.5, 1.8)}
-        position={[-WALL_OFFSET, WALL_HEIGHT, 0]}
+        position={[-WALL_OFFSET, 0.45, 0]}
       >
         <meshStandardMaterial
           color={PASTEL_YELLOW}
@@ -61,7 +60,7 @@ function GoalBucketInner() {
       </mesh>
       <mesh
         geometry={new THREE.BoxGeometry(0.1, 0.5, 1.8)}
-        position={[WALL_OFFSET, WALL_HEIGHT, 0]}
+        position={[WALL_OFFSET, 0.45, 0]}
       >
         <meshStandardMaterial
           color={PASTEL_YELLOW}

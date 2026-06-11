@@ -16,7 +16,7 @@ function SpeedBoosterInner() {
   const geometry = useMemo(() => createSpeedBoosterGeometry(), []);
 
   return (
-    <mesh geometry={geometry}>
+    <mesh geometry={geometry} position={[0, 0.15, 0]}>
       <meshStandardMaterial color={PASTEL_GREEN} />
     </mesh>
   );

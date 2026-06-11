@@ -16,7 +16,7 @@ function BumperPadInner() {
   const geometry = useMemo(() => createBumperPadGeometry(), []);
 
   return (
-    <mesh geometry={geometry}>
+    <mesh geometry={geometry} position={[0, 1, 0]}>
       <meshStandardMaterial color={PASTEL_ORANGE} />
     </mesh>
   );

@@ -25,13 +25,13 @@ function HalfPipeInner() {
 
   return (
     <group>
-      <mesh geometry={baseGeometry} position={[0, 0, 0]}>
+      <mesh geometry={baseGeometry} position={[0, 0.15, 0]}>
         <meshStandardMaterial color={PASTEL_PURPLE} />
       </mesh>
-      <mesh geometry={railGeometry} position={[0, 0.45, -1]}>
+      <mesh geometry={railGeometry} position={[0, 0.6, -1]}>
         <meshStandardMaterial color={PASTEL_PURPLE} />
       </mesh>
-      <mesh geometry={railGeometry} position={[0, 0.45, 1]}>
+      <mesh geometry={railGeometry} position={[0, 0.6, 1]}>
         <meshStandardMaterial color={PASTEL_PURPLE} />
       </mesh>
     </group>

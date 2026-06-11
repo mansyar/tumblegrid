@@ -33,7 +33,7 @@ function StraightRampInner() {
   const geometry = useMemo(() => createRampGeometry(), []);
 
   return (
-    <mesh geometry={geometry}>
+    <mesh geometry={geometry} position={[0, 1, 0]}>
       <meshStandardMaterial color={PASTEL_BLUE} />
     </mesh>
   );

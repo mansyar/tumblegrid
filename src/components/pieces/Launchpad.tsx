@@ -34,20 +34,20 @@ function LaunchpadInner() {
 
   return (
     <group>
-      {/* Base platform */}
-      <mesh geometry={baseGeometry} position={[0, 0, 0]}>
+      {/* Base platform (bottom at Y=0) */}
+      <mesh geometry={baseGeometry} position={[0, 0.15, 0]}>
         <meshStandardMaterial color={DARK_GRAY} />
       </mesh>
 
-      {/* Raised center platform */}
-      <mesh geometry={centerGeometry} position={[0, 0.4, 0]}>
+      {/* Raised center platform — sits on top of base */}
+      <mesh geometry={centerGeometry} position={[0, 0.55, 0]}>
         <meshStandardMaterial color={DARK_GRAY} />
       </mesh>
 
-      {/* Neon accent ring on top */}
+      {/* Neon accent ring on top — sits on center platform */}
       <mesh
         geometry={ringGeometry}
-        position={[0, 0.7, 0]}
+        position={[0, 0.825, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
       >
         <meshStandardMaterial
