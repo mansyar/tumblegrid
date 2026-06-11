@@ -26,7 +26,7 @@
     - [x] Ensure 44px minimum touch targets
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Inventory Panel' (Protocol in workflow.md)
 
-## Phase 2: Mode Controls & Indicator
+## Phase 2: Mode Controls & Indicator [checkpoint: 7bac760]
 
 - [x] Task: Write tests for ModeToggle component [b63be8a]
     - [x] Test: renders Play button by default
