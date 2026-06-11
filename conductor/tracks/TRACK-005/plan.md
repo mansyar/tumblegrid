@@ -102,10 +102,10 @@
     - [x] Import and render InventoryPanel, ModeToggle, ModeIndicator
     - [x] Apply CSS positioning for viewport overlay
     - [x] Ensure responsive scaling
-- [ ] Task: Integrate HUD into App
-    - [ ] Mount HUD in src/App.tsx alongside GameCanvas
-    - [ ] Verify HUD renders above R3F Canvas
-    - [ ] Verify no z-index conflicts
+- [x] Task: Integrate HUD into App [475e029]
+    - [x] Mount HUD in src/App.tsx alongside GameCanvas
+    - [x] Verify HUD renders above R3F Canvas
+    - [x] Verify no z-index conflicts
 - [ ] Task: Integration testing
     - [ ] Test: inventory selection affects ghost preview in 3D scene
     - [ ] Test: mode transitions update UI elements correctly
