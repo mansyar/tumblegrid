@@ -40,12 +40,7 @@
 
 - [x] **Task: Create Launchpad mesh component** `[1197da6]`
 
-- [ ] **Task: Create PieceFactory component**
-    - [ ] Create `src/components/pieces/PieceFactory.tsx`
-    - [ ] Implement type-dispatching logic (switch on PieceType)
-    - [ ] Handle rotation transform (Y-axis, 90° increments)
-    - [ ] Support both placed pieces and ghost preview modes
-    - [ ] Write unit test for PieceFactory dispatching
+- [x] **Task: Create PieceFactory component** `[17eb9e8]`
 
 - [ ] **Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)**
 
