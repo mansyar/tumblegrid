@@ -134,6 +134,7 @@ describe('Store Type Exports', () => {
       selectedBlueprintType: null,
       trajectoryPreviewCache: new Map(),
       launchpadPosition: [0, 1, 0],
+      marbleInBucketIds: new Set(),
     };
     expect(state.machineState).toBe('BUILDING');
     expect(state.activeMode).toBe('CAMPAIGN');

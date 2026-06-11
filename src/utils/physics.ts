@@ -50,3 +50,42 @@ export function computeMarbleSpawnPosition(
     launchpadPosition[2],
   ];
 }
+
+/** Impulse magnitude applied to the marble by a Speed Booster. */
+export const BOOST_FORCE = 8;
+
+/**
+ * Direction vectors for speed booster impulse, indexed by rotation.
+ *
+ * - rot 0: +X (forward along ramp descent)
+ * - rot 1: +Z
+ * - rot 2: -X
+ * - rot 3: -Z
+ */
+const BOOST_DIRECTIONS: Array<[number, number, number]> = [
+  [1, 0, 0],
+  [0, 0, 1],
+  [-1, 0, 0],
+  [0, 0, -1],
+];
+
+/**
+ * Returns the impulse direction vector for a speed booster
+ * based on its rotation index.
+ */
+export function getBoostDirection(
+  rotationIndex: number,
+): [number, number, number] {
+  return BOOST_DIRECTIONS[rotationIndex] ?? [1, 0, 0];
+}
+
+/**
+ * Returns the full impulse vector (direction × force) for a speed booster.
+ * The Y component is kept at 0 to produce a purely horizontal boost.
+ */
+export function getBoostImpulse(
+  rotationIndex: number,
+): [number, number, number] {
+  const dir = getBoostDirection(rotationIndex);
+  return [dir[0] * BOOST_FORCE, 0, dir[2] * BOOST_FORCE];
+}

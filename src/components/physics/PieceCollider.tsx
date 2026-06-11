@@ -1,6 +1,6 @@
-import { CuboidCollider } from '@react-three/rapier';
-import { useGameStore } from '@/store/useGameStore';
 import type { PlacedPiece } from '@/store/types';
+import { useGameStore } from '@/store/useGameStore';
+import { getBoostImpulse } from '@/utils/physics';
 import {
   getBumperPadColliders,
   getGoalBucketColliders,
@@ -10,6 +10,7 @@ import {
   getStraightRampColliders,
 } from '@/utils/pieceColliders';
 import type { ColliderDescriptor } from '@/utils/pieceColliders';
+import { CuboidCollider } from '@react-three/rapier';
 
 /** Maps piece type to its collider descriptor generator with correct args. */
 function getCollidersForPiece(
@@ -37,6 +38,7 @@ function getCollidersForPiece(
  * Each piece type maps to one or more collider descriptors.
  */
 function PieceColliderInner({ piece }: { piece: PlacedPiece }) {
+  const setMarbleInBucket = useGameStore((s) => s.setMarbleInBucket);
   const rotationY = (Math.PI / 2) * piece.rotationIndex;
   const descriptors = getCollidersForPiece(piece.type, piece.rotationIndex);
 
@@ -51,6 +53,23 @@ function PieceColliderInner({ piece }: { piece: PlacedPiece }) {
           rotation={desc.rotation}
           sensor={desc.sensor}
           restitution={desc.restitution}
+          onIntersectionEnter={(payload) => {
+            if (piece.type === 'speed_booster') {
+              const impulse = getBoostImpulse(piece.rotationIndex);
+              payload.other.rigidBody?.applyImpulse(
+                { x: impulse[0], y: impulse[1], z: impulse[2] },
+                true,
+              );
+            }
+            if (piece.type === 'goal_bucket') {
+              setMarbleInBucket(piece.id, true);
+            }
+          }}
+          onIntersectionExit={(_payload) => {
+            if (piece.type === 'goal_bucket') {
+              setMarbleInBucket(piece.id, false);
+            }
+          }}
         />
       ))}
     </group>

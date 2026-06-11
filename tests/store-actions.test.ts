@@ -32,6 +32,7 @@ const createTestState = (overrides?: Partial<GameState>): GameState => ({
   selectedBlueprintType: null,
   trajectoryPreviewCache: new Map(),
   launchpadPosition: [0, 1, 0],
+  marbleInBucketIds: new Set(),
   ...overrides,
 });
 

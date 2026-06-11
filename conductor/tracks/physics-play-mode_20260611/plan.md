@@ -22,30 +22,31 @@
 
 ## Phase 2: Piece Colliders
 
-- [~] Task: Straight Ramp collider
-    - [ ] Create `src/components/physics/PieceCollider.tsx` — factory that dispatches by piece type
-    - [ ] Implement straight ramp tilted cuboid collider (pitch aligned with rotation index)
-    - [ ] Write test: verify collider orientation matches rotation index
-- [ ] Task: Bumper Pad collider
-    - [ ] Implement vertical cuboid collider with `restitution = 1.0`
-    - [ ] Support `staticTerrain` variant with `restitution = 0` (immovable wall)
-    - [ ] Write test: verify restitution values
-- [ ] Task: Speed Booster sensor collider
-    - [ ] Implement sensor cuboid collider
-    - [ ] On overlap detection: compute exit direction vector from rotation index
-    - [ ] Apply linear impulse to marble's center of mass
-    - [ ] Write test: verify impulse direction matches rotation index
-    - [ ] Write test: verify sensor detects overlap correctly
-- [ ] Task: Half-Pipe Tunnel compound collider
-    - [ ] Implement compound collider: flat base cuboid + two thin vertical rail cuboids
-    - [ ] Write test: verify compound collider has 3 child colliders
-- [ ] Task: Goal Bucket sensor collider
-    - [ ] Implement invisible interior sensor trigger volume
-    - [ ] On marble entry, track overlap state for TRACK-007 dwell timer
-    - [ ] Write test: verify sensor detects marble entry
-- [ ] Task: Launchpad collider
-    - [ ] Implement static cuboid collider (kinematic during Play)
-    - [ ] Marble drops from position above launchpad
+- [x] Task: Straight Ramp collider [f93b614]
+    - [x] Create `src/utils/pieceColliders.ts` — pure functions returning ColliderDescriptor[] for all piece types
+    - [x] Create `src/components/physics/PieceCollider.tsx` — factory that dispatches by piece type
+    - [x] Implement straight ramp tilted cuboid collider (pitch aligned with rotation index)
+    - [x] 29 unit tests: collider orientation, restitution values, compound (3 child), sensor types, launchpad geometry
+- [x] Task: Bumper Pad collider [f93b614]
+    - [x] Implement vertical cuboid collider with `restitution = 1.0`
+    - [x] Support `staticTerrain` variant with `restitution = 0` (immovable wall)
+    - [x] Write test: verify restitution values
+- [x] Task: Speed Booster sensor collider (w/ runtime impulse) [f93b614] + event handlers
+    - [x] Collider definition: sensor cuboid with thin profile
+    - [x] Write test: verify sensor collider dimensions and properties
+    - [x] On overlap detection: compute exit direction vector from rotation index (`getBoostDirection(rotationIndex)`)
+    - [x] Apply linear impulse to marble's center of mass via `payload.other.rigidBody.applyImpulse()`
+    - [x] Write test: verify impulse direction matches rotation index (9 new tests: direction, impulse, Y=0)
+- [x] Task: Half-Pipe Tunnel compound collider [f93b614]
+    - [x] Implement compound collider: flat base cuboid + two thin vertical rail cuboids
+    - [x] Write test: verify compound collider has 3 child colliders
+- [x] Task: Goal Bucket sensor collider (w/ marble entry tracking) [f93b614] + event handlers
+    - [x] Collider definition: invisible interior sensor trigger volume
+    - [x] Write test: verify sensor collider dimensions
+    - [x] On marble entry/exit: track `marbleInBucketIds` Set in game store via `onIntersectionEnter`/`onIntersectionExit`
+- [x] Task: Launchpad collider [f93b614]
+    - [x] Implement static cuboid collider
+    - [x] Marble drops from position above launchpad (handled in Marble.tsx spawn logic)
 - [ ] Task: Collider lifecycle (static <-> kinematic)
     - [ ] On Play: convert all placed pieces from static to kinematic colliders
     - [ ] On Stop: revert all kinematic colliders to static, preserving positions and rotations

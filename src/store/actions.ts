@@ -208,3 +208,18 @@ export const createUpdateTrajectoryCache =
       trajectoryPreviewCache: newCache,
     };
   };
+
+export const createSetMarbleInBucket =
+  (bucketId: string, inside: boolean) =>
+  (state: GameState): GameState => {
+    const next = new Set(state.marbleInBucketIds);
+    if (inside) {
+      next.add(bucketId);
+    } else {
+      next.delete(bucketId);
+    }
+    return {
+      ...state,
+      marbleInBucketIds: next,
+    };
+  };

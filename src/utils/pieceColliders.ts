@@ -186,5 +186,3 @@ export function getLaunchpadColliders(): ColliderDescriptor[] {
     },
   ];
 }
-
-

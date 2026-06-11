@@ -60,6 +60,8 @@ export interface GameState {
   selectedBlueprintType: PieceType | null;
   trajectoryPreviewCache: Map<string, [number, number, number][]>;
   launchpadPosition: [number, number, number];
+  /** Set of goal bucket piece IDs that the marble is currently inside. */
+  marbleInBucketIds: Set<string>;
 }
 
 export interface StoreActions {
@@ -81,6 +83,7 @@ export interface StoreActions {
     key: string,
     points: [number, number, number][],
   ) => void;
+  setMarbleInBucket: (bucketId: string, inside: boolean) => void;
 }
 
 export type GameStore = GameState & StoreActions;

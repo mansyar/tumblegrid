@@ -1,12 +1,15 @@
 import { describe, expect, it } from 'vitest';
 
 import {
+  BOOST_FORCE,
   FIXED_TIMESTEP,
   GRAVITY,
   MARBLE_CONFIG,
   SPAWN_HEIGHT_OFFSET,
   computeMarbleSpawnPosition,
   createPhysicsConfig,
+  getBoostDirection,
+  getBoostImpulse,
   getPhysicsPaused,
 } from '@/utils/physics';
 
@@ -82,5 +85,46 @@ describe('computeMarbleSpawnPosition', () => {
 
     expect(spawnPos[0]).toBe(-3);
     expect(spawnPos[2]).toBe(7);
+  });
+});
+
+describe('Speed Booster Boost Functions', () => {
+  it('should have BOOST_FORCE set to 8', () => {
+    expect(BOOST_FORCE).toBe(8);
+  });
+
+  it('should return +X for rotation 0', () => {
+    expect(getBoostDirection(0)).toEqual([1, 0, 0]);
+  });
+
+  it('should return +Z for rotation 1', () => {
+    expect(getBoostDirection(1)).toEqual([0, 0, 1]);
+  });
+
+  it('should return -X for rotation 2', () => {
+    expect(getBoostDirection(2)).toEqual([-1, 0, 0]);
+  });
+
+  it('should return -Z for rotation 3', () => {
+    expect(getBoostDirection(3)).toEqual([0, 0, -1]);
+  });
+
+  it('should return +X as default for unknown rotation index', () => {
+    expect(getBoostDirection(99)).toEqual([1, 0, 0]);
+  });
+
+  it('should compute impulse = direction * BOOST_FORCE for rotation 0', () => {
+    expect(getBoostImpulse(0)).toEqual([BOOST_FORCE, 0, 0]);
+  });
+
+  it('should compute impulse = direction * BOOST_FORCE for rotation 1', () => {
+    expect(getBoostImpulse(1)).toEqual([0, 0, BOOST_FORCE]);
+  });
+
+  it('should have zero Y component in impulse for all rotations', () => {
+    for (let rot = 0; rot < 4; rot++) {
+      const impulse = getBoostImpulse(rot);
+      expect(impulse[1]).toBe(0);
+    }
   });
 });

@@ -8,6 +8,7 @@ import {
   createRemovePiece,
   createRotatePiece,
   createSelectPiece,
+  createSetMarbleInBucket,
   createSetMode,
   createSetSelectedBlueprintType,
   createTransitionState,
@@ -40,6 +41,7 @@ const initialState: GameState = {
   selectedBlueprintType: null,
   trajectoryPreviewCache: new Map(),
   launchpadPosition: [0, 1, 0],
+  marbleInBucketIds: new Set(),
 };
 
 export const useGameStore = create<GameStore>()(
@@ -84,6 +86,9 @@ export const useGameStore = create<GameStore>()(
         key: string,
         points: [number, number, number][],
       ) => set(createUpdateTrajectoryCache(key, points)),
+
+      setMarbleInBucket: (bucketId: string, inside: boolean) =>
+        set(createSetMarbleInBucket(bucketId, inside)),
     }),
     { name: 'TumbleGridStore' },
   ),
