@@ -72,11 +72,12 @@ export function Scene() {
           pieceType={piece.type}
           position={piece.position}
           rotationIndex={piece.rotationIndex}
+          selected={piece.id === selectedPieceId}
         />
       ))}
 
-      {/* Ghost Preview */}
-      <GridGhost />
+      {/* Ghost Preview — only shown when no piece is selected */}
+      {selectedPieceId === undefined && <GridGhost />}
 
       {/* OrbitControls with clamps and damping */}
       <OrbitControls

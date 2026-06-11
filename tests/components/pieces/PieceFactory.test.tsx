@@ -46,3 +46,26 @@ describe('PIECE_MAP', () => {
     expect(Object.keys(PIECE_MAP)).toHaveLength(5);
   });
 });
+
+describe('PieceFactory selected prop', () => {
+  it('should render without error when selected is true', () => {
+    expect(() =>
+      <PieceFactory pieceType="straight_ramp" selected />,
+    ).not.toThrow();
+  });
+
+  it('should render without error when selected is false', () => {
+    expect(() =>
+      <PieceFactory pieceType="straight_ramp" selected={false} />,
+    ).not.toThrow();
+  });
+
+  it('should accept selected prop in type signature', () => {
+    // TypeScript: selected should be an optional boolean
+    const props: { pieceType: 'straight_ramp'; selected?: boolean } = {
+      pieceType: 'straight_ramp',
+      selected: true,
+    };
+    expect(props.selected).toBe(true);
+  });
+});

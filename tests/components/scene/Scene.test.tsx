@@ -173,4 +173,89 @@ describe('Scene', () => {
     const { container } = render(<Scene />);
     expect(container.querySelector('[data-testid="grid-ghost"]')).toBeInTheDocument();
   });
+
+  it('should pass selected=true for the selected piece', () => {
+    const placedPieces: PlacedPiece[] = [
+      { id: 'selected-piece', type: 'straight_ramp', position: [2, 0, 3], rotationIndex: 0 },
+      { id: 'other-piece', type: 'bumper_pad', position: [5, 0, 5], rotationIndex: 1 },
+    ];
+
+    mockStore.mockImplementation(
+      (selector: (state: unknown) => unknown) => {
+        const state = {
+          placedPieces,
+          inventory: { straight_ramp: 3, speed_booster: 2, bumper_pad: 1, half_pipe: 0, goal_bucket: 0 },
+          activeBlueprintNode: undefined,
+          machineState: 'BUILDING',
+          selectedPieceId: 'selected-piece',
+        };
+        return selector(state);
+      },
+    );
+
+    const { container } = render(<Scene />);
+    const factories = container.querySelectorAll('[data-testid="piece-factory"]');
+    expect(factories.length).toBe(2);
+
+    const firstProps = JSON.parse(factories[0]?.getAttribute('data-props') ?? '{}');
+    const secondProps = JSON.parse(factories[1]?.getAttribute('data-props') ?? '{}');
+
+    // The piece with id 'selected-piece' should have selected=true
+    // The other piece should have selected=false (explicitly)
+    const posStr = JSON.stringify(firstProps.position);
+    if (posStr === '[2,0,3]') {
+      expect(firstProps.selected).toBe(true);
+      expect(secondProps.selected).toBe(false);
+    } else {
+      expect(secondProps.selected).toBe(true);
+      expect(firstProps.selected).toBe(false);
+    }
+  });
+
+  it('should pass selected=false or undefined when no piece is selected', () => {
+    const placedPieces: PlacedPiece[] = [
+      { id: 'piece-a', type: 'straight_ramp', position: [0, 0, 0], rotationIndex: 0 },
+    ];
+
+    mockStore.mockImplementation(
+      (selector: (state: unknown) => unknown) => {
+        const state = {
+          placedPieces,
+          inventory: { straight_ramp: 3, speed_booster: 2, bumper_pad: 1, half_pipe: 0, goal_bucket: 0 },
+          activeBlueprintNode: undefined,
+          machineState: 'BUILDING',
+          selectedPieceId: undefined,
+        };
+        return selector(state);
+      },
+    );
+
+    const { container } = render(<Scene />);
+    const factory = container.querySelector('[data-testid="piece-factory"]');
+    const props = JSON.parse(factory?.getAttribute('data-props') ?? '{}');
+    expect(props.selected).toBe(false);
+  });
+
+  it('should hide ghost when a piece is selected', () => {
+    const placedPieces: PlacedPiece[] = [
+      { id: 'piece-a', type: 'straight_ramp', position: [0, 0, 0], rotationIndex: 0 },
+    ];
+
+    mockStore.mockImplementation(
+      (selector: (state: unknown) => unknown) => {
+        const state = {
+          placedPieces,
+          inventory: { straight_ramp: 3, speed_booster: 2, bumper_pad: 1, half_pipe: 0, goal_bucket: 0 },
+          activeBlueprintNode: undefined,
+          machineState: 'BUILDING',
+          selectedPieceId: 'piece-a',
+        };
+        return selector(state);
+      },
+    );
+
+    const { container } = render(<Scene />);
+    // Ghost should not be present when a piece is selected
+    expect(container.querySelector('[data-testid="grid-ghost"]')).not.toBeInTheDocument();
+  });
 });
