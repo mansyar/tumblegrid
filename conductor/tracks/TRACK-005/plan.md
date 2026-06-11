@@ -28,20 +28,21 @@
 
 ## Phase 2: Mode Controls & Indicator
 
-- [ ] Task: Write tests for ModeToggle component
-    - [ ] Test: Play button dispatches BUILDING → PLAYING transition
-    - [ ] Test: Play button dispatches SANDBOX_BUILDING → SANDBOX_PLAYING transition
-    - [ ] Test: Stop button is hidden during BUILDING state
-    - [ ] Test: Stop button is visible during PLAYING state
-    - [ ] Test: Stop button dispatches PLAYING → BUILDING transition
-    - [ ] Test: Stop button dispatches SANDBOX_PLAYING → SANDBOX_BUILDING transition
-- [ ] Task: Implement ModeToggle component
-    - [ ] Create src/components/ui/ModeToggle.tsx
-    - [ ] Read machineState from store
-    - [ ] Render Play button (always enabled)
-    - [ ] Render Stop button (visible in PLAYING/SANDBOX_PLAYING states)
-    - [ ] Wire Play button to store transition action
-    - [ ] Wire Stop button to store transition action
+- [x] Task: Write tests for ModeToggle component [b63be8a]
+    - [x] Test: renders Play button by default
+    - [x] Test: Play button dispatches PLAYING when state is BUILDING
+    - [x] Test: Play button dispatches SANDBOX_PLAYING when state is SANDBOX_BUILDING
+    - [x] Test: Stop button is not rendered during BUILDING state
+    - [x] Test: Stop button is visible during PLAYING state
+    - [x] Test: Stop button dispatches BUILDING when state is PLAYING
+    - [x] Test: Stop button dispatches SANDBOX_BUILDING when state is SANDBOX_PLAYING
+- [x] Task: Implement ModeToggle component [b63be8a]
+    - [x] Create src/components/ui/ModeToggle.tsx
+    - [x] Read machineState from store
+    - [x] Render Play button (always enabled)
+    - [x] Render Stop button (visible in PLAYING/SANDBOX_PLAYING states)
+    - [x] Wire Play button to store transition action
+    - [x] Wire Stop button to store transition action
 - [ ] Task: Write tests for ModeIndicator component
     - [ ] Test: displays "Build Mode" during BUILDING/SANDBOX_BUILDING states
     - [ ] Test: displays "Play Mode" during PLAYING/SANDBOX_PLAYING states
