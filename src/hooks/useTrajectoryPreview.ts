@@ -1,24 +1,7 @@
-import type { PieceType } from '@/store/types';
 import { useGameStore } from '@/store/useGameStore';
 import { computeTrajectoryWaypoints } from '@/utils/trajectory';
+import { getFirstAvailablePieceType } from '@/utils/inventory';
 import { useEffect } from 'react';
-
-/**
- * Determines the first piece type with available inventory.
- * Matches the fallback logic in Scene.tsx's getSelectedPieceType.
- */
-function getFirstAvailableType(
-  inventory: Record<PieceType, number>,
-  machineState: string,
-): PieceType | null {
-  if (machineState !== 'BUILDING' && machineState !== 'SANDBOX_BUILDING') {
-    return null;
-  }
-  const available = (Object.entries(inventory) as [PieceType, number][]).find(
-    ([_, count]) => count > 0,
-  );
-  return available?.[0] ?? null;
-}
 
 /**
  * Reactive hook that computes trajectory preview waypoints whenever the
@@ -45,10 +28,8 @@ export function useTrajectoryPreview() {
       return;
     }
 
-    // Fall back to first available inventory type if nothing is selected
-    // in the inventory panel (matching Scene.tsx's getSelectedPieceType).
     const pieceType =
-      selectedBlueprintType ?? getFirstAvailableType(inventory, machineState);
+      selectedBlueprintType ?? getFirstAvailablePieceType(inventory, machineState);
 
     if (!pieceType) {
       updateTrajectoryCache('preview', []);

@@ -20,10 +20,10 @@ Build the Build Mode user interface layer for TumbleGrid. This includes an inven
   - A visual icon/representation of the piece type
   - The piece type label
   - Remaining count (e.g., "x3")
-- **Interaction:** Clicking a piece type sets it as the active blueprint type in the store (`activeBlueprintNode.type`).
+- **Interaction:** Clicking a piece type sets `selectedBlueprintType` in the store, which drives both the ghost preview piece type and the trajectory preview's target.
 - **Active State:** The currently selected piece type is visually highlighted.
 - **Empty State:** Piece types with 0 remaining count are greyed out and disabled.
-- **Data Source:** Reads from `store.inventory` and `store.activeBlueprintNode`.
+- **Data Source:** Reads from `store.inventory` and `store.selectedBlueprintType`.
 
 ### FR-2: Mode Controls
 

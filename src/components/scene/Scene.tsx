@@ -8,29 +8,10 @@ import { usePieceRotation } from '@/hooks/usePieceRotation';
 import { usePieceSelection } from '@/hooks/usePieceSelection';
 import { useTrajectoryPreview } from '@/hooks/useTrajectoryPreview';
 import { getLevelByIndex } from '@/levels';
-import type { PieceType } from '@/store/types';
 import { useGameStore } from '@/store/useGameStore';
+import { getFirstAvailablePieceType } from '@/utils/inventory';
 import { OrbitControls } from '@react-three/drei';
 import { useEffect, useRef } from 'react';
-
-/**
- * Determines the first piece type with available inventory.
- * Returns null if no inventory is available (e.g., in PLAYING state).
- */
-function getSelectedPieceType(
-  inventory: Record<PieceType, number>,
-  machineState: string,
-): PieceType | null {
-  if (machineState !== 'BUILDING' && machineState !== 'SANDBOX_BUILDING') {
-    return null;
-  }
-
-  const available = (Object.entries(inventory) as [PieceType, number][]).find(
-    ([_, count]) => count > 0,
-  );
-
-  return available?.[0] ?? null;
-}
 
 export function Scene() {
   const { controlsRef } = useCamera();
@@ -60,7 +41,7 @@ export function Scene() {
     selectedPieceId !== undefined
       ? null
       : (selectedBlueprintType ??
-        getSelectedPieceType(inventory, machineState));
+        getFirstAvailablePieceType(inventory, machineState));
 
   useGridInteraction(selectedPieceType);
   usePieceSelection();

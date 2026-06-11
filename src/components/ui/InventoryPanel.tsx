@@ -3,13 +3,7 @@ import type { PieceType } from '@/store/types';
 import { useGameStore } from '@/store/useGameStore';
 import './InventoryPanel.css';
 
-const PIECE_TYPES: PieceType[] = [
-  'straight_ramp',
-  'speed_booster',
-  'bumper_pad',
-  'half_pipe',
-  'goal_bucket',
-];
+const PIECE_TYPES = Object.keys(PIECE_META) as PieceType[];
 
 export function InventoryPanel() {
   const inventory = useGameStore((s) => s.inventory);
