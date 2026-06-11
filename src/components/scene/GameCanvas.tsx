@@ -1,3 +1,4 @@
+import { PhysicsWorld } from '@/components/physics/PhysicsWorld';
 import { Scene } from '@/components/scene/Scene';
 import { Canvas } from '@react-three/fiber';
 
@@ -10,7 +11,9 @@ export function GameCanvas() {
         dpr={[1, 2]}
         gl={{ antialias: true }}
       >
-        <Scene />
+        <PhysicsWorld>
+          <Scene />
+        </PhysicsWorld>
       </Canvas>
     </div>
   );
