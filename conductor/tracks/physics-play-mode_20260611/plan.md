@@ -18,7 +18,7 @@
     - [x] Add neon emissive sphere visual mesh (child of the rigid body)
     - [x] Implement simple fading ribbon trail: array of recent positions -> THREE.BufferGeometry Line with opacity fade over ~1s
     - [x] Write test: verify trail points are recorded as marble moves (pure function test)
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Physics World & Marble' (Protocol in workflow.md)
+- [~] Task: Conductor - User Manual Verification 'Phase 1: Physics World & Marble' (Protocol in workflow.md)
 
 ## Phase 2: Piece Colliders
 

@@ -5,15 +5,9 @@ import { useMemo, useRef } from 'react';
 import * as THREE from 'three';
 
 import { useGameStore } from '@/store/useGameStore';
-import {
-  MARBLE_CONFIG,
-  computeMarbleSpawnPosition,
-} from '@/utils/physics';
-import {
-  computeTrailOpacity,
-  recordTrailPoint,
-} from '@/utils/marbleTrail';
+import { computeTrailOpacity, recordTrailPoint } from '@/utils/marbleTrail';
 import type { TrailPoint } from '@/utils/marbleTrail';
+import { MARBLE_CONFIG, computeMarbleSpawnPosition } from '@/utils/physics';
 
 const MARBLE_COLOR = '#00E5FF';
 const TRAIL_MAX_POINTS = 60;
@@ -36,10 +30,7 @@ function MarbleTrail({
     // Pre-allocate fixed-size buffers
     const positions = new Float32Array(TRAIL_MAX_POINTS * 3);
     const colors = new Float32Array(TRAIL_MAX_POINTS * 3);
-    geometry.setAttribute(
-      'position',
-      new THREE.BufferAttribute(positions, 3),
-    );
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
     const material = new THREE.LineBasicMaterial({
@@ -67,12 +58,8 @@ function MarbleTrail({
 
     const geometry = line.geometry;
     const pointCount = trailRef.current.length;
-    const posAttr = geometry.getAttribute(
-      'position',
-    ) as THREE.BufferAttribute;
-    const colAttr = geometry.getAttribute(
-      'color',
-    ) as THREE.BufferAttribute;
+    const posAttr = geometry.getAttribute('position') as THREE.BufferAttribute;
+    const colAttr = geometry.getAttribute('color') as THREE.BufferAttribute;
 
     for (let i = 0; i < pointCount; i++) {
       const pt = trailRef.current[i];
