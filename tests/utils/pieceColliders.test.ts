@@ -170,23 +170,71 @@ describe('getHalfPipeColliders', () => {
 });
 
 describe('getGoalBucketColliders', () => {
-  it('should return a single sensor collider', () => {
+  it('should return 6 colliders (floor + 4 walls + 1 sensor)', () => {
     const colliders = getGoalBucketColliders();
-    expect(colliders).toHaveLength(1);
-    expect(colliders[0].sensor).toBe(true);
+    expect(colliders).toHaveLength(6);
   });
 
-  it('should have type cuboid', () => {
+  it('should have exactly 5 physical colliders (sensor=false)', () => {
     const colliders = getGoalBucketColliders();
-    expect(colliders[0].type).toBe('cuboid');
+    const physical = colliders.filter((c) => !c.sensor);
+    expect(physical).toHaveLength(5);
   });
 
-  it('should be an interior volume (smaller than 2x2x2 cell)', () => {
+  it('should have exactly 1 sensor collider', () => {
     const colliders = getGoalBucketColliders();
-    const extents = colliders[0].halfExtents;
-    expect(extents[0]).toBeLessThan(1);
-    expect(extents[1]).toBeLessThan(1);
-    expect(extents[2]).toBeLessThan(1);
+    const sensors = colliders.filter((c) => c.sensor);
+    expect(sensors).toHaveLength(1);
+    expect(sensors[0].type).toBe('cuboid');
+    expect(sensors[0].halfExtents[0]).toBeLessThan(1);
+    expect(sensors[0].halfExtents[2]).toBeLessThan(1);
+  });
+
+  it('should have floor at Y=0.1', () => {
+    const colliders = getGoalBucketColliders();
+    const floor = colliders.find(
+      (c) => !c.sensor && Math.abs(c.position[1] - 0.1) < 0.01,
+    );
+    expect(floor).toBeDefined();
+    expect(floor?.halfExtents[1]).toBe(0.1);
+  });
+
+  it('should have walls at Z=±0.95', () => {
+    const colliders = getGoalBucketColliders();
+    const zWalls = colliders.filter(
+      (c) => !c.sensor && Math.abs(c.position[0]) < 0.01 && Math.abs(c.position[2]) > 0.9,
+    );
+    expect(zWalls).toHaveLength(2);
+    expect(zWalls[0].halfExtents[2]).toBe(0.05);
+  });
+
+  it('should have walls at X=±0.95', () => {
+    const colliders = getGoalBucketColliders();
+    const xWalls = colliders.filter(
+      (c) => !c.sensor && Math.abs(c.position[2]) < 0.01 && Math.abs(c.position[0]) > 0.9,
+    );
+    expect(xWalls).toHaveLength(2);
+    expect(xWalls[0].halfExtents[0]).toBe(0.05);
+  });
+
+  it('should have restitution 0.3 on physical colliders', () => {
+    const colliders = getGoalBucketColliders();
+    const physical = colliders.filter((c) => !c.sensor);
+    for (const c of physical) {
+      expect(c.restitution).toBe(0.3);
+    }
+  });
+
+  it('should have sensor positioned inside the bucket cavity', () => {
+    const colliders = getGoalBucketColliders();
+    const sensor = colliders.find((c) => c.sensor);
+    expect(sensor).toBeDefined();
+    // Sensor should be centered (x=0, z=0) inside the cavity
+    expect(sensor?.position[0]).toBe(0);
+    expect(sensor?.position[2]).toBe(0);
+    // Sensor height should be within the wall cavity (Y 0.2 to 0.7)
+    expect(sensor?.position[1]).toBeGreaterThan(0.3);
+    expect(sensor?.position[1]).toBeLessThan(0.6);
   });
 });
 

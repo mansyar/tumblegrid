@@ -146,19 +146,67 @@ export function getHalfPipeColliders(): ColliderDescriptor[] {
 /**
  * Collider for a Goal Bucket piece.
  *
- * A sensor trigger volume that detects marble entry.
- * The actual dwell-timer victory logic is deferred to TRACK-007.
- * Positioned as an interior volume inside the bucket cavity.
+ * Compound collider with physical floor + walls that contain the marble,
+ * plus an interior sensor trigger that detects marble entry.
+ * The dwell-timer victory logic is deferred to TRACK-007.
  *
- * @returns A single sensor cuboid collider descriptor.
+ * Visually: base at Y=0.1 (1.8×0.2×1.8), walls from Y=0.2 to Y=0.7,
+ * inset ~0.05 from edges.
+ *
+ * @returns 6 cuboid collider descriptors (floor + 4 walls + 1 sensor).
  */
 export function getGoalBucketColliders(): ColliderDescriptor[] {
   return [
+    // Physical floor
     {
       type: 'cuboid',
-      // Interior volume slightly smaller than the bucket walls
-      halfExtents: [0.7, 0.3, 0.7],
-      position: [0, 0.3, 0],
+      halfExtents: [0.9, 0.1, 0.9],
+      position: [0, 0.1, 0],
+      rotation: [0, 0, 0],
+      sensor: false,
+      restitution: 0.3,
+    },
+    // Physical front wall (Z+)
+    {
+      type: 'cuboid',
+      halfExtents: [0.9, 0.25, 0.05],
+      position: [0, 0.45, 0.95],
+      rotation: [0, 0, 0],
+      sensor: false,
+      restitution: 0.3,
+    },
+    // Physical back wall (Z-)
+    {
+      type: 'cuboid',
+      halfExtents: [0.9, 0.25, 0.05],
+      position: [0, 0.45, -0.95],
+      rotation: [0, 0, 0],
+      sensor: false,
+      restitution: 0.3,
+    },
+    // Physical left wall (X-)
+    {
+      type: 'cuboid',
+      halfExtents: [0.05, 0.25, 0.9],
+      position: [-0.95, 0.45, 0],
+      rotation: [0, 0, 0],
+      sensor: false,
+      restitution: 0.3,
+    },
+    // Physical right wall (X+)
+    {
+      type: 'cuboid',
+      halfExtents: [0.05, 0.25, 0.9],
+      position: [0.95, 0.45, 0],
+      rotation: [0, 0, 0],
+      sensor: false,
+      restitution: 0.3,
+    },
+    // Interior sensor trigger (inside the bucket cavity)
+    {
+      type: 'cuboid',
+      halfExtents: [0.7, 0.2, 0.7],
+      position: [0, 0.45, 0],
       rotation: [0, 0, 0],
       sensor: true,
       restitution: 0,
