@@ -17,11 +17,11 @@
     - [x] Write tests for rendering title, Campaign/Sandbox buttons, and click handlers
     - [x] Implement MainMenu with "TumbleGrid" title and two primary buttons
     - [x] Style with CSS overlay (centered layout, semi-transparent background over R3F canvas)
-- [ ] **Task 1.4: Create `LevelSelect` component**
-    - [ ] Write tests for 5 level cards display, locked/unlocked states, click handling
-    - [ ] Implement LevelSelect with grid of level cards showing number, title, lock state
-    - [ ] Greyed-out card with lock icon for locked levels; clickable card for unlocked
-    - [ ] "Back" button to return to main menu
+- [x] **Task 1.4: Create `LevelSelect` component** `5bad741`
+    - [x] Write tests for 5 level cards display, locked/unlocked states, click handling
+    - [x] Implement LevelSelect with grid of level cards showing number, title, lock state
+    - [x] Greyed-out card with lock icon for locked levels; clickable card for unlocked
+    - [x] "Back" button to return to main menu
 - [ ] **Task 1.5: Wire navigation flow**
     - [ ] Connect MainMenu → LevelSelect (Campaign) and MainMenu → Game/Sandbox
     - [ ] Connect LevelSelect → Game (campaign with selected level data)
