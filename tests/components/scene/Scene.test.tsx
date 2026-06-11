@@ -18,6 +18,7 @@ vi.mock('@react-three/fiber', () => ({
 vi.mock('@react-three/drei', () => ({
   OrbitControls: vi.fn().mockImplementation(() => null),
   Grid: vi.fn().mockImplementation(() => null),
+  Line: vi.fn().mockImplementation(() => null),
 }));
 
 vi.mock('@/components/pieces/PieceFactory', () => ({
@@ -37,6 +38,10 @@ vi.mock('@/hooks/useGridInteraction', () => ({
     hoveredCell: null,
     isValid: false,
   })),
+}));
+
+vi.mock('@/hooks/useTrajectoryPreview', () => ({
+  useTrajectoryPreview: vi.fn(),
 }));
 
 vi.mock('@/levels', () => ({
@@ -69,6 +74,8 @@ describe('Scene', () => {
           activeBlueprintNode: undefined,
           machineState: 'BUILDING',
           selectedPieceId: undefined,
+          selectedBlueprintType: null,
+          trajectoryPreviewCache: new Map(),
           loadLevel: vi.fn(),
         };
         return selector(state);
@@ -107,6 +114,8 @@ describe('Scene', () => {
           activeBlueprintNode: undefined,
           machineState: 'BUILDING',
           selectedPieceId: undefined,
+          selectedBlueprintType: null,
+          trajectoryPreviewCache: new Map(),
           loadLevel: vi.fn(),
         };
         return selector(state);
@@ -131,6 +140,8 @@ describe('Scene', () => {
           activeBlueprintNode: undefined,
           machineState: 'BUILDING',
           selectedPieceId: undefined,
+          selectedBlueprintType: null,
+          trajectoryPreviewCache: new Map(),
           loadLevel: vi.fn(),
         };
         return selector(state);
@@ -164,6 +175,8 @@ describe('Scene', () => {
           activeBlueprintNode: undefined,
           machineState: 'BUILDING',
           selectedPieceId: undefined,
+          selectedBlueprintType: null,
+          trajectoryPreviewCache: new Map(),
           loadLevel: vi.fn(),
         };
         return selector(state);
@@ -200,6 +213,8 @@ describe('Scene', () => {
           activeBlueprintNode: undefined,
           machineState: 'BUILDING',
           selectedPieceId: 'selected-piece',
+          selectedBlueprintType: null,
+          trajectoryPreviewCache: new Map(),
           loadLevel: vi.fn(),
         };
         return selector(state);
@@ -238,6 +253,8 @@ describe('Scene', () => {
           activeBlueprintNode: undefined,
           machineState: 'BUILDING',
           selectedPieceId: undefined,
+          selectedBlueprintType: null,
+          trajectoryPreviewCache: new Map(),
           loadLevel: vi.fn(),
         };
         return selector(state);
@@ -263,6 +280,8 @@ describe('Scene', () => {
           activeBlueprintNode: undefined,
           machineState: 'BUILDING',
           selectedPieceId: 'piece-a',
+          selectedBlueprintType: null,
+          trajectoryPreviewCache: new Map(),
           loadLevel: vi.fn(),
         };
         return selector(state);

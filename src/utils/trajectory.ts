@@ -54,7 +54,8 @@ export function computeTrajectoryWaypoints(
   }
   if (!sourcePiece) return [];
 
-  const sourceDirs = PIECE_DIRECTIONS[sourcePiece.type][sourcePiece.rotationIndex];
+  const sourceDirs =
+    PIECE_DIRECTIONS[sourcePiece.type][sourcePiece.rotationIndex];
   const targetDirs = PIECE_DIRECTIONS[selectedPieceType][0];
 
   const sourceExit: [number, number, number] = [

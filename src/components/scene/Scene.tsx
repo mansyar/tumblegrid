@@ -1,10 +1,12 @@
 import { PieceFactory } from '@/components/pieces/PieceFactory';
 import { GridFloor } from '@/components/scene/GridFloor';
 import { GridGhost } from '@/components/scene/GridGhost';
+import { TrajectoryLine } from '@/components/scene/TrajectoryLine';
 import { useCamera } from '@/hooks/useCamera';
 import { useGridInteraction } from '@/hooks/useGridInteraction';
 import { usePieceRotation } from '@/hooks/usePieceRotation';
 import { usePieceSelection } from '@/hooks/usePieceSelection';
+import { useTrajectoryPreview } from '@/hooks/useTrajectoryPreview';
 import { getLevelByIndex } from '@/levels';
 import type { PieceType } from '@/store/types';
 import { useGameStore } from '@/store/useGameStore';
@@ -63,6 +65,7 @@ export function Scene() {
   useGridInteraction(selectedPieceType);
   usePieceSelection();
   usePieceRotation();
+  useTrajectoryPreview();
 
   return (
     <>
@@ -97,6 +100,9 @@ export function Scene() {
 
       {/* Ghost Preview — only shown when no piece is selected */}
       {selectedPieceId === undefined && <GridGhost />}
+
+      {/* Trajectory Preview — dotted line from nearest piece to hovered cell */}
+      <TrajectoryLine />
 
       {/* OrbitControls with clamps and damping */}
       <OrbitControls

@@ -1,5 +1,5 @@
-import { Line } from '@react-three/drei';
 import { useGameStore } from '@/store/useGameStore';
+import { Line } from '@react-three/drei';
 import { useMemo } from 'react';
 
 const LINE_COLOR = '#88ccff';
