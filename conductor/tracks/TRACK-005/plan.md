@@ -86,10 +86,10 @@
     - [x] Read trajectoryPreviewCache from store
     - [x] Render Line component from @react-three/drei
     - [x] Apply dotted material with low opacity
-- [~] Task: Integrate trajectory preview with hover system
-    - [ ] Connect useTrajectoryPreview to useGridInteraction hover state
-    - [ ] Clear trajectoryPreviewCache on mouse leave
-    - [ ] Hide trajectory during Play Mode
+- [x] Task: Integrate trajectory preview with hover system [ffbf79f]
+    - [x] Connect useTrajectoryPreview to useGridInteraction hover state
+    - [x] Clear trajectoryPreviewCache on mouse leave
+    - [x] Hide trajectory during Play Mode
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Trajectory Preview' (Protocol in workflow.md)
 
 ## Phase 4: HUD Container & Integration
