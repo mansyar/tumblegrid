@@ -1,6 +1,7 @@
 import { PIECE_META } from '@/constants/pieceMeta';
 import type { PieceType } from '@/store/types';
 import { useGameStore } from '@/store/useGameStore';
+import './InventoryPanel.css';
 
 const PIECE_TYPES: PieceType[] = [
   'straight_ramp',
@@ -12,9 +13,7 @@ const PIECE_TYPES: PieceType[] = [
 
 export function InventoryPanel() {
   const inventory = useGameStore((s) => s.inventory);
-  const selectedBlueprintType = useGameStore(
-    (s) => s.selectedBlueprintType,
-  );
+  const selectedBlueprintType = useGameStore((s) => s.selectedBlueprintType);
   const setSelectedBlueprintType = useGameStore(
     (s) => s.setSelectedBlueprintType,
   );
