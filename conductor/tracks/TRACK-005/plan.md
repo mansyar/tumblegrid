@@ -16,14 +16,14 @@
     - [x] Implement click handler to set active blueprint type
     - [x] Apply active state highlighting
     - [x] Apply disabled state for zero-count items
-- [ ] Task: Write tests for inventory item styling
-    - [ ] Test: active item has distinct visual style
-    - [ ] Test: disabled item has greyed-out appearance
-    - [ ] Test: hover state provides visual feedback
-- [ ] Task: Implement inventory item styling
-    - [ ] Create CSS styles for inventory panel layout
-    - [ ] Style active, disabled, and hover states
-    - [ ] Ensure 44px minimum touch targets
+- [x] Task: Write tests for inventory item styling [4f0c101]
+    - [x] Test: active item has distinct visual style
+    - [x] Test: disabled item has greyed-out appearance
+    - [x] Test: hover state provides visual feedback
+- [x] Task: Implement inventory item styling [4f0c101]
+    - [x] Create CSS styles for inventory panel layout
+    - [x] Style active, disabled, and hover states
+    - [x] Ensure 44px minimum touch targets
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Inventory Panel' (Protocol in workflow.md)
 
 ## Phase 2: Mode Controls & Indicator
