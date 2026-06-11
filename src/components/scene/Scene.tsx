@@ -3,6 +3,7 @@ import { GridFloor } from '@/components/scene/GridFloor';
 import { GridGhost } from '@/components/scene/GridGhost';
 import { useCamera } from '@/hooks/useCamera';
 import { useGridInteraction } from '@/hooks/useGridInteraction';
+import { usePieceRotation } from '@/hooks/usePieceRotation';
 import { usePieceSelection } from '@/hooks/usePieceSelection';
 import type { PieceType } from '@/store/types';
 import { useGameStore } from '@/store/useGameStore';
@@ -44,6 +45,7 @@ export function Scene() {
 
   useGridInteraction(selectedPieceType);
   usePieceSelection();
+  usePieceRotation();
 
   return (
     <>
