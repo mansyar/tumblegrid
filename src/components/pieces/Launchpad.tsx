@@ -45,7 +45,11 @@ export function Launchpad() {
       </mesh>
 
       {/* Neon accent ring on top */}
-      <mesh geometry={ringGeometry} position={[0, 0.7, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+      <mesh
+        geometry={ringGeometry}
+        position={[0, 0.7, 0]}
+        rotation={[-Math.PI / 2, 0, 0]}
+      >
         <meshStandardMaterial
           color={NEON_CYAN}
           emissive={NEON_CYAN}

@@ -42,7 +42,7 @@
 
 - [x] **Task: Create PieceFactory component** `[17eb9e8]`
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)**
+- [~] **Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)**
 
 ---
 
