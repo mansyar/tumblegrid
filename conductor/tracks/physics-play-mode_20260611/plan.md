@@ -14,10 +14,10 @@
     - [x] Implement spawn logic: read `launchpadPosition` from store on Play
     - [x] Write test: verify marble spawns at correct launchpad position
     - [x] Write test: verify marble properties match expected values
-- [~] Task: Marble visual & trail
-    - [ ] Add neon emissive sphere visual mesh (child of the rigid body)
-    - [ ] Implement simple fading ribbon trail: array of recent positions -> THREE.BufferGeometry Line with opacity fade over ~1s
-    - [ ] Write test: verify trail points are recorded as marble moves (pure function test)
+- [x] Task: Marble visual & trail [6553427]
+    - [x] Add neon emissive sphere visual mesh (child of the rigid body)
+    - [x] Implement simple fading ribbon trail: array of recent positions -> THREE.BufferGeometry Line with opacity fade over ~1s
+    - [x] Write test: verify trail points are recorded as marble moves (pure function test)
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Physics World & Marble' (Protocol in workflow.md)
 
 ## Phase 2: Piece Colliders
