@@ -8,6 +8,7 @@ import {
   createRemovePiece,
   createRotatePiece,
   createSelectPiece,
+  createSetActiveLevelIndex,
   createSetCurrentScreen,
   createSetMarbleInBucket,
   createSetMode,
@@ -54,8 +55,10 @@ export const useGameStore = create<GameStore>()(
     (set) => ({
       ...initialState,
 
-      setCurrentScreen: (screen: Screen) =>
-        set(createSetCurrentScreen(screen)),
+      setCurrentScreen: (screen: Screen) => set(createSetCurrentScreen(screen)),
+
+      setActiveLevelIndex: (index: number | undefined) =>
+        set(createSetActiveLevelIndex(index)),
 
       placePiece: (
         pieceType: PieceType,

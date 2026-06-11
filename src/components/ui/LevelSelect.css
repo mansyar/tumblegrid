@@ -1,0 +1,101 @@
+.level-select {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  user-select: none;
+}
+
+.level-select__title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  letter-spacing: 1px;
+}
+
+.level-select__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 520px;
+  width: 90%;
+}
+
+.level-select__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 120px;
+  padding: 20px 16px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+
+.level-select__card:hover:not(.level-select__card--locked) {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.05);
+}
+
+.level-select__card:active:not(.level-select__card--locked) {
+  transform: scale(0.98);
+}
+
+.level-select__card--locked {
+  opacity: 0.4;
+  cursor: not-allowed;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.level-select__card-number {
+  font-size: 28px;
+  font-weight: 700;
+  opacity: 0.8;
+}
+
+.level-select__card-title {
+  font-size: 14px;
+  text-align: center;
+  opacity: 0.9;
+  line-height: 1.3;
+}
+
+.level-select__card-lock {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.6;
+}
+
+.level-select__back {
+  min-height: 44px;
+  padding: 10px 28px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.level-select__back:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.4);
+}

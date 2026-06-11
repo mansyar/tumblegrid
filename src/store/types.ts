@@ -71,6 +71,7 @@ export interface GameState {
 
 export interface StoreActions {
   setCurrentScreen: (screen: Screen) => void;
+  setActiveLevelIndex: (index: number | undefined) => void;
   placePiece: (
     pieceType: PieceType,
     position: [number, number, number],

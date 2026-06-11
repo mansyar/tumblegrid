@@ -7,6 +7,7 @@ import {
   createRemovePiece,
   createRotatePiece,
   createSelectPiece,
+  createSetActiveLevelIndex,
   createSetCurrentScreen,
   createSetMode,
   createTransitionState,
@@ -364,6 +365,31 @@ describe('Store Actions', () => {
       const result = createSetCurrentScreen('menu')(state);
 
       expect(result.currentScreen).toBe('menu');
+    });
+  });
+
+  describe('createSetActiveLevelIndex', () => {
+    it('should set activeLevelIndex to a number', () => {
+      const state = createTestState({ activeLevelIndex: undefined });
+      const result = createSetActiveLevelIndex(2)(state);
+
+      expect(result.activeLevelIndex).toBe(2);
+    });
+
+    it('should set activeLevelIndex to undefined', () => {
+      const state = createTestState({ activeLevelIndex: 0 });
+      const result = createSetActiveLevelIndex(undefined)(state);
+
+      expect(result.activeLevelIndex).toBeUndefined();
+    });
+
+    it('should not mutate other state properties', () => {
+      const state = createTestState();
+      const result = createSetActiveLevelIndex(3)(state);
+
+      expect(result.currentScreen).toBe('menu');
+      expect(result.machineState).toBe('BUILDING');
+      expect(result.activeMode).toBe('CAMPAIGN');
     });
   });
 

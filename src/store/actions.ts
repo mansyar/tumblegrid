@@ -116,6 +116,13 @@ export const createSetCurrentScreen =
     currentScreen: screen,
   });
 
+export const createSetActiveLevelIndex =
+  (index: number | undefined) =>
+  (state: GameState): GameState => ({
+    ...state,
+    activeLevelIndex: index,
+  });
+
 export const createSetMode =
   (mode: ActiveMode) =>
   (state: GameState): GameState => {
