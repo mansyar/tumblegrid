@@ -170,15 +170,15 @@ describe('getHalfPipeColliders', () => {
 });
 
 describe('getGoalBucketColliders', () => {
-  it('should return 6 colliders (floor + 4 walls + 1 sensor)', () => {
+  it('should return 4 colliders (floor + 2 Z-walls + 1 sensor)', () => {
     const colliders = getGoalBucketColliders();
-    expect(colliders).toHaveLength(6);
+    expect(colliders).toHaveLength(4);
   });
 
-  it('should have exactly 5 physical colliders (sensor=false)', () => {
+  it('should have exactly 3 physical colliders (sensor=false)', () => {
     const colliders = getGoalBucketColliders();
     const physical = colliders.filter((c) => !c.sensor);
-    expect(physical).toHaveLength(5);
+    expect(physical).toHaveLength(3);
   });
 
   it('should have exactly 1 sensor collider', () => {
@@ -208,13 +208,12 @@ describe('getGoalBucketColliders', () => {
     expect(zWalls[0].halfExtents[2]).toBe(0.05);
   });
 
-  it('should have walls at X=±0.95', () => {
+  it('should have no X-direction walls (open entry sides)', () => {
     const colliders = getGoalBucketColliders();
     const xWalls = colliders.filter(
       (c) => !c.sensor && Math.abs(c.position[2]) < 0.01 && Math.abs(c.position[0]) > 0.9,
     );
-    expect(xWalls).toHaveLength(2);
-    expect(xWalls[0].halfExtents[0]).toBe(0.05);
+    expect(xWalls).toHaveLength(0);
   });
 
   it('should have restitution 0.3 on physical colliders', () => {

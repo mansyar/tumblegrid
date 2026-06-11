@@ -153,7 +153,8 @@ export function getHalfPipeColliders(): ColliderDescriptor[] {
  * Visually: base at Y=0.1 (1.8×0.2×1.8), walls from Y=0.2 to Y=0.7,
  * inset ~0.05 from edges.
  *
- * @returns 6 cuboid collider descriptors (floor + 4 walls + 1 sensor).
+ * @returns 4 cuboid collider descriptors (floor + 2 Z-walls + 1 sensor).
+ * NOTE: No X-direction walls — the marble must roll in from the sides.
  */
 export function getGoalBucketColliders(): ColliderDescriptor[] {
   return [
@@ -184,29 +185,17 @@ export function getGoalBucketColliders(): ColliderDescriptor[] {
       sensor: false,
       restitution: 0.3,
     },
-    // Physical left wall (X-)
-    {
-      type: 'cuboid',
-      halfExtents: [0.05, 0.25, 0.9],
-      position: [-0.95, 0.45, 0],
-      rotation: [0, 0, 0],
-      sensor: false,
-      restitution: 0.3,
-    },
-    // Physical right wall (X+)
-    {
-      type: 'cuboid',
-      halfExtents: [0.05, 0.25, 0.9],
-      position: [0.95, 0.45, 0],
-      rotation: [0, 0, 0],
-      sensor: false,
-      restitution: 0.3,
-    },
+    // No X-direction walls — the marble must be able to roll in from
+    // the +X or -X side (most levels approach from X direction).
+    // The Z-walls (front/back) are sufficient to prevent the marble
+    // from rolling off the sides once it enters the bucket.
     // Interior sensor trigger (inside the bucket cavity)
+    // Raised to Y=0.55 so it overlaps with the marble's center position
+    // (radius 0.5) when the marble rolls into the bucket interior.
     {
       type: 'cuboid',
       halfExtents: [0.7, 0.2, 0.7],
-      position: [0, 0.45, 0],
+      position: [0, 0.55, 0],
       rotation: [0, 0, 0],
       sensor: true,
       restitution: 0,
