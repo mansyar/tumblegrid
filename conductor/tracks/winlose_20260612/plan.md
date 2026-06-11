@@ -9,10 +9,10 @@
     - [x] Write tests for screen state transitions (menu → levelSelect, levelSelect → game, etc.)
     - [x] Add `currentScreen` state to App.tsx with conditional rendering of MainMenu, LevelSelect, and Game
     - [x] Pass navigation callbacks (`onNavigate`) to child components
-- [ ] **Task 1.2: Create `useCampaignProgress` hook**
-    - [ ] Write tests for localStorage read/write, unlock logic, try/catch error handling
-    - [ ] Implement `useCampaignProgress` as a hook with `getUnlockedLevels()`, `completeLevel(id)`, `isLevelUnlocked(id)` functions
-    - [ ] Wrap localStorage access in try/catch for private browsing fallback
+- [x] **Task 1.2: Create `useCampaignProgress` hook** `63381e3`
+    - [x] Write tests for localStorage read/write, unlock logic, try/catch error handling
+    - [x] Implement `useCampaignProgress` as a hook with `getUnlockedLevels()`, `completeLevel(id)`, `isLevelUnlocked(id)` functions
+    - [x] Wrap localStorage access in try/catch for private browsing fallback
 - [ ] **Task 1.3: Create `MainMenu` component**
     - [ ] Write tests for rendering title, Campaign/Sandbox buttons, and click handlers
     - [ ] Implement MainMenu with "TumbleGrid" title and two primary buttons
