@@ -221,19 +221,32 @@ export function getGoalBucketColliders(): ColliderDescriptor[] {
 }
 
 /**
- * Collider for the Launchpad piece.
+ * Colliders for the Launchpad piece.
  *
- * A static flat cuboid platform. During Play mode, it becomes kinematic
- * (handled by the lifecycle system in Phase 3).
+ * Two-tier compound collider matching the visual mesh:
+ * 1. Base platform — flat 2×2 slab at Y=[0, 0.3]
+ * 2. Raised center platform — narrower 1×1 block on top at Y=[0.3, 0.8]
  *
- * @returns A single flat cuboid collider descriptor.
+ * During Play mode, handling is managed by the lifecycle system.
+ *
+ * @returns Two cuboid collider descriptors (base + raised center).
  */
 export function getLaunchpadColliders(): ColliderDescriptor[] {
   return [
+    // Base platform — full 2×2 area at the floor
     {
       type: 'cuboid',
       halfExtents: [1.0, 0.15, 1.0],
       position: [0, 0.15, 0],
+      rotation: [0, 0, 0],
+      sensor: false,
+      restitution: 0.3,
+    },
+    // Raised center platform — narrower 1×1 block on top of base
+    {
+      type: 'cuboid',
+      halfExtents: [0.5, 0.25, 0.5],
+      position: [0, 0.55, 0],
       rotation: [0, 0, 0],
       sensor: false,
       restitution: 0.3,
