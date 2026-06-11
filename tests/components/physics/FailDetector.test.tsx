@@ -1,6 +1,6 @@
 import { FailDetector } from '@/components/physics/FailDetector';
 import { useGameStore } from '@/store/useGameStore';
-import { render } from '@testing-library/react';
+import { act, render } from '@testing-library/react';
 import { describe, expect, it, vi, beforeEach } from 'vitest';
 
 // ─── Mock Rapier ───────────────────────────────────────────────────────
@@ -68,5 +68,62 @@ describe('FailDetector', () => {
     cb();
 
     expect(useGameStore.getState().machineState).toBe('BUILDING');
+  });
+
+  it('should trigger fail detection when marble is below Y = -5', () => {
+    vi.useFakeTimers();
+    useGameStore.setState({ machineState: 'PLAYING' });
+
+    mockRigidBody.mockReturnValue({
+      isDynamic: () => true,
+      translation: () => ({ x: 0, y: -10, z: 0 }),
+    });
+
+    render(<FailDetector />);
+
+    // Trigger physics step — should start fail timer
+    const cb = registeredBeforePhysicsCallback as () => void;
+    cb();
+
+    // Before timeout, state should still be PLAYING
+    expect(useGameStore.getState().machineState).toBe('PLAYING');
+
+    // After 500ms, state should transition to BUILDING
+    act(() => {
+      vi.advanceTimersByTime(500);
+    });
+    expect(useGameStore.getState().machineState).toBe('BUILDING');
+
+    vi.useRealTimers();
+  });
+
+  it('should cancel fail timer if marble returns above threshold', () => {
+    vi.useFakeTimers();
+    useGameStore.setState({ machineState: 'PLAYING' });
+
+    // First tick: marble below threshold -> starts timer
+    mockRigidBody.mockReturnValue({
+      isDynamic: () => true,
+      translation: () => ({ x: 0, y: -10, z: 0 }),
+    });
+
+    render(<FailDetector />);
+    const cb = registeredBeforePhysicsCallback as () => void;
+    cb();
+
+    // Second tick: marble back above threshold -> should cancel timer
+    mockRigidBody.mockReturnValue({
+      isDynamic: () => true,
+      translation: () => ({ x: 0, y: 0, z: 0 }),
+    });
+    cb();
+
+    // Advance past the delay — state should NOT change
+    act(() => {
+      vi.advanceTimersByTime(500);
+    });
+    expect(useGameStore.getState().machineState).toBe('PLAYING');
+
+    vi.useRealTimers();
   });
 });
