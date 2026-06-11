@@ -6,11 +6,6 @@ import * as THREE from 'three';
 
 // ─── Types ────────────────────────────────────────────────────────────
 
-export interface GridRaycastResult {
-  worldPoint: THREE.Vector3;
-  gridPosition: [number, number, number];
-}
-
 export interface GridInteractionResult {
   hoveredCell: [number, number, number] | null;
   isValid: boolean;
@@ -65,26 +60,6 @@ export function isCellOccupied(
       p.position[1] === position[1] &&
       p.position[2] === position[2],
   );
-}
-
-/**
- * Casts a Ray against the Y=0 ground plane and snaps the
- * intersection to integer grid coordinates.
- * Returns null if the ray does not intersect the plane.
- */
-export function raycastToGrid(ray: THREE.Ray): GridRaycastResult | null {
-  const plane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
-  const intersectionPoint = new THREE.Vector3();
-
-  const intersects = ray.intersectPlane(plane, intersectionPoint);
-  if (!intersects) {
-    return null;
-  }
-
-  return {
-    worldPoint: intersectionPoint.clone(),
-    gridPosition: snapToGrid(intersectionPoint),
-  };
 }
 
 // ─── Hook ─────────────────────────────────────────────────────────────

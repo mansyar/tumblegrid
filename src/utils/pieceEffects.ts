@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 
 export const GHOST_OPACITY = 0.35;
-export const SELECTION_COLOR = '#FFD700';
+export const SELECTION_COLOR = '#00D4FF';
 export const SELECTION_INTENSITY = 0.5;
 
 export interface SavedEmissive {

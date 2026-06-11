@@ -9,8 +9,6 @@ import {
   snapToGrid,
   isInBounds,
   isCellOccupied,
-  type GridRaycastResult,
-  raycastToGrid,
   useGridInteraction,
 } from '@/hooks/useGridInteraction';
 
@@ -124,44 +122,6 @@ describe('isCellOccupied', () => {
 
   it('should return false for empty array', () => {
     expect(isCellOccupied([0, 0, 0], [])).toBe(false);
-  });
-});
-
-// ─── Tests: raycastToGrid ─────────────────────────────────────────────
-describe('raycastToGrid', () => {
-  it('should return null when ray does not intersect Y=0 plane', () => {
-    const ray = new THREE.Ray(
-      new THREE.Vector3(0, 10, 0),
-      new THREE.Vector3(0, 1, 0),
-    );
-    expect(raycastToGrid(ray)).toBeNull();
-  });
-
-  it('should return grid position when ray hits Y=0 plane', () => {
-    const direction = new THREE.Vector3(3, 0, 3)
-      .sub(new THREE.Vector3(5, 10, 5))
-      .normalize();
-    const ray = new THREE.Ray(new THREE.Vector3(5, 10, 5), direction);
-
-    const result: GridRaycastResult | null = raycastToGrid(ray);
-    expect(result).not.toBeNull();
-    if (result) {
-      expect(result.gridPosition).toEqual([3, 0, 3]);
-      expect(typeof result.worldPoint.x).toBe('number');
-    }
-  });
-
-  it('should snap to nearest integer grid from arbitrary world point', () => {
-    const target = new THREE.Vector3(1.3, 0, 2.7);
-    const origin = new THREE.Vector3(10, 10, 10);
-    const direction = target.clone().sub(origin).normalize();
-    const ray = new THREE.Ray(origin, direction);
-
-    const result: GridRaycastResult | null = raycastToGrid(ray);
-    expect(result).not.toBeNull();
-    if (result) {
-      expect(result.gridPosition).toEqual([1, 0, 3]);
-    }
   });
 });
 

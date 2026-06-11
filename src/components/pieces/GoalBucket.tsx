@@ -21,6 +21,10 @@ const WALL_OFFSET = 0.95;
 function GoalBucketInner() {
   const baseGeometry = useMemo(() => createGoalBucketBaseGeometry(), []);
   const wallGeometry = useMemo(() => createGoalBucketWallGeometry(), []);
+  const sideWallGeometry = useMemo(
+    () => new THREE.BoxGeometry(0.1, 0.5, 1.8),
+    [],
+  );
 
   return (
     <group>
@@ -48,20 +52,14 @@ function GoalBucketInner() {
         />
       </mesh>
       {/* Walls along X (left/right) — sit on top of base */}
-      <mesh
-        geometry={new THREE.BoxGeometry(0.1, 0.5, 1.8)}
-        position={[-WALL_OFFSET, 0.45, 0]}
-      >
+      <mesh geometry={sideWallGeometry} position={[-WALL_OFFSET, 0.45, 0]}>
         <meshStandardMaterial
           color={PASTEL_YELLOW}
           emissive={PASTEL_YELLOW}
           emissiveIntensity={0.15}
         />
       </mesh>
-      <mesh
-        geometry={new THREE.BoxGeometry(0.1, 0.5, 1.8)}
-        position={[WALL_OFFSET, 0.45, 0]}
-      >
+      <mesh geometry={sideWallGeometry} position={[WALL_OFFSET, 0.45, 0]}>
         <meshStandardMaterial
           color={PASTEL_YELLOW}
           emissive={PASTEL_YELLOW}
