@@ -1,7 +1,7 @@
 import { useFrame } from '@react-three/fiber';
 import type { RapierRigidBody } from '@react-three/rapier';
 import { RigidBody } from '@react-three/rapier';
-import { useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import * as THREE from 'three';
 
 import { useGameStore } from '@/store/useGameStore';
@@ -109,17 +109,28 @@ export function Marble() {
     [launchpadPosition],
   );
 
-  // Track whether we've already applied the initial spawn impulse
-  const impulseAppliedRef = useRef(false);
+  // Increment each time we enter Play mode. The useFrame compares against
+  // the last session that received an impulse, avoiding stale ref issues.
+  const playSessionRef = useRef(0);
+  const lastImpulseSessionRef = useRef(-1);
 
-  // Apply a gentle initial impulse once when the rigid body first becomes available
+  useEffect(() => {
+    if (isPlaying) {
+      playSessionRef.current += 1;
+    }
+  }, [isPlaying]);
+
+  // Apply a gentle initial impulse once per play session.
+  // Uses session counter comparison rather than ref null checks
+  // because the RigidBody ref retains a stale reference after unmount.
   useFrame(() => {
     const body = rigidBodyRef.current;
-    if (!body || impulseAppliedRef.current) return;
+    if (!body) return;
+    if (lastImpulseSessionRef.current === playSessionRef.current) return;
 
     const [ix, iy, iz] = getInitialMarbleImpulse();
     body.applyImpulse({ x: ix, y: iy, z: iz }, true);
-    impulseAppliedRef.current = true;
+    lastImpulseSessionRef.current = playSessionRef.current;
   });
 
   if (!isPlaying) {
