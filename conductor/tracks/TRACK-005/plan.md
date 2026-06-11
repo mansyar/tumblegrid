@@ -52,13 +52,15 @@
     - [x] Create src/components/ui/ModeIndicator.tsx
     - [x] Read machineState from store
     - [x] Render mode text based on current state
-- [ ] Task: Write tests for Escape key handler
-    - [ ] Test: Escape key triggers Stop during PLAYING state
-    - [ ] Test: Escape key does nothing during BUILDING state
-- [ ] Task: Implement Escape key handler
-    - [ ] Create useEscapeKey hook or integrate into ModeToggle
-    - [ ] Listen for keydown events
-    - [ ] Dispatch Stop action when Escape pressed in Play Mode
+- [x] Task: Write tests for Escape key handler [2d805b6]
+    - [x] Test: Escape key triggers Stop during PLAYING state
+    - [x] Test: Escape key does nothing during BUILDING state
+    - [x] Test: Escape key dispatches SANDBOX_BUILDING during SANDBOX_PLAYING
+    - [x] Test: Escape key does nothing during SANDBOX_BUILDING state
+- [x] Task: Implement Escape key handler [2d805b6]
+    - [x] Create useEscapeKey hook (src/hooks/useEscapeKey.ts)
+    - [x] Listen for keydown events
+    - [x] Dispatch Stop action when Escape pressed in Play Mode
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Mode Controls & Indicator' (Protocol in workflow.md)
 
 ## Phase 3: Trajectory Preview
