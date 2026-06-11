@@ -27,9 +27,8 @@ function saveCompletedLevels(levels: Set<number>): void {
 }
 
 export function useCampaignProgress() {
-  const [completedLevels, setCompletedLevels] = useState<Set<number>>(
-    loadCompletedLevels,
-  );
+  const [completedLevels, setCompletedLevels] =
+    useState<Set<number>>(loadCompletedLevels);
 
   const isLevelUnlocked = useCallback(
     (levelIndex: number): boolean => {

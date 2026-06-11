@@ -1,7 +1,7 @@
 <protect>
 # Implementation Plan: Win/Lose Flow, Victory UI & Menus
 
-## Phase 1: Menu Navigation
+## Phase 1: Menu Navigation [checkpoint: PLACEHOLDER]
 
 **Objective:** Build the main menu, level-select screen, campaign progression persistence, and wire the screen navigation in App.tsx.
 
@@ -22,10 +22,10 @@
     - [x] Implement LevelSelect with grid of level cards showing number, title, lock state
     - [x] Greyed-out card with lock icon for locked levels; clickable card for unlocked
     - [x] "Back" button to return to main menu
-- [ ] **Task 1.5: Wire navigation flow**
-    - [ ] Connect MainMenu → LevelSelect (Campaign) and MainMenu → Game/Sandbox
-    - [ ] Connect LevelSelect → Game (campaign with selected level data)
-    - [ ] Verify sandbox mode navigation loads sandbox level directly
+- [x] **Task 1.5: Wire navigation flow** `d90f5e5`
+    - [x] Connect MainMenu → LevelSelect (Campaign) and MainMenu → Game/Sandbox
+    - [x] Connect LevelSelect → Game (campaign with selected level data)
+    - [x] Verify sandbox mode navigation loads sandbox level directly
 - [ ] **Task: Conductor - User Manual Verification 'Menu Navigation' (Protocol in workflow.md)**
 
 ## Phase 2: Victory Detection
