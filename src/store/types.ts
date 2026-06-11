@@ -62,6 +62,8 @@ export interface GameState {
   launchpadPosition: [number, number, number];
   /** Set of goal bucket piece IDs that the marble is currently inside. */
   marbleInBucketIds: Set<string>;
+  /** Toggle for Rapier debug wireframe visualization (D key). */
+  debugPhysics: boolean;
 }
 
 export interface StoreActions {
@@ -84,6 +86,7 @@ export interface StoreActions {
     points: [number, number, number][],
   ) => void;
   setMarbleInBucket: (bucketId: string, inside: boolean) => void;
+  toggleDebugPhysics: () => void;
 }
 
 export type GameStore = GameState & StoreActions;

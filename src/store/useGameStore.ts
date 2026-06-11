@@ -11,6 +11,7 @@ import {
   createSetMarbleInBucket,
   createSetMode,
   createSetSelectedBlueprintType,
+  createToggleDebugPhysics,
   createTransitionState,
   createUpdateActiveBlueprint,
   createUpdateTrajectoryCache,
@@ -42,6 +43,7 @@ const initialState: GameState = {
   trajectoryPreviewCache: new Map(),
   launchpadPosition: [0, 1, 0],
   marbleInBucketIds: new Set(),
+  debugPhysics: false,
 };
 
 export const useGameStore = create<GameStore>()(
@@ -89,6 +91,8 @@ export const useGameStore = create<GameStore>()(
 
       setMarbleInBucket: (bucketId: string, inside: boolean) =>
         set(createSetMarbleInBucket(bucketId, inside)),
+
+      toggleDebugPhysics: () => set(createToggleDebugPhysics()),
     }),
     { name: 'TumbleGridStore' },
   ),

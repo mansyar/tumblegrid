@@ -1,10 +1,12 @@
 import { PhysicsWorld } from '@/components/physics/PhysicsWorld';
 import { Scene } from '@/components/scene/Scene';
+import { useDebugToggle } from '@/hooks/useDebugToggle';
 import { usePlayLoop } from '@/hooks/usePlayLoop';
 import { Canvas } from '@react-three/fiber';
 
 export function GameCanvas() {
   usePlayLoop();
+  useDebugToggle();
 
   return (
     <div data-testid="game-canvas" style={{ width: '100%', height: '100%' }}>

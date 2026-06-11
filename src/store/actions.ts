@@ -209,6 +209,13 @@ export const createUpdateTrajectoryCache =
     };
   };
 
+export const createToggleDebugPhysics =
+  () =>
+  (state: GameState): GameState => ({
+    ...state,
+    debugPhysics: !state.debugPhysics,
+  });
+
 export const createSetMarbleInBucket =
   (bucketId: string, inside: boolean) =>
   (state: GameState): GameState => {

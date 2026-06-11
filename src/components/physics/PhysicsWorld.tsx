@@ -19,6 +19,7 @@ interface PhysicsWorldProps {
  */
 export function PhysicsWorld({ children }: PhysicsWorldProps) {
   const machineState = useGameStore((s) => s.machineState);
+  const debugPhysics = useGameStore((s) => s.debugPhysics);
   const paused = getPhysicsPaused(machineState);
 
   return (
@@ -26,7 +27,7 @@ export function PhysicsWorld({ children }: PhysicsWorldProps) {
       gravity={GRAVITY}
       timeStep={FIXED_TIMESTEP}
       paused={paused}
-      debug={false}
+      debug={debugPhysics}
     >
       {children}
       <FailDetector />
