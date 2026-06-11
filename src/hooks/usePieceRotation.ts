@@ -31,8 +31,11 @@ export function usePieceRotation(): void {
 
       // Priority 2: Rotate ghost preview (pre-placement)
       if (activeBlueprintNode) {
-        const newRotation = ((activeBlueprintNode.rotationIndex + 1) %
-          4) as 0 | 1 | 2 | 3;
+        const newRotation = ((activeBlueprintNode.rotationIndex + 1) % 4) as
+          | 0
+          | 1
+          | 2
+          | 3;
         updateActiveBlueprint({
           ...activeBlueprintNode,
           rotationIndex: newRotation,

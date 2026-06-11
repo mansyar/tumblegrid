@@ -64,7 +64,15 @@ export function usePieceSelection(): void {
       // Clicked on empty space → clear selection
       clearSelection();
     }
-  }, [camera, pointer, placedPieces, selectedPieceId, selectPiece, clearSelection, removePiece]);
+  }, [
+    camera,
+    pointer,
+    placedPieces,
+    selectedPieceId,
+    selectPiece,
+    clearSelection,
+    removePiece,
+  ]);
 
   useEffect(() => {
     const canvas = gl.domElement;

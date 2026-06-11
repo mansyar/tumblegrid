@@ -98,7 +98,7 @@
     - [x] Ensure highlight is clearly visible but not distracting
     - [x] Write unit test for highlight rendering
 
-- [ ] **Task: Implement rotation via R key**
+- [~] **Task: Implement rotation via R key**
     - [ ] Add keyboard event listener for R key
     - [ ] Call store.rotatePiece() when R pressed and piece selected
     - [ ] Implement rotation cycling (0→1→2→3→0)
