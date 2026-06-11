@@ -112,23 +112,23 @@
     - [x] Test: trajectory preview appears on hover in Build Mode
 - [x] Task: Conductor - User Manual Verification 'Phase 4: HUD Container & Integration' (Protocol in workflow.md)
 
-## Phase 5: Final Verification
+## Phase 5: Final Verification [checkpoint: final]
 
-- [ ] Task: Run full test suite
-    - [ ] Execute pnpm run test
-    - [ ] Verify all tests pass
-    - [ ] Verify coverage meets 80% threshold
-- [ ] Task: Run linting and type checking
-    - [ ] Execute pnpm run lint
-    - [ ] Execute pnpm run typecheck
-    - [ ] Fix any errors or warnings
-- [ ] Task: Manual verification
-    - [ ] Start dev server with pnpm run dev
-    - [ ] Verify inventory panel displays correct counts
-    - [ ] Verify piece selection works
-    - [ ] Verify Play/Stop buttons function
-    - [ ] Verify mode indicator updates
-    - [ ] Verify trajectory preview appears on hover
-    - [ ] Verify Escape key stops simulation
-- [ ] Task: Conductor - User Manual Verification 'Phase 5: Final Verification' (Protocol in workflow.md)
+- [x] Task: Run full test suite
+    - [x] Execute pnpm run test
+    - [x] Verify all tests pass
+    - [x] Verify coverage meets 80% threshold
+- [x] Task: Run linting and type checking
+    - [x] Execute pnpm run lint
+    - [x] Execute pnpm run typecheck
+    - [x] Fix any errors or warnings
+- [x] Task: Manual verification
+    - [x] Start dev server with pnpm run dev
+    - [x] Verify inventory panel displays correct counts
+    - [x] Verify piece selection works
+    - [x] Verify Play/Stop buttons function
+    - [x] Verify mode indicator updates
+    - [x] Verify trajectory preview appears on hover
+    - [x] Verify Escape key stops simulation
+- [x] Task: Conductor - User Manual Verification 'Phase 5: Final Verification' (Protocol in workflow.md)
 </protect>
