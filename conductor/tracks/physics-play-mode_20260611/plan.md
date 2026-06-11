@@ -76,4 +76,8 @@
     - [x] Wire Stop button (from TRACK-005) to actually trigger physics cleanup
     - [x] Wire `useDebugToggle` into `GameCanvas.tsx`
 - [x] Task: Conductor - User Manual Verification 'Phase 3: Play Loop Lifecycle & Debug' (Protocol in workflow.md)
+
+## Phase: Review Fixes
+
+- [x] Task: Apply review suggestions [7e1df57]
 </protect>
