@@ -300,6 +300,15 @@ describe('Store Actions', () => {
 
       expect(result.machineState).toBe('SANDBOX_BUILDING');
     });
+
+    it('should clear marbleInBucketIds from previous level', () => {
+      const state = createTestState({
+        marbleInBucketIds: new Set(['old-bucket-id']),
+      });
+      const result = createLoadLevel(testLevel)(state);
+
+      expect(result.marbleInBucketIds.size).toBe(0);
+    });
   });
 
   describe('createLoadLevel (stashedLevelDefinition)', () => {

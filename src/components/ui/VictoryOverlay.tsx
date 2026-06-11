@@ -16,7 +16,8 @@ export function VictoryOverlay() {
   }
 
   const isLastLevel =
-    activeLevelIndex !== undefined && activeLevelIndex >= campaignLevels.length - 1;
+    activeLevelIndex !== undefined &&
+    activeLevelIndex >= campaignLevels.length - 1;
 
   const handleNextLevel = () => {
     if (activeLevelIndex === undefined || isLastLevel) return;

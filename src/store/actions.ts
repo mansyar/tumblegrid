@@ -183,6 +183,7 @@ export const createLoadLevel =
       selectedBlueprintType: null,
       trajectoryPreviewCache: new Map(),
       launchpadPosition: level.launchpadPosition,
+      marbleInBucketIds: new Set(),
       stashedLevelDefinition: level,
       showLevelIntro: state.activeMode === 'CAMPAIGN',
     };

@@ -27,13 +27,17 @@ export function createLaunchpadRingGeometry(): THREE.TorusGeometry {
   return new THREE.TorusGeometry(0.55, 0.05, 8, 16);
 }
 
-function LaunchpadInner() {
+interface LaunchpadProps {
+  position?: [number, number, number];
+}
+
+function LaunchpadInner({ position }: LaunchpadProps) {
   const baseGeometry = useMemo(() => createLaunchpadBaseGeometry(), []);
   const centerGeometry = useMemo(() => createLaunchpadCenterGeometry(), []);
   const ringGeometry = useMemo(() => createLaunchpadRingGeometry(), []);
 
   return (
-    <group>
+    <group position={position}>
       {/* Base platform (bottom at Y=0) */}
       <mesh geometry={baseGeometry} position={[0, 0.15, 0]}>
         <meshStandardMaterial color={DARK_GRAY} />

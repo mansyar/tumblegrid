@@ -1,5 +1,6 @@
 import { Marble } from '@/components/physics/Marble';
 import { PieceCollider } from '@/components/physics/PieceCollider';
+import { Launchpad } from '@/components/pieces/Launchpad';
 import { PieceFactory } from '@/components/pieces/PieceFactory';
 import { GridFloor } from '@/components/scene/GridFloor';
 import { GridGhost } from '@/components/scene/GridGhost';
@@ -24,6 +25,7 @@ export function Scene() {
   const machineState = useGameStore((s) => s.machineState);
   const selectedPieceId = useGameStore((s) => s.selectedPieceId);
   const selectedBlueprintType = useGameStore((s) => s.selectedBlueprintType);
+  const launchpadPosition = useGameStore((s) => s.launchpadPosition);
   const loadLevel = useGameStore((s) => s.loadLevel);
 
   // Auto-load first campaign level on initial mount
@@ -71,6 +73,9 @@ export function Scene() {
 
       {/* Grid Floor */}
       <GridFloor />
+
+      {/* Launchpad — static piece positioned from level data */}
+      <Launchpad position={launchpadPosition} />
 
       {/* Placed Pieces */}
       {placedPieces.map((piece) => (

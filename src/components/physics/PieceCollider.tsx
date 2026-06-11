@@ -61,12 +61,15 @@ function PieceColliderInner({ piece }: { piece: PlacedPiece }) {
                 true,
               );
             }
-            if (piece.type === 'goal_bucket') {
+            // Only track bucket entry/exit on the sensor collider,
+            // not on walls/floor (which would constantly clear the set
+            // as the marble bounces against bucket surfaces).
+            if (piece.type === 'goal_bucket' && desc.sensor) {
               setMarbleInBucket(piece.id, true);
             }
           }}
           onIntersectionExit={(_payload) => {
-            if (piece.type === 'goal_bucket') {
+            if (piece.type === 'goal_bucket' && desc.sensor) {
               setMarbleInBucket(piece.id, false);
             }
           }}

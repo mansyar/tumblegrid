@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
 import { useGameStore } from '@/store/useGameStore';
+import { useEffect, useRef } from 'react';
 import './LevelIntro.css';
 
 export function LevelIntro() {
@@ -43,9 +43,7 @@ export function LevelIntro() {
       data-testid="level-intro"
     >
       <h2 className="level-intro__title">{levelDefinition.title}</h2>
-      <p className="level-intro__description">
-        {levelDefinition.description}
-      </p>
+      <p className="level-intro__description">{levelDefinition.description}</p>
       <span className="level-intro__dismiss">Click anywhere to continue</span>
     </button>
   );
