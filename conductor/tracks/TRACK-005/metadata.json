@@ -1,0 +1,8 @@
+{
+  "track_id": "TRACK-005",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-06-11T14:01:00Z",
+  "updated_at": "2026-06-11T14:01:00Z",
+  "description": "Build Mode UI (Inventory & Controls) - Inventory sidebar, mode controls, trajectory preview"
+}

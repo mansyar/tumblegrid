@@ -6,10 +6,19 @@ vi.mock('@/components/scene/GameCanvas', () => ({
   GameCanvas: () => <div data-testid="game-canvas">GameCanvas</div>,
 }));
 
+vi.mock('@/components/ui/InventoryPanel', () => ({
+  InventoryPanel: () => <div data-testid="inventory-panel">InventoryPanel</div>,
+}));
+
 describe('App', () => {
   it('renders GameCanvas component', () => {
     render(<App />);
     expect(screen.getByTestId('game-canvas')).toBeDefined();
+  });
+
+  it('renders InventoryPanel component', () => {
+    render(<App />);
+    expect(screen.getByTestId('inventory-panel')).toBeDefined();
   });
 
   it('renders with full viewport dimensions', () => {

@@ -19,25 +19,24 @@ describe('InventoryPanel styles', () => {
 
   describe('active state', () => {
     it('provides distinct visual style for active item', () => {
-      // CSS uses single quotes for attribute selectors
-      expect(cssContent).toMatch(/\[data-active='true'\]/);
+      expect(cssContent).toMatch(/data-active="true"/);
     });
 
     it('active item has a highlighted border or background', () => {
       expect(cssContent).toMatch(
-        /\[data-active='true'\][^{]*\{(?:[^}]*(?:border|background|outline|box-shadow)[^}]*)\}/,
+        /\[data-active="true"\][^{]*\{(?:[^}]*(?:border|background|outline|box-shadow)[^}]*)\}/,
       );
     });
   });
 
   describe('disabled state', () => {
     it('provides greyed-out appearance for disabled item', () => {
-      expect(cssContent).toMatch(/\[data-disabled='true'\]/);
+      expect(cssContent).toMatch(/data-disabled="true"/);
     });
 
     it('disabled item has reduced opacity or grey color', () => {
       expect(cssContent).toMatch(
-        /\[data-disabled='true'\][^{]*\{(?:[^}]*(?:opacity|color|cursor)[^}]*)\}/,
+        /\[data-disabled="true"\][^{]*\{(?:[^}]*(?:opacity|color|cursor)[^}]*)\}/,
       );
     });
 

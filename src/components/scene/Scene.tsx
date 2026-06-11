@@ -57,7 +57,8 @@ export function Scene() {
   const selectedPieceType =
     selectedPieceId !== undefined
       ? null
-      : selectedBlueprintType ?? getSelectedPieceType(inventory, machineState);
+      : (selectedBlueprintType ??
+        getSelectedPieceType(inventory, machineState));
 
   useGridInteraction(selectedPieceType);
   usePieceSelection();
