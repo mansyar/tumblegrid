@@ -51,7 +51,7 @@
     - [~] Note: Static colliders work correctly for MVP. Kinematic switching is needed only for pushable/movable pieces (future feature).<br>Current behavior: PieceCollider mounts during PLAYING (static colliders), unmounts during BUILDING. Adequate for MVP.
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Piece Colliders' (Protocol in workflow.md) — verified in Phase 3 checkpoint
 
-## Phase 3: Play Loop Lifecycle & Debug
+## Phase 3: Play Loop Lifecycle & Debug [checkpoint: c765bde]
 
 - [x] Task: `usePlayLoop` lifecycle hook [bdc61b9] + tests [ac416d2]
     - [x] Create `src/hooks/usePlayLoop.ts`
@@ -75,5 +75,5 @@
     - [x] Ensure Collider components mount/unmount with Play/Stop transitions
     - [x] Wire Stop button (from TRACK-005) to actually trigger physics cleanup
     - [x] Wire `useDebugToggle` into `GameCanvas.tsx`
-- [~] Task: Conductor - User Manual Verification 'Phase 3: Play Loop Lifecycle & Debug' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 3: Play Loop Lifecycle & Debug' (Protocol in workflow.md)
 </protect>
