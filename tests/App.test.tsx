@@ -6,16 +6,8 @@ vi.mock('@/components/scene/GameCanvas', () => ({
   GameCanvas: () => <div data-testid="game-canvas">GameCanvas</div>,
 }));
 
-vi.mock('@/components/ui/InventoryPanel', () => ({
-  InventoryPanel: () => <div data-testid="inventory-panel">InventoryPanel</div>,
-}));
-
-vi.mock('@/components/ui/ModeToggle', () => ({
-  ModeToggle: () => <div data-testid="mode-toggle">ModeToggle</div>,
-}));
-
-vi.mock('@/components/ui/ModeIndicator', () => ({
-  ModeIndicator: () => <div data-testid="mode-indicator">ModeIndicator</div>,
+vi.mock('@/components/ui/HUD', () => ({
+  HUD: () => <div data-testid="hud">HUD</div>,
 }));
 
 vi.mock('@/hooks/useEscapeKey', () => ({
@@ -28,19 +20,9 @@ describe('App', () => {
     expect(screen.getByTestId('game-canvas')).toBeDefined();
   });
 
-  it('renders InventoryPanel component', () => {
+  it('renders HUD component', () => {
     render(<App />);
-    expect(screen.getByTestId('inventory-panel')).toBeDefined();
-  });
-
-  it('renders ModeToggle component', () => {
-    render(<App />);
-    expect(screen.getByTestId('mode-toggle')).toBeDefined();
-  });
-
-  it('renders ModeIndicator component', () => {
-    render(<App />);
-    expect(screen.getByTestId('mode-indicator')).toBeDefined();
+    expect(screen.getByTestId('hud')).toBeDefined();
   });
 
   it('renders with full viewport dimensions', () => {
