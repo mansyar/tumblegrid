@@ -1,4 +1,5 @@
 import { Marble } from '@/components/physics/Marble';
+import { PieceCollider } from '@/components/physics/PieceCollider';
 import { PieceFactory } from '@/components/pieces/PieceFactory';
 import { GridFloor } from '@/components/scene/GridFloor';
 import { GridGhost } from '@/components/scene/GridGhost';
@@ -88,6 +89,9 @@ export function Scene() {
 
       {/* Marble — dynamic sphere rigid body, only renders during Play */}
       <Marble />
+
+      {/* Piece Colliders — Rapier colliders for all placed pieces during Play */}
+      <PieceCollider />
 
       {/* OrbitControls with clamps and damping */}
       <OrbitControls

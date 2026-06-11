@@ -22,7 +22,7 @@
 
 ## Phase 2: Piece Colliders
 
-- [ ] Task: Straight Ramp collider
+- [~] Task: Straight Ramp collider
     - [ ] Create `src/components/physics/PieceCollider.tsx` — factory that dispatches by piece type
     - [ ] Implement straight ramp tilted cuboid collider (pitch aligned with rotation index)
     - [ ] Write test: verify collider orientation matches rotation index
