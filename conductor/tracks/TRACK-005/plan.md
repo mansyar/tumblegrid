@@ -131,4 +131,8 @@
     - [x] Verify trajectory preview appears on hover
     - [x] Verify Escape key stops simulation
 - [x] Task: Conductor - User Manual Verification 'Phase 5: Final Verification' (Protocol in workflow.md)
+
+## Phase 6: Review Fixes
+
+- [x] Task: Apply review suggestions f1f21bf
 </protect>
