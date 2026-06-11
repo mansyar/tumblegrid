@@ -71,12 +71,12 @@
     - [x] Handle overlap detection (prevent placement on occupied cell)
     - [x] Write unit test for placement integration
 
-- [ ] **Task: Mount pieces from store in GameCanvas**
-    - [ ] Modify `src/components/scene/GameCanvas.tsx`
-    - [ ] Iterate over store.placedPieces array
-    - [ ] Render PieceFactory for each placed piece
-    - [ ] Apply correct position and rotation from store
-    - [ ] Write unit test for piece rendering from store
+- [x] **Task: Mount pieces from store in GameCanvas** `[49fc6c9]`
+    - [x] Modify `src/components/scene/Scene.tsx` (inside R3F Canvas context)
+    - [x] Iterate over store.placedPieces array
+    - [x] Render PieceFactory for each placed piece
+    - [x] Apply correct position and rotation from store
+    - [x] Write unit test for piece rendering from store
 
 - [ ] **Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)**
 
