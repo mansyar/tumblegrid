@@ -48,13 +48,13 @@
 
 ## Phase 2: Grid Interaction (Raycasting)
 
-- [ ] **Task: Implement useGridInteraction hook**
-    - [ ] Create `src/hooks/useGridInteraction.ts`
-    - [ ] Implement ray casting from camera through pointer position
-    - [ ] Implement floor plane intersection (Y=0)
-    - [ ] Implement grid snapping (integer coordinate rounding)
-    - [ ] Support normalized pointer events (mouse + touch)
-    - [ ] Write unit test for grid snapping logic
+- [x] **Task: Implement useGridInteraction hook** `[45e4c8f]`
+    - [x] Create `src/hooks/useGridInteraction.ts`
+    - [x] Implement ray casting from camera through pointer position
+    - [x] Implement floor plane intersection (Y=0)
+    - [x] Implement grid snapping (integer coordinate rounding)
+    - [x] Support normalized pointer events (mouse + touch)
+    - [x] Write unit test for grid snapping logic
 
 - [ ] **Task: Implement GridGhost preview component**
     - [ ] Create `src/components/scene/GridGhost.tsx`
