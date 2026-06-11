@@ -84,13 +84,13 @@
 
 ## Phase 3: Selection & Rotation
 
-- [ ] **Task: Implement usePieceSelection hook**
-    - [ ] Create `src/hooks/usePieceSelection.ts`
-    - [ ] Implement click detection on placed pieces (raycasting)
-    - [ ] Call store.selectPiece() when piece clicked
-    - [ ] Call store.clearSelection() when empty space clicked
-    - [ ] Call store.removePiece() when selected piece clicked again
-    - [ ] Write unit test for selection logic
+- [x] **Task: Implement usePieceSelection hook** `[048b429]`
+    - [x] Create `src/hooks/usePieceSelection.ts`
+    - [x] Implement click detection on placed pieces (raycasting)
+    - [x] Call store.selectPiece() when piece clicked
+    - [x] Call store.clearSelection() when empty space clicked
+    - [x] Call store.removePiece() when selected piece clicked again
+    - [x] Write unit test for selection logic
 
 - [ ] **Task: Implement selection highlight effect**
     - [ ] Add outline glow effect to selected piece
