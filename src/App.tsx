@@ -1,7 +1,7 @@
 import { GameCanvas } from '@/components/scene/GameCanvas';
 import { InventoryPanel } from '@/components/ui/InventoryPanel';
-import { ModeToggle } from '@/components/ui/ModeToggle';
 import { ModeIndicator } from '@/components/ui/ModeIndicator';
+import { ModeToggle } from '@/components/ui/ModeToggle';
 import { useEscapeKey } from '@/hooks/useEscapeKey';
 
 export function App() {

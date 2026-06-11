@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
 import { useGameStore } from '@/store/useGameStore';
+import { useEffect } from 'react';
 
 export function useEscapeKey() {
   const machineState = useGameStore((s) => s.machineState);
