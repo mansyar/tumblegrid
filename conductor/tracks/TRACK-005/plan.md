@@ -3,19 +3,19 @@
 
 ## Phase 1: Inventory Panel
 
-- [ ] Task: Write tests for InventoryPanel component
-    - [ ] Test: renders all piece types from store inventory
-    - [ ] Test: displays correct remaining count for each piece type
-    - [ ] Test: highlights the active blueprint type
-    - [ ] Test: greys out and disables piece types with 0 count
-    - [ ] Test: clicking a piece type updates store activeBlueprintNode.type
-- [ ] Task: Implement InventoryPanel component
-    - [ ] Create src/components/ui/InventoryPanel.tsx
-    - [ ] Read inventory and activeBlueprintNode from store
-    - [ ] Render piece type list with icons, labels, and counts
-    - [ ] Implement click handler to set active blueprint type
-    - [ ] Apply active state highlighting
-    - [ ] Apply disabled state for zero-count items
+- [x] Task: Write tests for InventoryPanel component [905b010]
+    - [x] Test: renders all piece types from store inventory
+    - [x] Test: displays correct remaining count for each piece type
+    - [x] Test: highlights the active blueprint type
+    - [x] Test: greys out and disables piece types with 0 count
+    - [x] Test: clicking a piece type updates store activeBlueprintNode.type
+- [x] Task: Implement InventoryPanel component [905b010]
+    - [x] Create src/components/ui/InventoryPanel.tsx
+    - [x] Read inventory and activeBlueprintNode from store
+    - [x] Render piece type list with icons, labels, and counts
+    - [x] Implement click handler to set active blueprint type
+    - [x] Apply active state highlighting
+    - [x] Apply disabled state for zero-count items
 - [ ] Task: Write tests for inventory item styling
     - [ ] Test: active item has distinct visual style
     - [ ] Test: disabled item has greyed-out appearance
