@@ -2,7 +2,7 @@ import { Physics } from '@react-three/rapier';
 import type { ReactNode } from 'react';
 
 import { useGameStore } from '@/store/useGameStore';
-import { getPhysicsPaused, GRAVITY, FIXED_TIMESTEP } from '@/utils/physics';
+import { FIXED_TIMESTEP, GRAVITY, getPhysicsPaused } from '@/utils/physics';
 
 interface PhysicsWorldProps {
   children: ReactNode;

@@ -8,13 +8,13 @@
     - [x] Write test: verify physics world instantiates without errors
     - [x] Write test: verify gravity vector is correctly applied
     - [x] Wire `PhysicsWorld` into `GameCanvas.tsx` — only active during `PLAYING` / `SANDBOX_PLAYING` states
-- [ ] Task: Marble dynamic rigid body
-    - [ ] Create `src/components/physics/Marble.tsx` — dynamic sphere rigid body (radius ~0.5)
-    - [ ] Set physics properties: mass=1, restitution~0.3, friction~0.5, linearDamping~0.1
-    - [ ] Implement spawn logic: read `launchpadPosition` from store on Play
-    - [ ] Write test: verify marble spawns at correct launchpad position
-    - [ ] Write test: verify marble properties match expected values
-- [ ] Task: Marble visual & trail
+- [x] Task: Marble dynamic rigid body [75c57bd]
+    - [x] Create `src/components/physics/Marble.tsx` — dynamic sphere rigid body (radius ~0.5)
+    - [x] Set physics properties: mass=1, restitution~0.3, friction~0.5, linearDamping~0.1
+    - [x] Implement spawn logic: read `launchpadPosition` from store on Play
+    - [x] Write test: verify marble spawns at correct launchpad position
+    - [x] Write test: verify marble properties match expected values
+- [~] Task: Marble visual & trail
     - [ ] Add neon emissive sphere visual mesh (child of the rigid body)
     - [ ] Implement simple fading ribbon trail: array of recent positions -> THREE.BufferGeometry Line with opacity fade over ~1s
     - [ ] Write test: verify trail points are recorded as marble moves (pure function test)
