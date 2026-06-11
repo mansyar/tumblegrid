@@ -31,7 +31,7 @@
     - [ ] Ensure piece occupies 1 grid cell
     - [ ] Write unit test for HalfPipe rendering
 
-- [ ] **Task: Create GoalBucket mesh component**
+- [x] **Task: Create GoalBucket mesh component** `[645f212]`
     - [ ] Create `src/components/pieces/GoalBucket.tsx`
     - [ ] Implement open container geometry
     - [ ] Apply pastel yellow material with emissive glow
