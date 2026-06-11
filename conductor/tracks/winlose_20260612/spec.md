@@ -1,3 +1,4 @@
+<protect>
 # Specification: Win/Lose Flow, Victory UI & Menus
 
 ## Overview
@@ -84,3 +85,4 @@ Implement the complete menu flow and win/lose lifecycle for TumbleGrid. Players 
 - Level reset confirmation dialog
 - Animated transitions between screens
 - PWA or service worker support
+</protect>

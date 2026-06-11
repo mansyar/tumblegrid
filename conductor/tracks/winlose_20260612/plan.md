@@ -1,3 +1,4 @@
+<protect>
 # Implementation Plan: Win/Lose Flow, Victory UI & Menus
 
 ## Phase 1: Menu Navigation
@@ -67,3 +68,4 @@
     - [ ] Connect overlay buttons: Next Level → load level+1, Retry → resetLevel() + reload, Back to Menu → navigate home
     - [ ] Verify retry resets all placed pieces to initial state
 - [ ] **Task: Conductor - User Manual Verification 'Victory Overlay & Level Intro' (Protocol in workflow.md)**
+</protect>
