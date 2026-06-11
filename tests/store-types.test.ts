@@ -131,6 +131,7 @@ describe('Store Type Exports', () => {
       placedPieces: [],
       activeBlueprintNode: undefined,
       selectedPieceId: undefined,
+      selectedBlueprintType: null,
       trajectoryPreviewCache: new Map(),
     };
     expect(state.machineState).toBe('BUILDING');

@@ -37,6 +37,7 @@ export function Scene() {
   const inventory = useGameStore((s) => s.inventory);
   const machineState = useGameStore((s) => s.machineState);
   const selectedPieceId = useGameStore((s) => s.selectedPieceId);
+  const selectedBlueprintType = useGameStore((s) => s.selectedBlueprintType);
   const loadLevel = useGameStore((s) => s.loadLevel);
 
   // Auto-load first campaign level on initial mount
@@ -51,11 +52,12 @@ export function Scene() {
   }, [loadLevel]);
 
   // When a piece is selected, hide the ghost preview (selection mode)
-  // Otherwise, use the first available inventory type for placement mode
+  // Otherwise, use the selectedBlueprintType from the inventory panel,
+  // falling back to the first available inventory type.
   const selectedPieceType =
     selectedPieceId !== undefined
       ? null
-      : getSelectedPieceType(inventory, machineState);
+      : selectedBlueprintType ?? getSelectedPieceType(inventory, machineState);
 
   useGridInteraction(selectedPieceType);
   usePieceSelection();

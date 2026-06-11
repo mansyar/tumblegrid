@@ -8,6 +8,15 @@ import type {
   PlacedPiece,
 } from './types';
 
+export const createSetSelectedBlueprintType =
+  (pieceType: PieceType | null) =>
+  (state: GameState): GameState => {
+    return {
+      ...state,
+      selectedBlueprintType: pieceType,
+    };
+  };
+
 export const createPlacePiece =
   (
     pieceType: PieceType,
@@ -156,6 +165,7 @@ export const createLoadLevel =
       })),
       selectedPieceId: undefined,
       activeBlueprintNode: undefined,
+      selectedBlueprintType: null,
       trajectoryPreviewCache: new Map(),
     };
   };

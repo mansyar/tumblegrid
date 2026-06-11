@@ -43,6 +43,7 @@ describe('Zustand Store Integration', () => {
       placedPieces: [],
       activeBlueprintNode: undefined,
       selectedPieceId: undefined,
+      selectedBlueprintType: null,
       trajectoryPreviewCache: new Map(),
     });
   });

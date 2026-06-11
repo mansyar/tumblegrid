@@ -9,6 +9,7 @@ import {
   createRotatePiece,
   createSelectPiece,
   createSetMode,
+  createSetSelectedBlueprintType,
   createTransitionState,
   createUpdateActiveBlueprint,
   createUpdateTrajectoryCache,
@@ -36,6 +37,7 @@ const initialState: GameState = {
   placedPieces: [],
   activeBlueprintNode: undefined,
   selectedPieceId: undefined,
+  selectedBlueprintType: null,
   trajectoryPreviewCache: new Map(),
 };
 
@@ -73,6 +75,9 @@ export const useGameStore = create<GameStore>()(
       selectPiece: (id: string) => set(createSelectPiece(id)),
 
       clearSelection: () => set(createClearSelection()),
+
+      setSelectedBlueprintType: (pieceType: PieceType | null) =>
+        set(createSetSelectedBlueprintType(pieceType)),
 
       updateTrajectoryCache: (
         key: string,

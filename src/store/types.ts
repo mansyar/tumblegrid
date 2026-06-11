@@ -57,6 +57,7 @@ export interface GameState {
   placedPieces: PlacedPiece[];
   activeBlueprintNode: ActiveBlueprintNode | undefined;
   selectedPieceId: string | undefined;
+  selectedBlueprintType: PieceType | null;
   trajectoryPreviewCache: Map<string, [number, number, number][]>;
 }
 
@@ -74,6 +75,7 @@ export interface StoreActions {
   updateActiveBlueprint: (node: ActiveBlueprintNode | undefined) => void;
   selectPiece: (id: string) => void;
   clearSelection: () => void;
+  setSelectedBlueprintType: (pieceType: PieceType | null) => void;
   updateTrajectoryCache: (
     key: string,
     points: [number, number, number][],

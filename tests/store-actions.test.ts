@@ -29,6 +29,7 @@ const createTestState = (overrides?: Partial<GameState>): GameState => ({
   placedPieces: [],
   activeBlueprintNode: undefined,
   selectedPieceId: undefined,
+  selectedBlueprintType: null,
   trajectoryPreviewCache: new Map(),
   ...overrides,
 });
