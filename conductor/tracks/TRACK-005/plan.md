@@ -110,7 +110,7 @@
     - [x] Test: inventory selection affects ghost preview in 3D scene
     - [x] Test: mode transitions update UI elements correctly
     - [x] Test: trajectory preview appears on hover in Build Mode
-- [ ] Task: Conductor - User Manual Verification 'Phase 4: HUD Container & Integration' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 4: HUD Container & Integration' (Protocol in workflow.md)
 
 ## Phase 5: Final Verification
 
