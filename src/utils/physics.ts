@@ -51,6 +51,21 @@ export function computeMarbleSpawnPosition(
   ];
 }
 
+/**
+ * Initial impulse applied to the marble when it spawns on the launchpad.
+ * A gentle push in the +X direction so the marble rolls off the launchpad
+ * rather than sitting idle on the flat surface.
+ */
+export const INITIAL_MARBLE_IMPULSE: [number, number, number] = [2, 0, 0];
+
+/**
+ * Returns the initial impulse applied to the marble on spawn.
+ * Can be customized per-level if needed in the future.
+ */
+export function getInitialMarbleImpulse(): [number, number, number] {
+  return [...INITIAL_MARBLE_IMPULSE];
+}
+
 /** Impulse magnitude applied to the marble by a Speed Booster. */
 export const BOOST_FORCE = 8;
 

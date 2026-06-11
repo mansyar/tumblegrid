@@ -7,7 +7,11 @@ import * as THREE from 'three';
 import { useGameStore } from '@/store/useGameStore';
 import { computeTrailOpacity, recordTrailPoint } from '@/utils/marbleTrail';
 import type { TrailPoint } from '@/utils/marbleTrail';
-import { MARBLE_CONFIG, computeMarbleSpawnPosition } from '@/utils/physics';
+import {
+  MARBLE_CONFIG,
+  computeMarbleSpawnPosition,
+  getInitialMarbleImpulse,
+} from '@/utils/physics';
 
 const MARBLE_COLOR = '#00E5FF';
 const TRAIL_MAX_POINTS = 60;
@@ -104,6 +108,19 @@ export function Marble() {
     () => computeMarbleSpawnPosition(launchpadPosition),
     [launchpadPosition],
   );
+
+  // Track whether we've already applied the initial spawn impulse
+  const impulseAppliedRef = useRef(false);
+
+  // Apply a gentle initial impulse once when the rigid body first becomes available
+  useFrame(() => {
+    const body = rigidBodyRef.current;
+    if (!body || impulseAppliedRef.current) return;
+
+    const [ix, iy, iz] = getInitialMarbleImpulse();
+    body.applyImpulse({ x: ix, y: iy, z: iz }, true);
+    impulseAppliedRef.current = true;
+  });
 
   if (!isPlaying) {
     return null;

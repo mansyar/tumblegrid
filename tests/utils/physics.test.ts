@@ -4,12 +4,14 @@ import {
   BOOST_FORCE,
   FIXED_TIMESTEP,
   GRAVITY,
+  INITIAL_MARBLE_IMPULSE,
   MARBLE_CONFIG,
   SPAWN_HEIGHT_OFFSET,
   computeMarbleSpawnPosition,
   createPhysicsConfig,
   getBoostDirection,
   getBoostImpulse,
+  getInitialMarbleImpulse,
   getPhysicsPaused,
 } from '@/utils/physics';
 
@@ -85,6 +87,28 @@ describe('computeMarbleSpawnPosition', () => {
 
     expect(spawnPos[0]).toBe(-3);
     expect(spawnPos[2]).toBe(7);
+  });
+});
+
+describe('Initial Marble Impulse', () => {
+  it('should have a non-zero X component', () => {
+    expect(INITIAL_MARBLE_IMPULSE[0]).toBe(2);
+  });
+
+  it('should have zero Y component (horizontal only)', () => {
+    expect(INITIAL_MARBLE_IMPULSE[1]).toBe(0);
+  });
+
+  it('should have zero Z component', () => {
+    expect(INITIAL_MARBLE_IMPULSE[2]).toBe(0);
+  });
+
+  it('should return a copy via getInitialMarbleImpulse', () => {
+    const impulse = getInitialMarbleImpulse();
+    expect(impulse).toEqual(INITIAL_MARBLE_IMPULSE);
+    // Verify it's a copy, not the same reference
+    impulse[0] = 99;
+    expect(INITIAL_MARBLE_IMPULSE[0]).toBe(2);
   });
 });
 
