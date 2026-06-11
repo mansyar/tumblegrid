@@ -38,6 +38,7 @@ describe('UI-Store Integration', () => {
       selectedPieceId: undefined,
       selectedBlueprintType: null,
       trajectoryPreviewCache: new Map(),
+      launchpadPosition: [0, 1, 0],
     });
   });
 

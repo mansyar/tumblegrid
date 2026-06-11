@@ -167,6 +167,7 @@ export const createLoadLevel =
       activeBlueprintNode: undefined,
       selectedBlueprintType: null,
       trajectoryPreviewCache: new Map(),
+      launchpadPosition: level.launchpadPosition,
     };
   };
 

@@ -1,5 +1,8 @@
 import type { MachineState } from '@/store/types';
 
+/** Height above launchpad at which the marble spawns. */
+export const SPAWN_HEIGHT_OFFSET = 3;
+
 /** Gravity vector pointing downward (Y-axis). */
 export const GRAVITY: [number, number, number] = [0, -9.81, 0];
 
@@ -31,4 +34,19 @@ export function createPhysicsConfig() {
  */
 export function getPhysicsPaused(machineState: MachineState): boolean {
   return machineState !== 'PLAYING' && machineState !== 'SANDBOX_PLAYING';
+}
+
+/**
+ * Computes the marble spawn position based on the launchpad position.
+ * The marble spawns at a height offset above the launchpad so it drops
+ * onto the launchpad surface under gravity.
+ */
+export function computeMarbleSpawnPosition(
+  launchpadPosition: [number, number, number],
+): [number, number, number] {
+  return [
+    launchpadPosition[0],
+    launchpadPosition[1] + SPAWN_HEIGHT_OFFSET,
+    launchpadPosition[2],
+  ];
 }

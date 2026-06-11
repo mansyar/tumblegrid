@@ -59,6 +59,7 @@ export interface GameState {
   selectedPieceId: string | undefined;
   selectedBlueprintType: PieceType | null;
   trajectoryPreviewCache: Map<string, [number, number, number][]>;
+  launchpadPosition: [number, number, number];
 }
 
 export interface StoreActions {

@@ -30,6 +30,7 @@ export default defineConfig({
         'src/components/scene/Scene.tsx', // R3F component requiring WebGL context
         'src/components/scene/GridFloor.tsx', // R3F component requiring WebGL context
         'src/components/pieces/', // R3F piece mesh components (WebGL-only rendering)
+        'src/components/physics/', // R3F physics components (require Canvas context)
       ],
       thresholds: {
         branches: 80,

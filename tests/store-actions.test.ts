@@ -31,6 +31,7 @@ const createTestState = (overrides?: Partial<GameState>): GameState => ({
   selectedPieceId: undefined,
   selectedBlueprintType: null,
   trajectoryPreviewCache: new Map(),
+  launchpadPosition: [0, 1, 0],
   ...overrides,
 });
 

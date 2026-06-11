@@ -39,6 +39,7 @@ const initialState: GameState = {
   selectedPieceId: undefined,
   selectedBlueprintType: null,
   trajectoryPreviewCache: new Map(),
+  launchpadPosition: [0, 1, 0],
 };
 
 export const useGameStore = create<GameStore>()(

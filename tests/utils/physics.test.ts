@@ -4,6 +4,8 @@ import {
   FIXED_TIMESTEP,
   GRAVITY,
   MARBLE_CONFIG,
+  SPAWN_HEIGHT_OFFSET,
+  computeMarbleSpawnPosition,
   createPhysicsConfig,
   getPhysicsPaused,
 } from '@/utils/physics';
@@ -54,5 +56,31 @@ describe('getPhysicsPaused', () => {
 
   it('should return false for SANDBOX_PLAYING state', () => {
     expect(getPhysicsPaused('SANDBOX_PLAYING')).toBe(false);
+  });
+});
+
+describe('computeMarbleSpawnPosition', () => {
+  it('should return position above launchpad by height offset', () => {
+    const launchpadPos: [number, number, number] = [2, 0, 3];
+    const spawnPos = computeMarbleSpawnPosition(launchpadPos);
+
+    expect(spawnPos[0]).toBe(2);
+    expect(spawnPos[1]).toBe(0 + SPAWN_HEIGHT_OFFSET);
+    expect(spawnPos[2]).toBe(3);
+  });
+
+  it('should handle non-zero launchpad Y position', () => {
+    const launchpadPos: [number, number, number] = [5, 2, 1];
+    const spawnPos = computeMarbleSpawnPosition(launchpadPos);
+
+    expect(spawnPos[1]).toBe(2 + SPAWN_HEIGHT_OFFSET);
+  });
+
+  it('should preserve X and Z coordinates unchanged', () => {
+    const launchpadPos: [number, number, number] = [-3, 0, 7];
+    const spawnPos = computeMarbleSpawnPosition(launchpadPos);
+
+    expect(spawnPos[0]).toBe(-3);
+    expect(spawnPos[2]).toBe(7);
   });
 });

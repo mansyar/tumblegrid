@@ -1,3 +1,4 @@
+import { Marble } from '@/components/physics/Marble';
 import { PieceFactory } from '@/components/pieces/PieceFactory';
 import { GridFloor } from '@/components/scene/GridFloor';
 import { GridGhost } from '@/components/scene/GridGhost';
@@ -84,6 +85,9 @@ export function Scene() {
 
       {/* Trajectory Preview — dotted line from nearest piece to hovered cell */}
       <TrajectoryLine />
+
+      {/* Marble — dynamic sphere rigid body, only renders during Play */}
+      <Marble />
 
       {/* OrbitControls with clamps and damping */}
       <OrbitControls

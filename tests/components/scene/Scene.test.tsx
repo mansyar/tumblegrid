@@ -76,6 +76,7 @@ describe('Scene', () => {
           selectedPieceId: undefined,
           selectedBlueprintType: null,
           trajectoryPreviewCache: new Map(),
+          launchpadPosition: [0, 1, 0],
           loadLevel: vi.fn(),
         };
         return selector(state);
@@ -116,6 +117,7 @@ describe('Scene', () => {
           selectedPieceId: undefined,
           selectedBlueprintType: null,
           trajectoryPreviewCache: new Map(),
+          launchpadPosition: [0, 1, 0],
           loadLevel: vi.fn(),
         };
         return selector(state);
@@ -142,6 +144,7 @@ describe('Scene', () => {
           selectedPieceId: undefined,
           selectedBlueprintType: null,
           trajectoryPreviewCache: new Map(),
+          launchpadPosition: [0, 1, 0],
           loadLevel: vi.fn(),
         };
         return selector(state);
@@ -177,6 +180,7 @@ describe('Scene', () => {
           selectedPieceId: undefined,
           selectedBlueprintType: null,
           trajectoryPreviewCache: new Map(),
+          launchpadPosition: [0, 1, 0],
           loadLevel: vi.fn(),
         };
         return selector(state);
@@ -215,6 +219,7 @@ describe('Scene', () => {
           selectedPieceId: 'selected-piece',
           selectedBlueprintType: null,
           trajectoryPreviewCache: new Map(),
+          launchpadPosition: [0, 1, 0],
           loadLevel: vi.fn(),
         };
         return selector(state);
@@ -255,6 +260,7 @@ describe('Scene', () => {
           selectedPieceId: undefined,
           selectedBlueprintType: null,
           trajectoryPreviewCache: new Map(),
+          launchpadPosition: [0, 1, 0],
           loadLevel: vi.fn(),
         };
         return selector(state);
@@ -282,6 +288,7 @@ describe('Scene', () => {
           selectedPieceId: 'piece-a',
           selectedBlueprintType: null,
           trajectoryPreviewCache: new Map(),
+          launchpadPosition: [0, 1, 0],
           loadLevel: vi.fn(),
         };
         return selector(state);
