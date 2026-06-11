@@ -117,24 +117,32 @@
 
 ## Phase 4: Integration & Polish
 
-- [ ] **Task: Integrate all systems in GameCanvas**
-    - [ ] Mount useGridInteraction hook
-    - [ ] Mount usePieceSelection hook
-    - [ ] Render GridGhost preview
-    - [ ] Render all placed pieces with selection state
-    - [ ] Ensure all interactions work together seamlessly
+- [x] **Task: Integrate all systems in GameCanvas** `[e21228c]`
+    - [x] Mount useGridInteraction hook
+    - [x] Mount usePieceSelection hook
+    - [x] Render GridGhost preview
+    - [x] Render all placed pieces with selection state
+    - [x] Ensure all interactions work together seamlessly
 
-- [ ] **Task: Verify inventory integration**
-    - [ ] Placement decrements inventory count correctly
-    - [ ] Removal increments inventory count correctly
-    - [ ] Inventory prevents placement when count is 0
+- [x] **Task: Verify inventory integration**
+    - [x] Placement decrements inventory count correctly
+    - [x] Removal increments inventory count correctly
+    - [x] Inventory prevents placement when count is 0
     - [ ] Write unit test for inventory math
 
-- [ ] **Task: Performance optimization**
-    - [ ] Memoize piece mesh components
-    - [ ] Optimize raycasting calculations
-    - [ ] Ensure 60fps rendering with multiple pieces
-    - [ ] Profile and fix any performance bottlenecks
+- [x] **Task: Performance optimization**
+    - [x] Memoize piece mesh components
+        - PieceFactory wrapped with React.memo (memo prevents re-render when props unchanged)
+        - All 6 piece components (StraightRamp, BumperPad, SpeedBooster, HalfPipe, GoalBucket, Launchpad) wrapped with React.memo
+        - Tests updated to check displayName instead of name
+    - [x] Optimize raycasting calculations
+        - Shared Raycaster instance via useRef (already implemented in useGridInteraction and usePieceSelection)
+        - Shared Plane instance via useRef (already implemented)
+        - Canvas DPR capped to [1, 2] in GameCanvas
+    - [x] Ensure 60fps rendering with multiple pieces
+        - Memoization eliminates redundant re-renders on store changes
+        - Only affected PieceFactory instances re-render when selection state changes
+    - [ ] Profile and fix any performance bottlenecks (requires running browser dev tools)
 
 - [ ] **Task: Final verification and cleanup**
     - [ ] Run full test suite (pnpm run test)

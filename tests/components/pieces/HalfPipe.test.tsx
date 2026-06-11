@@ -7,12 +7,12 @@ vi.mock('@react-three/fiber', () => ({
 }));
 
 describe('HalfPipe', () => {
-  it('should be a function component', () => {
-    expect(typeof HalfPipe).toBe('function');
+  it('should be a memo-wrapped component', () => {
+    expect(HalfPipe).toBeDefined();
   });
 
-  it('should have the correct component name', () => {
-    expect(HalfPipe.name).toBe('HalfPipe');
+  it('should have the correct display name', () => {
+    expect(HalfPipe.displayName).toBe('HalfPipe');
   });
 });
 

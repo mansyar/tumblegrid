@@ -106,6 +106,35 @@ describe('Zustand Store Integration', () => {
     expect(state.inventory.bumper_pad).toBe(2);
   });
 
+  it('should return piece to inventory on removal', () => {
+    // Load level
+    useGameStore.getState().loadLevel(testLevel);
+
+    // Place a piece
+    useGameStore.getState().placePiece('speed_booster', [4, 0, 4], 0);
+    expect(useGameStore.getState().inventory.speed_booster).toBe(1);
+
+    // Remove it
+    const placedId = useGameStore.getState().placedPieces[1].id;
+    useGameStore.getState().removePiece(placedId);
+    expect(useGameStore.getState().inventory.speed_booster).toBe(2);
+    expect(useGameStore.getState().placedPieces).toHaveLength(1);
+  });
+
+  it('should not place piece when inventory is zero', () => {
+    // Load level
+    useGameStore.getState().loadLevel(testLevel);
+
+    // Exhaust half_pipe inventory (starts at 1)
+    useGameStore.getState().placePiece('half_pipe', [4, 0, 4], 0);
+    expect(useGameStore.getState().inventory.half_pipe).toBe(0);
+
+    // Try to place again — should be rejected
+    useGameStore.getState().placePiece('half_pipe', [6, 0, 4], 0);
+    expect(useGameStore.getState().placedPieces).toHaveLength(2); // Only 1 new piece placed
+    expect(useGameStore.getState().inventory.half_pipe).toBe(0); // Still 0
+  });
+
   it('should handle piece selection and rotation', () => {
     // Load level
     useGameStore.getState().loadLevel(testLevel);

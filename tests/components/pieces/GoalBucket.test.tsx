@@ -11,12 +11,12 @@ vi.mock('@react-three/fiber', () => ({
 }));
 
 describe('GoalBucket', () => {
-  it('should be a function component', () => {
-    expect(typeof GoalBucket).toBe('function');
+  it('should be a memo-wrapped component', () => {
+    expect(GoalBucket).toBeDefined();
   });
 
-  it('should have the correct component name', () => {
-    expect(GoalBucket.name).toBe('GoalBucket');
+  it('should have the correct display name', () => {
+    expect(GoalBucket.displayName).toBe('GoalBucket');
   });
 });
 

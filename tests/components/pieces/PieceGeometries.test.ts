@@ -69,9 +69,9 @@ describe('PIECE_MAP', () => {
     }
   });
 
-  it('should be frozen (const assertion)', () => {
+  it('should contain memo-wrapped React components', () => {
     // Verify that PIECE_MAP entries are proper React components
     const Component = PIECE_MAP.straight_ramp;
-    expect(typeof Component).toBe('function');
+    expect(Component.displayName).toBe('StraightRamp');
   });
 });

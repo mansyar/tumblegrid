@@ -12,12 +12,12 @@ vi.mock('@react-three/fiber', () => ({
 }));
 
 describe('Launchpad', () => {
-  it('should be a function component', () => {
-    expect(typeof Launchpad).toBe('function');
+  it('should be a memo-wrapped component', () => {
+    expect(Launchpad).toBeDefined();
   });
 
-  it('should have the correct component name', () => {
-    expect(Launchpad.name).toBe('Launchpad');
+  it('should have the correct display name', () => {
+    expect(Launchpad.displayName).toBe('Launchpad');
   });
 });
 

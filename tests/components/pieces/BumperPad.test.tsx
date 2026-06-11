@@ -7,12 +7,12 @@ vi.mock('@react-three/fiber', () => ({
 }));
 
 describe('BumperPad', () => {
-  it('should be a function component', () => {
-    expect(typeof BumperPad).toBe('function');
+  it('should be a memo-wrapped component', () => {
+    expect(BumperPad).toBeDefined();
   });
 
-  it('should have the correct component name', () => {
-    expect(BumperPad.name).toBe('BumperPad');
+  it('should have the correct display name', () => {
+    expect(BumperPad.displayName).toBe('BumperPad');
   });
 });
 

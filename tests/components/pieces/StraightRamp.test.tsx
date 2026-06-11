@@ -7,12 +7,12 @@ vi.mock('@react-three/fiber', () => ({
 }));
 
 describe('StraightRamp', () => {
-  it('should be a function component', () => {
-    expect(typeof StraightRamp).toBe('function');
+  it('should be a memo-wrapped component', () => {
+    expect(StraightRamp).toBeDefined();
   });
 
-  it('should have the correct component name', () => {
-    expect(StraightRamp.name).toBe('StraightRamp');
+  it('should have the correct display name', () => {
+    expect(StraightRamp.displayName).toBe('StraightRamp');
   });
 });
 

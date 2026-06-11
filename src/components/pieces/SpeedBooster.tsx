@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import * as THREE from 'three';
 
 /**
@@ -12,7 +12,7 @@ export function createSpeedBoosterGeometry(): THREE.BufferGeometry {
 
 const PASTEL_GREEN = '#A8D5A2';
 
-export function SpeedBooster() {
+function SpeedBoosterInner() {
   const geometry = useMemo(() => createSpeedBoosterGeometry(), []);
 
   return (
@@ -21,3 +21,6 @@ export function SpeedBooster() {
     </mesh>
   );
 }
+
+export const SpeedBooster = memo(SpeedBoosterInner);
+SpeedBooster.displayName = 'SpeedBooster';

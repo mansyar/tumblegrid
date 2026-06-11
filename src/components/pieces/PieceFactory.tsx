@@ -1,6 +1,6 @@
 import type { PieceType } from '@/store/types';
 import { applyPieceEffects } from '@/utils/pieceEffects';
-import { type FC, useLayoutEffect, useRef } from 'react';
+import { type FC, memo, useLayoutEffect, useRef } from 'react';
 import type { Group } from 'three';
 import { BumperPad } from './BumperPad';
 import { GoalBucket } from './GoalBucket';
@@ -34,7 +34,7 @@ export const PIECE_MAP: Record<PieceType, FC> = {
  * Supports ghost mode for preview (semi-transparent rendering)
  * and selection highlight via extracted pure logic.
  */
-export function PieceFactory({
+function PieceFactoryInner({
   pieceType,
   position,
   rotationIndex = 0,
@@ -58,3 +58,6 @@ export function PieceFactory({
     </group>
   );
 }
+
+export const PieceFactory = memo(PieceFactoryInner);
+PieceFactory.displayName = 'PieceFactory';

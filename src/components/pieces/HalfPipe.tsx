@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import * as THREE from 'three';
 
 /**
@@ -19,7 +19,7 @@ export function createHalfPipeRailGeometry(): THREE.BufferGeometry {
 
 const PASTEL_PURPLE = '#B39DDB';
 
-export function HalfPipe() {
+function HalfPipeInner() {
   const baseGeometry = useMemo(() => createHalfPipeBaseGeometry(), []);
   const railGeometry = useMemo(() => createHalfPipeRailGeometry(), []);
 
@@ -37,3 +37,6 @@ export function HalfPipe() {
     </group>
   );
 }
+
+export const HalfPipe = memo(HalfPipeInner);
+HalfPipe.displayName = 'HalfPipe';

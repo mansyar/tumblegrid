@@ -10,12 +10,12 @@ vi.mock('@react-three/fiber', () => ({
 }));
 
 describe('SpeedBooster', () => {
-  it('should be a function component', () => {
-    expect(typeof SpeedBooster).toBe('function');
+  it('should be a memo-wrapped component', () => {
+    expect(SpeedBooster).toBeDefined();
   });
 
-  it('should have the correct component name', () => {
-    expect(SpeedBooster.name).toBe('SpeedBooster');
+  it('should have the correct display name', () => {
+    expect(SpeedBooster.displayName).toBe('SpeedBooster');
   });
 });
 

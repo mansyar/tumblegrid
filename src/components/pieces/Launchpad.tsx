@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import * as THREE from 'three';
 
 const DARK_GRAY = '#555555';
@@ -27,7 +27,7 @@ export function createLaunchpadRingGeometry(): THREE.TorusGeometry {
   return new THREE.TorusGeometry(0.55, 0.05, 8, 16);
 }
 
-export function Launchpad() {
+function LaunchpadInner() {
   const baseGeometry = useMemo(() => createLaunchpadBaseGeometry(), []);
   const centerGeometry = useMemo(() => createLaunchpadCenterGeometry(), []);
   const ringGeometry = useMemo(() => createLaunchpadRingGeometry(), []);
@@ -59,3 +59,6 @@ export function Launchpad() {
     </group>
   );
 }
+
+export const Launchpad = memo(LaunchpadInner);
+Launchpad.displayName = 'Launchpad';

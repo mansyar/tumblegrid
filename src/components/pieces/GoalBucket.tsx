@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import * as THREE from 'three';
 
 /**
@@ -19,7 +19,7 @@ const PASTEL_YELLOW = '#E9C46A';
 const WALL_OFFSET = 0.95;
 const WALL_HEIGHT = 0.35;
 
-export function GoalBucket() {
+function GoalBucketInner() {
   const baseGeometry = useMemo(() => createGoalBucketBaseGeometry(), []);
   const wallGeometry = useMemo(() => createGoalBucketWallGeometry(), []);
 
@@ -72,3 +72,6 @@ export function GoalBucket() {
     </group>
   );
 }
+
+export const GoalBucket = memo(GoalBucketInner);
+GoalBucket.displayName = 'GoalBucket';

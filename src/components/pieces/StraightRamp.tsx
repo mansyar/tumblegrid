@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import * as THREE from 'three';
 
 /**
@@ -29,7 +29,7 @@ export function createRampGeometry(): THREE.BufferGeometry {
 
 const PASTEL_BLUE = '#7EC8E3';
 
-export function StraightRamp() {
+function StraightRampInner() {
   const geometry = useMemo(() => createRampGeometry(), []);
 
   return (
@@ -38,3 +38,6 @@ export function StraightRamp() {
     </mesh>
   );
 }
+
+export const StraightRamp = memo(StraightRampInner);
+StraightRamp.displayName = 'StraightRamp';

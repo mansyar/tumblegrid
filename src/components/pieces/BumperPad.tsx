@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import * as THREE from 'three';
 
 /**
@@ -12,7 +12,7 @@ export function createBumperPadGeometry(): THREE.BufferGeometry {
 
 const PASTEL_ORANGE = '#F4A261';
 
-export function BumperPad() {
+function BumperPadInner() {
   const geometry = useMemo(() => createBumperPadGeometry(), []);
 
   return (
@@ -21,3 +21,6 @@ export function BumperPad() {
     </mesh>
   );
 }
+
+export const BumperPad = memo(BumperPadInner);
+BumperPad.displayName = 'BumperPad';

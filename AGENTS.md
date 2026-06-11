@@ -101,6 +101,51 @@ Development follows the Conductor lifecycle: **Context → Spec & Plan → Imple
 
 ---
 
+---
+
+## Coverage & testability pattern
+
+**Problem:** Three.js / R3F code that runs inside `<Canvas>` cannot be instrumented by V8 coverage in JSDOM. Piece components (meshes, materials, effects applied via `useLayoutEffect` + `group.traverse`) show 0% function/branch coverage even when functionally tested.
+
+**Solution:** Separate pure Three.js logic from R3F rendering wrappers.
+
+| Layer | Location | Coverage | Tests |
+|---|---|---|---|
+| Pure Three.js logic | `src/utils/` | ✅ Measured | Pure function tests (no Canvas needed) |
+| React component wrappers | `src/components/` (most) | ✅ Measured | Standard `renderHook`/render tests |
+| R3F-only rendering | `src/components/pieces/` | ❌ Excluded | Still run but excluded from coverage via `vitest.config.ts` |
+
+**The pattern:**
+
+1. Write a **pure function** in `src/utils/` that accepts Three.js objects (Group, Mesh, Material) and returns/modifies them. No React, no Canvas.
+2. Write a **thin R3F wrapper component** in `src/components/pieces/` that calls the pure function inside `useLayoutEffect`.
+3. Test the pure function directly — it's fully coverable.
+4. Exclude the R3F wrapper directory from coverage in `vitest.config.ts`.
+
+**Example from the codebase:**
+
+```typescript
+// src/utils/pieceEffects.ts — PURE, fully testable
+export function applyPieceEffects(
+  group: THREE.Group,
+  ghost: boolean,
+  selected: boolean,
+  originalMap: Map<THREE.Mesh, SavedEmissive>,
+): void { /* Three.js-only logic */ }
+
+// src/components/pieces/PieceFactory.tsx — THIN WRAPPER (excluded from coverage)
+useLayoutEffect(() => {
+  if (!groupRef.current) return;
+  applyPieceEffects(groupRef.current, ghost, selected, originalEmissiveRef.current);
+}, [ghost, selected]);
+```
+
+Other examples:
+- `src/components/pieces/StraightRamp.tsx` exports `createRampGeometry()` (pure function)
+- `src/components/pieces/Launchpad.tsx` exports `createLaunchpadBaseGeometry()`, `createLaunchpadCenterGeometry()`, `createLaunchpadRingGeometry()` (pure functions)
+
+---
+
 ## Key conventions (non-obvious)
 
 - **Grid cell:** 2×2×2 world units. All pieces occupy exactly 1 cell.
