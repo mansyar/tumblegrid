@@ -31,6 +31,7 @@ interface MockStore {
   placedPieces: PlacedPiece[];
   selectedPieceId: string | undefined;
   selectedBlueprintType: PieceType | null;
+  inventory: Record<PieceType, number>;
   updateTrajectoryCache: typeof mockUpdateTrajectoryCache;
 }
 
@@ -41,6 +42,13 @@ function createMockStore(overrides: Partial<MockStore> = {}) {
     placedPieces: [],
     selectedPieceId: undefined,
     selectedBlueprintType: null,
+    inventory: {
+      straight_ramp: 5,
+      speed_booster: 2,
+      bumper_pad: 3,
+      half_pipe: 1,
+      goal_bucket: 1,
+    },
     updateTrajectoryCache: mockUpdateTrajectoryCache,
   };
   const state = { ...defaults, ...overrides };
@@ -189,7 +197,7 @@ describe('useTrajectoryPreview', () => {
     expect(mockComputeWaypoints).not.toHaveBeenCalled();
   });
 
-  it('clears cache when no piece type is selected', async () => {
+  it('clears cache when no piece type is available in inventory', async () => {
     const node: ActiveBlueprintNode = {
       pieceType: 'straight_ramp',
       position: [4, 0, 2],
@@ -202,6 +210,13 @@ describe('useTrajectoryPreview', () => {
         machineState: 'BUILDING',
         activeBlueprintNode: node,
         selectedBlueprintType: null,
+        inventory: {
+          straight_ramp: 0,
+          speed_booster: 0,
+          bumper_pad: 0,
+          half_pipe: 0,
+          goal_bucket: 0,
+        },
       }),
     );
 
