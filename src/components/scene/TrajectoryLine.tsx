@@ -11,7 +11,9 @@ export function TrajectoryLine() {
   const cache = useGameStore((s) => s.trajectoryPreviewCache);
 
   const lines = useMemo(() => {
-    const entries = Array.from(cache.entries());
+    const entries = Array.from(cache.entries()).filter(
+      ([_, points]) => points.length > 0,
+    );
     if (entries.length === 0) return null;
 
     return entries.map(([key, points]) => (

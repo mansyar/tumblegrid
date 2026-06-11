@@ -1,7 +1,14 @@
 import { TrajectoryLine } from '@/components/scene/TrajectoryLine';
 import { useGameStore } from '@/store/useGameStore';
 import { render, screen } from '@testing-library/react';
-import { describe, expect, it, vi, beforeEach, type Mock } from 'vitest';
+import {
+  describe,
+  expect,
+  it,
+  vi,
+  beforeEach,
+  type Mock,
+} from 'vitest';
 
 // ─── Mocks ────────────────────────────────────────────────────────────
 
@@ -29,6 +36,21 @@ describe('TrajectoryLine', () => {
     (useGameStore as unknown as Mock).mockImplementation(
       (selector: (state: Record<string, unknown>) => unknown) => {
         const state = { trajectoryPreviewCache: new Map() };
+        return selector(state);
+      },
+    );
+
+    const { container } = render(<TrajectoryLine />);
+    expect(container.firstChild).toBeNull();
+  });
+
+  it('renders nothing when cache entries have empty points arrays', () => {
+    const cache = new Map<string, [number, number, number][]>();
+    cache.set('preview', []);
+
+    (useGameStore as unknown as Mock).mockImplementation(
+      (selector: (state: Record<string, unknown>) => unknown) => {
+        const state = { trajectoryPreviewCache: cache };
         return selector(state);
       },
     );
