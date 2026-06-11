@@ -1,3 +1,4 @@
+<protect>
 # Implementation Plan: TRACK-006 — Physics Engine & Play Mode
 
 ## Phase 1: Physics World & Marble
@@ -75,3 +76,4 @@
     - [ ] Ensure Collider components mount/unmount with Play/Stop transitions
     - [ ] Wire Stop button (from TRACK-005) to actually trigger physics cleanup
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Play Loop Lifecycle & Debug' (Protocol in workflow.md)
+</protect>

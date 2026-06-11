@@ -1,3 +1,4 @@
+<protect>
 # Specification: TRACK-006 — Physics Engine & Play Mode
 
 ## Overview
@@ -70,3 +71,4 @@ A toggle (default: off, activated via `D` key) that renders Rapier collider wire
 - Audio for physics events (marble roll, impact sounds) (TRACK-008).
 - Level-specific physics tuning and balancing (TRACK-009).
 - Touch-specific gesture handling (TRACK-010).
+</protect>
