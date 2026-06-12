@@ -24,7 +24,10 @@ export function playVictoryJingle(context: AudioContext): void {
     const gainNode = context.createGain();
 
     oscillator.type = 'sine';
-    oscillator.frequency.setValueAtTime(NOTES[i], startTime + i * NOTE_DURATION);
+    oscillator.frequency.setValueAtTime(
+      NOTES[i],
+      startTime + i * NOTE_DURATION,
+    );
 
     // Fade in quickly, hold, then fade out
     gainNode.gain.setValueAtTime(0, startTime + i * NOTE_DURATION);

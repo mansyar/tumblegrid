@@ -12,16 +12,16 @@ import { useEffect, useRef } from 'react';
 
 import { audioEngine } from '@/audio/AudioEngine';
 import {
-  createMarbleRollSource,
-  createBandpassFilter,
-  createPanner,
-  connectMarbleRollChain,
-  disconnectMarbleRollChain,
   FADE_IN_DURATION,
   FADE_OUT_DURATION,
+  connectMarbleRollChain,
+  createBandpassFilter,
+  createMarbleRollSource,
+  createPanner,
+  disconnectMarbleRollChain,
 } from '@/audio/sounds/marbleRoll';
-import { velocityToFrequency } from '@/utils/audio';
 import { useGameStore } from '@/store/useGameStore';
+import { velocityToFrequency } from '@/utils/audio';
 
 export function useMarbleRoll() {
   const machineState = useGameStore((s) => s.machineState);
@@ -50,7 +50,10 @@ export function useMarbleRoll() {
       const gain = ctx.createGain();
 
       gain.gain.setValueAtTime(0, ctx.currentTime);
-      gain.gain.linearRampToValueAtTime(0.15, ctx.currentTime + FADE_IN_DURATION);
+      gain.gain.linearRampToValueAtTime(
+        0.15,
+        ctx.currentTime + FADE_IN_DURATION,
+      );
 
       connectMarbleRollChain(source, filter, panner, gain);
       const masterGain = audioEngine.getMasterGain();
@@ -82,16 +85,19 @@ export function useMarbleRoll() {
 
       if (gain) audioEngine.unregisterContinuous(gain);
 
-      setTimeout(() => {
-        if (src && flt && pan) {
-          disconnectMarbleRollChain(src, flt, pan);
-        }
-        try {
-          src?.stop();
-        } catch {
-          // Already stopped — ignore
-        }
-      }, FADE_OUT_DURATION * 1000 + 50);
+      setTimeout(
+        () => {
+          if (src && flt && pan) {
+            disconnectMarbleRollChain(src, flt, pan);
+          }
+          try {
+            src?.stop();
+          } catch {
+            // Already stopped — ignore
+          }
+        },
+        FADE_OUT_DURATION * 1000 + 50,
+      );
 
       sourceRef.current = null;
       filterRef.current = null;
