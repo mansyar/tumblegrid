@@ -17,7 +17,7 @@
     - [x] Verify `FAIL_Y_THRESHOLD`, `GOAL_DWELL_TIME`, bumper restitution values are exported correctly.
     - [x] Verify `createPhysicsConfig()` uses the constants.
 
-- [ ] Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md) [checkpoint: 6fb2cb9]
 
 ## Phase 2: Level Data Updates
 
