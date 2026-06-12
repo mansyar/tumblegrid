@@ -66,12 +66,9 @@ export function useTouchRotation(): void {
    * Compute angle (in radians) between two touch points.
    * Returns value in range [-π, π].
    */
-  const computeAngle = useCallback(
-    (t1: Touch, t2: Touch): number => {
-      return Math.atan2(t2.clientY - t1.clientY, t2.clientX - t1.clientX);
-    },
-    [],
-  );
+  const computeAngle = useCallback((t1: Touch, t2: Touch): number => {
+    return Math.atan2(t2.clientY - t1.clientY, t2.clientX - t1.clientX);
+  }, []);
 
   useEffect(() => {
     const canvas = document.querySelector('canvas');
