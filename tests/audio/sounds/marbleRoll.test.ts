@@ -55,10 +55,25 @@ function createMockAudioContext(): AudioContext {
       connect: mockConnect,
       disconnect: mockDisconnect,
     })),
-    createStereoPanner: vi.fn(() => ({
-      pan: {
+    createPanner: vi.fn(() => ({
+      panningModel: 'equalpower',
+      distanceModel: 'inverse',
+      refDistance: 1,
+      maxDistance: 100,
+      rolloffFactor: 1,
+      positionX: {
         value: 0,
         setValueAtTime: mockPannerSetValue,
+        linearRampToValueAtTime: vi.fn(),
+      },
+      positionY: {
+        value: 0,
+        setValueAtTime: vi.fn(),
+        linearRampToValueAtTime: vi.fn(),
+      },
+      positionZ: {
+        value: 0,
+        setValueAtTime: vi.fn(),
         linearRampToValueAtTime: vi.fn(),
       },
       connect: mockConnect,
@@ -119,10 +134,15 @@ describe('marbleRoll', () => {
   });
 
   describe('createPanner', () => {
-    it('should create a StereoPannerNode', () => {
+    it('should create a PannerNode', () => {
       const panner = createPanner(ctx);
       expect(panner).toBeDefined();
-      expect(ctx.createStereoPanner).toHaveBeenCalled();
+      expect(ctx.createPanner).toHaveBeenCalled();
+    });
+
+    it('should set HRTF panning model', () => {
+      const panner = createPanner(ctx) as unknown as { panningModel: string };
+      expect(panner.panningModel).toBe('HRTF');
     });
   });
 

@@ -15,6 +15,13 @@ vi.mock('@react-three/fiber', () => ({
   useFrame: vi.fn(),
 }));
 
+vi.mock('@react-three/rapier', () => ({
+  useRapier: () => ({
+    world: { forEachRigidBody: vi.fn() },
+  }),
+  useBeforePhysicsStep: vi.fn(),
+}));
+
 vi.mock('@react-three/drei', () => ({
   OrbitControls: vi.fn().mockImplementation(() => null),
   Grid: vi.fn().mockImplementation(() => null),

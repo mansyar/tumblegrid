@@ -3,7 +3,7 @@
  * Procedural continuous audio for the rolling marble using Web Audio API.
  *
  * Architecture:
- * - White noise source (looped AudioBuffer) → bandpass filter → stereo panner → master gain
+ * - White noise source (looped AudioBuffer) → bandpass filter → 3D panner → master gain
  * - Filter frequency is updated each frame based on marble velocity
  * - Panner position is updated each frame based on marble 3D position
  */
@@ -62,14 +62,20 @@ export function createBandpassFilter(
 }
 
 /**
- * Creates a StereoPannerNode for 3D spatialization.
- * Position is updated externally via the panner's `pan` AudioParam.
+ * Creates a PannerNode for 3D spatialization.
+ * Position is updated externally via positionX/positionY/positionZ AudioParams.
  *
  * @param context - The AudioContext to use
- * @returns A configured StereoPannerNode
+ * @returns A configured PannerNode
  */
-export function createPanner(context: AudioContext): StereoPannerNode {
-  return context.createStereoPanner();
+export function createPanner(context: AudioContext): PannerNode {
+  const panner = context.createPanner();
+  panner.panningModel = 'HRTF';
+  panner.distanceModel = 'inverse';
+  panner.refDistance = 1;
+  panner.maxDistance = 100;
+  panner.rolloffFactor = 1;
+  return panner;
 }
 
 /**
@@ -77,13 +83,13 @@ export function createPanner(context: AudioContext): StereoPannerNode {
  *
  * @param source - The white noise AudioBufferSourceNode
  * @param filter - The bandpass BiquadFilterNode
- * @param panner - The StereoPannerNode
+ * @param panner - The PannerNode
  * @param destination - The destination node (e.g., master gain)
  */
 export function connectMarbleRollChain(
   source: AudioBufferSourceNode,
   filter: BiquadFilterNode,
-  panner: StereoPannerNode,
+  panner: PannerNode,
   destination: AudioNode,
 ): void {
   source.connect(filter);
@@ -96,12 +102,12 @@ export function connectMarbleRollChain(
  *
  * @param source - The white noise AudioBufferSourceNode
  * @param filter - The bandpass BiquadFilterNode
- * @param panner - The StereoPannerNode
+ * @param panner - The PannerNode
  */
 export function disconnectMarbleRollChain(
   source: AudioBufferSourceNode,
   filter: BiquadFilterNode,
-  panner: StereoPannerNode,
+  panner: PannerNode,
 ): void {
   source.disconnect();
   filter.disconnect();

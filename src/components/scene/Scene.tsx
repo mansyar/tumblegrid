@@ -9,6 +9,7 @@ import { useCamera } from '@/hooks/useCamera';
 import { useGameSounds } from '@/hooks/useGameSounds';
 import { useGoalDetector } from '@/hooks/useGoalDetector';
 import { useGridInteraction } from '@/hooks/useGridInteraction';
+import { useMarbleRoll } from '@/hooks/useMarbleRoll';
 import { usePieceRotation } from '@/hooks/usePieceRotation';
 import { usePieceSelection } from '@/hooks/usePieceSelection';
 import { useTrajectoryPreview } from '@/hooks/useTrajectoryPreview';
@@ -55,6 +56,7 @@ export function Scene() {
   useTrajectoryPreview();
   useGoalDetector();
   useGameSounds();
+  useMarbleRoll();
 
   return (
     <>
