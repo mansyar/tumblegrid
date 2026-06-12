@@ -1,0 +1,55 @@
+/* ─── Mobile Responsive Overrides (≤768px) ──────────────────────── */
+
+@media (max-width: 768px) {
+  /* Bottom drawer: inventory panel */
+  .inventory-panel {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: none;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 8px;
+    padding: 8px 16px;
+    padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+    border-radius: 12px 12px 0 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .inventory-panel::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Compact items: icon + count, no label */
+  .inventory-item {
+    flex-shrink: 0;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 56px;
+    min-height: 56px;
+    padding: 6px;
+    font-size: 12px;
+  }
+
+  .inventory-item-label {
+    display: none;
+  }
+
+  .inventory-item-count {
+    font-size: 11px;
+  }
+
+  /* Rotate button: avoid inventory overlap */
+  .rotate-button {
+    bottom: 100px;
+  }
+
+  /* Mode toggle: move above inventory */
+  .mode-toggle {
+    bottom: 100px;
+  }
+}
