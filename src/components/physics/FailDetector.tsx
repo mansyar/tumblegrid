@@ -12,7 +12,7 @@ import { useEffect, useRef } from 'react';
 import { audioEngine } from '@/audio/AudioEngine';
 import { playFailTone } from '@/audio/sounds/failTone';
 import { useGameStore } from '@/store/useGameStore';
-import { FAIL_Y_THRESHOLD, FAIL_DELAY_MS } from '@/utils/physics';
+import { FAIL_DELAY_MS, FAIL_Y_THRESHOLD } from '@/utils/physics';
 
 /**
  * Reads the marble's Y position each physics tick by iterating Rapier world bodies.

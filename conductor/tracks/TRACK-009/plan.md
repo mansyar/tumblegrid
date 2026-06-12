@@ -3,19 +3,19 @@
 
 ## Phase 1: Physics Constants Consolidation
 
-- [ ] Task: Audit existing physics constants in `src/utils/physics.ts` and identify any missing constants (fail Y threshold, goal dwell time) that should be extracted from component code.
-    - [ ] Search for hardcoded physics values in `src/components/physics/` and `src/utils/goalDetector.ts`.
-    - [ ] Document which constants are already extracted vs. still hardcoded.
+- [x] Task: Audit existing physics constants in `src/utils/physics.ts` and identify any missing constants (fail Y threshold, goal dwell time) that should be extracted from component code.
+    - [x] Search for hardcoded physics values in `src/components/physics/` and `src/utils/goalDetector.ts`.
+    - [x] Document which constants are already extracted vs. still hardcoded.
 
-- [ ] Task: Add missing physics constants to `src/utils/physics.ts`:
-    - [ ] Add `FAIL_Y_THRESHOLD = -5` (currently hardcoded in FailDetector).
-    - [ ] Add `GOAL_DWELL_TIME = 1.5` (currently hardcoded in goalDetector.ts).
-    - [ ] Add `BUMPER_RESTITUTION_ELASTIC = 1.0` and `BUMPER_RESTITUTION_STATIC = 0`.
-    - [ ] Update all consumers to import from `physics.ts` instead of using hardcoded values.
+- [x] Task: Add missing physics constants to `src/utils/physics.ts`:
+    - [x] Add `FAIL_Y_THRESHOLD = -5` (currently hardcoded in FailDetector).
+    - [x] Add `GOAL_DWELL_TIME = 1.5` (currently hardcoded in goalDetector.ts).
+    - [x] Add `BUMPER_RESTITUTION_ELASTIC = 1.0` and `BUMPER_RESTITUTION_STATIC = 0`.
+    - [x] Update all consumers to import from `physics.ts` instead of using hardcoded values.
 
-- [ ] Task: Write unit tests for new constants.
-    - [ ] Verify `FAIL_Y_THRESHOLD`, `GOAL_DWELL_TIME`, bumper restitution values are exported correctly.
-    - [ ] Verify `createPhysicsConfig()` uses the constants.
+- [x] Task: Write unit tests for new constants.
+    - [x] Verify `FAIL_Y_THRESHOLD`, `GOAL_DWELL_TIME`, bumper restitution values are exported correctly.
+    - [x] Verify `createPhysicsConfig()` uses the constants.
 
 - [ ] Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)
 

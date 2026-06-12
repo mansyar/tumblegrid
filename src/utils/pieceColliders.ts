@@ -7,7 +7,10 @@
  *
  * All coordinates are in the piece's local space (before Y-axis rotation).
  */
-import { BUMPER_RESTITUTION_ELASTIC, BUMPER_RESTITUTION_STATIC } from './physics';
+import {
+  BUMPER_RESTITUTION_ELASTIC,
+  BUMPER_RESTITUTION_STATIC,
+} from './physics';
 
 export interface ColliderDescriptor {
   /** Collider shape type (only primitive cuboid for MVP). */
@@ -73,7 +76,9 @@ export function getBumperPadColliders(
       position: [0, 1, 0],
       rotation: [0, 0, 0],
       sensor: false,
-      restitution: isStaticTerrain ? BUMPER_RESTITUTION_STATIC : BUMPER_RESTITUTION_ELASTIC,
+      restitution: isStaticTerrain
+        ? BUMPER_RESTITUTION_STATIC
+        : BUMPER_RESTITUTION_ELASTIC,
     },
   ];
 }
