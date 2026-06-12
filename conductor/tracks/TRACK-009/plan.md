@@ -74,36 +74,36 @@
 
 ## Phase 4: Physics Tuning & Manual Verification
 
-- [ ] Task: Manual playthrough of Level 1.
-    - [ ] Load level, place intended solution, run simulation.
-    - [ ] Verify marble rolls smoothly along ramp to goal.
-    - [ ] Tune ramp angle, marble friction if needed.
-    - [ ] Document any changes made.
+- [x] Task: Manual playthrough of Level 1.
+    - [x] Load level, place intended solution, run simulation.
+    - [x] Verify marble rolls smoothly along ramp to goal.
+    - [x] Tune ramp angle, marble friction if needed.
+    - [x] Document any changes made.
 
-- [ ] Task: Manual playthrough of Level 2.
-    - [ ] Load level, place bumper pad, verify deflection angle.
-    - [ ] Tune bumper restitution if bounce feels wrong.
-    - [ ] Document any changes made.
+- [x] Task: Manual playthrough of Level 2.
+    - [x] Load level, place bumper pad, verify deflection angle.
+    - [x] Tune bumper restitution if bounce feels wrong.
+    - [x] Document any changes made.
 
-- [ ] Task: Manual playthrough of Level 3.
-    - [ ] Load level, place ramp + speed booster.
-    - [ ] Verify marble launches across gap with satisfying distance.
-    - [ ] Tune `BOOST_FORCE` if launch feels too weak/strong.
-    - [ ] Document any changes made.
+- [x] Task: Manual playthrough of Level 3.
+    - [x] Load level, place ramp + speed booster.
+    - [x] Verify marble launches across gap with satisfying distance.
+    - [x] Tune `BOOST_FORCE` if launch feels too weak/strong.
+    - [x] Document any changes made.
 
-- [ ] Task: Manual playthrough of Level 4.
-    - [ ] Load level, place zigzag ramp pattern.
-    - [ ] Verify marble navigates switchbacks without getting stuck.
-    - [ ] Tune marble mass/friction if momentum feels wrong.
-    - [ ] Document any changes made.
+- [x] Task: Manual playthrough of Level 4.
+    - [x] Load level, place zigzag ramp pattern.
+    - [x] Verify marble navigates switchbacks without getting stuck.
+    - [x] Tune marble mass/friction if momentum feels wrong.
+    - [x] Document any changes made.
 
-- [ ] Task: Manual playthrough of Level 5.
-    - [ ] Load level, place solution with resource constraints.
-    - [ ] Verify marble reaches goal with tight inventory.
-    - [ ] Ensure no trivial shortcuts exist.
-    - [ ] Document any changes made.
+- [x] Task: Manual playthrough of Level 5.
+    - [x] Load level, place solution with resource constraints.
+    - [x] Verify marble reaches goal with tight inventory.
+    - [x] Ensure no trivial shortcuts exist.
+    - [x] Document any changes made.
 
-- [ ] Task: Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)
 
 ## Phase 5: Sandbox Mode Verification
 
