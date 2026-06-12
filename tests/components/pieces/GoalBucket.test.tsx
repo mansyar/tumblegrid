@@ -37,7 +37,7 @@ describe('createGoalBucketBaseGeometry', () => {
 });
 
 describe('createGoalBucketWallGeometry', () => {
-  it('should create a wall with full height (1.0) for sunken bucket', () => {
+  it('should create a wall with height taller than marble diameter (1.2)', () => {
     const geometry = createGoalBucketWallGeometry();
     geometry.computeBoundingBox();
 
@@ -45,14 +45,14 @@ describe('createGoalBucketWallGeometry', () => {
     if (geometry.boundingBox === null) return;
 
     const bbox = geometry.boundingBox;
-    // Wall should be 1.0 units tall (from Y=-0.5 to Y=0.5)
-    expect(bbox.max.y - bbox.min.y).toBe(1.0);
+    // Wall should be 1.2 units tall (taller than marble diameter of 1.0)
+    expect(bbox.max.y - bbox.min.y).toBeCloseTo(1.2);
     expect(bbox.max.x - bbox.min.x).toBeGreaterThan(0);
   });
 });
 
 describe('createGoalBucketLipGeometry', () => {
-  it('should create a short lip geometry (0.5 height, minimum half marble diameter)', () => {
+  it('should create X-wall geometry taller than marble diameter (1.2)', () => {
     const geometry = createGoalBucketLipGeometry();
     geometry.computeBoundingBox();
 
@@ -60,13 +60,13 @@ describe('createGoalBucketLipGeometry', () => {
     if (geometry.boundingBox === null) return;
 
     const bbox = geometry.boundingBox;
-    // Lip should be 0.5 units tall (minimum half marble diameter)
-    expect(bbox.max.y - bbox.min.y).toBeCloseTo(0.5);
+    // X-wall should be 1.2 units tall (taller than marble diameter of 1.0)
+    expect(bbox.max.y - bbox.min.y).toBeCloseTo(1.2);
     // Lip should be thin in X (0.1)
     expect(bbox.max.x - bbox.min.x).toBeCloseTo(0.1);
   });
 
-  it('should be shorter than wall geometry', () => {
+  it('should match wall geometry height', () => {
     const wallGeometry = createGoalBucketWallGeometry();
     const lipGeometry = createGoalBucketLipGeometry();
     wallGeometry.computeBoundingBox();
@@ -79,6 +79,7 @@ describe('createGoalBucketLipGeometry', () => {
       (lipGeometry.boundingBox?.max.y ?? 0) -
       (lipGeometry.boundingBox?.min.y ?? 0);
 
-    expect(lipHeight).toBeLessThan(wallHeight);
+    // All 4 walls should be the same height
+    expect(lipHeight).toBeCloseTo(wallHeight);
   });
 });
