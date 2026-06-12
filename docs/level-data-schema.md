@@ -170,10 +170,11 @@ The sandbox is defined by a single `sandbox.json` with no `goalPosition` field:
 {
   "id": "campaign_03",
   "title": "Velocity Check",
-  "description": "A massive chasm blocks the path. Use a Speed Booster to launch your marble across the gap, then brake it with a Bumper Pad before it reaches the goal.",
+  "description": "A massive chasm blocks the path. Use a Speed Booster to launch your marble across the gap. A pillar on the far wall catches it and drops it into the goal.",
   "gridBounds": { "width": 9, "depth": 4, "height": 4 },
   "staticTerrain": [
-    { "type": "goal_bucket", "position": [8, 0, 2], "rotationIndex": 0 }
+    { "type": "goal_bucket", "position": [7, 0, 2], "rotationIndex": 0 },
+    { "type": "bumper_pad", "position": [8, 0, 2], "rotationIndex": 1 }
   ],
   "inventory": {
     "straight_ramp": 1,
@@ -182,10 +183,10 @@ The sandbox is defined by a single `sandbox.json` with no `goalPosition` field:
     "half_pipe": 0
   },
   "launchpadPosition": [1, 3, 2],
-  "goalPosition": [8, 0, 2]
+  "goalPosition": [7, 0, 2]
 }
 ```
-*Solution: Place a Straight Ramp at [1, 2, 2] (descending +X), a Speed Booster at [1, 0, 2], and a Bumper Pad at [7, 0, 2] to brake the marble before it reaches the sunken goal bucket. The booster launches the marble across the gap, the bumper absorbs momentum, and the marble drops into the bucket.*
+*Solution: Place a Straight Ramp at [1, 2, 2] (descending +X) and a Speed Booster at [1, 0, 2]. The booster launches the marble across the gap. A static bumper pillar at [8, 0, 2] (restitution 0) on the far wall catches the marble, absorbs its momentum, and drops it into the sunken goal bucket at [7, 0, 2]. The player's bumper pad from inventory can be used for additional braking if needed.*
 
 ---
 
