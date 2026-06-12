@@ -6,6 +6,7 @@ import { GridFloor } from '@/components/scene/GridFloor';
 import { GridGhost } from '@/components/scene/GridGhost';
 import { TrajectoryLine } from '@/components/scene/TrajectoryLine';
 import { useCamera } from '@/hooks/useCamera';
+import { useGameSounds } from '@/hooks/useGameSounds';
 import { useGoalDetector } from '@/hooks/useGoalDetector';
 import { useGridInteraction } from '@/hooks/useGridInteraction';
 import { usePieceRotation } from '@/hooks/usePieceRotation';
@@ -53,6 +54,7 @@ export function Scene() {
   usePieceRotation();
   useTrajectoryPreview();
   useGoalDetector();
+  useGameSounds();
 
   return (
     <>

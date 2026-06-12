@@ -9,6 +9,8 @@
 import { useBeforePhysicsStep, useRapier } from '@react-three/rapier';
 import { useEffect, useRef } from 'react';
 
+import { audioEngine } from '@/audio/AudioEngine';
+import { playFailTone } from '@/audio/sounds/failTone';
 import { useGameStore } from '@/store/useGameStore';
 
 /** Y-threshold below which the marble is considered to have fallen off. */
@@ -67,6 +69,13 @@ export function FailDetector() {
 
     if (marbleBelowThreshold) {
       if (!failTimerRef.current) {
+        // Play fail tone immediately on first detection
+        if (!audioEngine.isMuted()) {
+          audioEngine.play();
+          const ctx = audioEngine.getContext();
+          if (ctx) playFailTone(ctx);
+        }
+
         failTimerRef.current = setTimeout(() => {
           hasFailedRef.current = true;
           const currentState = useGameStore.getState();
