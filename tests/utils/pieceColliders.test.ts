@@ -230,11 +230,21 @@ describe('getGoalBucketColliders', () => {
     expect(xWalls[0].halfExtents[1]).toBeLessThan(0.25);
   });
 
-  it('should have restitution 0.3 on physical colliders', () => {
+  it('should have low restitution on physical colliders to absorb marble momentum', () => {
     const colliders = getGoalBucketColliders();
     const physical = colliders.filter((c) => !c.sensor);
     for (const c of physical) {
-      expect(c.restitution).toBe(0.3);
+      expect(c.restitution).toBeLessThanOrEqual(0.3);
+    }
+  });
+
+  it('should have zero restitution on X-walls to contain marble', () => {
+    const colliders = getGoalBucketColliders();
+    const xWalls = colliders.filter(
+      (c) => !c.sensor && Math.abs(c.position[2]) < 0.01 && Math.abs(c.position[0]) > 0.9,
+    );
+    for (const c of xWalls) {
+      expect(c.restitution).toBe(0);
     }
   });
 

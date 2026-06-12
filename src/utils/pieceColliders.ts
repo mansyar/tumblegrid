@@ -185,35 +185,34 @@ export function getGoalBucketColliders(): ColliderDescriptor[] {
       sensor: false,
       restitution: 0.3,
     },
-    // Physical front wall (Z+)
+    // Physical front wall (Z+) — low restitution to absorb momentum
     {
       type: 'cuboid',
       halfExtents: [0.9, 0.25, 0.05],
       position: [0, 0.45, 0.95],
       rotation: [0, 0, 0],
       sensor: false,
-      restitution: 0.3,
+      restitution: 0.1,
     },
-    // Physical back wall (Z-)
+    // Physical back wall (Z-) — low restitution to absorb momentum
     {
       type: 'cuboid',
       halfExtents: [0.9, 0.25, 0.05],
       position: [0, 0.45, -0.95],
       rotation: [0, 0, 0],
       sensor: false,
-      restitution: 0.3,
+      restitution: 0.1,
     },
-    // Short X-direction walls (lips) — low enough for the marble to roll
-    // over on entry from a ramp (center Y≈0.9-1.0), but tall enough to
-    // contain it once at rest on the floor (center Y≈0.7, needs Y≥1.0 to
-    // clear the wall top at Y=0.5).
+    // Short X-direction walls (lips) — zero restitution so marble is
+    // contained once it enters the bucket. Tall enough to hold marble
+    // at rest (wall top Y=0.5), but short enough for entry from ramps.
     {
       type: 'cuboid',
       halfExtents: [0.05, 0.15, 0.9],
       position: [0.95, 0.35, 0],
       rotation: [0, 0, 0],
       sensor: false,
-      restitution: 0.3,
+      restitution: 0,
     },
     {
       type: 'cuboid',
@@ -221,7 +220,7 @@ export function getGoalBucketColliders(): ColliderDescriptor[] {
       position: [-0.95, 0.35, 0],
       rotation: [0, 0, 0],
       sensor: false,
-      restitution: 0.3,
+      restitution: 0,
     },
     // Interior sensor trigger (inside the bucket cavity)
     // Raised to Y=0.55 so it overlaps with the marble's center position
