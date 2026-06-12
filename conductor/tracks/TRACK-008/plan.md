@@ -89,7 +89,7 @@
     - [x] Handle multiple play/stop cycles (cleanup old sources)
     - [x] Write integration tests for lifecycle (start → update → stop)
 
-- [ ] Task: Conductor - User Manual Verification 'Phase 4: Marble Roll Sound' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 4: Marble Roll Sound' (Protocol in workflow.md)
 
 ## Phase 5: Testing & Polish
 
