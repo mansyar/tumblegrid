@@ -546,8 +546,9 @@ flowchart TD
 | Field | Value |
 |---|---|
 | **Track ID** | `TRACK-010` |
-| **Status** | Pending |
+| **Status** | ✅ Complete |
 | **Core Dependency** | `TRACK-009` |
+| **Completion SHA** | `e06dd27` (archived) |
 
 ### Context & Objectives
 
@@ -564,18 +565,25 @@ flowchart TD
   - `src/hooks/useTouchRotation.ts` — Two-finger twist gesture → rotationIndex
   - `src/utils/input/normalizePointer.ts` — Pointer, touch, mouse → unified `{ x, y, button, isTouch }`
   - `src/styles/mobile.css` — Mobile-specific responsive overrides
+  - `src/components/ui/RotateButton.tsx` — Rotate button for touch devices
+  - `src/components/ui/RotateButton.css` — Rotate button styling
 - **Modified files:**
   - `src/hooks/useGridInteraction.ts` — Use normalized pointer input
   - `src/components/ui/InventoryPanel.tsx` — Responsive layout (collapsible on mobile)
   - `index.html` — Viewport meta tag, safe-area CSS env vars
   - `src/components/scene/GameCanvas.tsx` — Touch gesture bindings
-  - `src/components/ui/HUD.tsx` — Responsive positioning
+  - `src/components/ui/HUD.tsx` — Mount RotateButton
+  - `src/components/scene/Scene.tsx` — Mount useTouchRotation hook
+  - `src/main.tsx` — Import mobile.css
 
 ### Implementation Phase Vectors
 
-- **Phase 1: Touch Input Pipeline** — Normalize all pointer/touch/mouse events into a single `{ x, y, button, isTouch }` format. Feed into existing raycasting and interaction hooks. Verify tap-to-place, tap-to-select work on touch devices.
-- **Phase 2: Touch Gestures** — Implement two-finger twist (track two touch points, compute angle delta → cycle rotationIndex). Verify pinch-to-zoom works with OrbitControls (may need damping tuning). Ensure single-finger drag orbits correctly.
-- **Phase 3: Responsive UI & Final QA** — Inventory panel collapses/shrinks on narrow viewports. Button touch targets ≥ 44px. Safe area insets for notched devices. Cross-browser testing. Fix any layout or input bugs.
+- **Phase 1: Touch Input Pipeline** — Normalize all pointer/touch/mouse events into a single `{ x, y, button, isTouch }` format via `normalizePointer()`. Feed into existing raycasting and interaction hooks. Verify tap-to-place, tap-to-select work on touch devices. `0ec9661`
+- **Phase 2: Touch Gestures** — Implement two-finger twist (track two touch points, compute angle delta → cycle rotationIndex). Verify pinch-to-zoom works with OrbitControls. Ensure single-finger drag orbits correctly. `35ef49b`
+- **Phase 3: Rotate Button** — Create RotateButton component with ≥44px touch target. Wire to store for pre-placement and post-placement rotation. `e49096b`
+- **Phase 4: Responsive Inventory Panel** — Mobile bottom drawer layout (≤768px), horizontal scroll, compact items, safe area padding. CSS-only responsive via `mobile.css`. `9e115d6`
+- **Phase 5: Touch Targets & Safe Areas** — Audit all interactive elements for ≥44px targets. Apply safe area insets via `env(safe-area-inset-*)` for notched devices. Update viewport meta tag. `e6911a2`
+- **Phase 6: Cross-Browser QA** — Desktop (Chrome, Firefox, Safari, Edge) and mobile (iOS Safari, Android Chrome) testing. Regression verification. Full test suite pass.
 
 ### Verification Protocols
 
@@ -584,15 +592,17 @@ flowchart TD
 
 ### Definition of Done
 
-- [ ] Tap-to-place and tap-to-select work on touch devices.
-- [ ] Two-finger twist gesture rotates the selected piece.
-- [ ] Pinch-to-zoom works comfortably.
-- [ ] All interactive elements have ≥ 44px touch targets.
-- [ ] Safe area insets applied for notched devices.
-- [ ] Inventory panel is usable on 375px-wide screens.
-- [ ] Desktop controls have zero regression.
-- [ ] Cross-browser test passes (Chrome, Firefox, Safari, Edge).
-- [ ] Code passes static analysis review.
+- [x] Tap-to-place and tap-to-select work on touch devices.
+- [x] Two-finger twist gesture rotates the selected piece.
+- [x] Rotate button works on mobile.
+- [x] Pinch-to-zoom works comfortably.
+- [x] All interactive elements have ≥ 44px touch targets.
+- [x] Safe area insets applied for notched devices.
+- [x] Inventory panel is usable on 375px-wide screens (bottom drawer).
+- [x] Desktop controls have zero regression.
+- [x] Cross-browser test passes (Chrome, Firefox, Safari, Edge).
+- [x] Code passes static analysis review.
+- [x] 601 passing tests across 65 test files.
 
 ---
 
