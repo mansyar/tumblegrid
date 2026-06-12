@@ -14,24 +14,50 @@ The game toggles between two strictly isolated operational modes:
 2. **Play Mode (Dynamic):** The grid disappears, gravity activates, and the marble spawns at the launchpad. The simulation plays out in real-time. If the marble misses or falls into the void, the player stops the simulation, returning instantly to Build Mode with their placements preserved to tweak the design.
 
 +-----------------------------------+
-   |            BUILD MODE             | <---------+
-   | (Place/Rotate Ramps on Grid,      |           |
-   |  Review limited inventory)        |           |
-   +-----------------------------------+           | Tweak /
-                     |                             | Fail State
-                     | Press "Play"                |
-                     v                             |
-   +-----------------------------------+           |
-   |            PLAY MODE              | ----------+
-   | (Physics active, Marble drops,    |
-   |  Simulation runs)                 |
-   +-----------------------------------+
-                     |
-                     | Success (Goal Reached)
-                     v
-   +-----------------------------------+
-   |            NEXT LEVEL             |
-   +-----------------------------------+
+    |            MAIN MENU              |
+    | (Campaign / Sandbox buttons)     |
+    +-----------------------------------+
+                      |
+          +-----------+------------+
+          |                        |
+          v                        v
+   +-------------+          +------------+
+   | LEVEL SELECT|          |  SANDBOX   |
+   | (5 levels,  |          | (no goal)  |
+   |  locked/un  |          +------------+
+   |  locked)    |               |
+   +------+------+               |
+          |                      |
+          v                      v
+    +-----------------------------------+
+    |         LEVEL INTRO OVERLAY       |
+    |  (title + description, 3s auto-   |
+    |   dismiss or click to dismiss)    |
+    +-----------------------------------+
+                      |
+                      v
+    +-----------------------------------+
+    |            BUILD MODE             | <---------+
+    | (Place/Rotate Ramps on Grid,      |           |
+    |  Review limited inventory)        |           |
+    +-----------------------------------+           | Tweak /
+                      |                             | Fail State
+                      | Press "Play"                |
+                      v                             |
+    +-----------------------------------+           |
+    |            PLAY MODE              | ----------+
+    | (Physics active, Marble drops,    |
+    |  Simulation runs)                 |
+    +-----------------------------------+
+                      |
+                      | Success (Goal Reached, 1.5s bucket dwell)
+                      v
+    +-----------------------------------+
+    |       VICTORY OVERLAY             |
+    |  "Level Complete!"                |
+    |  [Next Level] [Retry] [Back]      |
+    +-----------------------------------+
+
 
 
    ---
@@ -84,7 +110,7 @@ All pieces occupy exactly **1 grid cell**. Each piece defines an **entry face** 
 
 | Piece | Occupies | Entry Face | Exit Face | Behaviour |
 |---|---|---|---|---|
-| **Launchpad** | 1 cell (fixed, unmovable) | None (origin) | Bottom face | Drops marble vertically downward when Play activates. Cannot be removed. |
+| **Launchpad** | 1 cell (fixed, unmovable) | None (origin) | Bottom face | Glowing ring marker on the floor. Marble spawns above this position and drops straight down (no horizontal impulse). Cannot be removed. |
 | **Straight Ramp** | 1 cell | Top face (descending) or Bottom face (ascending) | Side face in exit direction | Diagonal slope filling the cell. **Descending (rot 0,1):** marble enters top, converts vertical drop into horizontal momentum, exits at side face (rot0=+X, rot1=+Z). **Ascending (rot 2,3):** marble enters bottom, climbs slope, exits at side face (rot2=-X, rot3=-Z). |
 | **Speed Booster** | 1 cell | Any side face | Opposite side face | Flat track. Detects marble overlap via sensor collider and applies an instantaneous impulse along the exit direction. No gravity conversion — pure launch. |
 | **Bumper Pad** | 1 cell | Any side face | Same face (reflect) | Vertical wall. Restitution = 1.0 (tunable during playtesting). Marble bounces back at a right-angle reflection. Entry = exit face (incoming direction determines outgoing). Can be placed as static terrain with restitution = 0 to act as an immovable wall/pillar. |
@@ -142,7 +168,7 @@ All pieces occupy exactly **1 grid cell**. Each piece defines an **entry face** 
 * **Inventory:** 16 pieces with a balanced mix (5 Straight Ramps, 4 Bumper Pads, 3 Speed Boosters, 4 Half-Pipe Tunnels).
 
 #### Campaign Mode
-A curated 5-level campaign that introduces mechanics progressively:
+A curated 5-level campaign that introduces mechanics progressively. Campaign progression (completed levels) persists via `localStorage`. Completing level N unlocks level N+1. Level 1 is always unlocked. The "Next Level" button is disabled on the final level (level 5).
 
 * **Level 1 — The Descent (Tutorial):** A straight vertical gap. Teaches basic item selection and placing a Straight Ramp to bridge an elevation change. Small grid (6×4×3).
 * **Level 2 — The Bank Shot:** The goal is offset at a 90-degree turn. Teaches the player to use a Bumper Pad to redirect velocity around a central structural pillar.

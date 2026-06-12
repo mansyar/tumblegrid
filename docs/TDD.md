@@ -32,7 +32,10 @@ The application lifecycle relies entirely on a centralized Zustand store. This a
 * **Current Machine State:** Enumerated string field (`BUILDING`, `PLAYING`, `LEVEL_CLEARED`, `SANDBOX_BUILDING`, `SANDBOX_PLAYING`). The `SANDBOX_*` states bypass goal bucket checks and disable win/loss timers.
 * **Manual Stop:** A "Stop" UI button (and `Esc` key on desktop) during `PLAYING` and `SANDBOX_PLAYING` states immediately transitions back to `BUILDING` / `SANDBOX_BUILDING`. All Placed Components are preserved — no state is lost.
 * **Active Mode:** Enum (`CAMPAIGN`, `SANDBOX`). Determines which state machine transitions apply and whether the goal bucket is rendered.
-* **Active Level Index:** Progress tracking variable matching JSON campaign maps. Ignored in sandbox mode.
+* **Current Screen:** Enum (`menu`, `levelSelect`, `game`). Controls which UI overlay is rendered in `App.tsx`. Initialized as `menu`.
+* **Active Level Index:** Progress tracking variable matching JSON campaign maps (`0`–`4`). Used by the goal detector to persist campaign progress on victory. Set on level load, cleared on menu navigation.
+* **Stashed Level Definition:** A deep copy of the last loaded `LevelDefinition`. Used by `resetLevel()` to reconstruct initial level state (player-placed pieces removed, inventory restored to initial values).
+* **Show Level Intro:** Boolean flag. When true, the LevelIntro overlay is rendered over the game. Set to `true` on campaign level load, `false` on retry or user dismiss (click or 3s timer).
 * **Level Inventory Configuration:** Key-value object mapping specific piece type constants to integer counts remaining.
 * **Placed Components Array:** Collection of structural items currently committed to the map. Each item payload contains:
     * `id`: Unique cryptographic string string.
@@ -106,10 +109,23 @@ Half-Pipe Tunnels: Optimized as a performance-efficient Compound Collider. Rathe
 
 Walls & Pillars: Reuse the `bumper_pad` PieceType with restitution = 0. No bounce — pure solid blocker. Defined in `staticTerrain` with a position and rotationIndex. The collider is a simple cuboid occupying the full grid cell volume.
 
-**Goal Trigger Detection**
-The Goal Bucket is structurally split into two assets: a visible outer mesh housing solid collision boundaries, and an invisible internal volumetric sensor collider. When the dynamic marble group registers an intersection with this internal sensor, a timer callback checks for structural continuity. If the intersection holds true across successive frames without a premature exit event, the engine shifts into victory state and prepares the next level configuration.
+**Goal Trigger Detection (Victory)**
+The Goal Bucket is structurally split into two asset layers: a visible outer mesh housing solid collision boundaries (floor, 2 Z-walls, 2 short X-lip walls), and an invisible internal volumetric sensor collider. The interior sensor is raised to Y=0.55 (overlapping the marble's center at radius 0.5) so it reliably detects the marble when it rolls into the bucket interior.
 
-In sandbox mode (`SANDBOX_*` states), no Goal Bucket is instantiated and the goal trigger system is entirely bypassed. The marble is auto-destroyed (with a short trail fade-out) only if it falls below Y < -5, but no failure state is triggered — the simulation simply resets the marble to the launchpad.
+Bucket sensor entry/exit tracking is handled in `PieceCollider.tsx` — only the sensor collider triggers `setMarbleInBucket()` (not the physical walls), preventing false resets from marble bouncing against bucket surfaces.
+
+The dwell timer is implemented as a `useGoalDetector` hook that runs inside `useFrame` (R3F's render loop):
+1. Each frame reads `marbleInBucketIds` from the Zustand store.
+2. A pure function `updateGoalDwell(delta, accumulator, isInBucket, threshold)` accumulates frame delta time.
+3. If the marble exits (bucket set empties), the accumulator resets to 0.
+4. On reaching 1.5s sustained containment, the hook calls:
+   - `setLevelCleared()` — transitions state to `LEVEL_CLEARED`
+   - `completeLevel(index)` — persists campaign progress to localStorage
+5. The hook is a no-op in SANDBOX mode and during non-PLAYING states.
+
+The use of physics tick `delta` (not wall clock) ensures frame-accurate dwell measurement. The accumulator is stored in a `useRef` to avoid React re-renders during the 60fps simulation loop.
+
+In sandbox mode (`SANDBOX_*` states), `useGoalDetector` immediately resets its accumulator and returns — no goal detection runs. The marble runs indefinitely or until stopped manually.
 
 **Camera Configuration**
 The OrbitControls camera initializes at 45° pitch / 45° yaw relative to the grid center. On level load, `camera.position` and `controls.target` auto-frame the full `gridBounds` volume. Pitch is clamped to [10°, 80°] to prevent the camera from clipping below the floor plane. Zoom distance is bounded between 5 and 50 world units.

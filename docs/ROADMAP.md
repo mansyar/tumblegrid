@@ -373,8 +373,9 @@ flowchart TD
 | Field | Value |
 |---|---|
 | **Track ID** | `TRACK-007` |
-| **Status** | Pending |
+| **Status** | ✅ Complete |
 | **Core Dependency** | `TRACK-005`, `TRACK-006` |
+| **Completion SHA** | `c82965a` (archived) |
 
 ### Context & Objectives
 
@@ -394,13 +395,15 @@ flowchart TD
   - `src/components/ui/LevelIntro.tsx` — Level title + description shown on load
   - `src/hooks/useCampaignProgress.ts` — localStorage read/write for unlocked levels
   - `src/hooks/useGoalDetector.ts` — 1.5s dwell timer tied to store state
-- **Modified files:** `src/App.tsx` (route between Menu / LevelSelect / Game), `src/store/useGameStore.ts` (add LEVEL_CLEARED transitions, campaign progress)
+  - `src/utils/goalDetector.ts` — Pure function for dwell detection (`updateGoalDwell`)
+- **Modified files:** `src/App.tsx` (route between Menu / LevelSelect / Game), `src/store/useGameStore.ts` (add `currentScreen`, `activeLevelIndex`, `setLevelCleared`, `resetLevel`, `stashedLevelDefinition`, `showLevelIntro`), `src/components/scene/Scene.tsx` (add Launchpad marker + useGoalDetector), `src/components/physics/PieceCollider.tsx` (sensor-only bucket detection), `src/components/pieces/Launchpad.tsx` (simplified to glow ring marker), `src/levels/campaign/01-the-descent.json` (add half-pipe to inventory)
 
 ### Implementation Phase Vectors
 
 - **Phase 1: Menu Navigation** — Build MainMenu (title + Campaign / Sandbox buttons) and LevelSelect (grid of 5 level cards, locked state greyed out). Wire routing: Menu → LevelSelect → Game. Sandbox button → Game directly in sandbox mode.
 - **Phase 2: Victory Detection** — Goal bucket sensor overlap timer. If marble stays inside for 1.5s → set `LEVEL_CLEARED` state. Persist `campaign_XX` as completed in localStorage. Unlock next level.
 - **Phase 3: Victory Overlay & Level Intro** — "Level Complete!" overlay with "Next Level" and "Back to Menu" buttons. Level intro overlay showing level title + description on first load.
+- **Phase 4: Review Fixes** — Applied review suggestions: wrapped `act()` in goal detector tests, fixed misleading test name.
 
 ### Verification Protocols
 
@@ -409,14 +412,15 @@ flowchart TD
 
 ### Definition of Done
 
-- [ ] Main menu renders with Campaign and Sandbox buttons.
-- [ ] Level select shows 5 levels, only unlocked ones are clickable.
-- [ ] Goal bucket 1.5s timer triggers victory.
-- [ ] "Level Complete!" overlay appears with both buttons.
-- [ ] Next Level loads the next campaign level.
-- [ ] Campaign progress persists across page reloads.
-- [ ] Sandbox mode loads without goal bucket.
-- [ ] Code passes static analysis review.
+- [x] Main menu renders with Campaign and Sandbox buttons.
+- [x] Level select shows 5 levels, only unlocked ones are clickable.
+- [x] Goal bucket 1.5s timer triggers victory.
+- [x] "Level Complete!" overlay appears with both buttons.
+- [x] Next Level loads the next campaign level.
+- [x] Campaign progress persists across page reloads.
+- [x] Sandbox mode loads without goal bucket.
+- [x] Code passes static analysis review.
+- [x] 441 passing tests across 50 test files.
 
 ---
 

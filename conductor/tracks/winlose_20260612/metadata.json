@@ -1,8 +1,0 @@
-{
-  "track_id": "winlose_20260612",
-  "type": "feature",
-  "status": "new",
-  "created_at": "2026-06-12T06:44:00Z",
-  "updated_at": "2026-06-12T06:44:00Z",
-  "description": "TRACK-007: Win/Lose Flow, Victory UI & Menus — Implement goal bucket dwell detection, victory overlay, main menu, level-select screen, campaign progression via localStorage, and level intro overlay."
-}
