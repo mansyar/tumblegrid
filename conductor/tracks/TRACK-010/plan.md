@@ -26,27 +26,27 @@
 
 ## Phase 2: Touch Gestures
 
-- [ ] Task: Create `src/hooks/useTouchRotation.ts` — two-finger twist gesture
-    - [ ] Track two touch points (touchstart with 2 fingers)
-    - [ ] Compute angle delta between finger positions
-    - [ ] Map angle delta to rotationIndex cycle (threshold: ~45° per step)
-    - [ ] Export `useTouchRotation()` hook returning current rotation action
-    - [ ] Write tests in `tests/useTouchRotation.test.ts`
+- [x] Task: Create `src/hooks/useTouchRotation.ts` — two-finger twist gesture
+    - [x] Track two touch points (touchstart with 2 fingers)
+    - [x] Compute angle delta between finger positions
+    - [x] Map angle delta to rotationIndex cycle (threshold: ~45° per step)
+    - [x] Export `useTouchRotation()` hook returning current rotation action
+    - [x] Write tests in `tests/useTouchRotation.test.ts`
 
-- [ ] Task: Integrate pinch-to-zoom with OrbitControls
-    - [ ] Verify OrbitControls handles pinch natively (R3F drei)
-    - [ ] Tune damping parameters for smooth feel
-    - [ ] Test on mobile device emulation
+- [x] Task: Integrate pinch-to-zoom with OrbitControls
+    - [x] Verify OrbitControls handles pinch natively (R3F drei)
+    - [x] Tune damping parameters for smooth feel
+    - [x] Test on mobile device emulation
 
-- [ ] Task: Wire single-finger drag for camera orbit
-    - [ ] Verify OrbitControls handles single-finger drag as orbit
-    - [ ] Ensure single tap (not drag) still places pieces
-    - [ ] Differentiate tap vs drag with distance threshold
+- [x] Task: Wire single-finger drag for camera orbit
+    - [x] Verify OrbitControls handles single-finger drag as orbit
+    - [x] Ensure single tap (not drag) still places pieces
+    - [x] Differentiate tap vs drag with distance threshold
 
-- [ ] Task: Integrate useTouchRotation into GameCanvas
-    - [ ] Mount useTouchRotation hook
-    - [ ] Connect twist action to store rotation dispatch
-    - [ ] Write integration tests
+- [x] Task: Integrate useTouchRotation into GameCanvas
+    - [x] Mount useTouchRotation hook
+    - [x] Connect twist action to store rotation dispatch
+    - [x] Write integration tests
 
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Touch Gestures' (Protocol in workflow.md)
 

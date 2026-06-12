@@ -12,6 +12,7 @@ import { useGridInteraction } from '@/hooks/useGridInteraction';
 import { useMarbleRoll } from '@/hooks/useMarbleRoll';
 import { usePieceRotation } from '@/hooks/usePieceRotation';
 import { usePieceSelection } from '@/hooks/usePieceSelection';
+import { useTouchRotation } from '@/hooks/useTouchRotation';
 import { useTrajectoryPreview } from '@/hooks/useTrajectoryPreview';
 import { getLevelByIndex } from '@/levels';
 import { useGameStore } from '@/store/useGameStore';
@@ -53,6 +54,7 @@ export function Scene() {
   useGridInteraction(selectedPieceType);
   usePieceSelection();
   usePieceRotation();
+  useTouchRotation();
   useTrajectoryPreview();
   useGoalDetector();
   useGameSounds();
