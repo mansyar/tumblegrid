@@ -80,7 +80,7 @@ All pieces occupy exactly **1 grid cell** (2×2×2 world units):
 
 - [x] 5 campaign levels are solvable with provided inventory
 - [x] Sandbox mode allows free-form building
-- [ ] Touch controls work on mobile browsers
+- [x] Touch controls work on mobile browsers
 - [ ] All pieces render as distinct 3D meshes
 - [ ] Physics simulation runs without tunneling or jitter
 - [ ] Audio feedback exists for key game events
