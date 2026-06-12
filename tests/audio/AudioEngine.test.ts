@@ -151,6 +151,93 @@ describe('AudioEngine', () => {
     });
   });
 
+  describe('tab visibility handling', () => {
+    it('should register continuous sound sources', async () => {
+      const { AudioEngine } = await import('@/audio/AudioEngine');
+      const engine = AudioEngine.getInstance();
+      engine.reset();
+      engine.getContext();
+
+      const node = { gain: { value: 1, setValueAtTime: vi.fn() } } as unknown as GainNode;
+      engine.registerContinuous(node);
+      // No error thrown — source is tracked
+    });
+
+    it('should unregister continuous sound sources', async () => {
+      const { AudioEngine } = await import('@/audio/AudioEngine');
+      const engine = AudioEngine.getInstance();
+      engine.reset();
+      engine.getContext();
+
+      const node = { gain: { value: 1, setValueAtTime: vi.fn() } } as unknown as GainNode;
+      engine.registerContinuous(node);
+      engine.unregisterContinuous(node);
+      // No error thrown — source removed
+    });
+
+    it('should pause continuous sources when tab is hidden', async () => {
+      const { AudioEngine } = await import('@/audio/AudioEngine');
+      const engine = AudioEngine.getInstance();
+      engine.reset();
+      engine.getContext();
+
+      const node1 = { gain: { value: 1, setValueAtTime: vi.fn() } } as unknown as GainNode;
+      const node2 = { gain: { value: 1, setValueAtTime: vi.fn() } } as unknown as GainNode;
+      engine.registerContinuous(node1);
+      engine.registerContinuous(node2);
+
+      engine.pauseContinuous();
+
+      expect(node1.gain.setValueAtTime).toHaveBeenCalledWith(0, expect.any(Number));
+      expect(node2.gain.setValueAtTime).toHaveBeenCalledWith(0, expect.any(Number));
+    });
+
+    it('should resume continuous sources when tab becomes visible', async () => {
+      const { AudioEngine } = await import('@/audio/AudioEngine');
+      const engine = AudioEngine.getInstance();
+      engine.reset();
+      engine.getContext();
+
+      const node = { gain: { value: 0, setValueAtTime: vi.fn() } } as unknown as GainNode;
+      engine.registerContinuous(node);
+
+      engine.resumeContinuous();
+
+      expect(node.gain.setValueAtTime).toHaveBeenCalledWith(1, expect.any(Number));
+    });
+
+    it('should not resume continuous sources when engine is muted', async () => {
+      const { AudioEngine } = await import('@/audio/AudioEngine');
+      const engine = AudioEngine.getInstance();
+      engine.reset();
+      engine.getContext();
+
+      engine.setMuted(true);
+      const node = { gain: { value: 0, setValueAtTime: vi.fn() } } as unknown as GainNode;
+      engine.registerContinuous(node);
+
+      engine.resumeContinuous();
+
+      // Should remain at 0 because engine is muted
+      expect(node.gain.setValueAtTime).not.toHaveBeenCalled();
+    });
+
+    it('should clean up continuous sources and listeners on cleanup', async () => {
+      const { AudioEngine } = await import('@/audio/AudioEngine');
+      const engine = AudioEngine.getInstance();
+      engine.reset();
+      engine.getContext();
+
+      const node = { gain: { value: 1, setValueAtTime: vi.fn() } } as unknown as GainNode;
+      engine.registerContinuous(node);
+
+      await engine.cleanup();
+      // After cleanup, pauseContinuous should be a no-op (no context)
+      engine.pauseContinuous();
+      // No error thrown
+    });
+  });
+
   describe('error handling', () => {
     it('should handle missing AudioContext gracefully', async () => {
       // @ts-expect-error - Removing AudioContext for test
