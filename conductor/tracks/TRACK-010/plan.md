@@ -65,21 +65,21 @@
 
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Rotate Button' (Protocol in workflow.md)
 
-## Phase 4: Responsive Inventory Panel (Bottom Drawer)
+## Phase 4: Responsive Inventory Panel (Bottom Drawer) [checkpoint: 9e115d6]
 
-- [ ] Task: Create `src/styles/mobile.css` — mobile-specific CSS
-    - [ ] Media query for ≤768px width
-    - [ ] Bottom drawer layout: fixed bottom, horizontal scroll
-    - [ ] Compact piece icons + counts
-    - [ ] Safe area padding using `env(safe-area-inset-bottom)`
-    - [ ] Import in main entry point
+- [x] Task: Create `src/styles/mobile.css` — mobile-specific CSS
+    - [x] Media query for ≤768px width
+    - [x] Bottom drawer layout: fixed bottom, horizontal scroll
+    - [x] Compact piece icons + counts
+    - [x] Safe area padding using `env(safe-area-inset-bottom)`
+    - [x] Import in main entry point
 
-- [ ] Task: Modify `src/components/ui/InventoryPanel.tsx` — responsive layout
-    - [ ] Add CSS classes for bottom drawer mode
-    - [ ] Horizontal scrollable container
-    - [ ] Compact piece type display (icon + count, no label)
-    - [ ] Desktop layout unchanged (zero regression)
-    - [ ] Write/update tests
+- [x] Task: Responsive inventory via CSS (no component changes needed)
+    - [x] CSS-only responsive: `.inventory-item-label` hidden on mobile via `display: none`
+    - [x] Horizontal scrollable container via media query
+    - [x] Compact piece type display (icon + count, no label)
+    - [x] Desktop layout unchanged (zero regression — media query only ≤768px)
+    - [x] Tests: `tests/styles/mobile.test.ts` (10 tests)
 
 - [ ] Task: Conductor - User Manual Verification 'Phase 4: Responsive Inventory' (Protocol in workflow.md)
 
