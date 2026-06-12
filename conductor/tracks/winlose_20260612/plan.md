@@ -68,4 +68,8 @@
     - [x] Connect overlay buttons: Next Level → load level+1, Retry → resetLevel() + reload, Back to Menu → navigate home
     - [x] Verify retry resets all placed pieces to initial state
 - [x] **Task: Conductor - User Manual Verification 'Victory Overlay & Level Intro' (Protocol in workflow.md)**
+
+## Phase 4: Review Fixes
+
+- [x] **Task: Apply review suggestions** `ad666a9`
 </protect>
