@@ -35,9 +35,11 @@ Unlocked from start. Flat 10×10×5 grid with no goal, a generous 16-piece inven
 
 ## 4. Core Gameplay Loop
 
+0. **Menu & Level Select:** Game starts at Main Menu (Campaign/Sandbox). Campaign players pick a level from the Level Select screen. Level intro overlay shows title + description.
 1. **Build Mode (Static):** Pieces are placed/rotated on a 3D grid. No physics. No time pressure. Inventory is limited per level.
 2. **Play Mode (Dynamic):** Physics activates. Marble drops from launchpad and rolls along the path. Simulation runs in real-time.
 3. **Tweak/Iteration:** If the marble falls (Y < -5), or the player presses Stop, they return to Build Mode with all placements preserved.
+4. **Victory:** Marble dwelling in the goal bucket for 1.5s triggers the victory overlay with Next Level, Retry, and Back to Menu options.
 
 ## 5. MVP Component Library
 
@@ -82,4 +84,4 @@ All pieces occupy exactly **1 grid cell** (2×2×2 world units):
 - [ ] All pieces render as distinct 3D meshes
 - [ ] Physics simulation runs without tunneling or jitter
 - [ ] Audio feedback exists for key game events
-- [ ] Campaign progression persists via localStorage
+- [x] Campaign progression persists via localStorage
