@@ -87,6 +87,7 @@ export function useGridInteraction(
 
   const placedPieces = useGameStore((s) => s.placedPieces);
   const grid = useGameStore((s) => s.grid);
+  const activeBlueprintNode = useGameStore((s) => s.activeBlueprintNode);
   const updateActiveBlueprint = useGameStore((s) => s.updateActiveBlueprint);
   const placePiece = useGameStore((s) => s.placePiece);
   const { playUIClick } = useAudio();
@@ -132,12 +133,19 @@ export function useGridInteraction(
     hoveredCellRef.current = gridPosition;
     isValidRef.current = valid;
 
+    // Preserve rotation from current blueprint if same piece type, otherwise reset to 0
+    const currentRotation =
+      activeBlueprintNode &&
+      activeBlueprintNode.pieceType === selectedPieceType
+        ? activeBlueprintNode.rotationIndex
+        : 0;
+
     updateActiveBlueprint(
       inBounds
         ? {
             pieceType: selectedPieceType,
             position: gridPosition,
-            rotationIndex: 0,
+            rotationIndex: currentRotation,
             valid,
           }
         : undefined,
@@ -148,6 +156,7 @@ export function useGridInteraction(
     pointer,
     grid,
     placedPieces,
+    activeBlueprintNode,
     updateActiveBlueprint,
   ]);
 
@@ -156,9 +165,14 @@ export function useGridInteraction(
       return;
     }
 
+    const rotationIndex =
+      activeBlueprintNode?.pieceType === selectedPieceType
+        ? activeBlueprintNode.rotationIndex
+        : 0;
+
     playUIClick('place');
-    placePiece(selectedPieceType, hoveredCellRef.current, 0);
-  }, [selectedPieceType, placePiece, playUIClick]);
+    placePiece(selectedPieceType, hoveredCellRef.current, rotationIndex);
+  }, [selectedPieceType, activeBlueprintNode, placePiece, playUIClick]);
 
   useEffect(() => {
     const canvas = gl.domElement;
