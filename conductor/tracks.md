@@ -14,5 +14,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [~] **Track: Campaign Levels & Sandbox**
+- [x] **Track: Campaign Levels & Sandbox**
 *Link: [./TRACK-009/](./TRACK-009/)*
