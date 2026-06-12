@@ -12,12 +12,7 @@ import { useEffect, useRef } from 'react';
 import { audioEngine } from '@/audio/AudioEngine';
 import { playFailTone } from '@/audio/sounds/failTone';
 import { useGameStore } from '@/store/useGameStore';
-
-/** Y-threshold below which the marble is considered to have fallen off. */
-const FAIL_Y_THRESHOLD = -5;
-
-/** Delay in milliseconds before auto-transitioning after fail detection. */
-const FAIL_DELAY_MS = 500;
+import { FAIL_Y_THRESHOLD, FAIL_DELAY_MS } from '@/utils/physics';
 
 /**
  * Reads the marble's Y position each physics tick by iterating Rapier world bodies.

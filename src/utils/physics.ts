@@ -66,6 +66,21 @@ export function getInitialMarbleImpulse(): [number, number, number] {
   return [...INITIAL_MARBLE_IMPULSE];
 }
 
+/** Y-threshold below which the marble is considered to have fallen off. */
+export const FAIL_Y_THRESHOLD = -5;
+
+/** Delay in milliseconds before auto-transitioning after fail detection. */
+export const FAIL_DELAY_MS = 500;
+
+/** Dwell time in seconds required for the marble to trigger victory in a goal bucket. */
+export const GOAL_DWELL_TIME = 1.5;
+
+/** Coefficient of restitution for elastic bumper pads (full bounce). */
+export const BUMPER_RESTITUTION_ELASTIC = 1.0;
+
+/** Coefficient of restitution for static terrain bumper pads (no bounce). */
+export const BUMPER_RESTITUTION_STATIC = 0;
+
 /** Impulse magnitude applied to the marble by a Speed Booster. */
 export const BOOST_FORCE = 8;
 

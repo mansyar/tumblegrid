@@ -2,7 +2,12 @@ import { describe, expect, it } from 'vitest';
 
 import {
   BOOST_FORCE,
+  BUMPER_RESTITUTION_ELASTIC,
+  BUMPER_RESTITUTION_STATIC,
+  FAIL_DELAY_MS,
+  FAIL_Y_THRESHOLD,
   FIXED_TIMESTEP,
+  GOAL_DWELL_TIME,
   GRAVITY,
   INITIAL_MARBLE_IMPULSE,
   MARBLE_CONFIG,
@@ -150,5 +155,31 @@ describe('Speed Booster Boost Functions', () => {
       const impulse = getBoostImpulse(rot);
       expect(impulse[1]).toBe(0);
     }
+  });
+});
+
+describe('Fail Detection Constants', () => {
+  it('should have FAIL_Y_THRESHOLD set to -5', () => {
+    expect(FAIL_Y_THRESHOLD).toBe(-5);
+  });
+
+  it('should have FAIL_DELAY_MS set to 500', () => {
+    expect(FAIL_DELAY_MS).toBe(500);
+  });
+});
+
+describe('Goal Detection Constants', () => {
+  it('should have GOAL_DWELL_TIME set to 1.5', () => {
+    expect(GOAL_DWELL_TIME).toBe(1.5);
+  });
+});
+
+describe('Bumper Restitution Constants', () => {
+  it('should have BUMPER_RESTITUTION_ELASTIC set to 1.0', () => {
+    expect(BUMPER_RESTITUTION_ELASTIC).toBe(1.0);
+  });
+
+  it('should have BUMPER_RESTITUTION_STATIC set to 0', () => {
+    expect(BUMPER_RESTITUTION_STATIC).toBe(0);
   });
 });

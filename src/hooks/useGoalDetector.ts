@@ -13,10 +13,9 @@ import { useRef } from 'react';
 
 import { useGameStore } from '@/store/useGameStore';
 import { updateGoalDwell } from '@/utils/goalDetector';
+import { GOAL_DWELL_TIME } from '@/utils/physics';
 
 import { useCampaignProgress } from './useCampaignProgress';
-
-const DWELL_THRESHOLD = 1.5;
 
 export function useGoalDetector(): void {
   const marbleInBucketIds = useGameStore((s) => s.marbleInBucketIds);
@@ -40,7 +39,7 @@ export function useGoalDetector(): void {
       delta,
       accumulatorRef.current,
       isMarbleInBucket,
-      DWELL_THRESHOLD,
+      GOAL_DWELL_TIME,
     );
     accumulatorRef.current = newAccumulator;
 
