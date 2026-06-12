@@ -1,3 +1,4 @@
+<protect>
 # Implementation Plan: TRACK-009 — Campaign Levels & Sandbox
 
 ## Phase 1: Physics Constants Consolidation
@@ -131,3 +132,4 @@
     - [ ] Update ROADMAP.md TRACK-009 Definition of Done checkboxes.
 
 - [ ] Task: Conductor - User Manual Verification 'Phase 6' (Protocol in workflow.md)
+</protect>

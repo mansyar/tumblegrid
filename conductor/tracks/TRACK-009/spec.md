@@ -1,3 +1,4 @@
+<protect>
 # Specification: TRACK-009 — Campaign Levels & Sandbox
 
 ## Overview
@@ -76,3 +77,4 @@ This track focuses on tuning and verifying the 5 campaign levels and the sandbox
 - Audio changes.
 - Mobile-specific tuning (deferred to TRACK-010).
 - Progressive difficulty balancing beyond what the ROADMAP specifies.
+</protect>
