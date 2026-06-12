@@ -4,5 +4,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [x] **Track: Win/Lose Flow, Victory UI & Menus**
-*Link: ./tracks/winlose_20260612/*
+- [x] ~~**Track: Win/Lose Flow, Victory UI & Menus**~~ [Archived]
+*Link: ./archive/winlose_20260612/*
