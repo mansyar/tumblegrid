@@ -10,6 +10,7 @@ vi.mock('@/audio/AudioEngine', () => ({
   audioEngine: {
     getContext: vi.fn(),
     isMuted: vi.fn().mockReturnValue(false),
+    play: vi.fn(),
   },
 }));
 

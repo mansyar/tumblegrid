@@ -1,4 +1,5 @@
 import { snapToGrid } from '@/hooks/useGridInteraction';
+import { useAudio } from '@/hooks/useAudio';
 import { useGameStore } from '@/store/useGameStore';
 import { useThree } from '@react-three/fiber';
 import { useCallback, useEffect, useRef } from 'react';
@@ -27,6 +28,7 @@ export function usePieceSelection(): void {
   const selectPiece = useGameStore((s) => s.selectPiece);
   const clearSelection = useGameStore((s) => s.clearSelection);
   const removePiece = useGameStore((s) => s.removePiece);
+  const { playUIClick } = useAudio();
 
   const handleClick = useCallback(() => {
     // Cast ray from camera through normalized pointer coordinates
@@ -55,6 +57,7 @@ export function usePieceSelection(): void {
     if (clickedPiece) {
       if (selectedPieceId === clickedPiece.id) {
         // Clicked on the already selected piece → remove it
+        playUIClick('remove');
         removePiece(clickedPiece.id);
       } else {
         // Clicked on a different piece → select it
@@ -72,6 +75,7 @@ export function usePieceSelection(): void {
     selectPiece,
     clearSelection,
     removePiece,
+    playUIClick,
   ]);
 
   useEffect(() => {

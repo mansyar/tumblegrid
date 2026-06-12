@@ -1,3 +1,4 @@
+import { useAudio } from '@/hooks/useAudio';
 import type { PieceType, PlacedPiece } from '@/store/types';
 import { useGameStore } from '@/store/useGameStore';
 import { useThree } from '@react-three/fiber';
@@ -88,6 +89,7 @@ export function useGridInteraction(
   const grid = useGameStore((s) => s.grid);
   const updateActiveBlueprint = useGameStore((s) => s.updateActiveBlueprint);
   const placePiece = useGameStore((s) => s.placePiece);
+  const { playUIClick } = useAudio();
 
   const hoveredCellRef = useRef<[number, number, number] | null>(null);
   const isValidRef = useRef(false);
@@ -154,8 +156,9 @@ export function useGridInteraction(
       return;
     }
 
+    playUIClick('place');
     placePiece(selectedPieceType, hoveredCellRef.current, 0);
-  }, [selectedPieceType, placePiece]);
+  }, [selectedPieceType, placePiece, playUIClick]);
 
   useEffect(() => {
     const canvas = gl.domElement;

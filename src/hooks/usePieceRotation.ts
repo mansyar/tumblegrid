@@ -1,3 +1,4 @@
+import { useAudio } from '@/hooks/useAudio';
 import { useGameStore } from '@/store/useGameStore';
 import { useCallback, useEffect } from 'react';
 
@@ -18,6 +19,7 @@ export function usePieceRotation(): void {
   const activeBlueprintNode = useGameStore((s) => s.activeBlueprintNode);
   const rotatePiece = useGameStore((s) => s.rotatePiece);
   const updateActiveBlueprint = useGameStore((s) => s.updateActiveBlueprint);
+  const { playUIClick } = useAudio();
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -25,12 +27,14 @@ export function usePieceRotation(): void {
 
       // Priority 1: Rotate selected placed piece
       if (selectedPieceId) {
+        playUIClick('rotate');
         rotatePiece(selectedPieceId);
         return;
       }
 
       // Priority 2: Rotate ghost preview (pre-placement)
       if (activeBlueprintNode) {
+        playUIClick('rotate');
         const newRotation = ((activeBlueprintNode.rotationIndex + 1) % 4) as
           | 0
           | 1
@@ -42,7 +46,7 @@ export function usePieceRotation(): void {
         });
       }
     },
-    [selectedPieceId, activeBlueprintNode, rotatePiece, updateActiveBlueprint],
+    [selectedPieceId, activeBlueprintNode, rotatePiece, updateActiveBlueprint, playUIClick],
   );
 
   useEffect(() => {
