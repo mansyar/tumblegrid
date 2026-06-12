@@ -84,13 +84,15 @@ export function getBumperPadColliders(
 }
 
 /**
- * Collider for a Speed Booster piece.
+ * Colliders for a Speed Booster piece.
  *
- * A sensor cuboid that detects marble overlap and applies a directional impulse.
- * The impulse direction is derived from the piece's rotation index.
+ * Two colliders:
+ * 1. A physical floor (non-sensor) so the marble lands on it instead of falling through.
+ * 2. A sensor cuboid that detects marble overlap and applies a directional impulse.
+ *    The impulse direction is derived from the piece's rotation index.
  *
  * @param _rotationIndex - Not used for geometry; impulse direction is handled separately.
- * @returns A single sensor cuboid collider descriptor.
+ * @returns Array of collider descriptors (floor + sensor).
  */
 export function getSpeedBoosterColliders(
   _rotationIndex: number,
@@ -98,9 +100,18 @@ export function getSpeedBoosterColliders(
   return [
     {
       type: 'cuboid',
-      // Full cell coverage, thin
+      // Physical floor — marble lands on this
       halfExtents: [1.0, 0.15, 1.0],
       position: [0, 0.15, 0],
+      rotation: [0, 0, 0],
+      sensor: false,
+      restitution: 0,
+    },
+    {
+      type: 'cuboid',
+      // Sensor — detects overlap and applies boost impulse
+      halfExtents: [0.8, 0.3, 0.8],
+      position: [0, 0.45, 0],
       rotation: [0, 0, 0],
       sensor: true,
       restitution: 0,

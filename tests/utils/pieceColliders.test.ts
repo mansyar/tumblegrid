@@ -110,26 +110,38 @@ describe('getBumperPadColliders', () => {
 });
 
 describe('getSpeedBoosterColliders', () => {
-  it('should return a single sensor collider', () => {
+  it('should return 2 colliders (physical floor + sensor)', () => {
     const colliders = getSpeedBoosterColliders(0);
-    expect(colliders).toHaveLength(1);
-    expect(colliders[0].sensor).toBe(true);
+    expect(colliders).toHaveLength(2);
   });
 
-  it('should have type cuboid', () => {
+  it('should have first collider as physical floor (sensor=false)', () => {
     const colliders = getSpeedBoosterColliders(0);
+    expect(colliders[0].sensor).toBe(false);
     expect(colliders[0].type).toBe('cuboid');
   });
 
-  it('should be thin (y half-extent < 0.3)', () => {
+  it('should have second collider as sensor (sensor=true)', () => {
     const colliders = getSpeedBoosterColliders(0);
-    expect(colliders[0].halfExtents[1]).toBeLessThan(0.3);
+    expect(colliders[1].sensor).toBe(true);
+    expect(colliders[1].type).toBe('cuboid');
   });
 
-  it('should have the same sensor dimensions for all rotations', () => {
+  it('should have floor at same position as old sensor (y=0.15)', () => {
+    const colliders = getSpeedBoosterColliders(0);
+    expect(colliders[0].position[1]).toBe(0.15);
+  });
+
+  it('should have sensor above the floor (y > floor y)', () => {
+    const colliders = getSpeedBoosterColliders(0);
+    expect(colliders[1].position[1]).toBeGreaterThan(colliders[0].position[1]);
+  });
+
+  it('should have the same dimensions for all rotations', () => {
     const r0 = getSpeedBoosterColliders(0);
     const r1 = getSpeedBoosterColliders(1);
     expect(r0[0].halfExtents).toEqual(r1[0].halfExtents);
+    expect(r0[1].halfExtents).toEqual(r1[1].halfExtents);
   });
 });
 
