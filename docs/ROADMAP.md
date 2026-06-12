@@ -488,8 +488,9 @@ flowchart TD
 | Field | Value |
 |---|---|
 | **Track ID** | `TRACK-009` |
-| **Status** | Pending |
+| **Status** | ✅ Complete |
 | **Core Dependency** | `TRACK-007`, `TRACK-008` |
+| **Completion SHA** | `872a29f` (review fixes applied, archived) |
 
 ### Context & Objectives
 
@@ -502,18 +503,26 @@ flowchart TD
 ### Architecture & Tech Stack Checklist
 
 - **Files modified:**
-  - `src/levels/campaign/01-the-descent.json` to `05-efficiency-crisis.json` (fine-tune positions, verify in-engine)
-  - `src/levels/sandbox.json` (verify inventory)
-  - Physics parameters (marble mass, restitution, friction, speed booster impulse) — constants in `src/components/physics/`
+  - `src/levels/campaign/01-the-descent.json` to `03-velocity-check.json` (tutorial hints, static terrain, position tuning)
+  - `src/utils/physics.ts` — Extracted all hardcoded constants (FAIL_Y_THRESHOLD, GOAL_DWELL_TIME, BUMPER_RESTITUTION_*)
+  - `src/utils/goalDetector.ts` — Now imports GOAL_DWELL_TIME from physics.ts
+  - `src/utils/pieceColliders.ts` — Imports bumper restitution constants, speed booster has physical floor collider, goal bucket sunken below grid
+  - `src/components/physics/FailDetector.tsx` — Imports FAIL_Y_THRESHOLD and FAIL_DELAY_MS from physics.ts
+  - `src/components/pieces/GoalBucket.tsx` — Walls 1.2 units tall, sunken below grid (top at Y=0)
+  - `src/hooks/useGoalDetector.ts` — Imports GOAL_DWELL_TIME from physics.ts
+  - `src/hooks/useGridInteraction.ts` — Preserves rotation on piece placement
 - **New files:**
-  - `src/constants/physics.ts` — Tunable physics constants
-  - `tests/level-solution.test.ts` — Programmatic validation tests for each level (if feasible with Rapier determinism)
+  - `src/utils/solutionValidator.ts` — Pure validation functions for level solutions
+  - `tests/solution-validation.test.ts` — 15 tests validating all 5 campaign level solutions
 
 ### Implementation Phase Vectors
 
-- **Phase 1: Level-by-Level Verification** — Load each campaign level in-engine. Place the intended solution. Run simulation. Does marble reach goal? Tune positions, tweak ramp/bumper angles, adjust impulse strength. Fix any levels where the solution doesn't work.
-- **Phase 2: Physics Tuning** — Play through all 5 levels multiple times. Adjust marble mass, friction, restitution, speed booster impulse, bumper bounce strength until the game feels good. Log tuned constants to `physics.ts`.
-- **Phase 3: Sandbox & Edge Cases** — Verify sandbox inventory (16 pieces, all types). Test edge cases: placing pieces at max Y, overlapping rejection, empty inventory, removing all pieces, marathon physics runs.
+- **Phase 1: Physics Constants Consolidation** — Extract FAIL_Y_THRESHOLD, GOAL_DWELL_TIME, BUMPER_RESTITUTION_ELASTIC, BUMPER_RESTITUTION_STATIC, FAIL_DELAY_MS to `src/utils/physics.ts`. Update all consumers. `6fb2cb9`
+- **Phase 2: Level Data Updates** — Add tutorial hints to all 5 campaign level descriptions. Add static terrain (bumper pads as pillars/walls). Verify sandbox inventory matches spec. `ee0bff5`
+- **Phase 3: Programmatic Level Solution Validation** — Create `solutionValidator.ts` with `validateSolution()` and `countSolutionPieces()`. Write structural validation tests for all 5 levels. Fix Level 4 solution overlap with goal bucket. `b4508e9`
+- **Phase 4: Physics Tuning & Manual Verification** — Manual playthrough of all 5 levels. Tune marble restitution (0.3→0.1), adjust level positions (Level 2 pillar, Level 3 bucket/pillar), add physical floor to speed booster, redesign goal bucket as sunken below grid. `92c594a`
+- **Phase 5: Sandbox Mode Verification** — Verify 16-piece inventory, 10×10×5 grid, no goal bucket. Test edge cases (max Y, overlapping, empty inventory, extended physics runs). `525378a`
+- **Phase 6: Final Integration & Cleanup** — Full test suite pass, typecheck clean, Biome lint clean. Verify no unintended shortcuts. `cf28862`
 
 ### Verification Protocols
 
@@ -522,12 +531,13 @@ flowchart TD
 
 ### Definition of Done
 
-- [ ] All 5 campaign levels solvable with provided inventory.
-- [ ] No unintended shortcuts (marble can't bypass obstacles).
-- [ ] Physics constants tuned and extracted to `physics.ts`.
-- [ ] Sandbox inventory matches spec (5 ramps, 4 bumpers, 3 boosters, 4 half-pipes).
-- [ ] Edge cases tested (full grid, empty inventory, stacking).
-- [ ] Code passes static analysis review.
+- [x] All 5 campaign levels solvable with provided inventory.
+- [x] No unintended shortcuts (marble can't bypass obstacles).
+- [x] Physics constants extracted to `src/utils/physics.ts`.
+- [x] Sandbox inventory matches spec (5 ramps, 4 bumpers, 3 boosters, 4 half-pipes).
+- [x] Edge cases tested (full grid, empty inventory, stacking).
+- [x] Code passes static analysis review.
+- [x] 560 passing tests across 61 test files.
 
 ---
 

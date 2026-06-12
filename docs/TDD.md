@@ -101,16 +101,22 @@ In Play Mode, placements switch to a locked kinematic structural state. The marb
 On Reset, the runtime unmounts the dynamic marble completely, flushing its physics engine cache, and reverts the grid placements to editable static objects.
 
 **Piece-Specific Collider Implementations**
-Straight Ramps / Bumper Pads: Solved using simple primitive cuboid colliders. Ramps tilt their bounding box along the pitch axis. Bumpers use restitution = 1.0 (tunable during playtesting) for an elastic rebound.
+Straight Ramps / Bumper Pads: Solved using simple primitive cuboid colliders. Ramps tilt their bounding box along the pitch axis. Bumpers use restitution = 1.0 (elastic) or 0 (static terrain/walls/pillars). Constants `BUMPER_RESTITUTION_ELASTIC` and `BUMPER_RESTITUTION_STATIC` are defined in `src/utils/physics.ts`.
 
-Speed Boosters: Utilizes a custom cuboid collider explicitly configured as a Sensor. This means it detects intersections without blocking physical movement. Upon overlap detection, the app calculates the forward directional vector of the piece and applies an instantaneous linear impulse vector directly to the marble's center of mass.
+Speed Boosters: Utilizes **two colliders**: a physical floor (non-sensor, restitution=0) so the marble lands on it instead of falling through, and a sensor cuboid that detects overlaps and applies a directional impulse `BOOST_FORCE=8` along the exit direction. The floor is positioned at Y=0.15 and the sensor at Y=0.45 above it.
 
 Half-Pipe Tunnels: Optimized as a performance-efficient Compound Collider. Rather than tracing a heavy, complex curved 3D mesh, it aggregates three primitive bounding boxes: one wide, flat horizontal base box for the floor track, and two thin vertical box rails running along the lateral borders to stop the marble from sliding off track.
 
-Walls & Pillars: Reuse the `bumper_pad` PieceType with restitution = 0. No bounce — pure solid blocker. Defined in `staticTerrain` with a position and rotationIndex. The collider is a simple cuboid occupying the full grid cell volume.
+Walls & Pillars: Reuse the `bumper_pad` PieceType with `BUMPER_RESTITUTION_STATIC` (0). No bounce — pure solid blocker. Defined in `staticTerrain` with a position and rotationIndex. The collider is a simple cuboid occupying the full grid cell volume.
 
 **Goal Trigger Detection (Victory)**
-The Goal Bucket is structurally split into two asset layers: a visible outer mesh housing solid collision boundaries (floor, 2 Z-walls, 2 short X-lip walls), and an invisible internal volumetric sensor collider. The interior sensor is raised to Y=0.55 (overlapping the marble's center at radius 0.5) so it reliably detects the marble when it rolls into the bucket interior.
+The Goal Bucket is structurally split into two asset layers: a visible outer mesh housing solid collision boundaries (floor, 2 Z-walls, 2 X-walls), and an invisible internal volumetric sensor collider. The bucket is **sunken below the grid floor** — all 4 walls are 1.2 units tall with their top edge at Y=0 (ground level), creating a "hole" that the marble falls into. The floor is positioned at Y=-1.1, and the sensor is centered at Y=-0.6 inside the bucket cavity.
+
+This sunken design ensures:
+- The marble naturally rolls/falls into the bucket from any direction
+- X-walls have restitution=0 to absorb momentum and contain the marble
+- Z-walls have low restitution (0.1) to prevent bouncing out
+- The sensor reliably detects the marble when it enters the cavity
 
 Bucket sensor entry/exit tracking is handled in `PieceCollider.tsx` — only the sensor collider triggers `setMarbleInBucket()` (not the physical walls), preventing false resets from marble bouncing against bucket surfaces.
 
