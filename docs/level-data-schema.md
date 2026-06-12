@@ -148,7 +148,7 @@ The sandbox is defined by a single `sandbox.json` with no `goalPosition` field:
   "gridBounds": { "width": 6, "depth": 6, "height": 3 },
   "staticTerrain": [
     { "type": "straight_ramp", "position": [1, 1, 2], "rotationIndex": 0 },
-    { "type": "bumper_pad", "position": [3, 0, 2], "rotationIndex": 0 },
+    { "type": "bumper_pad", "position": [4, 0, 2], "rotationIndex": 0 },
     { "type": "goal_bucket", "position": [4, 0, 3], "rotationIndex": 0 }
   ],
   "inventory": {

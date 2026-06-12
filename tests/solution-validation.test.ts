@@ -31,7 +31,7 @@ const level2: LevelDefinition = {
   gridBounds: { width: 6, depth: 6, height: 3 },
   staticTerrain: [
     { type: 'straight_ramp', position: [1, 1, 2], rotationIndex: 0 },
-    { type: 'bumper_pad', position: [3, 0, 2], rotationIndex: 0 },
+    { type: 'bumper_pad', position: [4, 0, 2], rotationIndex: 0 },
     { type: 'goal_bucket', position: [4, 0, 3], rotationIndex: 0 },
   ],
   inventory: { bumper_pad: 1 },
@@ -90,7 +90,7 @@ const level1Solution: SolutionPiece[] = [
 ];
 
 const level2Solution: SolutionPiece[] = [
-  { pieceType: 'bumper_pad', position: [2, 0, 3], rotationIndex: 0 },
+  { pieceType: 'bumper_pad', position: [3, 0, 3], rotationIndex: 0 },
 ];
 
 const level3Solution: SolutionPiece[] = [
@@ -157,7 +157,7 @@ describe('validateSolution', () => {
 
     it('should reject solution that overlaps static terrain', () => {
       const overlapping: SolutionPiece[] = [
-        { pieceType: 'bumper_pad', position: [3, 0, 2], rotationIndex: 0 },
+        { pieceType: 'bumper_pad', position: [4, 0, 2], rotationIndex: 0 },
       ];
       const result = validateSolution(level2, overlapping);
       expect(result.valid).toBe(false);
