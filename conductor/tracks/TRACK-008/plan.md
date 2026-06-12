@@ -81,13 +81,13 @@
     - [x] Implement lerp for smooth transitions
     - [x] Write unit tests for frequency mapping and edge cases
 
-- [ ] Task: Integrate marble roll with physics loop
-    - [ ] Create `useMarbleRoll` hook or integrate into `usePlayLoop`
-    - [ ] On Play Mode start: create noise source, filter, panner, connect chain
-    - [ ] Each physics tick: update panner position from marble, update filter frequency from velocity
-    - [ ] On Stop/fail/victory: fade out and disconnect nodes
-    - [ ] Handle multiple play/stop cycles (cleanup old sources)
-    - [ ] Write integration tests for lifecycle (start → update → stop)
+- [x] Task: Integrate marble roll with physics loop `435fa71`
+    - [x] Create `useMarbleRoll` hook or integrate into `usePlayLoop`
+    - [x] On Play Mode start: create noise source, filter, panner, connect chain
+    - [x] Each physics tick: update panner position from marble, update filter frequency from velocity
+    - [x] On Stop/fail/victory: fade out and disconnect nodes
+    - [x] Handle multiple play/stop cycles (cleanup old sources)
+    - [x] Write integration tests for lifecycle (start → update → stop)
 
 - [ ] Task: Conductor - User Manual Verification 'Phase 4: Marble Roll Sound' (Protocol in workflow.md)
 
