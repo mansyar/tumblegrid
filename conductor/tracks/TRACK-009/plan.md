@@ -70,7 +70,7 @@
     - [x] All 15 tests pass (61 test files, 555 total tests).
     - [x] TypeScript typecheck: clean. Biome lint: clean.
 
-- [ ] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md) [checkpoint: b4508e9]
 
 ## Phase 4: Physics Tuning & Manual Verification
 
