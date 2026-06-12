@@ -25,7 +25,7 @@
 
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Audio Engine Core' (Protocol in workflow.md)
 
-## Phase 2: UI Interaction Sounds
+## Phase 2: UI Interaction Sounds [checkpoint: 4255013]
 
 - [x] Task: Create UI click sound synthesizer `e5ad610`
     - [ ] Create `src/audio/sounds/uiClick.ts` with pure function
