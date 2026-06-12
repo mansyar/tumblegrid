@@ -107,20 +107,20 @@
 
 ## Phase 5: Sandbox Mode Verification
 
-- [ ] Task: Verify sandbox inventory and grid.
-    - [ ] Load sandbox mode in browser.
-    - [ ] Verify 16 pieces available (5 ramps, 4 bumpers, 3 boosters, 4 half-pipes).
-    - [ ] Verify grid is 10×10×5.
-    - [ ] Verify no goal bucket appears.
+- [x] Task: Verify sandbox inventory and grid.
+    - [x] Load sandbox mode in browser.
+    - [x] Verify 16 pieces available (5 ramps, 4 bumpers, 3 boosters, 4 half-pipes).
+    - [x] Verify grid is 10×10×5.
+    - [x] Verify no goal bucket appears.
 
-- [ ] Task: Test sandbox edge cases.
-    - [ ] Place pieces at max Y (y=4 for 5-height grid).
-    - [ ] Attempt to place overlapping pieces (should be rejected).
-    - [ ] Place all 16 pieces, verify inventory shows 0 for each type.
-    - [ ] Remove all pieces, verify inventory restores.
-    - [ ] Run physics for extended period (30+ seconds), verify no glitches.
+- [x] Task: Test sandbox edge cases.
+    - [x] Place pieces at max Y (y=4 for 5-height grid).
+    - [x] Attempt to place overlapping pieces (should be rejected).
+    - [x] Place all 16 pieces, verify inventory shows 0 for each type.
+    - [x] Remove all pieces, verify inventory restores.
+    - [x] Run physics for extended period (30+ seconds), verify no glitches.
 
-- [ ] Task: Conductor - User Manual Verification 'Phase 5' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 5' (Protocol in workflow.md)
 
 ## Phase 6: Final Integration & Cleanup
 
