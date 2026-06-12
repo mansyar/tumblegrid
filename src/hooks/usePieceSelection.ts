@@ -1,5 +1,5 @@
-import { snapToGrid } from '@/hooks/useGridInteraction';
 import { useAudio } from '@/hooks/useAudio';
+import { snapToGrid } from '@/hooks/useGridInteraction';
 import { useGameStore } from '@/store/useGameStore';
 import { useThree } from '@react-three/fiber';
 import { useCallback, useEffect, useRef } from 'react';

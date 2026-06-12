@@ -7,9 +7,9 @@ type ClickType = 'place' | 'remove' | 'rotate';
 
 // Frequency map for different click types
 const FREQUENCIES: Record<ClickType, number> = {
-  place: 880,    // A5 - bright, positive
-  remove: 440,   // A4 - neutral
-  rotate: 660,   // E5 - medium, distinctive
+  place: 880, // A5 - bright, positive
+  remove: 440, // A4 - neutral
+  rotate: 660, // E5 - medium, distinctive
 };
 
 /**

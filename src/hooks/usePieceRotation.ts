@@ -46,7 +46,13 @@ export function usePieceRotation(): void {
         });
       }
     },
-    [selectedPieceId, activeBlueprintNode, rotatePiece, updateActiveBlueprint, playUIClick],
+    [
+      selectedPieceId,
+      activeBlueprintNode,
+      rotatePiece,
+      updateActiveBlueprint,
+      playUIClick,
+    ],
   );
 
   useEffect(() => {
