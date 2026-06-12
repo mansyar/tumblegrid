@@ -1,8 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import {
   Launchpad,
-  createLaunchpadBaseGeometry,
-  createLaunchpadCenterGeometry,
   createLaunchpadRingGeometry,
 } from '@/components/pieces/Launchpad';
 
@@ -21,38 +19,8 @@ describe('Launchpad', () => {
   });
 });
 
-describe('createLaunchpadBaseGeometry', () => {
-  it('should create a base fitting within 1 grid cell', () => {
-    const geometry = createLaunchpadBaseGeometry();
-    geometry.computeBoundingBox();
-
-    expect(geometry.boundingBox).not.toBeNull();
-    if (geometry.boundingBox === null) return;
-
-    const bbox = geometry.boundingBox;
-    expect(bbox.max.x - bbox.min.x).toBeLessThanOrEqual(2);
-    expect(bbox.max.z - bbox.min.z).toBeLessThanOrEqual(2);
-    expect(bbox.max.y - bbox.min.y).toBeLessThanOrEqual(0.5);
-  });
-});
-
-describe('createLaunchpadCenterGeometry', () => {
-  it('should create a raised center platform within 1 grid cell', () => {
-    const geometry = createLaunchpadCenterGeometry();
-    geometry.computeBoundingBox();
-
-    expect(geometry.boundingBox).not.toBeNull();
-    if (geometry.boundingBox === null) return;
-
-    const bbox = geometry.boundingBox;
-    expect(bbox.max.x - bbox.min.x).toBeLessThanOrEqual(2);
-    expect(bbox.max.z - bbox.min.z).toBeLessThanOrEqual(2);
-    expect(bbox.max.y - bbox.min.y).toBeGreaterThan(0);
-  });
-});
-
 describe('createLaunchpadRingGeometry', () => {
-  it('should create a ring with non-zero dimensions', () => {
+  it('should create a torus ring with non-zero dimensions', () => {
     const geometry = createLaunchpadRingGeometry();
     geometry.computeBoundingBox();
 
@@ -61,6 +29,19 @@ describe('createLaunchpadRingGeometry', () => {
 
     const bbox = geometry.boundingBox;
     expect(bbox.max.x - bbox.min.x).toBeGreaterThan(0);
+    expect(bbox.max.z - bbox.min.z).toBeGreaterThan(0);
     expect(bbox.max.y - bbox.min.y).toBeGreaterThan(0);
+  });
+
+  it('should fit within a 2×2 grid cell', () => {
+    const geometry = createLaunchpadRingGeometry();
+    geometry.computeBoundingBox();
+
+    expect(geometry.boundingBox).not.toBeNull();
+    if (geometry.boundingBox === null) return;
+
+    const bbox = geometry.boundingBox;
+    expect(bbox.max.x - bbox.min.x).toBeLessThanOrEqual(2);
+    expect(bbox.max.z - bbox.min.z).toBeLessThanOrEqual(2);
   });
 });

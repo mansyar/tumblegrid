@@ -1,7 +1,5 @@
 import { describe, it, expect } from 'vitest';
 import { createRampGeometry } from '@/components/pieces/StraightRamp';
-import { createLaunchpadBaseGeometry } from '@/components/pieces/Launchpad';
-import { createLaunchpadCenterGeometry } from '@/components/pieces/Launchpad';
 import { createLaunchpadRingGeometry } from '@/components/pieces/Launchpad';
 import { PIECE_MAP } from '@/components/pieces/PieceFactory';
 
@@ -23,31 +21,18 @@ describe('Piece Geometry exports', () => {
     });
   });
 
-  describe('Launchpad geometries', () => {
-    it('should create a valid base geometry', () => {
-      const geometry = createLaunchpadBaseGeometry();
-      expect(geometry).toBeDefined();
-      expect(geometry.type).toBe('BoxGeometry');
-    });
-
-    it('should create a valid center geometry', () => {
-      const geometry = createLaunchpadCenterGeometry();
-      expect(geometry).toBeDefined();
-      expect(geometry.type).toBe('BoxGeometry');
-    });
-
-    it('should create a valid ring geometry', () => {
+  describe('Launchpad ring geometry', () => {
+    it('should create a valid torus ring geometry', () => {
       const geometry = createLaunchpadRingGeometry();
       expect(geometry).toBeDefined();
       expect(geometry.type).toBe('TorusGeometry');
     });
 
-    it('should create geometries with correct dimensions', () => {
-      const base = createLaunchpadBaseGeometry();
-      const params = base.parameters;
-      expect(params.width).toBe(2);
-      expect(params.height).toBe(0.3);
-      expect(params.depth).toBe(2);
+    it('should have non-zero ring radius and tube', () => {
+      const geometry = createLaunchpadRingGeometry();
+      const params = geometry.parameters;
+      expect(params.radius).toBeGreaterThan(0);
+      expect(params.tube).toBeGreaterThan(0);
     });
   });
 });

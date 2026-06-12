@@ -91,11 +91,11 @@ describe('computeMarbleSpawnPosition', () => {
 });
 
 describe('Initial Marble Impulse', () => {
-  it('should have a small non-zero X component', () => {
-    expect(INITIAL_MARBLE_IMPULSE[0]).toBe(0.5);
+  it('should have zero X component', () => {
+    expect(INITIAL_MARBLE_IMPULSE[0]).toBe(0);
   });
 
-  it('should have zero Y component (horizontal only)', () => {
+  it('should have zero Y component', () => {
     expect(INITIAL_MARBLE_IMPULSE[1]).toBe(0);
   });
 
@@ -108,7 +108,7 @@ describe('Initial Marble Impulse', () => {
     expect(impulse).toEqual(INITIAL_MARBLE_IMPULSE);
     // Verify it's a copy, not the same reference
     impulse[0] = 99;
-    expect(INITIAL_MARBLE_IMPULSE[0]).toBe(0.5);
+    expect(INITIAL_MARBLE_IMPULSE[0]).toBe(0);
   });
 });
 

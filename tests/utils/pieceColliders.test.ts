@@ -240,30 +240,21 @@ describe('getGoalBucketColliders', () => {
 });
 
 describe('getLaunchpadColliders', () => {
-  it('should return 2 cuboid colliders (base + raised center)', () => {
+  it('should return a single thin cuboid collider', () => {
     const colliders = getLaunchpadColliders();
-    expect(colliders).toHaveLength(2);
+    expect(colliders).toHaveLength(1);
     expect(colliders[0].type).toBe('cuboid');
-    expect(colliders[1].type).toBe('cuboid');
+    expect(colliders[0].halfExtents[1]).toBeLessThan(0.15);
   });
 
-  it('should have a flat base platform (small y half-extent)', () => {
+  it('should be smaller than a full cell (circle marker footprint)', () => {
     const colliders = getLaunchpadColliders();
-    expect(colliders[0].halfExtents[1]).toBeLessThan(0.3);
-    expect(colliders[0].halfExtents[0]).toBe(1.0);
+    expect(colliders[0].halfExtents[0]).toBeLessThan(1.0);
+    expect(colliders[0].halfExtents[2]).toBeLessThan(1.0);
   });
 
-  it('should have a narrower raised center platform', () => {
-    const colliders = getLaunchpadColliders();
-    const center = colliders[1];
-    expect(center.halfExtents[0]).toBe(0.5); // narrower than base (1.0)
-    expect(center.halfExtents[1]).toBe(0.25); // taller than base
-    expect(center.position[1]).toBe(0.55); // sits on top of base
-  });
-
-  it('should not be sensors', () => {
+  it('should not be a sensor', () => {
     const colliders = getLaunchpadColliders();
     expect(colliders[0].sensor).toBe(false);
-    expect(colliders[1].sensor).toBe(false);
   });
 });

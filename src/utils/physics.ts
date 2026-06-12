@@ -53,12 +53,10 @@ export function computeMarbleSpawnPosition(
 
 /**
  * Initial impulse applied to the marble when it spawns on the launchpad.
- * A gentle nudge in the +X direction so the marble rolls off the launchpad
- * rather than sitting idle on the flat surface. Set low enough that the
- * marble does not traverse an entire level on a flat floor — the player
- * should need to place ramps to reach the goal.
+ * Set to zero — the marble drops straight down onto the launchpad collider
+ * and sits idle. The player must place ramps or interact to move it.
  */
-export const INITIAL_MARBLE_IMPULSE: [number, number, number] = [0.5, 0, 0];
+export const INITIAL_MARBLE_IMPULSE: [number, number, number] = [0, 0, 0];
 
 /**
  * Returns the initial impulse applied to the marble on spawn.

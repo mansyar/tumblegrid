@@ -5,7 +5,6 @@ import {
   getBumperPadColliders,
   getGoalBucketColliders,
   getHalfPipeColliders,
-  getLaunchpadColliders,
   getSpeedBoosterColliders,
   getStraightRampColliders,
 } from '@/utils/pieceColliders';
@@ -89,41 +88,17 @@ function PieceColliderInner({ piece }: { piece: PlacedPiece }) {
 export function PieceCollider() {
   const machineState = useGameStore((s) => s.machineState);
   const placedPieces = useGameStore((s) => s.placedPieces);
-  const launchpadPosition = useGameStore((s) => s.launchpadPosition);
 
   const isPlaying =
     machineState === 'PLAYING' || machineState === 'SANDBOX_PLAYING';
 
   if (!isPlaying) return null;
 
-  const launchpadColliders = getLaunchpadColliders();
-
   return (
     <group>
-      {/* Colliders for placed pieces */}
       {placedPieces.map((piece) => (
         <PieceColliderInner key={piece.id} piece={piece} />
       ))}
-
-      {/* Launchpad colliders — all tiers rendered at launchpad position */}
-      <group position={launchpadPosition}>
-        <CuboidCollider
-          key="launchpad-base"
-          args={launchpadColliders[0].halfExtents}
-          position={launchpadColliders[0].position}
-          rotation={launchpadColliders[0].rotation}
-          sensor={launchpadColliders[0].sensor}
-          restitution={launchpadColliders[0].restitution}
-        />
-        <CuboidCollider
-          key="launchpad-center"
-          args={launchpadColliders[1].halfExtents}
-          position={launchpadColliders[1].position}
-          rotation={launchpadColliders[1].rotation}
-          sensor={launchpadColliders[1].sensor}
-          restitution={launchpadColliders[1].restitution}
-        />
-      </group>
     </group>
   );
 }
