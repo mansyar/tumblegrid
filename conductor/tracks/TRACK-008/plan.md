@@ -75,11 +75,11 @@
     - [x] Implement `createPanner(context: AudioContext, position: [x, y, z])` for 3D spatialization
     - [x] Write unit tests for source creation and filter configuration
 
-- [ ] Task: Implement velocity-to-pitch mapping
-    - [ ] Create `src/utils/audio.ts` with `velocityToFrequency(velocity: number): number`
-    - [ ] Map marble velocity (0-20 units/s) to frequency (200-800Hz range)
-    - [ ] Implement lerp for smooth transitions
-    - [ ] Write unit tests for frequency mapping and edge cases
+- [x] Task: Implement velocity-to-pitch mapping `52d7a88`
+    - [x] Create `src/utils/audio.ts` with `velocityToFrequency(velocity: number): number`
+    - [x] Map marble velocity (0-20 units/s) to frequency (200-800Hz range)
+    - [x] Implement lerp for smooth transitions
+    - [x] Write unit tests for frequency mapping and edge cases
 
 - [ ] Task: Integrate marble roll with physics loop
     - [ ] Create `useMarbleRoll` hook or integrate into `usePlayLoop`
