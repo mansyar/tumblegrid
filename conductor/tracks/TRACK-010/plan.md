@@ -1,3 +1,4 @@
+<protect>
 # Implementation Plan: TRACK-010 — Mobile Polish & Final QA
 
 ## Phase 1: Touch Input Pipeline
@@ -139,3 +140,5 @@
     - [ ] `pnpm run build` — production build succeeds
 
 - [ ] Task: Conductor - User Manual Verification 'Phase 6: Cross-Browser QA' (Protocol in workflow.md)
+
+</protect>

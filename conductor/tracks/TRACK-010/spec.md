@@ -1,3 +1,4 @@
+<protect>
 # Specification: TRACK-010 — Mobile Polish & Final QA
 
 ## Overview
@@ -109,3 +110,5 @@ Implement comprehensive mobile touch support and responsive UI for TumbleGrid, e
 | `src/components/ui/HUD.tsx` | Responsive positioning, safe areas |
 | `src/components/ui/ModeToggle.tsx` | Touch target sizing |
 | `src/components/ui/ModeIndicator.tsx` | Touch target sizing |
+
+</protect>
