@@ -38,7 +38,7 @@ describe('updateGoalDwell', () => {
     expect(reached).toBe(true);
   });
 
-  it('should return thresholdReached=false just below threshold', () => {
+  it('should return thresholdReached=true at exactly 1.5s threshold', () => {
     const [acc, reached] = updateGoalDwell(0.01, 1.49, true);
 
     expect(acc).toBeCloseTo(1.5);

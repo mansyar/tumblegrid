@@ -91,8 +91,10 @@ describe('useGoalDetector', () => {
     expect(mockCompleteLevel).not.toHaveBeenCalled();
 
     // Push past 1.5s threshold
-    simulateFrame(0.1); // total: 1.492
-    simulateFrame(0.016); // total: 1.508 — trigger
+    act(() => {
+      simulateFrame(0.1); // total: 1.492
+      simulateFrame(0.016); // total: 1.508 — trigger
+    });
 
     expect(useGameStore.getState().machineState).toBe('LEVEL_CLEARED');
   });
@@ -105,9 +107,11 @@ describe('useGoalDetector', () => {
 
     renderHook(() => useGoalDetector());
 
-    for (let i = 0; i < 100; i++) {
-      simulateFrame(0.016);
-    }
+    act(() => {
+      for (let i = 0; i < 100; i++) {
+        simulateFrame(0.016);
+      }
+    });
 
     expect(mockCompleteLevel).toHaveBeenCalledWith(2);
   });
@@ -145,9 +149,11 @@ describe('useGoalDetector', () => {
     rerender();
 
     // Stay for 1.5s
-    for (let i = 0; i < 100; i++) {
-      simulateFrame(0.016);
-    }
+    act(() => {
+      for (let i = 0; i < 100; i++) {
+        simulateFrame(0.016);
+      }
+    });
 
     // Should trigger now
     expect(useGameStore.getState().machineState).toBe('LEVEL_CLEARED');
