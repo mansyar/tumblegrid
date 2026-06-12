@@ -43,26 +43,26 @@
 
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: UI Interaction Sounds' (Protocol in workflow.md)
 
-## Phase 3: Victory & Fail Sounds
+## Phase 3: Victory & Fail Sounds [checkpoint: 92247c4]
 
-- [ ] Task: Create victory jingle synthesizer
-    - [ ] Create `src/audio/sounds/victoryJingle.ts` with pure function
-    - [ ] Implement `playVictoryJingle(context: AudioContext)`
-    - [ ] 3-note rising sine sequence (e.g., C5, E5, G5) spaced ~150ms apart
-    - [ ] Total duration ~500ms
-    - [ ] Write unit tests for jingle timing and frequency
+- [x] Task: Create victory jingle synthesizer `92247c4`
+    - [x] Create `src/audio/sounds/victoryJingle.ts` with pure function
+    - [x] Implement `playVictoryJingle(context: AudioContext)`
+    - [x] 3-note rising sine sequence (e.g., C5, E5, G5) spaced ~150ms apart
+    - [x] Total duration ~500ms
+    - [x] Write unit tests for jingle timing and frequency
 
-- [ ] Task: Create fail tone synthesizer
-    - [ ] Create `src/audio/sounds/failTone.ts` with pure function
-    - [ ] Implement `playFailTone(context: AudioContext)`
-    - [ ] Descending sine slide from ~400Hz to ~200Hz over ~300ms
-    - [ ] Write unit tests for tone duration and frequency range
+- [x] Task: Create fail tone synthesizer `92247c4`
+    - [x] Create `src/audio/sounds/failTone.ts` with pure function
+    - [x] Implement `playFailTone(context: AudioContext)`
+    - [x] Descending sine slide from ~400Hz to ~200Hz over ~300ms
+    - [x] Write unit tests for tone duration and frequency range
 
-- [ ] Task: Integrate victory/fail sounds with game state
-    - [ ] Subscribe to Zustand store for machineState transitions
-    - [ ] Play victory jingle when state → LEVEL_CLEARED
-    - [ ] Play fail tone when marble Y < -5 (triggered from FailDetector)
-    - [ ] Write integration tests for state transition → sound trigger
+- [x] Task: Integrate victory/fail sounds with game state `92247c4`
+    - [x] Subscribe to Zustand store for machineState transitions
+    - [x] Play victory jingle when state → LEVEL_CLEARED
+    - [x] Play fail tone when marble Y < -5 (triggered from FailDetector)
+    - [x] Write integration tests for state transition → sound trigger
 
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Victory & Fail Sounds' (Protocol in workflow.md)
 
