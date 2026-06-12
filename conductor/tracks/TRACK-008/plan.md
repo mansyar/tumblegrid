@@ -34,7 +34,7 @@
     - [ ] Connect through master gain node
     - [ ] Write unit tests for each click type
 
-- [ ] Task: Integrate UI sounds with store actions
+- [x] Task: Integrate UI sounds with store actions `4a063bc`
     - [ ] Create `src/hooks/useAudio.ts` hook
     - [ ] Subscribe to Zustand store for placePiece, removePiece, rotatePiece actions
     - [ ] Call `playUIClick()` on each action (only in BUILDING/SANDBOX_BUILDING states)
