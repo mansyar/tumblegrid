@@ -10,7 +10,7 @@
     - [ ] Handle AudioContext state (suspended/running/closed)
     - [ ] Write unit tests for AudioEngine initialization and state management
 
-- [ ] Task: Implement mute toggle functionality
+- [x] Task: Implement mute toggle functionality `4208c04`
     - [ ] Add `muted` state to AudioEngine
     - [ ] Add `setMuted(muted: boolean)` method that sets master gain to 0/1
     - [ ] Create `src/components/ui/MuteToggle.tsx` button component
