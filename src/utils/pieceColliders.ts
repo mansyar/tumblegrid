@@ -163,72 +163,70 @@ export function getHalfPipeColliders(): ColliderDescriptor[] {
 /**
  * Collider for a Goal Bucket piece.
  *
- * Compound collider with physical floor + walls that contain the marble,
- * plus an interior sensor trigger that detects marble entry.
- * The dwell-timer victory logic is deferred to TRACK-007.
+ * The bucket is sunken below the grid floor, acting like a "hole" that
+ * the marble falls into. The visual base sits at Y=-0.4 (below ground),
+ * and walls extend from Y=-0.5 up to Y=0.5 (ground level).
  *
- * Visually: base at Y=0.1 (1.8×0.2×1.8), walls from Y=0.2 to Y=0.7,
- * inset ~0.05 from edges.
- *
- * @returns 6 cuboid collider descriptors (floor + 2 Z-walls + 2 short X-walls + 1 sensor).
- * X-walls are shorter than Z-walls so the marble can roll over them to enter
- * the bucket, but is contained once inside (cannot climb back over from rest).
+ * @returns 6 cuboid collider descriptors (floor + 2 Z-walls + 2 X-walls + 1 sensor).
+ * Z-walls are tall (full height) to contain marble with horizontal velocity.
+ * X-walls are short lips that the marble rolls over on entry, but can't
+ * climb back out once inside (wall top is below marble center at rest).
  */
 export function getGoalBucketColliders(): ColliderDescriptor[] {
   return [
-    // Physical floor
+    // Physical floor — sunken below grid at Y=-0.4
     {
       type: 'cuboid',
       halfExtents: [0.9, 0.1, 0.9],
-      position: [0, 0.1, 0],
+      position: [0, -0.4, 0],
       rotation: [0, 0, 0],
       sensor: false,
       restitution: 0.3,
     },
-    // Physical front wall (Z+) — low restitution to absorb momentum
+    // Physical front wall (Z+) — full height from Y=-0.5 to Y=0.5
     {
       type: 'cuboid',
-      halfExtents: [0.9, 0.25, 0.05],
-      position: [0, 0.45, 0.95],
+      halfExtents: [0.9, 0.5, 0.05],
+      position: [0, 0, 0.95],
       rotation: [0, 0, 0],
       sensor: false,
       restitution: 0.1,
     },
-    // Physical back wall (Z-) — low restitution to absorb momentum
+    // Physical back wall (Z-) — full height from Y=-0.5 to Y=0.5
     {
       type: 'cuboid',
-      halfExtents: [0.9, 0.25, 0.05],
-      position: [0, 0.45, -0.95],
+      halfExtents: [0.9, 0.5, 0.05],
+      position: [0, 0, -0.95],
       rotation: [0, 0, 0],
       sensor: false,
       restitution: 0.1,
     },
-    // Short X-direction walls (lips) — zero restitution so marble is
-    // contained once it enters the bucket. Tall enough to hold marble
-    // at rest (wall top Y=0.5), but short enough for entry from ramps.
+    // X-direction walls (entry lips) — short, top at Y=-0.05
+    // Height = 0.5 (meets minimum: half marble diameter).
+    // Marble rolls over from ground (center Y≈0.5), but can't climb
+    // back out once inside (center Y≈0.1 at rest on floor).
     {
       type: 'cuboid',
-      halfExtents: [0.05, 0.15, 0.9],
-      position: [0.95, 0.35, 0],
+      halfExtents: [0.05, 0.25, 0.9],
+      position: [0.95, -0.3, 0],
       rotation: [0, 0, 0],
       sensor: false,
       restitution: 0,
     },
     {
       type: 'cuboid',
-      halfExtents: [0.05, 0.15, 0.9],
-      position: [-0.95, 0.35, 0],
+      halfExtents: [0.05, 0.25, 0.9],
+      position: [-0.95, -0.3, 0],
       rotation: [0, 0, 0],
       sensor: false,
       restitution: 0,
     },
-    // Interior sensor trigger (inside the bucket cavity)
-    // Raised to Y=0.55 so it overlaps with the marble's center position
-    // (radius 0.5) when the marble rolls into the bucket interior.
+    // Interior sensor trigger — centered at ground level to detect
+    // the marble as it falls into the bucket.
     {
       type: 'cuboid',
-      halfExtents: [0.7, 0.2, 0.7],
-      position: [0, 0.55, 0],
+      halfExtents: [0.7, 0.3, 0.7],
+      position: [0, 0, 0],
       rotation: [0, 0, 0],
       sensor: true,
       restitution: 0,

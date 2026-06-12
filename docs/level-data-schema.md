@@ -170,7 +170,7 @@ The sandbox is defined by a single `sandbox.json` with no `goalPosition` field:
 {
   "id": "campaign_03",
   "title": "Velocity Check",
-  "description": "A massive chasm blocks the path. Use a Speed Booster to launch your marble across the gap.",
+  "description": "A massive chasm blocks the path. Use a Speed Booster to launch your marble across the gap, then brake it with a Bumper Pad before it reaches the goal.",
   "gridBounds": { "width": 9, "depth": 4, "height": 4 },
   "staticTerrain": [
     { "type": "goal_bucket", "position": [8, 0, 2], "rotationIndex": 0 }
@@ -178,14 +178,14 @@ The sandbox is defined by a single `sandbox.json` with no `goalPosition` field:
   "inventory": {
     "straight_ramp": 1,
     "speed_booster": 1,
-    "bumper_pad": 0,
+    "bumper_pad": 1,
     "half_pipe": 0
   },
   "launchpadPosition": [1, 3, 2],
   "goalPosition": [8, 0, 2]
 }
 ```
-*Solution: Place a Straight Ramp at [1, 2, 2] (descending +X) and a Speed Booster at [1, 0, 2] with entry face aligned to receive the marble. The booster launches the marble across 6 empty cells to the goal.*
+*Solution: Place a Straight Ramp at [1, 2, 2] (descending +X), a Speed Booster at [1, 0, 2], and a Bumper Pad at [7, 0, 2] to brake the marble before it reaches the sunken goal bucket. The booster launches the marble across the gap, the bumper absorbs momentum, and the marble drops into the bucket.*
 
 ---
 

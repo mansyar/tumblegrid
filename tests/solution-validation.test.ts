@@ -42,12 +42,13 @@ const level2: LevelDefinition = {
 const level3: LevelDefinition = {
   id: '03-velocity-check',
   title: 'Velocity Check',
-  description: 'Use the speed booster to launch the marble across the gap.',
+  description:
+    'A massive chasm blocks the path. Use a Speed Booster to launch your marble across the gap, then brake it with a Bumper Pad before it reaches the goal.',
   gridBounds: { width: 9, depth: 4, height: 4 },
   staticTerrain: [
     { type: 'goal_bucket', position: [8, 0, 2], rotationIndex: 0 },
   ],
-  inventory: { straight_ramp: 1, speed_booster: 1 },
+  inventory: { straight_ramp: 1, speed_booster: 1, bumper_pad: 1 },
   launchpadPosition: [1, 3, 2],
   goalPosition: [8, 0, 2],
 };
@@ -96,6 +97,7 @@ const level2Solution: SolutionPiece[] = [
 const level3Solution: SolutionPiece[] = [
   { pieceType: 'straight_ramp', position: [1, 2, 2], rotationIndex: 0 },
   { pieceType: 'speed_booster', position: [1, 0, 2], rotationIndex: 0 },
+  { pieceType: 'bumper_pad', position: [7, 0, 2], rotationIndex: 0 },
 ];
 
 const level4Solution: SolutionPiece[] = [

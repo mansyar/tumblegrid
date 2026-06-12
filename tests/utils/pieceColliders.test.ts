@@ -202,32 +202,36 @@ describe('getGoalBucketColliders', () => {
     expect(sensors[0].halfExtents[2]).toBeLessThan(1);
   });
 
-  it('should have floor at Y=0.1', () => {
+  it('should have floor at Y=-0.4 (sunken below grid)', () => {
     const colliders = getGoalBucketColliders();
     const floor = colliders.find(
-      (c) => !c.sensor && Math.abs(c.position[1] - 0.1) < 0.01,
+      (c) => !c.sensor && Math.abs(c.position[1] - (-0.4)) < 0.01,
     );
     expect(floor).toBeDefined();
     expect(floor?.halfExtents[1]).toBe(0.1);
   });
 
-  it('should have walls at Z=±0.95', () => {
+  it('should have Z-walls at Y=0 (full height from -0.5 to 0.5)', () => {
     const colliders = getGoalBucketColliders();
     const zWalls = colliders.filter(
       (c) => !c.sensor && Math.abs(c.position[0]) < 0.01 && Math.abs(c.position[2]) > 0.9,
     );
     expect(zWalls).toHaveLength(2);
     expect(zWalls[0].halfExtents[2]).toBe(0.05);
+    expect(zWalls[0].halfExtents[1]).toBe(0.5);
+    expect(zWalls[0].position[1]).toBe(0);
   });
 
-  it('should have 2 short X-direction walls (lips) for marble containment', () => {
+  it('should have 2 short X-direction walls (lips) below ground level', () => {
     const colliders = getGoalBucketColliders();
     const xWalls = colliders.filter(
       (c) => !c.sensor && Math.abs(c.position[2]) < 0.01 && Math.abs(c.position[0]) > 0.9,
     );
     expect(xWalls).toHaveLength(2);
     // X-walls should be shorter than Z-walls (Y extent)
-    expect(xWalls[0].halfExtents[1]).toBeLessThan(0.25);
+    expect(xWalls[0].halfExtents[1]).toBeLessThan(0.5);
+    // X-walls should be below ground level
+    expect(xWalls[0].position[1]).toBeLessThan(0);
   });
 
   it('should have low restitution on physical colliders to absorb marble momentum', () => {
@@ -248,16 +252,15 @@ describe('getGoalBucketColliders', () => {
     }
   });
 
-  it('should have sensor positioned inside the bucket cavity', () => {
+  it('should have sensor at ground level (Y=0) to detect marble falling in', () => {
     const colliders = getGoalBucketColliders();
     const sensor = colliders.find((c) => c.sensor);
     expect(sensor).toBeDefined();
     // Sensor should be centered (x=0, z=0) inside the cavity
     expect(sensor?.position[0]).toBe(0);
     expect(sensor?.position[2]).toBe(0);
-    // Sensor height should be within the wall cavity (Y 0.2 to 0.7)
-    expect(sensor?.position[1]).toBeGreaterThan(0.3);
-    expect(sensor?.position[1]).toBeLessThan(0.6);
+    // Sensor at ground level
+    expect(sensor?.position[1]).toBe(0);
   });
 });
 
