@@ -429,8 +429,9 @@ flowchart TD
 | Field | Value |
 |---|---|
 | **Track ID** | `TRACK-008` |
-| **Status** | Pending |
+| **Status** | ✅ Complete |
 | **Core Dependency** | `TRACK-006` |
+| **Completion SHA** | `7d590b1` (review fixes applied) |
 
 > Can start alongside TRACK-007 once physics is stable.
 
@@ -456,25 +457,29 @@ flowchart TD
 
 ### Implementation Phase Vectors
 
-- **Phase 1: Audio Engine Core** — Singleton `AudioEngine` with lazy `AudioContext` creation (first user interaction unlocks it). Master gain node, stereo panner for spatialisation. Error-tolerant (silent fail if AudioContext unavailable).
-- **Phase 2: UI & Event Sounds** — `uiClick` (short sine burst for place/remove/rotate), `victoryJingle` (3-note rising sequence), `failTone` (descending slide). Hook into store via Zustand subscription.
-- **Phase 3: Marble Roll (Continuous)** — Connect to physics tick. White noise source through bandpass filter. Pitch mapped to marble velocity (lerped for smoothness). Spatialised to marble's 3D position. Fades in/out on Play/Stop.
+- **Phase 1: Audio Engine Core** — Singleton `AudioEngine` with lazy `AudioContext` creation (first user interaction unlocks it). Master gain node, stereo panner for spatialisation. Error-tolerant (silent fail if AudioContext unavailable). `f66d492`
+- **Phase 2: UI & Event Sounds** — `uiClick` (short sine burst for place/remove/rotate), `victoryJingle` (3-note rising sequence), `failTone` (descending slide). Hook into store via Zustand subscription. `4255013`
+- **Phase 3: Marble Roll (Continuous)** — Connect to physics tick. White noise source through bandpass filter. Pitch mapped to marble velocity (lerped for smoothness). Spatialised to marble's 3D position. Fades in/out on Play/Stop. `92247c4`
+- **Phase 4: Review Fixes** — Applied review suggestions: consistent audio routing through master gain node for all sound types. `a1a2b65`
 
 ### Verification Protocols
 
 - **Commands to run:** `pnpm run dev`
 - **Expected UI/UX outcome:** Click a cell → short click sound. Place/remove piece → click. Press Play → marble roll sound starts, pitch rises with speed. Marble hits bumper → brief impact noise. Victory → rising jingle. Fall → descending fail tone. All sounds stop on Stop button.
+- **Test results:** 535 tests passing across 60 test files. Biome lint clean. TypeScript typecheck clean.
 
 ### Definition of Done
 
-- [ ] AudioContext created on first user interaction.
-- [ ] UI click sounds play on place/remove/rotate.
-- [ ] Marble roll sound plays during Play Mode, pitch follows velocity.
-- [ ] Victory jingle plays on level clear.
-- [ ] Fail tone plays when marble falls below Y < -5.
-- [ ] All sounds stop immediately on Stop.
-- [ ] No errors if AudioContext is blocked or unavailable.
-- [ ] Code passes static analysis review.
+- [x] AudioContext created on first user interaction.
+- [x] UI click sounds play on place/remove/rotate.
+- [x] Marble roll sound plays during Play Mode, pitch follows velocity.
+- [x] Victory jingle plays on level clear.
+- [x] Fail tone plays when marble falls below Y < -5.
+- [x] All sounds stop immediately on Stop.
+- [x] No errors if AudioContext is blocked or unavailable.
+- [x] Code passes static analysis review.
+- [x] 535 passing tests across 60 test files.
+- [x] Audio routing consistent through master gain node (review fix).
 
 ---
 
