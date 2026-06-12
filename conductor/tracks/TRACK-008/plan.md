@@ -3,7 +3,7 @@
 
 ## Phase 1: Audio Engine Core
 
-- [ ] Task: Create AudioEngine singleton with lazy AudioContext initialization
+- [x] Task: Create AudioEngine singleton with lazy AudioContext initialization `642f326`
     - [ ] Create `src/audio/AudioEngine.ts` with singleton pattern
     - [ ] Implement lazy `getContext()` that creates AudioContext on first call
     - [ ] Add master GainNode connected to destination
