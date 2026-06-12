@@ -43,13 +43,26 @@
     font-size: 11px;
   }
 
-  /* Rotate button: avoid inventory overlap */
-  .rotate-button {
+  /* Rotate button: avoid inventory overlap + safe area */
+  .rotate-button-container {
     bottom: 100px;
+    right: calc(16px + env(safe-area-inset-right, 0px));
   }
 
-  /* Mode toggle: move above inventory */
+  /* Mode toggle: move above inventory + safe area */
   .mode-toggle {
     bottom: 100px;
+    left: 50%;
+  }
+
+  /* Mute toggle: safe area insets */
+  .mute-toggle {
+    top: calc(16px + env(safe-area-inset-top, 0px));
+    right: calc(16px + env(safe-area-inset-right, 0px));
+  }
+
+  /* Victory overlay: safe area padding */
+  .victory-overlay__buttons {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 }

@@ -55,12 +55,33 @@ describe('mobile.css', () => {
     it('applies safe area padding to bottom of inventory', () => {
       expect(cssContent).toMatch(/env\(safe-area-inset-bottom/);
     });
+
+    it('applies safe area inset to mute toggle top', () => {
+      expect(cssContent).toMatch(/\.mute-toggle/);
+      expect(cssContent).toMatch(/env\(safe-area-inset-top/);
+    });
+
+    it('applies safe area inset to mute toggle right', () => {
+      expect(cssContent).toMatch(/env\(safe-area-inset-right/);
+    });
+
+    it('applies safe area padding to victory overlay buttons', () => {
+      expect(cssContent).toMatch(
+        /\.victory-overlay__buttons[^{]*\{[^}]*padding-bottom:\s*env\(safe-area-inset-bottom/,
+      );
+    });
   });
 
   describe('UI element repositioning', () => {
-    it('repositions rotate button above inventory on mobile', () => {
+    it('repositions rotate button container above inventory on mobile', () => {
       expect(cssContent).toMatch(
-        /\.rotate-button[^{]*\{[^}]*bottom:\s*100px/,
+        /\.rotate-button-container[^{]*\{[^}]*bottom:\s*100px/,
+      );
+    });
+
+    it('applies safe area inset to rotate button right', () => {
+      expect(cssContent).toMatch(
+        /\.rotate-button-container[^{]*\{[^}]*right:\s*calc\(16px\s*\+\s*env\(safe-area-inset-right/,
       );
     });
 
