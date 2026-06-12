@@ -1,0 +1,8 @@
+{
+  "track_id": "TRACK-009",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-06-12T15:51:00Z",
+  "updated_at": "2026-06-12T15:51:00Z",
+  "description": "Campaign Levels & Sandbox — Tune all 5 campaign levels for correct physics behavior, verify solution paths, add tutorial hints, tune physics parameters, and verify sandbox mode."
+}
