@@ -9,6 +9,7 @@ import { useGameStore } from '@/store/useGameStore';
 vi.mock('@/audio/AudioEngine', () => ({
   audioEngine: {
     getContext: vi.fn(),
+    getMasterGain: vi.fn(),
     isMuted: vi.fn().mockReturnValue(false),
     play: vi.fn(),
   },
@@ -43,7 +44,9 @@ describe('useGameSounds', () => {
 
   it('plays victory jingle when state transitions to LEVEL_CLEARED', () => {
     const mockContext = {} as AudioContext;
+    const mockMasterGain = {} as GainNode;
     vi.mocked(audioEngine.getContext).mockReturnValue(mockContext);
+    vi.mocked(audioEngine.getMasterGain).mockReturnValue(mockMasterGain);
 
     renderHook(() => useGameSounds());
 
@@ -51,7 +54,10 @@ describe('useGameSounds', () => {
       useGameStore.setState({ machineState: 'LEVEL_CLEARED' });
     });
 
-    expect(playVictoryJingle).toHaveBeenCalledWith(mockContext);
+    expect(playVictoryJingle).toHaveBeenCalledWith(
+      mockContext,
+      mockMasterGain,
+    );
   });
 
   it('does not play victory jingle when already in LEVEL_CLEARED', () => {

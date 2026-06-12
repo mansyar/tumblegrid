@@ -18,8 +18,13 @@ const FREQUENCIES: Record<ClickType, number> = {
  *
  * @param context - The AudioContext to use
  * @param type - The type of click: 'place', 'remove', or 'rotate'
+ * @param destination - Audio destination node (defaults to context.destination)
  */
-export function playUIClick(context: AudioContext, type: ClickType): void {
+export function playUIClick(
+  context: AudioContext,
+  type: ClickType,
+  destination: AudioNode = context.destination,
+): void {
   const oscillator = context.createOscillator();
   const gainNode = context.createGain();
 
@@ -33,7 +38,7 @@ export function playUIClick(context: AudioContext, type: ClickType): void {
 
   // Connect: oscillator → gain → destination
   oscillator.connect(gainNode);
-  gainNode.connect(context.destination);
+  gainNode.connect(destination);
 
   // Start and stop
   oscillator.start(context.currentTime);

@@ -25,7 +25,8 @@ export function useGameSounds(): void {
       audioEngine.play();
       const context = audioEngine.getContext();
       if (!context) return;
-      playVictoryJingle(context);
+      const masterGain = audioEngine.getMasterGain();
+      playVictoryJingle(context, masterGain ?? context.destination);
     }
   }, [machineState]);
 }

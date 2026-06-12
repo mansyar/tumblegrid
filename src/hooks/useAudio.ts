@@ -29,8 +29,9 @@ export function useAudio(): { playUIClick: (type: ClickType) => void } {
       return;
     }
 
-    // Play the click sound
-    playUIClick(context, type);
+    // Play the click sound through master gain
+    const masterGain = audioEngine.getMasterGain();
+    playUIClick(context, type, masterGain ?? context.destination);
   }, []);
 
   return { playUIClick: handleClick };

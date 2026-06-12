@@ -13,8 +13,12 @@ const GAIN = 0.3;
  * Sine wave slides from 400Hz to 200Hz over 300ms.
  *
  * @param context - The AudioContext to use
+ * @param destination - Audio destination node (defaults to context.destination)
  */
-export function playFailTone(context: AudioContext): void {
+export function playFailTone(
+  context: AudioContext,
+  destination: AudioNode = context.destination,
+): void {
   const oscillator = context.createOscillator();
   const gainNode = context.createGain();
 
@@ -35,7 +39,7 @@ export function playFailTone(context: AudioContext): void {
 
   // Connect: oscillator → gain → destination
   oscillator.connect(gainNode);
-  gainNode.connect(context.destination);
+  gainNode.connect(destination);
 
   // Start and stop
   oscillator.start(context.currentTime);

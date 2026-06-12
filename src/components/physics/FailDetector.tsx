@@ -73,7 +73,10 @@ export function FailDetector() {
         if (!audioEngine.isMuted()) {
           audioEngine.play();
           const ctx = audioEngine.getContext();
-          if (ctx) playFailTone(ctx);
+          if (ctx) {
+            const masterGain = audioEngine.getMasterGain();
+            playFailTone(ctx, masterGain ?? ctx.destination);
+          }
         }
 
         failTimerRef.current = setTimeout(() => {

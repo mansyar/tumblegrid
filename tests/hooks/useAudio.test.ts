@@ -9,6 +9,7 @@ import { playUIClick } from '@/audio/sounds/uiClick';
 vi.mock('@/audio/AudioEngine', () => ({
   audioEngine: {
     getContext: vi.fn(),
+    getMasterGain: vi.fn(),
     isMuted: vi.fn().mockReturnValue(false),
     play: vi.fn(),
   },
@@ -49,7 +50,9 @@ describe('useAudio', () => {
 
   it('should play UI click sound when placePiece is called', () => {
     const mockContext = {} as AudioContext;
+    const mockMasterGain = {} as GainNode;
     vi.mocked(audioEngine.getContext).mockReturnValue(mockContext);
+    vi.mocked(audioEngine.getMasterGain).mockReturnValue(mockMasterGain);
     vi.mocked(audioEngine.isMuted).mockReturnValue(false);
 
     const { result } = renderHook(() => useAudio());
@@ -58,12 +61,18 @@ describe('useAudio', () => {
       result.current.playUIClick('place');
     });
 
-    expect(playUIClick).toHaveBeenCalledWith(mockContext, 'place');
+    expect(playUIClick).toHaveBeenCalledWith(
+      mockContext,
+      'place',
+      mockMasterGain,
+    );
   });
 
   it('should play UI click sound when removePiece is called', () => {
     const mockContext = {} as AudioContext;
+    const mockMasterGain = {} as GainNode;
     vi.mocked(audioEngine.getContext).mockReturnValue(mockContext);
+    vi.mocked(audioEngine.getMasterGain).mockReturnValue(mockMasterGain);
     vi.mocked(audioEngine.isMuted).mockReturnValue(false);
 
     const { result } = renderHook(() => useAudio());
@@ -72,12 +81,18 @@ describe('useAudio', () => {
       result.current.playUIClick('remove');
     });
 
-    expect(playUIClick).toHaveBeenCalledWith(mockContext, 'remove');
+    expect(playUIClick).toHaveBeenCalledWith(
+      mockContext,
+      'remove',
+      mockMasterGain,
+    );
   });
 
   it('should play UI click sound when rotatePiece is called', () => {
     const mockContext = {} as AudioContext;
+    const mockMasterGain = {} as GainNode;
     vi.mocked(audioEngine.getContext).mockReturnValue(mockContext);
+    vi.mocked(audioEngine.getMasterGain).mockReturnValue(mockMasterGain);
     vi.mocked(audioEngine.isMuted).mockReturnValue(false);
 
     const { result } = renderHook(() => useAudio());
@@ -86,7 +101,11 @@ describe('useAudio', () => {
       result.current.playUIClick('rotate');
     });
 
-    expect(playUIClick).toHaveBeenCalledWith(mockContext, 'rotate');
+    expect(playUIClick).toHaveBeenCalledWith(
+      mockContext,
+      'rotate',
+      mockMasterGain,
+    );
   });
 
   it('should not play sound when muted', () => {

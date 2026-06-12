@@ -15,8 +15,12 @@ const GAIN = 0.3;
  * Total duration ~500ms.
  *
  * @param context - The AudioContext to use
+ * @param destination - Audio destination node (defaults to context.destination)
  */
-export function playVictoryJingle(context: AudioContext): void {
+export function playVictoryJingle(
+  context: AudioContext,
+  destination: AudioNode = context.destination,
+): void {
   const startTime = context.currentTime;
 
   for (let i = 0; i < NOTES.length; i++) {
@@ -45,7 +49,7 @@ export function playVictoryJingle(context: AudioContext): void {
     );
 
     oscillator.connect(gainNode);
-    gainNode.connect(context.destination);
+    gainNode.connect(destination);
 
     oscillator.start(startTime + i * NOTE_DURATION);
     oscillator.stop(startTime + i * NOTE_DURATION + TONE_DURATION);
