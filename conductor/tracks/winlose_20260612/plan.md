@@ -33,10 +33,10 @@
 **Objective:** Implement goal bucket dwell detection, LEVEL_CLEARED state machine transition, and campaign progression persistence on victory.
 
 - [x] **Task 2.1: Update Zustand store for victory state** `f62047a`
-    - [ ] Write tests for new state machine transitions: PLAYING → LEVEL_CLEARED, LEVEL_CLEARED → BUILDING/back
-    - [ ] Add `setLevelCleared()` action to store
-    - [ ] Add `resetLevel()` action that clears player-placed pieces and resets to initial level state
-    - [ ] Ensure sandbox states (`SANDBOX_*`) bypass LEVEL_CLEARED transitions
+    - [x] Write tests for new state machine transitions: PLAYING → LEVEL_CLEARED, LEVEL_CLEARED → BUILDING/back
+    - [x] Add `setLevelCleared()` action to store
+    - [x] Add `resetLevel()` action that clears player-placed pieces and resets to initial level state
+    - [x] Ensure sandbox states (`SANDBOX_*`) bypass LEVEL_CLEARED transitions
 - [x] **Task 2.2: Create `useGoalDetector` hook** `2126629`
     - [x] Write tests for 1.5s dwell timer logic, bucket exit resets timer, sandbox bypass
     - [x] Implement hook that monitors `marbleInBucketIds` from store
@@ -45,7 +45,7 @@
 - [x] **Task 2.3: Wire goal detector into Scene/GameCanvas** `2126629`
     - [x] Mount useGoalDetector in the scene, connected to goal bucket sensor trigger
     - [x] Verify sandbox mode bypasses detector entirely
-- [ ] **Task: Conductor - User Manual Verification 'Victory Detection' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Victory Detection' (Protocol in workflow.md)**
 
 ## Phase 3: Victory Overlay & Level Intro
 
@@ -67,5 +67,5 @@
     - [x] Wire LevelIntro to appear on level load (campaign only)
     - [x] Connect overlay buttons: Next Level → load level+1, Retry → resetLevel() + reload, Back to Menu → navigate home
     - [x] Verify retry resets all placed pieces to initial state
-- [ ] **Task: Conductor - User Manual Verification 'Victory Overlay & Level Intro' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Victory Overlay & Level Intro' (Protocol in workflow.md)**
 </protect>
