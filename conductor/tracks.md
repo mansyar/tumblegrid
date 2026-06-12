@@ -9,5 +9,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [x] ~~**Track: Audio System**~~
-*Link: [./TRACK-008/](./TRACK-008/)*
+- [x] ~~**Track: Audio System**~~ [Archived]
+*Link: ./archive/TRACK-008/*
