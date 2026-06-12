@@ -42,7 +42,7 @@
     - [x] Verify sandbox passes schema validation.
     - [x] Verify no static terrain overlaps with launchpad.
 
-- [ ] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md) [checkpoint]
+- [x] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md) [checkpoint: ee0bff5]
 
 ## Phase 3: Programmatic Level Solution Validation
 
