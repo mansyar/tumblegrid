@@ -21,28 +21,28 @@
 
 ## Phase 2: Level Data Updates
 
-- [ ] Task: Update campaign level JSON files with tutorial hints in `description` field.
-    - [ ] Level 1: "Place ramps to guide the marble from the launchpad to the goal bucket."
-    - [ ] Level 2: "The goal is around the corner. Use a bumper pad to redirect the marble past the pillar."
-    - [ ] Level 3: "A massive chasm blocks the path. Use a Speed Booster to launch your marble across the gap."
-    - [ ] Level 4: "Navigate the cliff face by creating a zigzag path. Alternate ascending and descending ramps."
-    - [ ] Level 5: "4 gaps but only 2 ramps. Use momentum and the Speed Booster to stretch your resources."
+- [x] Task: Update campaign level JSON files with tutorial hints in `description` field.
+    - [x] Level 1: "Place ramps to guide the marble from the launchpad to the goal bucket."
+    - [x] Level 2: "The goal is around the corner. Use a bumper pad to redirect the marble past the pillar."
+    - [x] Level 3: "A massive chasm blocks the path. Use a Speed Booster to launch your marble across the gap."
+    - [x] Level 4: "Navigate the cliff face by creating a zigzag path. Alternate ascending and descending ramps."
+    - [x] Level 5: "4 gaps but only 2 ramps. Use momentum and the Speed Booster to stretch your resources."
 
-- [ ] Task: Add static terrain (Bumper Pads with restitution=0) to campaign levels where walls/pillars are needed.
-    - [ ] Review each level's intended solution path and add static Bumper Pads as structural obstacles.
-    - [ ] Verify no static terrain overlaps with launchpad or goal positions.
-    - [ ] Verify all static terrain positions are within gridBounds.
+- [x] Task: Add static terrain (Bumper Pads with restitution=0) to campaign levels where walls/pillars are needed.
+    - [x] Review each level's intended solution path and add static Bumper Pads as structural obstacles.
+    - [x] Verify no static terrain overlaps with launchpad or goal positions.
+    - [x] Verify all static terrain positions are within gridBounds.
 
-- [ ] Task: Verify sandbox JSON matches spec (5 ramps, 4 bumpers, 3 boosters, 4 half-pipes).
-    - [ ] Read `src/levels/sandbox.json` and verify inventory counts.
-    - [ ] Verify grid is 10×10×5 and no goalPosition is present.
+- [x] Task: Verify sandbox JSON matches spec (5 ramps, 4 bumpers, 3 boosters, 4 half-pipes).
+    - [x] Read `src/levels/sandbox.json` and verify inventory counts.
+    - [x] Verify grid is 10×10×5 and no goalPosition is present.
 
-- [ ] Task: Write schema validation tests for updated level data.
-    - [ ] Verify all campaign levels pass existing schema validation.
-    - [ ] Verify sandbox passes schema validation.
-    - [ ] Verify no static terrain overlaps with launchpad.
+- [x] Task: Write schema validation tests for updated level data.
+    - [x] Verify all campaign levels pass existing schema validation.
+    - [x] Verify sandbox passes schema validation.
+    - [x] Verify no static terrain overlaps with launchpad.
 
-- [ ] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)
+- [ ] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md) [checkpoint]
 
 ## Phase 3: Programmatic Level Solution Validation
 
