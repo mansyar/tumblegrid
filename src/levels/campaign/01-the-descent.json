@@ -1,7 +1,7 @@
 {
   "id": "campaign_01",
   "title": "The Descent",
-  "description": "Place pieces to catch the marble and bridge the gap to the goal.",
+  "description": "Place ramps to guide the marble from the launchpad to the goal bucket.",
   "gridBounds": { "width": 6, "depth": 4, "height": 3 },
   "staticTerrain": [
     { "type": "goal_bucket", "position": [4, 0, 1], "rotationIndex": 0 }
