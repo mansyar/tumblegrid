@@ -12,7 +12,7 @@ export const FIXED_TIMESTEP = 1 / 60;
 /** Physical properties for the marble sphere rigid body. */
 export const MARBLE_CONFIG = {
   mass: 1,
-  restitution: 0.3,
+  restitution: 0.1,
   friction: 0.5,
   linearDamping: 0.1,
   radius: 0.5,

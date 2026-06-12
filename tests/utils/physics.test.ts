@@ -32,7 +32,7 @@ describe('Physics Constants', () => {
   it('should have marble physics config', () => {
     expect(MARBLE_CONFIG).toBeDefined();
     expect(MARBLE_CONFIG.mass).toBe(1);
-    expect(MARBLE_CONFIG.restitution).toBeCloseTo(0.3);
+    expect(MARBLE_CONFIG.restitution).toBeCloseTo(0.1);
     expect(MARBLE_CONFIG.friction).toBeCloseTo(0.5);
     expect(MARBLE_CONFIG.linearDamping).toBeCloseTo(0.1);
     expect(MARBLE_CONFIG.radius).toBeCloseTo(0.5);
