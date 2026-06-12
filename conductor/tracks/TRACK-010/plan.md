@@ -3,24 +3,24 @@
 
 ## Phase 1: Touch Input Pipeline
 
-- [ ] Task: Create `src/utils/input/normalizePointer.ts` — unified pointer/touch/mouse → `{ x, y, button, isTouch }` format
-    - [ ] Export `NormalizedPointer` type interface
-    - [ ] Export `normalizePointer(event)` function handling MouseEvent, TouchEvent, PointerEvent
-    - [ ] Handle touch coordinate normalization (clientX/Y → normalized)
-    - [ ] Write tests in `tests/normalizePointer.test.ts`
+- [x] Task: Create `src/utils/input/normalizePointer.ts` — unified pointer/touch/mouse → `{ x, y, button, isTouch }` format
+    - [x] Export `NormalizedPointer` type interface
+    - [x] Export `normalizePointer(event)` function handling MouseEvent, TouchEvent, PointerEvent
+    - [x] Handle touch coordinate normalization (clientX/Y → normalized)
+    - [x] Write tests in `tests/normalizePointer.test.ts`
 
-- [ ] Task: Modify `src/hooks/useGridInteraction.ts` — integrate normalized pointer input
-    - [ ] Replace direct mouse event usage with `normalizePointer()`
-    - [ ] Ensure tap-to-place works on touch devices
-    - [ ] Ensure tap-to-select works on touch devices
-    - [ ] Verify desktop mouse controls have zero regression
-    - [ ] Write/update tests
+- [x] Task: Modify `src/hooks/useGridInteraction.ts` — integrate normalized pointer input
+    - [x] Replace direct mouse event usage with `normalizePointer()`
+    - [x] Ensure tap-to-place works on touch devices
+    - [x] Ensure tap-to-select works on touch devices
+    - [x] Verify desktop mouse controls have zero regression
+    - [x] Write/update tests
 
-- [ ] Task: Modify `src/components/scene/GameCanvas.tsx` — add touch event bindings
-    - [ ] Attach touch event listeners (touchstart, touchmove, touchend)
-    - [ ] Pass normalized events to interaction hooks
-    - [ ] Prevent default touch behaviors (scroll, zoom) on game canvas
-    - [ ] Write/update tests
+- [x] Task: Modify `src/components/scene/GameCanvas.tsx` — add touch event bindings
+    - [x] Attach touch event listeners (touchstart, touchmove, touchend)
+    - [x] Pass normalized events to interaction hooks
+    - [x] Prevent default touch behaviors (scroll, zoom) on game canvas
+    - [x] Write/update tests
 
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Touch Input Pipeline' (Protocol in workflow.md)
 

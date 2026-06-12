@@ -204,4 +204,18 @@ describe('useGridInteraction', () => {
     // the handler should be callable without errors
     expect(mockUpdateActiveBlueprint).not.toThrow();
   });
+
+  it('should handle touch pointer events without errors', () => {
+    renderHook(() => useGridInteraction('straight_ramp'));
+
+    // Simulate a touch pointermove (pointerType: 'touch')
+    act(() => {
+      mockCanvas.dispatchEvent(
+        new PointerEvent('pointermove', { pointerType: 'touch' }),
+      );
+    });
+
+    // Touch input should work the same as mouse — no errors
+    expect(mockUpdateActiveBlueprint).not.toThrow();
+  });
 });

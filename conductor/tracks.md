@@ -19,5 +19,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [ ] **Track: Mobile Polish & Final QA**
+- [~] **Track: Mobile Polish & Final QA**
 *Link: [./tracks/TRACK-010/](./tracks/TRACK-010/)*

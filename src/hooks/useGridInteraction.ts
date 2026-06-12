@@ -1,6 +1,7 @@
 import { useAudio } from '@/hooks/useAudio';
 import type { PieceType, PlacedPiece } from '@/store/types';
 import { useGameStore } from '@/store/useGameStore';
+import { normalizePointer } from '@/utils/input/normalizePointer';
 import { useThree } from '@react-three/fiber';
 import { useCallback, useEffect, useRef } from 'react';
 import * as THREE from 'three';
@@ -81,7 +82,7 @@ export function isCellOccupied(
 export function useGridInteraction(
   selectedPieceType: PieceType | null,
 ): GridInteractionResult {
-  const { camera, gl, pointer } = useThree();
+  const { camera, gl } = useThree();
   const raycasterRef = useRef(new THREE.Raycaster());
   const planeRef = useRef(new THREE.Plane(new THREE.Vector3(0, 1, 0), 0));
 
@@ -95,70 +96,77 @@ export function useGridInteraction(
   const hoveredCellRef = useRef<[number, number, number] | null>(null);
   const isValidRef = useRef(false);
 
-  const handlePointerMove = useCallback(() => {
-    if (!selectedPieceType) {
-      if (hoveredCellRef.current !== null) {
-        hoveredCellRef.current = null;
-        isValidRef.current = false;
-        updateActiveBlueprint(undefined);
+  const handlePointerMove = useCallback(
+    (event: PointerEvent) => {
+      if (!selectedPieceType) {
+        if (hoveredCellRef.current !== null) {
+          hoveredCellRef.current = null;
+          isValidRef.current = false;
+          updateActiveBlueprint(undefined);
+        }
+        return;
       }
-      return;
-    }
 
-    // Cast ray from camera through normalized pointer coordinates
-    raycasterRef.current.setFromCamera(pointer, camera);
+      // Normalize pointer coordinates from the DOM event
+      const normalized = normalizePointer(event, gl.domElement);
 
-    // Intersect with Y=0 plane
-    const intersectionPoint = new THREE.Vector3();
-    const intersects = raycasterRef.current.ray.intersectPlane(
-      planeRef.current,
-      intersectionPoint,
-    );
+      // Cast ray from camera through normalized pointer coordinates
+      const pointerVec = new THREE.Vector2(normalized.x, normalized.y);
+      raycasterRef.current.setFromCamera(pointerVec, camera);
 
-    if (!intersects) {
-      if (hoveredCellRef.current !== null) {
-        hoveredCellRef.current = null;
-        isValidRef.current = false;
-        updateActiveBlueprint(undefined);
+      // Intersect with Y=0 plane
+      const intersectionPoint = new THREE.Vector3();
+      const intersects = raycasterRef.current.ray.intersectPlane(
+        planeRef.current,
+        intersectionPoint,
+      );
+
+      if (!intersects) {
+        if (hoveredCellRef.current !== null) {
+          hoveredCellRef.current = null;
+          isValidRef.current = false;
+          updateActiveBlueprint(undefined);
+        }
+        return;
       }
-      return;
-    }
 
-    // Snap to grid
-    const gridPosition = snapToGrid(intersectionPoint);
-    const inBounds = isInBounds(gridPosition, grid);
-    const occupied = isCellOccupied(gridPosition, placedPieces);
-    const valid = inBounds && !occupied;
+      // Snap to grid
+      const gridPosition = snapToGrid(intersectionPoint);
+      const inBounds = isInBounds(gridPosition, grid);
+      const occupied = isCellOccupied(gridPosition, placedPieces);
+      const valid = inBounds && !occupied;
 
-    hoveredCellRef.current = gridPosition;
-    isValidRef.current = valid;
+      hoveredCellRef.current = gridPosition;
+      isValidRef.current = valid;
 
-    // Preserve rotation from current blueprint if same piece type, otherwise reset to 0
-    const currentRotation =
-      activeBlueprintNode && activeBlueprintNode.pieceType === selectedPieceType
-        ? activeBlueprintNode.rotationIndex
-        : 0;
+      // Preserve rotation from current blueprint if same piece type, otherwise reset to 0
+      const currentRotation =
+        activeBlueprintNode &&
+        activeBlueprintNode.pieceType === selectedPieceType
+          ? activeBlueprintNode.rotationIndex
+          : 0;
 
-    updateActiveBlueprint(
-      inBounds
-        ? {
-            pieceType: selectedPieceType,
-            position: gridPosition,
-            rotationIndex: currentRotation,
-            valid,
-          }
-        : undefined,
-    );
-  }, [
-    selectedPieceType,
-    camera,
-    pointer,
-    grid,
-    placedPieces,
-    activeBlueprintNode,
-    updateActiveBlueprint,
-  ]);
-
+      updateActiveBlueprint(
+        inBounds
+          ? {
+              pieceType: selectedPieceType,
+              position: gridPosition,
+              rotationIndex: currentRotation,
+              valid,
+            }
+          : undefined,
+      );
+    },
+    [
+      selectedPieceType,
+      camera,
+      gl.domElement,
+      grid,
+      placedPieces,
+      activeBlueprintNode,
+      updateActiveBlueprint,
+    ],
+  );
   const handleClick = useCallback(() => {
     if (!selectedPieceType || !hoveredCellRef.current || !isValidRef.current) {
       return;
