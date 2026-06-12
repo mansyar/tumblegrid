@@ -135,8 +135,7 @@ export function useGridInteraction(
 
     // Preserve rotation from current blueprint if same piece type, otherwise reset to 0
     const currentRotation =
-      activeBlueprintNode &&
-      activeBlueprintNode.pieceType === selectedPieceType
+      activeBlueprintNode && activeBlueprintNode.pieceType === selectedPieceType
         ? activeBlueprintNode.rotationIndex
         : 0;
 

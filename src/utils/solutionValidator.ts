@@ -78,7 +78,9 @@ export function validateSolution(
 
     // Check 1: Valid piece type
     if (!PLACEABLE_PIECE_TYPES.includes(piece.pieceType)) {
-      errors.push(`${label}: invalid piece type '${piece.pieceType}' — must be one of: ${PLACEABLE_PIECE_TYPES.join(', ')}`);
+      errors.push(
+        `${label}: invalid piece type '${piece.pieceType}' — must be one of: ${PLACEABLE_PIECE_TYPES.join(', ')}`,
+      );
       continue; // Skip further checks for this piece
     }
 
@@ -110,9 +112,7 @@ export function validateSolution(
     // Check 4: No overlap with existing pieces
     const key = piece.position.join(',');
     if (occupied.has(key)) {
-      errors.push(
-        `${label}: overlaps with ${occupied.get(key)}`,
-      );
+      errors.push(`${label}: overlaps with ${occupied.get(key)}`);
     }
 
     // Register this piece's position
