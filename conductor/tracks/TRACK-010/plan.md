@@ -116,35 +116,36 @@
     - [x] Biome lint clean
     - [x] TypeScript typecheck clean
 
-- [ ] Task: Conductor - User Manual Verification 'Phase 5: Touch Targets & Safe Areas' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 5: Touch Targets & Safe Areas' (Protocol in workflow.md)
+  - Checkpoint: `e6911a2`
 
 ## Phase 6: Cross-Browser QA & Final Verification
 
-- [ ] Task: Desktop browser testing
-    - [ ] Chrome (latest) — all features work
-    - [ ] Firefox (latest) — all features work
-    - [ ] Safari (latest) — all features work
-    - [ ] Edge (latest) — all features work
-    - [ ] Document any browser-specific issues
+- [x] Task: Desktop browser testing
+    - [x] Chrome (latest) — all features work
+    - [x] Firefox (latest) — all features work
+    - [x] Safari (latest) — all features work
+    - [x] Edge (latest) — all features work
+    - [x] Document any browser-specific issues
 
-- [ ] Task: Mobile browser testing
-    - [ ] iOS Safari — touch, gestures, responsive layout
-    - [ ] Android Chrome — touch, gestures, responsive layout
-    - [ ] Test on real device if possible (or Chrome DevTools emulation)
-    - [ ] Document any mobile-specific issues
+- [x] Task: Mobile browser testing
+    - [x] iOS Safari — touch, gestures, responsive layout
+    - [x] Android Chrome — touch, gestures, responsive layout
+    - [x] Test on real device if possible (or Chrome DevTools emulation)
+    - [x] Document any mobile-specific issues
 
-- [ ] Task: Regression testing
-    - [ ] All desktop controls work identically to before
-    - [ ] No console errors or warnings
-    - [ ] Physics simulation unaffected
-    - [ ] Audio system unaffected
+- [x] Task: Regression testing
+    - [x] All desktop controls work identically to before
+    - [x] No console errors or warnings
+    - [x] Physics simulation unaffected
+    - [x] Audio system unaffected
 
-- [ ] Task: Run full test suite
-    - [ ] `pnpm run test` — all tests pass
-    - [ ] `pnpm run lint` — Biome clean
-    - [ ] `pnpm run typecheck` — TypeScript clean
-    - [ ] `pnpm run build` — production build succeeds
+- [x] Task: Run full test suite
+    - [x] `pnpm run test` — all tests pass
+    - [x] `pnpm run lint` — Biome clean
+    - [x] `pnpm run typecheck` — TypeScript clean
+    - [x] `pnpm run build` — production build succeeds
 
-- [ ] Task: Conductor - User Manual Verification 'Phase 6: Cross-Browser QA' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 6: Cross-Browser QA' (Protocol in workflow.md)
 
 </protect>
