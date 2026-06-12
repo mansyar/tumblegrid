@@ -93,26 +93,26 @@
 
 ## Phase 5: Testing & Polish
 
-- [ ] Task: Write comprehensive unit tests for all audio utilities
-    - [ ] Test `AudioEngine` singleton behavior, mute, visibility handling
-    - [ ] Test `uiClick` with different types
-    - [ ] Test `victoryJingle` timing and frequencies
-    - [ ] Test `failTone` duration and frequency range
-    - [ ] Test `marbleRoll` source creation, filter, panner
-    - [ ] Test `velocityToFrequency` mapping
-    - [ ] Ensure >80% coverage for `src/audio/` directory
+- [x] Task: Write comprehensive unit tests for all audio utilities `0206468`
+    - [x] Test `AudioEngine` singleton behavior, mute, visibility handling
+    - [x] Test `uiClick` with different types
+    - [x] Test `victoryJingle` timing and frequencies
+    - [x] Test `failTone` duration and frequency range
+    - [x] Test `marbleRoll` source creation, filter, panner
+    - [x] Test `velocityToFrequency` mapping
+    - [x] Ensure >80% coverage for `src/audio/` directory
 
-- [ ] Task: Write integration tests for audio hooks
-    - [ ] Test `useAudio` hook with mocked store actions
-    - [ ] Test `useMarbleRoll` hook lifecycle with mocked physics state
-    - [ ] Test mute toggle affects all sounds
-    - [ ] Test tab visibility pauses/resumes continuous sounds
+- [x] Task: Write integration tests for audio hooks
+    - [x] Test `useAudio` hook with mocked store actions
+    - [x] Test `useMarbleRoll` hook lifecycle with mocked physics state
+    - [x] Test mute toggle affects all sounds
+    - [x] Test tab visibility pauses/resumes continuous sounds
 
-- [ ] Task: Verify browser compatibility and error handling
-    - [ ] Test in Chrome, Firefox, Safari (if possible)
-    - [ ] Verify silent fail when AudioContext unavailable
-    - [ ] Test autoplay policy handling (lazy init)
-    - [ ] Fix any browser-specific issues
+- [x] Task: Verify browser compatibility and error handling
+    - [x] Test in Chrome, Firefox, Safari (if possible)
+    - [x] Verify silent fail when AudioContext unavailable
+    - [x] Test autoplay policy handling (lazy init)
+    - [x] Fix any browser-specific issues
 
-- [ ] Task: Conductor - User Manual Verification 'Phase 5: Testing & Polish' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 5: Testing & Polish' (Protocol in workflow.md)
 </protect>
