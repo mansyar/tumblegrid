@@ -68,12 +68,12 @@
 
 ## Phase 4: Marble Roll Sound
 
-- [ ] Task: Create marble roll sound synthesizer
-    - [ ] Create `src/audio/sounds/marbleRoll.ts` with pure functions
-    - [ ] Implement `createMarbleRollSource(context: AudioContext)` that returns white noise source
-    - [ ] Implement `createBandpassFilter(context: AudioContext, frequency: number)` for velocity mapping
-    - [ ] Implement `createPanner(context: AudioContext, position: [x, y, z])` for 3D spatialization
-    - [ ] Write unit tests for source creation and filter configuration
+- [x] Task: Create marble roll sound synthesizer `d000818`
+    - [x] Create `src/audio/sounds/marbleRoll.ts` with pure functions
+    - [x] Implement `createMarbleRollSource(context: AudioContext)` that returns white noise source
+    - [x] Implement `createBandpassFilter(context: AudioContext, frequency: number)` for velocity mapping
+    - [x] Implement `createPanner(context: AudioContext, position: [x, y, z])` for 3D spatialization
+    - [x] Write unit tests for source creation and filter configuration
 
 - [ ] Task: Implement velocity-to-pitch mapping
     - [ ] Create `src/utils/audio.ts` with `velocityToFrequency(velocity: number): number`
