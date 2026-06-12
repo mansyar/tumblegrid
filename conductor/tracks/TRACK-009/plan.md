@@ -124,19 +124,19 @@
 
 ## Phase 6: Final Integration & Cleanup
 
-- [ ] Task: Run full test suite.
-    - [ ] Execute `pnpm run test` and verify all tests pass.
-    - [ ] Execute `pnpm run typecheck` and verify no type errors.
-    - [ ] Execute `pnpm run lint` and verify no lint errors.
+- [x] Task: Run full test suite.
+    - [x] Execute `pnpm run test` and verify all tests pass.
+    - [x] Execute `pnpm run typecheck` and verify no type errors.
+    - [x] Execute `pnpm run lint` and verify no lint errors.
 
-- [ ] Task: Verify no unintended shortcuts in campaign levels.
-    - [ ] For each level, attempt to reach goal without using the intended mechanic.
-    - [ ] Document findings and fix any shortcuts found.
+- [x] Task: Verify no unintended shortcuts in campaign levels.
+    - [x] For each level, attempt to reach goal without using the intended mechanic.
+    - [x] Document findings and fix any shortcuts found.
 
-- [ ] Task: Final documentation update.
-    - [ ] Update `level-data-schema.md` if any schema changes were made.
-    - [ ] Document final physics constants in `physics.ts` comments.
-    - [ ] Update ROADMAP.md TRACK-009 Definition of Done checkboxes.
+- [x] Task: Final documentation update.
+    - [x] Update `level-data-schema.md` if any schema changes were made.
+    - [x] Document final physics constants in `physics.ts` comments.
+    - [x] Update ROADMAP.md TRACK-009 Definition of Done checkboxes.
 
 - [ ] Task: Conductor - User Manual Verification 'Phase 6' (Protocol in workflow.md)
 </protect>
