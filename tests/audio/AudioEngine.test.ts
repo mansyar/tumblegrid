@@ -236,6 +236,38 @@ describe('AudioEngine', () => {
       engine.pauseContinuous();
       // No error thrown
     });
+
+    it('should pause continuous sources when visibilitychange fires with hidden=true', async () => {
+      const { AudioEngine } = await import('@/audio/AudioEngine');
+      const engine = AudioEngine.getInstance();
+      engine.reset();
+      engine.getContext();
+
+      const node = { gain: { value: 1, setValueAtTime: vi.fn() } } as unknown as GainNode;
+      engine.registerContinuous(node);
+
+      // Simulate tab becoming hidden
+      vi.spyOn(document, 'hidden', 'get').mockReturnValue(true);
+      document.dispatchEvent(new Event('visibilitychange'));
+
+      expect(node.gain.setValueAtTime).toHaveBeenCalledWith(0, expect.any(Number));
+    });
+
+    it('should resume continuous sources when visibilitychange fires with hidden=false', async () => {
+      const { AudioEngine } = await import('@/audio/AudioEngine');
+      const engine = AudioEngine.getInstance();
+      engine.reset();
+      engine.getContext();
+
+      const node = { gain: { value: 0, setValueAtTime: vi.fn() } } as unknown as GainNode;
+      engine.registerContinuous(node);
+
+      // Simulate tab becoming visible
+      vi.spyOn(document, 'hidden', 'get').mockReturnValue(false);
+      document.dispatchEvent(new Event('visibilitychange'));
+
+      expect(node.gain.setValueAtTime).toHaveBeenCalledWith(1, expect.any(Number));
+    });
   });
 
   describe('error handling', () => {
@@ -250,6 +282,26 @@ describe('AudioEngine', () => {
       engine.reset();
 
       // Should not throw
+      const context = engine.getContext();
+      expect(context).toBeNull();
+    });
+
+    it('should return null when AudioContext constructor throws', async () => {
+      // Replace AudioContext with a class constructor that throws
+      class ThrowingAudioContext {
+        constructor() {
+          throw new Error('AudioContext construction failed');
+        }
+      }
+      globalThis.AudioContext =
+        ThrowingAudioContext as unknown as typeof AudioContext;
+      // @ts-expect-error - Removing webkitAudioContext for test
+      globalThis.webkitAudioContext = undefined;
+
+      const { AudioEngine } = await import('@/audio/AudioEngine');
+      const engine = AudioEngine.getInstance();
+      engine.reset();
+
       const context = engine.getContext();
       expect(context).toBeNull();
     });
