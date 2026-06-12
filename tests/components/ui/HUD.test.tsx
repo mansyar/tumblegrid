@@ -23,6 +23,10 @@ vi.mock('@/components/ui/VictoryOverlay', () => ({
   VictoryOverlay: () => <div data-testid="victory-overlay">VictoryOverlay</div>,
 }));
 
+vi.mock('@/components/ui/MuteToggle', () => ({
+  MuteToggle: () => <div data-testid="mute-toggle">MuteToggle</div>,
+}));
+
 // ─── Tests ────────────────────────────────────────────────────────────
 
 describe('HUD', () => {
@@ -61,5 +65,11 @@ describe('HUD', () => {
     const { HUD } = await import('@/components/ui/HUD');
     render(<HUD />);
     expect(screen.getByTestId('victory-overlay')).toBeDefined();
+  });
+
+  it('renders MuteToggle', async () => {
+    const { HUD } = await import('@/components/ui/HUD');
+    render(<HUD />);
+    expect(screen.getByTestId('mute-toggle')).toBeDefined();
   });
 });
