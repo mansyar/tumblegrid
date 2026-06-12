@@ -27,7 +27,7 @@
 
 ## Phase 2: UI Interaction Sounds
 
-- [ ] Task: Create UI click sound synthesizer
+- [x] Task: Create UI click sound synthesizer `e5ad610`
     - [ ] Create `src/audio/sounds/uiClick.ts` with pure function
     - [ ] Implement `playUIClick(context: AudioContext, type: 'place' | 'remove' | 'rotate')`
     - [ ] Use short sine oscillator (~50ms) with different pitches per type
