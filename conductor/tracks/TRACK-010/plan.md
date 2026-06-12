@@ -52,16 +52,16 @@
 
 ## Phase 3: Rotate Button (Mobile)
 
-- [ ] Task: Create RotateButton component in `src/components/ui/RotateButton.tsx`
-    - [ ] Render button with ≥44px touch target
-    - [ ] Dispatch rotation action on tap
-    - [ ] Show only on touch devices (or always visible with responsive styling)
-    - [ ] Write tests
+- [x] Task: Create RotateButton component in `src/components/ui/RotateButton.tsx`
+    - [x] Render button with ≥44px touch target
+    - [x] Dispatch rotation action on tap
+    - [x] Show only on touch devices (or always visible with responsive styling)
+    - [x] Write tests
 
-- [ ] Task: Mount RotateButton in HUD (`src/components/ui/HUD.tsx`)
-    - [ ] Position appropriately (near bottom or side of viewport)
-    - [ ] Ensure it doesn't overlap with other UI elements
-    - [ ] Wire to store: rotate hover piece (pre-placement) or selected piece (post-placement)
+- [x] Task: Mount RotateButton in HUD (`src/components/ui/HUD.tsx`)
+    - [x] Position appropriately (near bottom or side of viewport)
+    - [x] Ensure it doesn't overlap with other UI elements
+    - [x] Wire to store: rotate hover piece (pre-placement) or selected piece (post-placement)
 
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Rotate Button' (Protocol in workflow.md)
 
