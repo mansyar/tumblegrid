@@ -17,7 +17,7 @@
     - [ ] Wire MuteToggle to AudioEngine via Zustand store or direct call
     - [ ] Write unit tests for mute state transitions
 
-- [ ] Task: Handle tab visibility for continuous sounds
+- [x] Task: Handle tab visibility for continuous sounds `fa110bd`
     - [ ] Add `document.visibilitychange` listener in AudioEngine
     - [ ] Implement `pauseContinuous()` and `resumeContinuous()` methods
     - [ ] Track active continuous sound sources (marble roll)
