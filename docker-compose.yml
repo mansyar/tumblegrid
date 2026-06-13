@@ -3,6 +3,5 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - '8080:80'
+    # No host ports — Coolify's proxy routes to EXPOSE 80 from the Dockerfile
     restart: unless-stopped
